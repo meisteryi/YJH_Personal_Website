@@ -314,10 +314,11 @@ export const StatusCard = () => {
 // 7. Archive / Log List Card (Medium/Long: 1x2)
 export const ArchiveCard = () => {
   const logs = [
-    { date: 'Jun 2026', title: 'Launched Bento Portfolio v1.1', type: 'Release' },
-    { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project' },
-    { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research Paper', type: 'Paper' },
-    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project' }
+    { date: 'Jun 2026', title: 'Launched Bento Portfolio v1.1', type: 'Release', color: 'bg-emerald-500' },
+    { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500' },
+    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500' },
+    { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project', color: 'bg-amber-500' },
+    { date: 'Mar 2024', title: 'Entered Sogang University Art & Tech', type: 'Academic', color: 'bg-blue-500' }
   ];
 
   return (
@@ -335,26 +336,28 @@ export const ArchiveCard = () => {
             Timeline Logs
           </h2>
           
-          {/* Scrollable list structure */}
-          <div className="space-y-3 mt-4 max-h-[220px] overflow-y-auto pr-1">
+          {/* Vertical line timeline structure */}
+          <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 space-y-6 mt-6 ml-2">
             {logs.map((log, idx) => (
-              <div 
-                key={idx} 
-                className="group/item flex flex-col gap-1 p-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900/60 border border-transparent hover:border-slate-100 dark:hover:border-slate-800 transition-all duration-200"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-[9px] font-mono text-slate-400 dark:text-slate-500">{log.date}</span>
-                  <span className="text-[8px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">{log.type}</span>
+              <div key={idx} className="relative group/item">
+                {/* Timeline Dot */}
+                <span className={`absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-950 ${log.color} transition-all duration-200 group-hover/item:scale-125 group-hover/item:shadow-sm`}></span>
+                
+                <div className="flex flex-col gap-1">
+                  <div className="flex items-center gap-2">
+                    <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-500">{log.date}</span>
+                    <span className="px-1.5 py-0.2 rounded text-[7px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400">{log.type}</span>
+                  </div>
+                  <h3 className="text-xs font-semibold text-slate-750 dark:text-slate-300 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
+                    {log.title}
+                  </h3>
                 </div>
-                <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-350 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 line-clamp-1 transition-colors duration-150">
-                  {log.title}
-                </h3>
               </div>
             ))}
           </div>
         </div>
 
-        <button className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200">
+        <button className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-850 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200">
           <span>View Archive</span>
           <ExternalLink size={12} />
         </button>
