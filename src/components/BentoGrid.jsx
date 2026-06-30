@@ -14,13 +14,15 @@ import {
   Smartphone,
   CheckCircle,
   FileText,
-  Music
+  Music,
+  Search
 } from 'lucide-react';
 
 // Import preview figures
 import SHEN_fig_6 from '../assets/SHEN_fig_6.png';
 import mus_fig_1 from '../assets/mus_fig_1.png';
 import mus_fig_3 from '../assets/mus_fig_3.png';
+import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 
 // Card Wrapper with premium micro-interactions
 export const Card = ({ children, className = '', span = '', onClick }) => {
@@ -57,7 +59,7 @@ export const HeroCard = () => {
 
         {/* Short Bio */}
         <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-sm md:text-base mt-2">
-          Hello! I explore the intersection of artificial intelligence, explainable systems (XAI), and music technology. I design pipelines that interpret deep learning decisions and build systems for creative engineering.
+          Hello! I explore the intersection of artificial intelligence, explainable systems (XAI), and music/sports data analytics. I design pipelines that interpret deep learning decisions and build systems for creative engineering.
         </p>
       </div>
 
@@ -124,7 +126,7 @@ export const AcademicCard = ({ onOpen }) => {
             <div className="h-[1px] w-12 bg-slate-200 dark:bg-slate-800"></div>
           </div>
 
-          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-405 leading-relaxed line-clamp-6">
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-6">
             We explore hidden decision boundaries of sentiment classification models (KcELECTRA). While score swaps show nominal neutrality, attention and LIME reveal the model misattributes gender prefixes as salient sentiment weights.
           </p>
         </div>
@@ -144,35 +146,35 @@ export const AcademicCard = ({ onOpen }) => {
   );
 };
 
-// 3. Visual / Media-Heavy Card (Horizontal: 2x1) - Features music spectrogram comparison
+// 3. Visual / Media-Heavy Card (Horizontal: 2x1) - Features AI Football Scouter
 export const VisualCard = ({ onOpen }) => {
   return (
     <Card 
-      onClick={() => onOpen('mus')}
+      onClick={() => onOpen('scout')}
       span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1" 
       className="relative !p-0"
     >
-      {/* Background Spectrogram Image */}
-      <div className="absolute inset-0 bg-slate-200 dark:bg-slate-900 flex items-center justify-center overflow-hidden">
+      {/* Background Screenshot Image */}
+      <div className="absolute inset-0 bg-slate-100 dark:bg-slate-900 flex items-center justify-center overflow-hidden">
         <img 
-          src={mus_fig_3} 
-          alt="Classical vs Metal Spectrograms" 
-          className="w-full h-full object-cover opacity-60 dark:opacity-40 filter contrast-125 dark:contrast-100" 
+          src={scout_slides_fig_22} 
+          alt="AI Scouter Interface" 
+          className="w-full h-full object-cover opacity-75 dark:opacity-40 filter contrast-125 dark:contrast-100" 
         />
-        <div className="absolute inset-0 bg-slate-950/20 dark:bg-slate-950/40"></div>
+        <div className="absolute inset-0 bg-slate-950/10 dark:bg-slate-950/40"></div>
         {/* Gradient Orbs */}
         <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-indigo-500/10 to-transparent blur-3xl animate-float"></div>
       </div>
 
       {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent flex flex-col justify-end p-6 md:p-8">
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent flex flex-col justify-end p-6 md:p-8">
         <div className="flex items-center justify-between">
           <div>
             <span className="px-2 py-0.5 rounded bg-white/20 text-white text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
-              Acoustic Texture Comparison
+              NLP Class Project
             </span>
             <h2 className="text-lg md:text-xl font-bold text-white mt-2">
-              Visualizing Musical Textures: Classical vs Metal Spectrograms
+              AI Football Scouter: Sentiment-Driven Player Recommendation
             </h2>
           </div>
           <div className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors duration-200">
@@ -218,7 +220,7 @@ export const ShowroomCard = ({ onOpen }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-550 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
+        <div className="flex items-center justify-between text-xs font-semibold text-slate-555 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
           <span>Explore Pipeline & Results (72.56% Accuracy)</span>
           <ArrowUpRight size={16} />
         </div>
@@ -312,10 +314,10 @@ export const StatusCard = () => {
 // 7. Archive / Log List Card (Medium/Long: 1x2)
 export const ArchiveCard = () => {
   const logs = [
-    { date: 'Jun 2026', title: 'Launched Bento Portfolio v1.0', type: 'Release' },
+    { date: 'Jun 2026', title: 'Launched Bento Portfolio v1.1', type: 'Release' },
+    { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project' },
     { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research Paper', type: 'Paper' },
-    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project' },
-    { date: 'Sep 2025', title: 'Initiated Sogang Art & Tech 2nd Yr 2nd Sem', type: 'Academic' }
+    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project' }
   ];
 
   return (

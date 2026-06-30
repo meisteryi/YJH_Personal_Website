@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play } from 'lucide-react';
+import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play, CheckCircle } from 'lucide-react';
 
-// Import project figures
+// Import project figures (SHEN & mus)
 import SHEN_fig_1 from '../assets/SHEN_fig_1.png';
 import SHEN_fig_2 from '../assets/SHEN_fig_2.png';
 import SHEN_fig_3 from '../assets/SHEN_fig_3.png';
@@ -15,6 +15,14 @@ import mus_fig_3 from '../assets/mus_fig_3.png';
 import mus_fig_4 from '../assets/mus_fig_4.png';
 import mus_fig_5 from '../assets/mus_fig_5.png';
 import mus_fig_6 from '../assets/mus_fig_6.png';
+
+// Import new project figures (AI Football Scouter)
+import scout_report_fig_1 from '../assets/scout_report_fig_1.png';
+import scout_report_fig_13 from '../assets/scout_report_fig_13.png';
+import scout_slides_fig_17 from '../assets/scout_slides_fig_17.png';
+import scout_slides_fig_18 from '../assets/scout_slides_fig_18.png';
+import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
+import scout_slides_fig_25 from '../assets/scout_slides_fig_25.png';
 
 export const projectsData = {
   shen: {
@@ -112,6 +120,57 @@ export const projectsData = {
       ],
       conclusion: 'We proposed a computer vision framework for music genre classification. By combining log-mel spectrograms with transfer learning (ResNet50), we reached a test accuracy of 72.56%. Qualitative analysis verified that the model indeed relies on visual textures (harmonics, beats, and noise) rather than traditional symbolic metrics. Limitations include the model relying on texture details instead of structural musical context (lyrics, tonality).'
     }
+  },
+  scout: {
+    id: 'scout',
+    title: 'AI Football Scouter',
+    subtitle: 'Data and Sentiment Driven Player Recommendation System',
+    author: 'Joohyoung Yi, Yongseop Shin, Changyoung Lee',
+    affiliation: 'NLP Class Project, Sogang University (2025 1st Semester)',
+    email: 'yjh020701@sogang.ac.kr',
+    tags: ['NLP', 'Sentiment Analysis', 'BERT', 'LLM', 'phi-1.5'],
+    abstract: 'This project introduces AI Football Scouter, a data-driven recommendation system that combines objective player statistics with subjective community sentiments from Reddit. Designed to overcome the limitations of numbers-only scouting, the system filters candidates from a dataset of player attributes, performs 3-way BERT sentiment and separate toxicity analyses on Reddit fan comments, applies a rule-based recommendation logic, and generates a human-like scouting summary using a local lightweight LLM (phi-1.5). We also report key edge cases including position query normalization fixes and contextual toxicity classification errors caused by strong football fan slang.',
+    sections: {
+      introduction: 'Modern football scouting is no longer just about numbers. Community perception and fan sentiment increasingly affect player valuation, confidence, and media representation. The goal of this project is to combine players\' objective statistics with community opinions on Reddit. Our system ingests player metrics from a CSV file, accepts natural language profile queries, performs Reddit API extraction and sentiment/toxicity categorization, and outputs a synthesized scouting report to help head coaches and technical directors make informed decisions.',
+      methodology: [
+        {
+          title: 'Step 01: CSV-Based Player Filtering & Query Normalization',
+          desc: 'The system loads objective player attributes (pace, stamina, shooting, dribbling, etc.). Initially, searching a query like "goalkeeper" returned forwards like Salah because the classifier selected general attributes like "defending" or "stamina".\n\nTo resolve this, we implemented `normalize_position_input()` to map natural language queries directly to standard position codes (GK, DF, MF, FW) and added `filter_players_by_position()` to restrict recommendations to the appropriate playing zone before applying attribute scores.',
+          figs: [scout_report_fig_1, scout_report_fig_13],
+          captions: [
+            'Figure 1: Code snippet for normalize_position_input() mapping query keywords to position codes.',
+            'Figure 2: Code snippet for filter_players_by_position() ensuring strict position filtering.'
+          ]
+        },
+        {
+          title: 'Step 02: Reddit Fan Sentiment & Toxicity Analysis',
+          desc: 'We collect recent Reddit posts and comments using PRAW. The sentiment is analyzed using the `nlptown/bert-base-multilingual-uncased-sentiment` model (predicting positive, neutral, negative ratios). Concurrently, toxicity is measured separately using `unitary/toxic-bert` from Hugging Face.'
+        },
+        {
+          title: 'Step 03: Recommendation Logic & LLM Summarization',
+          desc: 'We apply a rule-based labeling algorithm:\n- Toxicity >= 0.55 -> Not Recommended\n- Positive >= 0.5 & low toxicity -> Recommended\n- Negative >= 0.5 -> Not Recommended\n\nFor the recommended top players, a locally-run phi-1.5 model synthesizes a detailed scouting report combining objective ratings and public fan sentiment statistics.',
+          fig: scout_slides_fig_25,
+          caption: 'Figure: Output sample from local phi-1.5 model generating a human-like scouting report.'
+        }
+      ],
+      results: [
+        {
+          title: 'System Walkthrough & Code Details',
+          desc: 'The user enters a profile query like "strong midfielder" in the Streamlit UI. The system matches attributes, filters candidates (e.g., Bruno Fernandes, Cole Palmer), retrieves fan sentiments, and generates the scouting summaries.',
+          figs: [scout_slides_fig_22, scout_slides_fig_18, scout_slides_fig_17],
+          captions: [
+            'Figure 3: Streamlit Search UI interface.',
+            'Figure 4: Candidate filtering results table for "strong midfielder".',
+            'Figure 5: Fan sentiment analysis JSON output (Cole Palmer: positive_ratio: 0.53, toxic: 0.03).'
+          ]
+        },
+        {
+          title: 'Key Challenge: Slang, Sarcasm & Positive Toxicity',
+          desc: 'A significant challenge arose with the model misinterpreting strong fan language as negative. For example, Cole Palmer\'s comment "...thank fuck he\'s good at football" contains toxic words but is contextually positive. Similarly, Bruno Guimarães\'s comment "Cunt but he\'s their cunt" was flagged as toxic, yet contextually expresses deep admiration. These examples show the difficulty models face in capturing sarcasm and positive-use profanity in passionate online sports forums.',
+        }
+      ],
+      conclusion: 'AI Football Scouter successfully showcases a hybrid recommendation system bridging numerical statistics and public opinion. While the local lightweight models (BERT, phi-1.5) perform adequately, contextual slang and sarcasm pose limitations on sentiment accuracy. Future improvements include integrating multi-platform data (Twitter, YouTube) and fine-tuning models on domain-specific football fan vernacular.'
+    }
   }
 };
 
@@ -144,7 +203,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
               {project.subtitle}
             </p>
             <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
-              <span>{project.author} ({project.email})</span>
+              <span>{project.author}</span>
               <span>{project.affiliation}</span>
             </div>
           </div>
@@ -193,7 +252,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
 
               <div className="space-y-3">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">1. Introduction</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm leading-relaxed whitespace-pre-line">
+                <p className="text-slate-600 dark:text-slate-405 text-xs md:text-sm leading-relaxed whitespace-pre-line">
                   {project.sections.introduction}
                 </p>
               </div>
@@ -245,6 +304,24 @@ export const ProjectModal = ({ projectId, onClose }) => {
                     </div>
                     <p className="text-[10px] text-slate-450 dark:text-slate-500 mt-3 text-center max-w-sm">
                       Figure: Attention weights comparison between male/female directors (highlights the misattribution on the gender prefix '여-').
+                    </p>
+                  </div>
+                )}
+
+                {project.id === 'scout' && (
+                  <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl gap-4">
+                    <img 
+                      src={scout_report_fig_1} 
+                      alt="normalize_position_input" 
+                      className="max-h-36 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1" 
+                    />
+                    <img 
+                      src={scout_report_fig_13} 
+                      alt="filter_players_by_position" 
+                      className="max-h-24 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1" 
+                    />
+                    <p className="text-[10px] text-slate-450 dark:text-slate-500 text-center max-w-sm">
+                      Figures: Python code snippets implementing query position normalization and candidate filtering based on player positions to resolve recommendations error.
                     </p>
                   </div>
                 )}
