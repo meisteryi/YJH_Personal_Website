@@ -99,7 +99,7 @@ function App() {
           <VisualCard onOpen={setSelectedProject} />
 
           {/* 7. Archive / Logs Timeline Card (1x2) */}
-          <ArchiveCard />
+          <ArchiveCard onOpen={setSelectedProject} />
         </div>
       </main>
 

@@ -312,12 +312,12 @@ export const StatusCard = () => {
 };
 
 // 7. Archive / Log List Card (Medium/Long: 1x2)
-export const ArchiveCard = () => {
+export const ArchiveCard = ({ onOpen }) => {
   const logs = [
     { date: 'Jun 2026', title: 'Launched Bento Portfolio v1.1', type: 'Release', color: 'bg-emerald-500' },
-    { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500' },
-    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500' },
-    { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project', color: 'bg-amber-500' },
+    { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500', projectId: 'shen' },
+    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500', projectId: 'mus' },
+    { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project', color: 'bg-amber-500', projectId: 'scout' },
     { date: 'Mar 2024', title: 'Entered Sogang University Art & Tech', type: 'Academic', color: 'bg-blue-500' }
   ];
 
@@ -339,7 +339,11 @@ export const ArchiveCard = () => {
           {/* Vertical line timeline structure */}
           <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 space-y-6 mt-6 ml-2">
             {logs.map((log, idx) => (
-              <div key={idx} className="relative group/item">
+              <div 
+                key={idx} 
+                onClick={() => log.projectId && onOpen(log.projectId)}
+                className={`relative group/item ${log.projectId ? 'cursor-pointer' : ''}`}
+              >
                 {/* Timeline Dot */}
                 <span className={`absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-950 ${log.color} transition-all duration-200 group-hover/item:scale-125 group-hover/item:shadow-sm`}></span>
                 
@@ -348,7 +352,7 @@ export const ArchiveCard = () => {
                     <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-500">{log.date}</span>
                     <span className="px-1.5 py-0.2 rounded text-[7px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400">{log.type}</span>
                   </div>
-                  <h3 className="text-xs font-semibold text-slate-750 dark:text-slate-300 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
+                  <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-355 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
                     {log.title}
                   </h3>
                 </div>
