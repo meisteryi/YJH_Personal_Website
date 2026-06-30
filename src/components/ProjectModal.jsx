@@ -1,0 +1,332 @@
+import React, { useState } from 'react';
+import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play } from 'lucide-react';
+
+// Import project figures
+import SHEN_fig_1 from '../assets/SHEN_fig_1.png';
+import SHEN_fig_2 from '../assets/SHEN_fig_2.png';
+import SHEN_fig_3 from '../assets/SHEN_fig_3.png';
+import SHEN_fig_4 from '../assets/SHEN_fig_4.png';
+import SHEN_fig_5 from '../assets/SHEN_fig_5.png';
+import SHEN_fig_6 from '../assets/SHEN_fig_6.png';
+
+import mus_fig_1 from '../assets/mus_fig_1.png';
+import mus_fig_2 from '../assets/mus_fig_2.png';
+import mus_fig_3 from '../assets/mus_fig_3.png';
+import mus_fig_4 from '../assets/mus_fig_4.png';
+import mus_fig_5 from '../assets/mus_fig_5.png';
+import mus_fig_6 from '../assets/mus_fig_6.png';
+
+export const projectsData = {
+  shen: {
+    id: 'shen',
+    title: 'SHEN: Sentiment Hidden Eye aNalysis',
+    subtitle: 'Investigating Gender Bias in Korean PLMs via Attention and Local Explanations',
+    author: 'Joohyoung Yi',
+    affiliation: 'Art & Technology, Sogang University',
+    email: 'yjh020701@sogang.ac.kr',
+    tags: ['XAI', 'NLP', 'Bias Analysis', 'KcELECTRA'],
+    abstract: 'Although Pre-trained Language Models (PLMs) show high performance in sentiment analysis, they risk inheriting social biases. This study investigates how the KcELECTRA model processes gender information using Prediction Scores and Attention Mechanisms. Experimental results show that changes in prediction scores due to gender swapping vary by profession and context, with no consistent evidence that female terms are universally evaluated negatively. However, attention visualization revealed that the model assigns high attention weights to gender prefixes such as \'여-\', comparable to those assigned to sentiment-intensifying adverbs such as \'정말\' (e.g., "really"). This suggests a Feature Misattribution, where the model misidentifies gender as a salient feature for sentiment classification. We conclude that while directional bias is inconsistent, the model\'s over-attention to gender creates unpredictability in sentiment prediction.',
+    sections: {
+      introduction: 'As natural language processing models learn from human language, they inevitably acquire social attributes such as gender and race. This issue is particularly salient in Korean due to the prevalence of gender-marking prefixes such as \'여-\' and \'여류-\', which makes it important to examine how models process these linguistic forms. Previous studies have largely focused on allocational bias, emphasizing binary outcome patterns such as \'male = positive\' and \'female = negative\'. However, model behavior is more complex: even when prediction scores appear similar, models may internally rely on gender information as a basis for sentiment judgments. To address this issue, this study investigates the model by analyzing changes in prediction scores under gender term substitution and examining the extent to which the model\'s attention is allocated to gender-related tokens.',
+      methodology: [
+        {
+          title: 'Model Selection & Fine-tuning',
+          desc: 'We adopted KcELECTRA-base-v2022 as the backbone model for sentiment analysis. Unlike standard KoELECTRA, KcELECTRA is pre-trained on a large-scale corpus of Korean news comments, making it robust for processing colloquialisms, slang, and neologisms. We fine-tuned the model on the Naver Sentiment Movie Corpus (NSMC), using a randomly sampled 30,000 instances for training and 5,000 for testing, with the AdamW optimizer (learning rate: 5e-5, batch size: 32, 1 epoch).'
+        },
+        {
+          title: 'Bias Analysis Framework',
+          desc: '1. Word Swap Test: Substituting professions in fixed templates (e.g., "그 [직업]은 정말 천재적이다") with 10 pairs of gendered terms (e.g., 감독/여감독) to measure prediction score shifts.\n2. Surface-level Explanation: Utilizing SHAP and LIME to cross-validate feature importance.\n3. Attention Heatmap Analysis: Extracting the attention distribution of the [CLS] token from the final layer to visualize weight allocations.'
+        }
+      ],
+      results: [
+        {
+          title: 'Word Swap Prediction Scores',
+          desc: 'Score differences across genders vary by occupation. No consistent pattern of one gender being systematically favored or disadvantaged was observed, suggesting the model has not learned a simplistic bias like "disliking women."',
+          fig: SHEN_fig_1,
+          caption: 'Figure 1: Positive prediction scores for 10 Comparison pairs. Rather than a unilateral bias, the predictions vary depending on the occupation.'
+        },
+        {
+          title: 'SHAP & LIME Comparison',
+          desc: 'SHAP identifies explicit sentiment words (e.g., \'형편없-\') as top features while ranking gender terms very low. In contrast, LIME assigns high weights to gender-marking prefixes, designating \'여배우\' (actress) as a higher positive contributor than the intensifier \'정말\' (really). This discrepancy arises because LIME is highly sensitive to local perturbations, thus capturing latent biases.',
+          figs: [SHEN_fig_2, SHEN_fig_3, SHEN_fig_4],
+          captions: [
+            'Figure 2 & 3: SHAP explanation for male/female acting issues. Sentiment words drive the negative prediction.',
+            'Figure 4: LIME explanation. The model assigns a higher positive contribution to \'여배우\' than to \'정말\'.'
+          ]
+        },
+        {
+          title: 'Attention Heapmap Analysis (Feature Misattribution)',
+          desc: 'Comparing attention weights for "그 감독은 정말 천재적이다" and "그 여감독은 정말 천재적이다". The [CLS] token assigns a high attention weight of 0.08 to the gender prefix \'여-\', which is comparable to the key sentiment word \'천재\' (0.11). This demonstrates that the model misattributes gender prefix as a salient sentiment feature.',
+          figs: [SHEN_fig_5, SHEN_fig_6],
+          captions: [
+            'Figure 5: Attention Heatmap for male director (focuses on sentiment words).',
+            'Figure 6: Attention Heatmap for female director (strongly focuses on gender prefix \'여-\').'
+          ]
+        }
+      ],
+      conclusion: 'Our study reveals a stark contrast between surface-level performance and internal model behavior. Looking only at prediction scores, no consistent bias was found. However, XAI tools (LIME and Attention Heatmaps) show that the model fixates on gender prefixes as sentiment features. While it currently produces correct predictions by chance, this poses a latent risk. Future research must focus on guiding models to attend to appropriate contextual cues rather than gender.'
+    }
+  },
+  mus: {
+    id: 'mus',
+    title: "µ's: Music Understanding via Spectrogram evaluation",
+    subtitle: 'Music Genre Classification using Transfer Learning on Log-Mel Spectrogram Images',
+    author: 'Joohyoung Yi',
+    affiliation: 'Art & Technology, Sogang University',
+    email: 'yjh020701@sogang.ac.kr',
+    tags: ['Computer Vision', 'Audio Processing', 'Transfer Learning', 'ResNet50'],
+    abstract: 'This project addresses the problem of Music Genre Classification in the audio domain by approaching it as a Computer Vision task. We extract visual features by converting audio signals into 2D Mel-Spectrogram images and employ a Transfer Learning methodology using a ResNet50 model pre-trained on ImageNet. Experimental results on the standard GTZAN dataset demonstrate a test accuracy of 72.56% across 10 genre classifications. Furthermore, we visually clarify misclassification patterns between genres sharing similar auditory characteristics through Confusion Matrix analysis.',
+    sections: {
+      introduction: 'In Music Information Retrieval (MIR), Convolutional Neural Networks (CNNs) have recently demonstrated remarkable performance by analyzing spectrograms as visual representations. We propose µ\'s, a music genre classification system that adopts a computer vision approach, enabling the automatic learning of complex features directly from Mel-Spectrograms rather than relying on traditional hand-crafted features like MFCCs. To overcome the small scale of music datasets, we leverage transfer learning using a ResNet50 backbone pre-trained on ImageNet, extracting visual patterns (textures) from audio data.',
+      methodology: [
+        {
+          title: 'Data Preprocessing Pipeline',
+          desc: '1. Segmentation: Dividing 30-second tracks in the GTZAN dataset into ten 3-second clips. This expands the dataset from 1,000 to 10,000 samples and enables learning from short-interval features.\n2. Mel-Spectrogram Conversion: Performing STFT and converting to Mel scale (n_mels: 128).\n3. 3-Channel Adaptation: Stacking the 1-channel grayscale spectrograms three times to create an RGB-like (128x130x3) tensor, fitting ResNet50 input requirements.',
+          fig: mus_fig_1,
+          caption: 'Figure 1: Preprocessing pipeline. Segments original audio to 3-second clips, converts to log-mel spectrogram, and replicates channels.'
+        },
+        {
+          title: 'Model & Training Strategy',
+          desc: 'We used ResNet50 with custom classification top layers (GlobalAveragePooling2D, Dropout 0.3, and 10-unit Softmax Dense layer). Training followed a two-phase strategy:\n- Phase 1 (Feature Extraction): Freezing ResNet50 weights, training only the classification head using Adam (learning rate: 1e-3).\n- Phase 2 (Fine-Tuning): Unfreezing the backbone, training the entire model with a very low learning rate (1e-5) to prevent catastrophic forgetting.'
+        }
+      ],
+      results: [
+        {
+          title: 'Quantitative Performance',
+          desc: 'The final model evaluated on the independent test set (1,498 segments) achieved a test accuracy of 72.56%. The ability to classify genres accurately using only short 3-second clips demonstrates the effectiveness of spectrogram-based visual feature extraction.',
+          figs: [mus_fig_2, mus_fig_4],
+          captions: [
+            'Figure 2: Accuracy & Loss curves showing stable convergence.',
+            'Figure 4: Confusion Matrix. Exceptional performance on Classical (99.3%) and Disco (76.7%).'
+          ]
+        },
+        {
+          title: 'Visual Patterns & Qualitative Analysis',
+          desc: 'The model distinguishes genres based on key visual patterns:\n- Vertical Patterns: Consistent beats (Hip-hop, Disco) show vertical lines in low-frequency bands.\n- Horizontal Textures: Harmonic instruments (Classical, Jazz) show smooth horizontal textures.\n- Noise Density (Complexity): Metal and Rock show rough, noisy, high-frequency distortion textures.',
+          figs: [mus_fig_3, mus_fig_5, mus_fig_6],
+          captions: [
+            'Figure 3: Spectrogram comparison of contrasting genres (Classical vs Metal).',
+            'Figure 5 & 6: Qualitative analysis case studies: Yesterday (misclassified Rock->Country due to acoustic guitar strings textures), Symphony No. 5 (correct Classical), and Snow Halation (correct Pop).'
+          ]
+        }
+      ],
+      conclusion: 'We proposed a computer vision framework for music genre classification. By combining log-mel spectrograms with transfer learning (ResNet50), we reached a test accuracy of 72.56%. Qualitative analysis verified that the model indeed relies on visual textures (harmonics, beats, and noise) rather than traditional symbolic metrics. Limitations include the model relying on texture details instead of structural musical context (lyrics, tonality).'
+    }
+  }
+};
+
+export const ProjectModal = ({ projectId, onClose }) => {
+  const project = projectsData[projectId];
+  const [activeTab, setActiveTab] = useState('overview');
+
+  if (!project) return null;
+
+  return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-950/70 backdrop-blur-md animate-fade-in">
+      <div 
+        className="glass-panel w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Modal Header */}
+        <div className="p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-start gap-4">
+          <div className="space-y-2">
+            <div className="flex flex-wrap gap-1.5">
+              {project.tags.map((tag, idx) => (
+                <span key={idx} className="px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <h1 className="text-xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-snug">
+              {project.title}
+            </h1>
+            <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400 font-medium">
+              {project.subtitle}
+            </p>
+            <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
+              <span>{project.author} ({project.email})</span>
+              <span>{project.affiliation}</span>
+            </div>
+          </div>
+          <button 
+            onClick={onClose}
+            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150"
+          >
+            <X size={20} />
+          </button>
+        </div>
+
+        {/* Modal Navigation Tabs */}
+        <div className="flex border-b border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 px-4 md:px-8">
+          {[
+            { id: 'overview', label: 'Abstract & Intro', icon: BookOpen },
+            { id: 'methodology', label: 'Methodology', icon: Cpu },
+            { id: 'results', label: 'Results & Figures', icon: BarChart2 }
+          ].map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`flex items-center gap-2 px-4 py-3.5 text-xs md:text-sm font-semibold border-b-2 transition-all duration-200 ${
+                activeTab === tab.id 
+                  ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' 
+                  : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300'
+              }`}
+            >
+              <tab.icon size={14} />
+              <span>{tab.label}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Modal Content - Scrollable */}
+        <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
+          {activeTab === 'overview' && (
+            <div className="space-y-6 animate-fade-in">
+              <div className="space-y-3">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
+                  <Award size={14} /> Abstract
+                </h3>
+                <p className="text-slate-600 dark:text-slate-350 text-sm md:text-base leading-relaxed bg-slate-50 dark:bg-slate-950/40 p-5 rounded-2xl border border-slate-200/30 dark:border-slate-800/20">
+                  {project.abstract}
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">1. Introduction</h3>
+                <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm leading-relaxed whitespace-pre-line">
+                  {project.sections.introduction}
+                </p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'methodology' && (
+            <div className="space-y-6 animate-fade-in">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-6">
+                  {project.sections.methodology.map((m, idx) => (
+                    <div key={idx} className="space-y-2 bg-slate-50 dark:bg-slate-950/20 p-5 rounded-2xl border border-slate-200/20 dark:border-slate-800/10">
+                      <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                        {m.title}
+                      </h3>
+                      <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400 leading-relaxed whitespace-pre-line">
+                        {m.desc}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Show Methodology Diagram if it exists */}
+                {project.id === 'mus' && (
+                  <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl">
+                    <img 
+                      src={mus_fig_1} 
+                      alt="Preprocessing Pipeline" 
+                      className="max-h-56 md:max-h-64 object-contain rounded-xl shadow-md border border-slate-200/40 dark:border-slate-800/40 bg-white p-2" 
+                    />
+                    <p className="text-[10px] text-slate-450 dark:text-slate-500 mt-3 text-center max-w-sm">
+                      {project.sections.methodology[0].caption}
+                    </p>
+                  </div>
+                )}
+
+                {project.id === 'shen' && (
+                  <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl">
+                    <div className="grid grid-cols-2 gap-2 w-full">
+                      <div className="flex flex-col items-center">
+                        <img src={SHEN_fig_5} alt="Attention Heatmap Male" className="max-h-24 md:max-h-28 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white" />
+                        <span className="text-[8px] text-slate-400 mt-1">Male Director Attention</span>
+                      </div>
+                      <div className="flex flex-col items-center">
+                        <img src={SHEN_fig_6} alt="Attention Heatmap Female" className="max-h-24 md:max-h-28 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white" />
+                        <span className="text-[8px] text-slate-400 mt-1">Female Director Attention</span>
+                      </div>
+                    </div>
+                    <p className="text-[10px] text-slate-450 dark:text-slate-500 mt-3 text-center max-w-sm">
+                      Figure: Attention weights comparison between male/female directors (highlights the misattribution on the gender prefix '여-').
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'results' && (
+            <div className="space-y-8 animate-fade-in">
+              {project.sections.results.map((r, idx) => (
+                <div key={idx} className="space-y-4 border-b border-slate-200/20 dark:border-slate-800/20 pb-6 last:border-0 last:pb-0">
+                  <div className="space-y-1.5">
+                    <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                      <Zap size={14} className="text-indigo-500" />
+                      {r.title}
+                    </h3>
+                    <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400 leading-relaxed">
+                      {r.desc}
+                    </p>
+                  </div>
+
+                  {/* Figure displays */}
+                  {r.fig && (
+                    <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-2xl w-fit mx-auto max-w-full">
+                      <img 
+                        src={r.fig} 
+                        alt={r.caption} 
+                        className="max-h-64 object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2" 
+                      />
+                      <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl">
+                        {r.caption}
+                      </p>
+                    </div>
+                  )}
+
+                  {/* Multi-Figure displays */}
+                  {r.figs && (
+                    <div className="space-y-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {r.figs.map((f, fIdx) => (
+                          <div key={fIdx} className="flex flex-col items-center p-3 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-xl">
+                            <img 
+                              src={f} 
+                              alt="Figure component" 
+                              className="max-h-48 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1.5" 
+                            />
+                          </div>
+                        ))}
+                      </div>
+                      <div className="space-y-1.5 text-center">
+                        {r.captions.map((cap, cIdx) => (
+                          <p key={cIdx} className="text-[10px] text-slate-450 dark:text-slate-500">
+                            {cap}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+
+              <div className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-5">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-1">Conclusion</h4>
+                <p className="text-xs md:text-sm text-slate-650 dark:text-slate-350 leading-relaxed">
+                  {project.sections.conclusion}
+                </p>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Modal Footer */}
+        <div className="p-4 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-6 md:px-8">
+          <span className="text-[10px] text-slate-400 font-mono">[Sogang Univ. Art & Tech Portfolio Project]</span>
+          <button 
+            onClick={onClose}
+            className="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150"
+          >
+            Close Details
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sun, Moon, Sparkles, Code, Cpu } from 'lucide-react';
+import { Sun, Moon, Sparkles, Cpu } from 'lucide-react';
 import { 
   HeroCard, 
   AcademicCard, 
@@ -9,9 +9,11 @@ import {
   StatusCard, 
   ArchiveCard 
 } from './components/BentoGrid';
+import { ProjectModal } from './components/ProjectModal';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(() => {
     // Check local storage or system preference
@@ -53,15 +55,15 @@ function App() {
             <Cpu size={18} className="animate-pulse" />
           </div>
           <span className="font-mono text-sm tracking-wider font-semibold">
-            [YOUR_WEBSITE_LOGO]
+            YJH.DEV
           </span>
         </div>
 
         <div className="flex items-center gap-4">
           {/* Quick Stats / Info Widget */}
-          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50 text-[10px] font-mono text-slate-555 dark:text-slate-400">
+          <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/50 text-[10px] font-mono text-slate-500 dark:text-slate-400">
             <Sparkles size={10} className="text-indigo-500" />
-            <span>[Status: Tech-Art Portfolio Template]</span>
+            <span>[Status: Porting Academic Research Projects]</span>
           </div>
 
           {/* Premium Theme Switcher Button */}
@@ -81,8 +83,8 @@ function App() {
           {/* 1. Hero Card (2x2) */}
           <HeroCard />
 
-          {/* 2. Academic / Research Card (1x2) */}
-          <AcademicCard />
+          {/* 2. Academic / Research Card (1x2) - SHEN */}
+          <AcademicCard onOpen={setSelectedProject} />
 
           {/* 3. Small Status Card (1x1) */}
           <StatusCard />
@@ -90,21 +92,29 @@ function App() {
           {/* 4. Small Interactive Card (1x1) */}
           <InteractiveCard />
 
-          {/* 5. Product Showroom Card (2x2) */}
-          <ShowroomCard />
+          {/* 5. Product Showroom Card (2x2) - µ's */}
+          <ShowroomCard onOpen={setSelectedProject} />
 
-          {/* 6. Visual Art / Media Card (2x1) */}
-          <VisualCard />
+          {/* 6. Visual Art / Media Card (2x1) - µ's Spectrogram Comparison */}
+          <VisualCard onOpen={setSelectedProject} />
 
           {/* 7. Archive / Logs Timeline Card (1x2) */}
           <ArchiveCard />
         </div>
       </main>
 
+      {/* Render Project Detail Modal */}
+      {selectedProject && (
+        <ProjectModal 
+          projectId={selectedProject} 
+          onClose={() => setSelectedProject(null)} 
+        />
+      )}
+
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-4 md:px-8 py-8 mt-12 border-t border-slate-200/30 dark:border-slate-800/30 flex flex-col md:flex-row items-center justify-between gap-4">
         <p className="text-xs text-slate-400 font-mono">
-          &copy; {new Date().getFullYear()} [Your Name]. All Rights Reserved. Built with React & Tailwind CSS.
+          &copy; {new Date().getFullYear()} Joohyoung Yi. All Rights Reserved. Built with React & Tailwind CSS.
         </p>
         <div className="flex items-center gap-4 text-xs text-slate-400 font-mono">
           <a href="#privacy" className="hover:underline">[Privacy Policy]</a>

@@ -6,7 +6,6 @@ import {
   ArrowUpRight, 
   BookOpen, 
   Image as ImageIcon, 
-  Layers, 
   Sparkles, 
   Terminal, 
   Calendar,
@@ -14,13 +13,22 @@ import {
   Code,
   Smartphone,
   CheckCircle,
-  FileText
+  FileText,
+  Music
 } from 'lucide-react';
 
+// Import preview figures
+import SHEN_fig_6 from '../assets/SHEN_fig_6.png';
+import mus_fig_1 from '../assets/mus_fig_1.png';
+import mus_fig_3 from '../assets/mus_fig_3.png';
+
 // Card Wrapper with premium micro-interactions
-export const Card = ({ children, className = '', span = '' }) => {
+export const Card = ({ children, className = '', span = '', onClick }) => {
   return (
-    <div className={`glass-panel glow-primary rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 group cursor-pointer overflow-hidden ${span} ${className}`}>
+    <div 
+      onClick={onClick}
+      className={`glass-panel glow-primary rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 group cursor-pointer overflow-hidden ${span} ${className}`}
+    >
       {children}
     </div>
   );
@@ -34,36 +42,36 @@ export const HeroCard = () => {
         {/* Availability Badge */}
         <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold w-fit animate-pulse-slow">
           <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-          [Availability Status Placeholder]
+          Available for Collaboration
         </div>
         
         {/* Title & Subtitle */}
         <div className="space-y-3 mt-4">
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
-            [Your Name / Headline]
+            Joohyoung Yi
           </h1>
           <p className="text-lg md:text-xl font-medium text-indigo-600 dark:text-indigo-400">
-            [Professional Role / Tagline Placeholder]
+            Art & Technology Student @ Sogang Univ.
           </p>
         </div>
 
         {/* Short Bio */}
         <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-sm md:text-base mt-2">
-          [Introductory Bio Placeholder. Briefly describe your background, main focus, and what makes your work unique. A hybrid of technology, research, and creative media.]
+          Hello! I explore the intersection of artificial intelligence, explainable systems (XAI), and music technology. I design pipelines that interpret deep learning decisions and build systems for creative engineering.
         </p>
       </div>
 
       {/* Social / Contact Links */}
       <div className="flex items-center gap-4 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
         <a 
-          href="#contact" 
+          href="mailto:yjh020701@sogang.ac.kr" 
           className="flex items-center justify-center p-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
           title="Email"
         >
           <Mail size={20} />
         </a>
         <a 
-          href="https://github.com" 
+          href="https://github.com/meisteryi" 
           target="_blank" 
           rel="noopener noreferrer"
           className="flex items-center justify-center p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
@@ -82,80 +90,89 @@ export const HeroCard = () => {
         </a>
         
         <span className="text-xs text-slate-400 ml-auto flex items-center gap-1">
-          [Location / Timezone]
+          Seoul, South Korea
         </span>
       </div>
     </Card>
   );
 };
 
-// 2. Academic / Text-Heavy Card (Vertical: 1x2)
-export const AcademicCard = () => {
+// 2. Academic / Text-Heavy Card (Vertical: 1x2) - SHEN Project
+export const AcademicCard = ({ onOpen }) => {
   return (
-    <Card span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2">
+    <Card 
+      onClick={() => onOpen('shen')}
+      span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2"
+    >
       <div className="flex flex-col gap-4 h-full justify-between">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase">
-              [Category Tag]
+              Academic Paper
             </span>
             <BookOpen size={18} className="text-slate-400" />
           </div>
           
           <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100 leading-snug group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-200">
-            [Academic Research or Article Title Placeholder]
+            SHEN: Sentiment Hidden Eye aNalysis
           </h2>
           
           <div className="space-y-2">
-            <p className="text-xs font-semibold text-slate-400 dark:text-slate-500">
-              [Journal / Conference / Institution Name, 2026]
+            <p className="text-xs font-semibold text-slate-400 dark:text-slate-550">
+              Investigating Gender Bias in Korean PLMs via Attention & XAI
             </p>
             <div className="h-[1px] w-12 bg-slate-200 dark:bg-slate-800"></div>
           </div>
 
-          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-6">
-            [Abstract/Summary Block: Provide a concise summary of the research methodology, findings, and publications here. This card is optimized for reading-heavy content and fits well in a vertical space.]
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-405 leading-relaxed line-clamp-6">
+            We explore hidden decision boundaries of sentiment classification models (KcELECTRA). While score swaps show nominal neutrality, attention and LIME reveal the model misattributes gender prefixes as salient sentiment weights.
           </p>
         </div>
 
-        <button className="flex items-center justify-between w-full px-4 py-2.5 mt-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-xs font-semibold transition-all duration-200 text-slate-700 dark:text-slate-300">
-          <span>[Read Document / Paper]</span>
-          <FileText size={14} className="text-slate-400 group-hover:translate-x-0.5 transition-transform duration-200" />
-        </button>
+        <div className="space-y-3">
+          {/* Subtle figure snapshot */}
+          <div className="h-16 rounded-xl border border-slate-200/50 dark:border-slate-800/80 bg-white dark:bg-slate-950 p-1 flex justify-center overflow-hidden">
+            <img src={SHEN_fig_6} alt="Attention Heatmap preview" className="h-full object-contain" />
+          </div>
+          <button className="flex items-center justify-between w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-xs font-semibold transition-all duration-200 text-slate-700 dark:text-slate-300">
+            <span>Read Publication</span>
+            <FileText size={14} className="text-slate-400 group-hover:translate-x-0.5 transition-transform duration-200" />
+          </button>
+        </div>
       </div>
     </Card>
   );
 };
 
-// 3. Visual / Media-Heavy Card (Horizontal: 2x1)
-export const VisualCard = () => {
+// 3. Visual / Media-Heavy Card (Horizontal: 2x1) - Features music spectrogram comparison
+export const VisualCard = ({ onOpen }) => {
   return (
-    <Card span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1" className="relative !p-0">
-      {/* Background Media Placeholder / Visual Layer */}
+    <Card 
+      onClick={() => onOpen('mus')}
+      span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1" 
+      className="relative !p-0"
+    >
+      {/* Background Spectrogram Image */}
       <div className="absolute inset-0 bg-slate-200 dark:bg-slate-900 flex items-center justify-center overflow-hidden">
-        {/* Elegant geometric grid pattern as default visual */}
-        <div className="absolute inset-0 opacity-20 dark:opacity-30 bg-[linear-gradient(to_right,#808080_1px,transparent_1px),linear-gradient(to_bottom,#808080_1px,transparent_1px)] bg-[size:24px_24px]"></div>
-        
-        {/* Flowing animated color orb to look premium */}
-        <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-indigo-500/20 to-purple-500/20 blur-3xl animate-float"></div>
-        <div className="absolute -bottom-12 -right-12 w-64 h-64 rounded-full bg-gradient-to-tr from-pink-500/10 to-indigo-500/20 blur-3xl animate-float" style={{ animationDelay: '2s' }}></div>
-
-        {/* Media Icon & Placeholder Text */}
-        <div className="flex flex-col items-center gap-2 text-slate-400 dark:text-slate-600">
-          <ImageIcon size={40} className="stroke-[1.5]" />
-          <span className="text-xs font-semibold tracking-wider uppercase">[Full-Bleed Media Container Placeholder]</span>
-        </div>
+        <img 
+          src={mus_fig_3} 
+          alt="Classical vs Metal Spectrograms" 
+          className="w-full h-full object-cover opacity-60 dark:opacity-40 filter contrast-125 dark:contrast-100" 
+        />
+        <div className="absolute inset-0 bg-slate-950/20 dark:bg-slate-950/40"></div>
+        {/* Gradient Orbs */}
+        <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-indigo-500/10 to-transparent blur-3xl animate-float"></div>
       </div>
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/40 to-transparent flex flex-col justify-end p-6 md:p-8">
+      {/* Overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/30 to-transparent flex flex-col justify-end p-6 md:p-8">
         <div className="flex items-center justify-between">
           <div>
             <span className="px-2 py-0.5 rounded bg-white/20 text-white text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
-              [Visual Art / Media Project]
+              Acoustic Texture Comparison
             </span>
             <h2 className="text-lg md:text-xl font-bold text-white mt-2">
-              [Project Title / Artwork Headline Placeholder]
+              Visualizing Musical Textures: Classical vs Metal Spectrograms
             </h2>
           </div>
           <div className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors duration-200">
@@ -167,62 +184,42 @@ export const VisualCard = () => {
   );
 };
 
-// 4. Product / App Showroom Card (Medium: 2x2)
-export const ShowroomCard = () => {
+// 4. Product / App Showroom Card (Medium: 2x2) - µ's Music Genre Project
+export const ShowroomCard = ({ onOpen }) => {
   return (
-    <Card span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-2">
+    <Card 
+      onClick={() => onOpen('mus')}
+      span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-2"
+    >
       <div className="flex flex-col gap-4 h-full justify-between">
         <div className="space-y-3">
           <div className="flex items-center justify-between">
             <span className="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-bold tracking-wider uppercase">
-              [App Showroom]
+              Research Project
             </span>
-            <Smartphone size={18} className="text-slate-400" />
+            <Music size={18} className="text-slate-400" />
           </div>
 
           <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
-            [Product Name Placeholder]
+            µ's : Music Understanding via Spectrogram evaluation
           </h2>
-          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400">
-            [Brief description of the product platform, key value proposition, and technologies used.]
+          <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400">
+            A Computer Vision framework for Music Genre Classification. Converts 1-channel audio waveforms into 2D log-mel spectrogram representations and leverages ResNet50 transfer learning.
           </p>
         </div>
 
-        {/* Device/Mockup Container Placeholder */}
-        <div className="my-4 h-36 md:h-44 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 border border-slate-200/50 dark:border-slate-800/80 flex items-center justify-center p-4 relative overflow-hidden group/mockup">
-          <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500/5 via-transparent to-pink-500/5"></div>
+        {/* Pipeline Container Preview */}
+        <div className="my-4 h-36 md:h-44 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80 flex items-center justify-center p-3 relative overflow-hidden group/mockup">
+          <img src={mus_fig_1} alt="Preprocessing Pipeline" className="h-full object-contain transition-transform duration-300 group-hover/mockup:scale-[1.03]" />
           
-          {/* Simulated Phone Frame */}
-          <div className="w-24 h-36 md:w-28 md:h-40 border-4 border-slate-300 dark:border-slate-800 rounded-2xl bg-white dark:bg-slate-950 flex flex-col justify-between p-2 shadow-lg relative transform transition-transform duration-350 group-hover/mockup:scale-105 group-hover/mockup:rotate-1">
-            <div className="w-8 h-2 bg-slate-200 dark:bg-slate-800 rounded-full mx-auto mb-1"></div>
-            <div className="flex-1 bg-slate-50 dark:bg-slate-900 rounded-md border border-slate-100 dark:border-slate-900 flex flex-col justify-center items-center p-1">
-              <span className="text-[7px] text-slate-400 font-mono">[UI Screen]</span>
-              <div className="w-6 h-6 rounded-full bg-purple-500/10 border border-purple-500/20 flex items-center justify-center mt-1">
-                <Sparkles size={8} className="text-purple-500" />
-              </div>
-            </div>
-            <div className="w-2 h-2 rounded-full bg-slate-350 dark:bg-slate-800 mx-auto mt-1"></div>
-          </div>
-
-          {/* Details / Feature Snippet Overlays */}
-          <div className="absolute right-4 top-1/2 -translate-y-1/2 flex flex-col gap-1.5 max-w-[55%]">
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-white dark:bg-slate-950 shadow-sm border border-slate-200/50 dark:border-slate-800/50">
-              <CheckCircle size={8} className="text-emerald-500" />
-              <span className="text-[9px] font-mono text-slate-500 dark:text-slate-400">[Feature One]</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-white dark:bg-slate-950 shadow-sm border border-slate-200/50 dark:border-slate-800/50">
-              <CheckCircle size={8} className="text-emerald-500" />
-              <span className="text-[9px] font-mono text-slate-500 dark:text-slate-400">[Feature Two]</span>
-            </div>
-            <div className="flex items-center gap-1.5 px-2 py-1 rounded bg-white dark:bg-slate-950 shadow-sm border border-slate-200/50 dark:border-slate-800/50">
-              <CheckCircle size={8} className="text-emerald-500" />
-              <span className="text-[9px] font-mono text-slate-500 dark:text-slate-400">[Feature Three]</span>
-            </div>
+          <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 text-[8px] font-mono text-emerald-400 shadow-sm border border-slate-800">
+            <CheckCircle size={8} />
+            <span>ResNet50 Pipeline</span>
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-550 dark:text-slate-405 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
-          <span>[View Showroom Details]</span>
+        <div className="flex items-center justify-between text-xs font-semibold text-slate-550 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
+          <span>Explore Pipeline & Results (72.56% Accuracy)</span>
           <ArrowUpRight size={16} />
         </div>
       </div>
@@ -235,15 +232,15 @@ export const InteractiveCard = () => {
   const [activeStack, setActiveStack] = useState('tech');
   
   const stacks = {
-    tech: ['React', 'Next.js', 'Tailwind', 'Python', 'PyTorch'],
-    tools: ['Figma', 'Git', 'Docker', 'VSCode', 'Blender']
+    tech: ['PyTorch', 'Librosa', 'Transformers', 'React', 'Tailwind'],
+    tools: ['Hugging Face', 'Colab', 'Git', 'Figma', 'VSCode']
   };
 
   return (
     <Card span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1" className="justify-between !p-5">
       <div className="flex items-center justify-between w-full">
         <span className="text-[10px] font-bold tracking-widest uppercase text-indigo-500 dark:text-indigo-400">
-          [Interactive]
+          Skills
         </span>
         
         {/* Toggle controls */}
@@ -277,7 +274,7 @@ export const InteractiveCard = () => {
 
       <div className="flex items-center gap-1.5 text-[10px] text-slate-400 dark:text-slate-500">
         <Code size={10} />
-        <span>[Interactive Matrix]</span>
+        <span>Core Competency</span>
       </div>
     </Card>
   );
@@ -289,7 +286,7 @@ export const StatusCard = () => {
     <Card span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1" className="justify-between !p-5">
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-500">
-          [Live Status]
+          Status
         </span>
         <div className="flex h-2.5 w-2.5 relative">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -298,14 +295,14 @@ export const StatusCard = () => {
       </div>
 
       <div className="space-y-1 my-2">
-        <p className="text-xs font-semibold text-slate-400 dark:text-slate-500">[Current Focus]</p>
-        <p className="text-sm font-bold text-slate-800 dark:text-slate-205 line-clamp-2">
-          [Building Next-Gen Bento Interfaces & Interactive Visualizations]
+        <p className="text-xs font-semibold text-slate-400 dark:text-slate-500">Current Focus</p>
+        <p className="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2">
+          Deepening explainable AI interfaces and deep-learning architectures for audio/visual art.
         </p>
       </div>
 
       <div className="text-[9px] font-mono text-slate-400 dark:text-slate-500 flex items-center justify-between">
-        <span>[Updated Just Now]</span>
+        <span>Active Research</span>
         <Terminal size={10} />
       </div>
     </Card>
@@ -315,10 +312,10 @@ export const StatusCard = () => {
 // 7. Archive / Log List Card (Medium/Long: 1x2)
 export const ArchiveCard = () => {
   const logs = [
-    { date: '[Jun 2026]', title: '[Launch of project portfolio website template]', type: 'Update' },
-    { date: '[May 2026]', title: '[Completed academic research paper on human-AI interfaces]', type: 'Research' },
-    { date: '[Apr 2026]', title: '[Experimenting with 3D shaders and canvas mockups]', type: 'Design' },
-    { date: '[Mar 2026]', title: '[Open sourced a lightweight Tailwind v4 bento grid system]', type: 'OpenSource' }
+    { date: 'Jun 2026', title: 'Launched Bento Portfolio v1.0', type: 'Release' },
+    { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research Paper', type: 'Paper' },
+    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project' },
+    { date: 'Sep 2025', title: 'Initiated Sogang Art & Tech 2nd Yr 2nd Sem', type: 'Academic' }
   ];
 
   return (
@@ -327,13 +324,13 @@ export const ArchiveCard = () => {
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <span className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold tracking-wider uppercase">
-              [Archive Logs]
+              Milestones
             </span>
             <Calendar size={18} className="text-slate-400" />
           </div>
 
           <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
-            [Recent Logs / Activity]
+            Timeline Logs
           </h2>
           
           {/* Scrollable list structure */}
@@ -356,7 +353,7 @@ export const ArchiveCard = () => {
         </div>
 
         <button className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200">
-          <span>[View Full Journal / Logs]</span>
+          <span>View Archive</span>
           <ExternalLink size={12} />
         </button>
       </div>
