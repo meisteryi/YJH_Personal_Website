@@ -323,45 +323,43 @@ export const ArchiveCard = ({ onOpen }) => {
 
   return (
     <Card span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2">
-      <div className="flex flex-col gap-4 h-full justify-between">
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold tracking-wider uppercase">
-              Milestones
-            </span>
-            <Calendar size={18} className="text-slate-400" />
-          </div>
-
-          <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
-            Timeline Logs
-          </h2>
-          
-          {/* Vertical line timeline structure */}
-          <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 space-y-6 mt-6 ml-2">
-            {logs.map((log, idx) => (
-              <div 
-                key={idx} 
-                onClick={() => log.projectId && onOpen(log.projectId)}
-                className={`relative group/item ${log.projectId ? 'cursor-pointer' : ''}`}
-              >
-                {/* Timeline Dot */}
-                <span className={`absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-950 ${log.color} transition-all duration-200 group-hover/item:scale-125 group-hover/item:shadow-sm`}></span>
-                
-                <div className="flex flex-col gap-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-500">{log.date}</span>
-                    <span className="px-1.5 py-0.2 rounded text-[7px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400">{log.type}</span>
-                  </div>
-                  <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-355 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
-                    {log.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
-          </div>
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <span className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold tracking-wider uppercase">
+            Milestones
+          </span>
+          <Calendar size={18} className="text-slate-400" />
         </div>
 
-        <button className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-850 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200">
+        <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
+          Timeline Logs
+        </h2>
+        
+        {/* Vertical line timeline structure */}
+        <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 space-y-6 mt-6 ml-2">
+          {logs.map((log, idx) => (
+            <div 
+              key={idx} 
+              onClick={() => log.projectId && onOpen(log.projectId)}
+              className={`relative group/item ${log.projectId ? 'cursor-pointer' : ''}`}
+            >
+              {/* Timeline Dot */}
+              <span className={`absolute -left-[21px] top-1.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-950 ${log.color} transition-all duration-200 group-hover/item:scale-125 group-hover/item:shadow-sm`}></span>
+              
+              <div className="flex flex-col gap-1">
+                <div className="flex items-center gap-2">
+                  <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-500">{log.date}</span>
+                  <span className="px-1.5 py-0.2 rounded text-[7px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400">{log.type}</span>
+                </div>
+                <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-355 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
+                  {log.title}
+                </h3>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <button className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-6 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-850 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200">
           <span>View Archive</span>
           <ExternalLink size={12} />
         </button>
