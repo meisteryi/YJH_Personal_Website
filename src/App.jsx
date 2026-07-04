@@ -10,10 +10,20 @@ import {
   ArchiveCard 
 } from './components/BentoGrid';
 import { ProjectModal } from './components/ProjectModal';
+import { ArchiveModal } from './components/ArchiveModal';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isArchiveOpen, setIsArchiveOpen] = useState(false);
+
+  const handleOpenProject = (id) => {
+    if (id === 'archive') {
+      setIsArchiveOpen(true);
+    } else {
+      setSelectedProject(id);
+    }
+  };
 
   useEffect(() => {
     // Check local storage or system preference
@@ -99,7 +109,7 @@ function App() {
           <VisualCard onOpen={setSelectedProject} />
 
           {/* 7. Archive / Logs Timeline Card (1x2) */}
-          <ArchiveCard onOpen={setSelectedProject} />
+          <ArchiveCard onOpen={handleOpenProject} />
         </div>
       </main>
 
@@ -108,6 +118,17 @@ function App() {
         <ProjectModal 
           projectId={selectedProject} 
           onClose={() => setSelectedProject(null)} 
+        />
+      )}
+
+      {/* Render Timeline Archive Modal */}
+      {isArchiveOpen && (
+        <ArchiveModal 
+          onClose={() => setIsArchiveOpen(false)}
+          onOpenProject={(id) => {
+            setIsArchiveOpen(false);
+            setSelectedProject(id);
+          }}
         />
       )}
 

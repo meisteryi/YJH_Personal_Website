@@ -171,6 +171,40 @@ export const projectsData = {
       ],
       conclusion: 'AI Football Scouter successfully showcases a hybrid recommendation system bridging numerical statistics and public opinion. While the local lightweight models (BERT, phi-1.5) perform adequately, contextual slang and sarcasm pose limitations on sentiment accuracy. Future improvements include integrating multi-platform data (Twitter, YouTube) and fine-tuning models on domain-specific football fan vernacular.'
     }
+  },
+  archive: {
+    id: 'archive',
+    title: 'Milestone & Project Archive',
+    subtitle: 'Comprehensive record of academic milestones, research publications, and engineering projects',
+    author: 'Joohyoung Yi',
+    affiliation: 'Art & Technology, Sogang University',
+    email: 'yjh020701@sogang.ac.kr',
+    tags: ['Academic', 'Research', 'Engineering', 'Timeline'],
+    abstract: 'This timeline archive provides a detailed documentation of my academic milestones, published research papers, software engineering projects, and interactive designs since joining Sogang University. It encapsulates key projects spanning Sentiment Bias Analysis, Music Genre Recognition, NLP-based Recommendation Engines, and Web Architectures.',
+    sections: {
+      introduction: 'Welcome to the complete milestone and archive list. Below is a detailed view of academic achievements, publications, and software systems developed during my university curriculum.',
+      methodology: [
+        {
+          title: '2026: Modern Web & Systems Deployments',
+          desc: '• Bento Portfolio v1.1: Designed and built a premium responsive Bento Grid website with custom interactive dark/light modes using React, Vite, and Tailwind CSS.\n• Explored Explainable AI user interface designs to present complex model decisions visually.'
+        },
+        {
+          title: '2025: NLP & Computer Vision Advancements',
+          desc: '• SHEN Publication: Co-authored research investigating gender bias prefix allocations in Korean language models, identifying feature misattributions.\n• µ\'s Framework: Built a spectrogram-based classification pipeline with ResNet50 for musical genre recognition, achieving a test accuracy of 72.56%.\n• AI Football Scouter: Integrated statistical player filters, multilingual sentiment analyses, and local LLM summary generation into a single recommendation application.'
+        },
+        {
+          title: '2021: Foundational Computing & Department Admission',
+          desc: '• Admission to Sogang University Department of Art & Technology.\n• Developed core programming competencies in Python, deep learning framework APIs (PyTorch), and digital signal processing basics.'
+        }
+      ],
+      results: [
+        {
+          title: 'Historical Milestone Logs Summary',
+          desc: '1. Dec 2025: Finished SHEN Gender Bias Research (Paper / NLP)\n2. Nov 2025: Designed µ\'s Mel-Spectrogram pipeline (Project / CV & Audio)\n3. Jun 2025: Finished AI Football Scouter NLP Project (Project / BERT & LLM)\n4. Mar 2021: Entered Sogang University Art & Technology (Academic / Admission)'
+        }
+      ],
+      conclusion: 'This archive acts as a living document, updated as new projects are completed and papers are published. For collaborations or technical discussions, feel free to get in touch.'
+    }
   }
 };
 
