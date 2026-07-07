@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Calendar, Search, Award, Code, FileText, GraduationCap, ArrowRight } from 'lucide-react';
 
 const archiveLogs = [
@@ -87,6 +87,12 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(5);
+
+  // Reset visible count when search or category changes
+  useEffect(() => {
+    setVisibleCount(5);
+  }, [searchTerm, selectedCategory]);
 
   const handleClose = () => {
     setIsClosing(true);
@@ -185,85 +191,97 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Scrollable Timeline */}
-        <div className="flex-1 overflow-y-auto p-6 md:p-8">
+        <div className="overflow-y-auto max-h-[50vh] p-6 md:p-8">
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12 text-slate-400 dark:text-slate-500 font-mono text-xs">
               No matching archive logs found.
             </div>
           ) : (
-            <div className="relative pl-6 md:pl-10 border-l-2 border-slate-200 dark:border-slate-800 space-y-8 ml-4 md:ml-8 py-2">
-              {filteredLogs.map((log, idx) => {
-                const LogIcon = log.icon;
-                const isExpanded = expandedIndex === idx;
+            <div className="space-y-6">
+              <div className="relative pl-6 md:pl-10 border-l-2 border-slate-200 dark:border-slate-800 space-y-8 ml-4 md:ml-8 py-2">
+                {filteredLogs.slice(0, visibleCount).map((log, idx) => {
+                  const LogIcon = log.icon;
+                  const isExpanded = expandedIndex === idx;
 
-                return (
-                  <div key={idx} className="relative group/timeline">
-                    {/* Floating Dot Icon */}
-                    <div className={`absolute -left-[37px] md:-left-[53px] top-1.5 w-7 h-7 md:w-8 md:h-8 rounded-full border-4 border-white dark:border-slate-950 ${getDotColor(log.category)} flex items-center justify-center text-white shadow-md transition-transform duration-200 group-hover/timeline:scale-110`}>
-                      <LogIcon size={12} className="md:size-[14px]" />
-                    </div>
-
-                    {/* Timeline card content */}
-                    <div
-                      onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-                      className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${isExpanded
-                        ? 'bg-slate-50 dark:bg-slate-900/50 border-indigo-500/40 dark:border-indigo-500/30 shadow-lg shadow-indigo-500/5'
-                        : 'bg-white/60 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm'
-                        }`}
-                    >
-                      {/* Top row Info */}
-                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                        <div className="flex items-center gap-2">
-                          <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500">{log.date}</span>
-                          <span className={`px-2 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-wider border ${getCategoryStyles(log.category)}`}>
-                            {log.category}
-                          </span>
-                        </div>
+                  return (
+                    <div key={idx} className="relative group/timeline">
+                      {/* Floating Dot Icon */}
+                      <div className={`absolute -left-[37px] md:-left-[53px] top-1.5 w-7 h-7 md:w-8 md:h-8 rounded-full border-4 border-white dark:border-slate-950 ${getDotColor(log.category)} flex items-center justify-center text-white shadow-md transition-transform duration-200 group-hover/timeline:scale-110`}>
+                        <LogIcon size={12} className="md:size-[14px]" />
                       </div>
 
-                      <h3 className="text-sm md:text-base font-bold text-slate-800 dark:text-slate-100 mt-2 leading-snug">
-                        {log.title}
-                      </h3>
-
-                      {/* Expandable Section */}
-                      <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                          {log.description}
-                        </p>
-
-                        {/* Tech tags */}
-                        <div className="flex flex-wrap gap-1.5 mt-4">
-                          {log.tags.map((tag, tIdx) => (
-                            <span key={tIdx} className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-950 text-[9px] font-mono text-slate-500 dark:text-slate-400 border border-slate-200/30 dark:border-slate-800/40">
-                              {tag}
+                      {/* Timeline card content */}
+                      <div
+                        onClick={() => setExpandedIndex(isExpanded ? null : idx)}
+                        className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${isExpanded
+                          ? 'bg-slate-50 dark:bg-slate-900/50 border-indigo-500/40 dark:border-indigo-500/30 shadow-lg shadow-indigo-500/5'
+                          : 'bg-white/60 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm'
+                          }`}
+                      >
+                        {/* Top row Info */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                          <div className="flex items-center gap-2">
+                            <span className="text-[10px] font-mono font-bold text-slate-400 dark:text-slate-500">{log.date}</span>
+                            <span className={`px-2 py-0.5 rounded-full text-[8px] font-bold uppercase tracking-wider border ${getCategoryStyles(log.category)}`}>
+                              {log.category}
                             </span>
-                          ))}
+                          </div>
                         </div>
 
-                        {/* Project Link */}
-                        {log.projectId && (
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              onOpenProject(log.projectId);
-                            }}
-                            className="mt-5 flex items-center gap-1 text-[11px] font-semibold text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-150"
-                          >
-                            <span>Open Project Details</span>
-                            <ArrowRight size={12} className="animate-pulse" />
-                          </button>
+                        <h3 className="text-sm md:text-base font-bold text-slate-800 dark:text-slate-100 mt-2 leading-snug">
+                          {log.title}
+                        </h3>
+
+                        {/* Expandable Section */}
+                        <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+                          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                            {log.description}
+                          </p>
+
+                          {/* Tech tags */}
+                          <div className="flex flex-wrap gap-1.5 mt-4">
+                            {log.tags.map((tag, tIdx) => (
+                              <span key={tIdx} className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-950 text-[9px] font-mono text-slate-500 dark:text-slate-400 border border-slate-200/30 dark:border-slate-800/40">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+
+                          {/* Project Link */}
+                          {log.projectId && (
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                onOpenProject(log.projectId);
+                              }}
+                              className="mt-5 flex items-center gap-1 text-[11px] font-semibold text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-150"
+                            >
+                              <span>Open Project Details</span>
+                              <ArrowRight size={12} className="animate-pulse" />
+                            </button>
+                          )}
+                        </div>
+
+                        {!isExpanded && (
+                          <p className="text-xs text-slate-400 mt-2 line-clamp-1">
+                            {log.description}
+                          </p>
                         )}
                       </div>
-
-                      {!isExpanded && (
-                        <p className="text-xs text-slate-400 mt-2 line-clamp-1">
-                          {log.description}
-                        </p>
-                      )}
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
+              {filteredLogs.length > visibleCount && (
+                <div className="flex justify-center pt-2">
+                  <button
+                    onClick={() => setVisibleCount(prev => prev + 5)}
+                    className="px-6 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                  >
+                    Load More (+{Math.min(5, filteredLogs.length - visibleCount)})
+                  </button>
+                </div>
+              )}
             </div>
           )}
         </div>

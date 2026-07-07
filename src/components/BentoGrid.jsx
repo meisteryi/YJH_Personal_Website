@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { 
-  Github, 
-  Linkedin, 
-  Mail, 
-  ArrowUpRight, 
-  BookOpen, 
-  Image as ImageIcon, 
-  Sparkles, 
-  Terminal, 
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ArrowUpRight,
+  BookOpen,
+  Image as ImageIcon,
+  Sparkles,
+  Terminal,
   Calendar,
   ExternalLink,
   Code,
@@ -28,11 +28,11 @@ import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 export const Card = ({ children, className = '', span = '', onClick }) => {
   const isClickable = !!onClick;
   return (
-    <div 
+    <div
       onClick={onClick}
       className={`glass-panel glow-primary rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 
-        ${isClickable 
-          ? 'hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 cursor-pointer' 
+        ${isClickable
+          ? 'hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 cursor-pointer'
           : 'cursor-default'
         } 
         group overflow-hidden ${span} ${className}`}
@@ -65,32 +65,32 @@ export const HeroCard = () => {
 
       {/* Social / Contact Links */}
       <div className="flex items-center gap-4 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
-        <a 
-          href="mailto:yjh020701@gmail.com" 
+        <a
+          href="mailto:yjh020701@gmail.com"
           className="flex items-center justify-center p-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
           title="Email"
         >
           <Mail size={20} />
         </a>
-        <a 
-          href="https://github.com/meisteryi" 
-          target="_blank" 
+        <a
+          href="https://github.com/meisteryi"
+          target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
           title="GitHub"
         >
           <Github size={20} />
         </a>
-        <a 
-          href="https://linkedin.com" 
-          target="_blank" 
+        <a
+          href="https://linkedin.com"
+          target="_blank"
           rel="noopener noreferrer"
           className="flex items-center justify-center p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
           title="LinkedIn"
         >
           <Linkedin size={20} />
         </a>
-        
+
         <span className="text-xs text-slate-400 ml-auto flex items-center gap-1">
           Seoul, South Korea
         </span>
@@ -102,7 +102,7 @@ export const HeroCard = () => {
 // 2. Academic / Text-Heavy Card (Vertical: 1x2) - SHEN Project
 export const AcademicCard = ({ onOpen }) => {
   return (
-    <Card 
+    <Card
       onClick={() => onOpen('shen')}
       span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2"
     >
@@ -114,11 +114,11 @@ export const AcademicCard = ({ onOpen }) => {
             </span>
             <BookOpen size={18} className="text-slate-400" />
           </div>
-          
+
           <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100 leading-snug group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-200">
             SHEN: Sentiment Hidden Eye aNalysis
           </h2>
-          
+
           <div className="space-y-2">
             <p className="text-xs font-semibold text-slate-500 dark:text-slate-300">
               Investigating Gender Bias in Korean PLMs via Attention & XAI
@@ -149,17 +149,17 @@ export const AcademicCard = ({ onOpen }) => {
 // 3. Visual / Media-Heavy Card (Horizontal: 2x1) - Features AI Football Scouter
 export const VisualCard = ({ onOpen }) => {
   return (
-    <Card 
+    <Card
       onClick={() => onOpen('scout')}
-      span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1" 
+      span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1"
       className="relative !p-0"
     >
       {/* Background Screenshot Image */}
       <div className="absolute inset-0 bg-slate-100 dark:bg-slate-900 flex items-center justify-center overflow-hidden">
-        <img 
-          src={scout_slides_fig_22} 
-          alt="AI Scouter Interface" 
-          className="w-full h-full object-cover opacity-75 dark:opacity-40 filter contrast-125 dark:contrast-100" 
+        <img
+          src={scout_slides_fig_22}
+          alt="AI Scouter Interface"
+          className="w-full h-full object-cover opacity-75 dark:opacity-40 filter contrast-125 dark:contrast-100"
         />
         <div className="absolute inset-0 bg-slate-950/10 dark:bg-slate-950/40"></div>
         {/* Gradient Orbs */}
@@ -189,7 +189,7 @@ export const VisualCard = ({ onOpen }) => {
 // 4. Product / App Showroom Card (Medium: 2x2) - µ's Music Genre Project
 export const ShowroomCard = ({ onOpen }) => {
   return (
-    <Card 
+    <Card
       onClick={() => onOpen('mus')}
       span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-2"
     >
@@ -213,7 +213,7 @@ export const ShowroomCard = ({ onOpen }) => {
         {/* Pipeline Container Preview */}
         <div className="my-4 h-36 md:h-44 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80 flex items-center justify-center p-3 relative overflow-hidden group/mockup">
           <img src={mus_fig_1} alt="Preprocessing Pipeline" className="h-full object-contain transition-transform duration-300 group-hover/mockup:scale-[1.03]" />
-          
+
           <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 text-[8px] font-mono text-emerald-400 shadow-sm border border-slate-800">
             <CheckCircle size={8} />
             <span>ResNet50 Pipeline</span>
@@ -232,7 +232,7 @@ export const ShowroomCard = ({ onOpen }) => {
 // 5. Status / Interactive Card (Small: 1x1) - Interactive Stack Selector
 export const InteractiveCard = () => {
   const [activeStack, setActiveStack] = useState('tech');
-  
+
   const stacks = {
     tech: ['PyTorch', 'Librosa', 'Transformers', 'React', 'Tailwind'],
     tools: ['Hugging Face', 'Colab', 'Git', 'Figma', 'VSCode']
@@ -244,16 +244,16 @@ export const InteractiveCard = () => {
         <span className="text-[10px] font-bold tracking-widest uppercase text-indigo-500 dark:text-indigo-400">
           Skills
         </span>
-        
+
         {/* Toggle controls */}
         <div className="flex gap-1 bg-slate-100 dark:bg-slate-900 p-0.5 rounded-lg border border-slate-200/30 dark:border-slate-800/30">
-          <button 
+          <button
             onClick={(e) => { e.stopPropagation(); setActiveStack('tech'); }}
             className={`px-1.5 py-0.5 text-[9px] font-semibold rounded ${activeStack === 'tech' ? 'bg-white dark:bg-slate-800 shadow-sm text-slate-900 dark:text-white' : 'text-slate-400'}`}
           >
             Stack
           </button>
-          <button 
+          <button
             onClick={(e) => { e.stopPropagation(); setActiveStack('tools'); }}
             className={`px-1.5 py-0.5 text-[9px] font-semibold rounded ${activeStack === 'tools' ? 'bg-white dark:bg-slate-800 shadow-sm text-slate-900 dark:text-white' : 'text-slate-400'}`}
           >
@@ -265,8 +265,8 @@ export const InteractiveCard = () => {
       {/* Dynamic tech icons / tags display */}
       <div className="flex flex-wrap gap-1.5 my-3">
         {stacks[activeStack].map((item, idx) => (
-          <span 
-            key={idx} 
+          <span
+            key={idx}
             className="px-2 py-1 rounded-md text-[10px] font-mono bg-slate-100/50 dark:bg-slate-900/50 border border-slate-200/20 dark:border-slate-800/20 text-slate-600 dark:text-slate-300 hover:bg-indigo-500/10 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-150"
           >
             {item}
@@ -285,9 +285,9 @@ export const InteractiveCard = () => {
 // 6. Latest Personal Project Card (Small: 1x1) - TabiLenS
 export const PersonalProjectCard = ({ onOpen }) => {
   return (
-    <Card 
+    <Card
       onClick={() => onOpen('tabilens')}
-      span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1" 
+      span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1"
       className="justify-between !p-5 hover:border-emerald-500/30 dark:hover:border-emerald-400/40"
     >
       <div className="flex items-center justify-between">
@@ -304,8 +304,8 @@ export const PersonalProjectCard = ({ onOpen }) => {
         <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-150">
           TabiLenS
         </h3>
-        <p className="text-[11px] text-slate-550 dark:text-slate-400 leading-relaxed line-clamp-2">
-          실시간 일본어 메뉴판 번역 및 식문화 가이드 주문 도우미 서비스
+        <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
+          실시간 일본어 메뉴판 번역 및 식문화 가이드
         </p>
       </div>
 
@@ -344,24 +344,24 @@ export const ArchiveCard = ({ onOpen }) => {
           <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
             Timeline Logs
           </h2>
-          
-          {/* Vertical line timeline structure - distributed evenly to fill height */}
-          <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 flex-grow flex flex-col justify-between mt-6 mb-2 ml-2 min-h-[220px]">
-            {logs.map((log, idx) => (
-              <div 
-                key={idx} 
+
+          {/* Vertical line timeline structure - distributed compact to fit 5 items */}
+          <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 flex-grow flex flex-col justify-between mt-5 mb-2 ml-2 min-h-[250px]">
+            {logs.slice(0, 5).map((log, idx) => (
+              <div
+                key={idx}
                 onClick={() => log.projectId && onOpen(log.projectId)}
-                className={`relative group/item ${log.projectId ? 'cursor-pointer' : ''} py-1`}
+                className={`relative group/item ${log.projectId ? 'cursor-pointer' : ''} py-0.5`}
               >
                 {/* Timeline Dot */}
-                <span className={`absolute -left-[21px] top-2.5 w-2.5 h-2.5 rounded-full border-2 border-white dark:border-slate-950 ${log.color} transition-all duration-200 group-hover/item:scale-125 group-hover/item:shadow-sm`}></span>
-                
-                <div className="flex flex-col gap-1">
-                  <div className="flex items-center gap-2">
-                    <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-300">{log.date}</span>
-                    <span className="px-1.5 py-0.2 rounded text-[7px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400">{log.type}</span>
+                <span className={`absolute -left-[21px] top-2 w-2 h-2 rounded-full border-2 border-white dark:border-slate-950 ${log.color} transition-all duration-200 group-hover/item:scale-125 group-hover/item:shadow-sm`}></span>
+
+                <div className="flex flex-col gap-0.5">
+                  <div className="flex items-center gap-1.5">
+                    <span className="text-[8px] font-mono font-bold text-slate-400 dark:text-slate-300">{log.date}</span>
+                    <span className="px-1 py-0.1 rounded text-[6px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400">{log.type}</span>
                   </div>
-                  <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-200 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
+                  <h3 className="text-[11px] font-semibold text-slate-700 dark:text-slate-200 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-tight">
                     {log.title}
                   </h3>
                 </div>
@@ -370,7 +370,7 @@ export const ArchiveCard = ({ onOpen }) => {
           </div>
         </div>
 
-        <button 
+        <button
           onClick={() => onOpen('archive')}
           className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200"
         >

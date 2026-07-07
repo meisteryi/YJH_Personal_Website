@@ -129,31 +129,69 @@
 
 /* Modal opening and closing animations */
 @keyframes modalBackdropFadeIn {
-  from { opacity: 0; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
-  to { opacity: 1; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
+
 @keyframes modalBackdropFadeOut {
-  from { opacity: 1; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-  to { opacity: 0; backdrop-filter: blur(0px); -webkit-backdrop-filter: blur(0px); }
+  from {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  to {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
 }
+
 @keyframes modalContentShow {
-  from { opacity: 0; transform: scale(0.95) translateY(10px) translate3d(0, 0, 0); }
-  to { opacity: 1; transform: scale(1) translateY(0) translate3d(0, 0, 0); }
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px) translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0) translate3d(0, 0, 0);
+  }
 }
+
 @keyframes modalContentHide {
-  from { opacity: 1; transform: scale(1) translateY(0) translate3d(0, 0, 0); }
-  to { opacity: 0; transform: scale(0.95) translateY(10px) translate3d(0, 0, 0); }
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0) translate3d(0, 0, 0);
+  }
+
+  to {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px) translate3d(0, 0, 0);
+  }
 }
 
 .animate-backdrop-in {
   animation: modalBackdropFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
 .animate-backdrop-out {
   animation: modalBackdropFadeOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
 .animate-modal-in {
   animation: modalContentShow 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
+
 .animate-modal-out {
   animation: modalContentHide 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }

@@ -3,7 +3,6 @@ import { Sun, Moon, Sparkles, Cpu } from 'lucide-react';
 import { 
   HeroCard, 
   AcademicCard, 
-  VisualCard, 
   ShowroomCard, 
   InteractiveCard, 
   PersonalProjectCard, 
@@ -126,8 +125,7 @@ function App() {
           {/* 5. Product Showroom Card (2x2) - µ's */}
           <ShowroomCard onOpen={setSelectedProject} />
 
-          {/* 6. Visual Art / Media Card (2x1) - µ's Spectrogram Comparison */}
-          <VisualCard onOpen={setSelectedProject} />
+
 
           {/* 7. Archive / Logs Timeline Card (1x2) */}
           <ArchiveCard onOpen={handleOpenProject} />
