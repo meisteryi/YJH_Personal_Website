@@ -391,7 +391,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
 
               <div className="space-y-3">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">1. Introduction</h3>
-                <p className="text-slate-600 dark:text-slate-405 text-xs md:text-sm leading-relaxed whitespace-pre-line">
+                <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm leading-relaxed whitespace-pre-line">
                   {project.sections.introduction}
                 </p>
               </div>
@@ -423,7 +423,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       alt="Preprocessing Pipeline" 
                       className="max-h-56 md:max-h-64 object-contain rounded-xl shadow-md border border-slate-200/40 dark:border-slate-800/40 bg-white p-2" 
                     />
-                    <p className="text-[10px] text-slate-450 dark:text-slate-500 mt-3 text-center max-w-sm">
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm">
                       {project.sections.methodology[0].caption}
                     </p>
                   </div>
@@ -441,7 +441,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                         <span className="text-[8px] text-slate-400 mt-1">Female Director Attention</span>
                       </div>
                     </div>
-                    <p className="text-[10px] text-slate-450 dark:text-slate-500 mt-3 text-center max-w-sm">
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm">
                       Figure: Attention weights comparison between male/female directors (highlights the misattribution on the gender prefix '여-').
                     </p>
                   </div>
@@ -459,7 +459,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       alt="filter_players_by_position" 
                       className="max-h-24 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1" 
                     />
-                    <p className="text-[10px] text-slate-450 dark:text-slate-500 text-center max-w-sm">
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 text-center max-w-sm">
                       Figures: Python code snippets implementing query position normalization and candidate filtering based on player positions to resolve recommendations error.
                     </p>
                   </div>
@@ -522,7 +522,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       </div>
                       <div className="space-y-1.5 text-center">
                         {r.captions.map((cap, cIdx) => (
-                          <p key={cIdx} className="text-[10px] text-slate-450 dark:text-slate-500">
+                          <p key={cIdx} className="text-[10px] text-slate-400 dark:text-slate-500">
                             {cap}
                           </p>
                         ))}
@@ -534,7 +534,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
 
               <div className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-5">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-1">Conclusion</h4>
-                <p className="text-xs md:text-sm text-slate-650 dark:text-slate-350 leading-relaxed">
+                <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                   {project.sections.conclusion}
                 </p>
               </div>

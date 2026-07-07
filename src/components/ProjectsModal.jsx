@@ -95,11 +95,11 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
                         ))}
                       </div>
 
-                      <h3 className="text-base font-bold text-slate-800 dark:text-slate-150 leading-snug group-hover:text-indigo-500 dark:group-hover:text-indigo-450 transition-colors duration-150">
+                      <h3 className="text-base font-bold text-slate-800 dark:text-slate-200 leading-snug group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-150">
                         {project.title}
                       </h3>
                       
-                      <p className="text-xs text-slate-550 dark:text-slate-300 line-clamp-3 leading-relaxed">
+                      <p className="text-xs text-slate-500 dark:text-slate-300 line-clamp-3 leading-relaxed">
                         {project.abstract}
                       </p>
                     </div>

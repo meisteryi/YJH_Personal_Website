@@ -131,7 +131,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
               <Calendar className="text-indigo-500" size={24} />
               Interactive Timeline Archive
             </h2>
-            <p className="text-xs text-slate-550 dark:text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Explore key milestones, publications, and technical project history.
             </p>
           </div>
@@ -217,7 +217,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
 
                       {/* Expandable Section */}
                       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <p className="text-xs md:text-sm text-slate-650 dark:text-slate-300 leading-relaxed">
+                        <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                           {log.description}
                         </p>
 

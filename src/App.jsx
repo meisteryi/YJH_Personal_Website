@@ -99,7 +99,7 @@ function App() {
             {/* Premium Theme Switcher Button */}
             <button 
               onClick={toggleTheme}
-              className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-850 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 transition-all duration-200"
+              className="p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 transition-all duration-200"
               aria-label="Toggle Theme"
             >
               {darkMode ? <Sun size={18} /> : <Moon size={18} />}
