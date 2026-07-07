@@ -8,9 +8,11 @@ import mus_fig_1 from '../assets/mus_fig_1.png';
 import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 import tabilens_1 from '../assets/tabilens_1.png';
 import halligalli_1 from '../assets/halligalli_1.png';
+import unseenmap_1 from '../assets/unseenmap_1.png';
 
 const projectImages = {
   tabilens: tabilens_1,
+  unseenmap: unseenmap_1,
   halligalli: halligalli_1,
   shen: SHEN_fig_6,
   mus: mus_fig_1,

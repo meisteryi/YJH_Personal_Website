@@ -14,6 +14,16 @@ const archiveLogs = [
   },
   {
     date: 'Jun 2026',
+    title: 'Released Unseen Map Explorer',
+    category: 'Project',
+    color: 'indigo',
+    icon: Code,
+    projectId: 'unseenmap',
+    description: 'Developed Unseen Map Explorer, a Leaflet-based interactive web map service that parses photo EXIF GPS data to overlay trip history, using a grid-based frontier exploration algorithm to recommend local POIs in unvisited alleys.',
+    tags: ['Leaflet.js', 'exifr', 'Overpass API', 'Vanilla JS']
+  },
+  {
+    date: 'Jun 2026',
     title: 'Released Online HalliGalli Web Game',
     category: 'Project',
     color: 'amber',

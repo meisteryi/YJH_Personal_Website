@@ -6,7 +6,7 @@ import {
   VisualCard, 
   ShowroomCard, 
   InteractiveCard, 
-  StatusCard, 
+  PersonalProjectCard, 
   ArchiveCard 
 } from './components/BentoGrid';
 import { ProjectModal } from './components/ProjectModal';
@@ -117,8 +117,8 @@ function App() {
           {/* 2. Academic / Research Card (1x2) - SHEN */}
           <AcademicCard onOpen={setSelectedProject} />
 
-          {/* 3. Small Status Card (1x1) */}
-          <StatusCard />
+          {/* 3. Small Personal Project Card (1x1) - TabiLenS */}
+          <PersonalProjectCard onOpen={setSelectedProject} />
 
           {/* 4. Small Interactive Card (1x1) */}
           <InteractiveCard />

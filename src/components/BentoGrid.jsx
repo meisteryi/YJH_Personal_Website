@@ -282,30 +282,36 @@ export const InteractiveCard = () => {
   );
 };
 
-// 6. Status/Pulse Card (Small: 1x1) - Status updates
-export const StatusCard = () => {
+// 6. Latest Personal Project Card (Small: 1x1) - TabiLenS
+export const PersonalProjectCard = ({ onOpen }) => {
   return (
-    <Card span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1" className="justify-between !p-5">
+    <Card 
+      onClick={() => onOpen('tabilens')}
+      span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1" 
+      className="justify-between !p-5 hover:border-emerald-500/30 dark:hover:border-emerald-400/40"
+    >
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-500">
-          Status
+          Latest Project
         </span>
-        <div className="flex h-2.5 w-2.5 relative">
+        <div className="flex h-2 w-2 relative">
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </div>
       </div>
 
-      <div className="space-y-1 my-2">
-        <p className="text-xs font-semibold text-slate-400 dark:text-slate-500">Current Focus</p>
-        <p className="text-sm font-bold text-slate-800 dark:text-slate-200 line-clamp-2">
-          Deepening explainable AI interfaces and deep-learning architectures for audio/visual art.
+      <div className="space-y-1.5 my-2">
+        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-150">
+          TabiLenS
+        </h3>
+        <p className="text-[11px] text-slate-550 dark:text-slate-400 leading-relaxed line-clamp-2">
+          실시간 일본어 메뉴판 번역 및 식문화 가이드 주문 도우미 서비스
         </p>
       </div>
 
       <div className="text-[9px] font-mono text-slate-400 dark:text-slate-500 flex items-center justify-between">
-        <span>Active Research</span>
-        <Terminal size={10} />
+        <span>View Project Details</span>
+        <ArrowUpRight size={10} className="transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
       </div>
     </Card>
   );
@@ -315,6 +321,7 @@ export const StatusCard = () => {
 export const ArchiveCard = ({ onOpen }) => {
   const logs = [
     { date: 'Jul 2026', title: 'Released TabiLenS Mobile App', type: 'Project', color: 'bg-emerald-500', projectId: 'tabilens' },
+    { date: 'Jun 2026', title: 'Released Unseen Map Explorer', type: 'Project', color: 'bg-indigo-500', projectId: 'unseenmap' },
     { date: 'Jun 2026', title: 'Released Online HalliGalli Web Game', type: 'Project', color: 'bg-amber-500', projectId: 'halligalli' },
     { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500', projectId: 'shen' },
     { date: 'Dec 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500', projectId: 'mus' },
