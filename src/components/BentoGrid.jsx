@@ -57,8 +57,8 @@ export const HeroCard = () => {
           </p>
         </div>
 
-        {/* Short Bio */}
         <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-sm md:text-base mt-2">
+          안녕하세요! 인공지능, 설명 가능한 시스템(XAI), 그리고 음악 및 스포츠 데이터 분석의 교차점을 탐색합니다. 딥러닝 모델의 의사결정을 시각화하고 해석하는 파이프라인을 설계하며, 창의적인 엔지니어링 시스템을 설계하고 있습니다.<br /><br />
           Hello! I explore the intersection of artificial intelligence, explainable systems (XAI), and music/sports data analytics. I design pipelines that interpret deep learning decisions and build systems for creative engineering.
         </p>
       </div>
@@ -127,7 +127,8 @@ export const AcademicCard = ({ onOpen }) => {
           </div>
 
           <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-6">
-            We explore hidden decision boundaries of sentiment classification models (KcELECTRA). While score swaps show nominal neutrality, attention and LIME reveal the model misattributes gender prefixes as salient sentiment weights.
+            한국어 PLM의 젠더 편향성 평가 및 설명 가능 인공지능(XAI) 분석 공동 논문 저술. Attention과 LIME 기법을 통해 젠더 접두사가 감성 분류 결과를 왜곡하는 특성 오귀인 현상을 규명했습니다.<br /><br />
+            Co-authored research evaluating gender bias in Korean PLMs. Attention and LIME analysis reveal the model misattributes gender prefixes as salient sentiment weights.
           </p>
         </div>
 
@@ -206,7 +207,8 @@ export const ShowroomCard = ({ onOpen }) => {
             µ's : Music Understanding via Spectrogram evaluation
           </h2>
           <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300">
-            A Computer Vision framework for Music Genre Classification. Converts 1-channel audio waveforms into 2D log-mel spectrogram representations and leverages ResNet50 transfer learning.
+            음악 오디오 파형 신호를 2D Log-Mel Spectrogram 이미지 표현으로 변환하여 ResNet50 전이 학습 신경망으로 장르를 분류하는 컴퓨터 비전 프레임워크입니다.<br /><br />
+            A Computer Vision framework for Music Genre Classification. Converts audio waveforms into 2D log-mel spectrogram representations and leverages ResNet50 transfer learning.
           </p>
         </div>
 
@@ -305,7 +307,8 @@ export const PersonalProjectCard = ({ onOpen }) => {
           TabiLenS
         </h3>
         <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
-          실시간 일본어 메뉴판 번역 및 식문화 가이드
+          실시간 일본어 메뉴판 번역 및 식문화 가이드<br />
+          Real-time Japanese menu translator & dining guide
         </p>
       </div>
 

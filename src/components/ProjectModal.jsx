@@ -164,177 +164,177 @@ export const projectsData = {
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@sogang.ac.kr',
     tags: ['XAI', 'NLP', 'Bias Analysis', 'KcELECTRA'],
-    abstract: 'Although Pre-trained Language Models (PLMs) show high performance in sentiment analysis, they risk inheriting social biases. This study investigates how the KcELECTRA model processes gender information using Prediction Scores and Attention Mechanisms. Experimental results show that changes in prediction scores due to gender swapping vary by profession and context, with no consistent evidence that female terms are universally evaluated negatively. However, attention visualization revealed that the model assigns high attention weights to gender prefixes such as \'여-\', comparable to those assigned to sentiment-intensifying adverbs such as \'정말\' (e.g., "really"). This suggests a Feature Misattribution, where the model misidentifies gender as a salient feature for sentiment classification. We conclude that while directional bias is inconsistent, the model\'s over-attention to gender creates unpredictability in sentiment prediction.',
+    abstract: '사전 학습 언어 모델(PLM)은 감성 분석에서 뛰어난 성능을 보이지만, 사회적 편향을 상속할 위험이 있습니다. 본 연구는 KcELECTRA 모델이 예측 점수와 어텐션 메커니즘을 통해 젠더 정보를 처리하는 방식을 조사합니다. 실험 결과, 젠더어 교체에 따른 예측 점수의 변화는 직업 및 맥락에 따라 상이하여 여성이 항상 부정적으로 평가된다는 일관된 편향은 관찰되지 않았습니다. 그러나 어텐션 시각화 분석을 통해 모델이 감성 강조 부사(\'정말\' 등)와 유사한 수준의 높은 어텐션 가중치를 \'여-\'와 같은 젠더 접두사에 할당하는 \'특성 오귀인(Feature Misattribution)\' 현상을 발견했습니다. 이는 감성 분류에 불필요한 젠더 정보를 모델이 중요 특성으로 오인하고 있음을 보여주며, 예측 신뢰성에 잠재적인 무작위성을 초래함을 결론지었습니다.\n\nAlthough Pre-trained Language Models (PLMs) show high performance in sentiment analysis, they risk inheriting social biases. This study investigates how the KcELECTRA model processes gender information using Prediction Scores and Attention Mechanisms. Experimental results show that changes in prediction scores due to gender swapping vary by profession and context, with no consistent evidence that female terms are universally evaluated negatively. However, attention visualization revealed that the model assigns high attention weights to gender prefixes such as \'여-\', comparable to those assigned to sentiment-intensifying adverbs such as \'정말\' (e.g., "really"). This suggests a Feature Misattribution, where the model misidentifies gender as a salient feature for sentiment classification. We conclude that while directional bias is inconsistent, the model\'s over-attention to gender creates unpredictability in sentiment prediction.',
     sections: {
-      introduction: 'As natural language processing models learn from human language, they inevitably acquire social attributes such as gender and race. This issue is particularly salient in Korean due to the prevalence of gender-marking prefixes such as \'여-\' and \'여류-\', which makes it important to examine how models process these linguistic forms. Previous studies have largely focused on allocational bias, emphasizing binary outcome patterns such as \'male = positive\' and \'female = negative\'. However, model behavior is more complex: even when prediction scores appear similar, models may internally rely on gender information as a basis for sentiment judgments. To address this issue, this study investigates the model by analyzing changes in prediction scores under gender term substitution and examining the extent to which the model\'s attention is allocated to gender-related tokens.',
+      introduction: '자연어 처리 모델이 인간의 언어로부터 사회적 편향을 상속받는 문제는 중요하며, 특히 한국어는 \'여-\'나 \'여류-\'와 같은 성별 접두사가 널리 쓰여 이의 영향력을 확인하는 것이 필수적입니다. 기존 연구들은 \'여성=부정적\', \'남성=긍정적\'과 같은 단순 이진 결과 매핑에 집중했습니다. 하지만 모델이 예측 점수를 유사하게 내더라도 내부적으로는 성별 정보에 크게 의존할 수 있습니다. 이에 본 연구는 성별 단어 치환에 따른 예측 변화와 어텐션 배포 패턴을 XAI 관점에서 정밀 분석합니다.\n\nAs natural language processing models learn from human language, they inevitably acquire social attributes such as gender and race. This issue is particularly salient in Korean due to the prevalence of gender-marking prefixes such as \'여-\' and \'여류-\', which makes it important to examine how models process these linguistic forms. Previous studies have largely focused on allocational bias, emphasizing binary outcome patterns such as \'male = positive\' and \'female = negative\'. However, model behavior is more complex: even when prediction scores appear similar, models may internally rely on gender information as a basis for sentiment judgments. To address this issue, this study investigates the model by analyzing changes in prediction scores under gender term substitution and examining the extent to which the model\'s attention is allocated to gender-related tokens.',
       methodology: [
         {
-          title: 'Model Selection & Fine-tuning',
-          desc: 'We adopted KcELECTRA-base-v2022 as the backbone model for sentiment analysis. Unlike standard KoELECTRA, KcELECTRA is pre-trained on a large-scale corpus of Korean news comments, making it robust for processing colloquialisms, slang, and neologisms. We fine-tuned the model on the Naver Sentiment Movie Corpus (NSMC), using a randomly sampled 30,000 instances for training and 5,000 for testing, with the AdamW optimizer (learning rate: 5e-5, batch size: 32, 1 epoch).'
+          title: '모델 선정 및 미세 조정 (Model Selection & Fine-tuning)',
+          desc: '감성 분석 백본 모델로 KcELECTRA-base-v2022를 채택했습니다. KcELECTRA는 일반적인 뉴스 댓글 대규모 코퍼스로 사전 학습되어 신조어, 구어체 처리에 강력합니다. 네이버 영화 평점 코퍼스(NSMC) 데이터 중 학습용 30,000개, 평가용 5,000개를 무작위 샘플링하여 AdamW 옵티마이저를 통해 미세 조정을 수행했습니다.\n\nWe adopted KcELECTRA-base-v2022 as the backbone model for sentiment analysis. Unlike standard KoELECTRA, KcELECTRA is pre-trained on a large-scale corpus of Korean news comments, making it robust for processing colloquialisms, slang, and neologisms. We fine-tuned the model on the Naver Sentiment Movie Corpus (NSMC), using a randomly sampled 30,000 instances for training and 5,000 for testing, with the AdamW optimizer (learning rate: 5e-5, batch size: 32, 1 epoch).'
         },
         {
-          title: 'Bias Analysis Framework',
-          desc: '1. Word Swap Test: Substituting professions in fixed templates (e.g., "그 [직업]은 정말 천재적이다") with 10 pairs of gendered terms (e.g., 감독/여감독) to measure prediction score shifts.\n2. Surface-level Explanation: Utilizing SHAP and LIME to cross-validate feature importance.\n3. Attention Heatmap Analysis: Extracting the attention distribution of the [CLS] token from the final layer to visualize weight allocations.'
+          title: '편향 분석 프레임워크 (Bias Analysis Framework)',
+          desc: '1. 단어 치환 테스트: 10쌍의 성별 단어쌍(예: 감독/여감독)을 직업 템플릿 문장에 치환 적용하여 예측 점수 변동폭 측정.\n2. 설명 가능성 교차 검증: SHAP과 LIME 프레임워크를 통해 모델의 로컬 의사결정 시 특성 중요도를 시각화 및 비교.\n3. 어텐션 맵 추출: 최종 레이어의 [CLS] 토큰 어텐션 분포를 추출하여 단어별 가중치 할당 시각화.\n\n1. Word Swap Test: Substituting professions in fixed templates (e.g., "그 [직업]은 정말 천재적이다") with 10 pairs of gendered terms (e.g., 감독/여감독) to measure prediction score shifts.\n2. Surface-level Explanation: Utilizing SHAP and LIME to cross-validate feature importance.\n3. Attention Heatmap Analysis: Extracting the attention distribution of the [CLS] token from the final layer to visualize weight allocations.'
         }
       ],
       results: [
         {
-          title: 'Word Swap Prediction Scores',
-          desc: 'Score differences across genders vary by occupation. No consistent pattern of one gender being systematically favored or disadvantaged was observed, suggesting the model has not learned a simplistic bias like "disliking women."',
+          title: '단어 치환에 따른 예측 점수 변동 (Word Swap Prediction Scores)',
+          desc: '성별 치환에 따른 예측 값 차이는 직업군별로 매우 다양하게 나타났습니다. 어느 한 성별이 일관되게 부정적이거나 긍정적으로 평가되는 경향은 관찰되지 않았으며, 이는 모델이 성별에 따른 단순 이진 할당 편향을 학습하지는 않았음을 시사합니다.\n\nScore differences across genders vary by occupation. No consistent pattern of one gender being systematically favored or disadvantaged was observed, suggesting the model has not learned a simplistic bias like "disliking women."',
           fig: SHEN_fig_1,
-          caption: 'Figure 1: Positive prediction scores for 10 Comparison pairs. Rather than a unilateral bias, the predictions vary depending on the occupation.'
+          caption: '그림 1: 10개 직업 대조군별 긍정 예측 점수 변화. 일방적인 편향이 아니라 직업에 따라 각기 다른 양상으로 나타납니다.\n\nFigure 1: Positive prediction scores for 10 Comparison pairs. Rather than a unilateral bias, the predictions vary depending on the occupation.'
         },
         {
-          title: 'SHAP & LIME Comparison',
-          desc: 'SHAP identifies explicit sentiment words (e.g., \'형편없-\') as top features while ranking gender terms very low. In contrast, LIME assigns high weights to gender-marking prefixes, designating \'여배우\' (actress) as a higher positive contributor than the intensifier \'정말\' (really). This discrepancy arises because LIME is highly sensitive to local perturbations, thus capturing latent biases.',
+          title: 'SHAP 및 LIME 분석 비교 (SHAP & LIME Comparison)',
+          desc: 'SHAP은 감성 명시 단어(예: \'형편없-\')를 핵심 기여 요인으로 꼽고 성별 토큰은 매우 낮게 평가했습니다. 반면, LIME은 성별 마킹 접두사에 매우 높은 가중치를 주어 \'여배우\'라는 접두사가 강조 부사 \'정말\'보다 긍정 예측에 더 크게 기여했다고 표시했습니다. 이는 국소 섭동(Local Perturbation)에 민감한 LIME이 모델의 미세한 내부 젠더 토큰 의존도를 드러낸 결과입니다.\n\nSHAP identifies explicit sentiment words (e.g., \'형편없-\') as top features while ranking gender terms very low. In contrast, LIME assigns high weights to gender-marking prefixes, designating \'여배우\' (actress) as a higher positive contributor than the intensifier \'정말\' (really). This discrepancy arises because LIME is highly sensitive to local perturbations, thus capturing latent biases.',
           figs: [SHEN_fig_2, SHEN_fig_3, SHEN_fig_4],
           captions: [
-            'Figure 2 & 3: SHAP explanation for male/female acting issues. Sentiment words drive the negative prediction.',
-            'Figure 4: LIME explanation. The model assigns a higher positive contribution to \'여배우\' than to \'정말\'.'
+            '그림 2 & 3: 배우 감성 문장에 대한 SHAP 설명. 실제 감성 단어가 최종 부정 예측을 유도합니다.\n\nFigure 2 & 3: SHAP explanation for male/female acting issues. Sentiment words drive the negative prediction.',
+            '그림 4: LIME 분석. 모델이 \'여배우\' 접두사에 \'정말\' 부사보다 더 높은 긍정 기여도를 부여합니다.\n\nFigure 4: LIME explanation. The model assigns a higher positive contribution to \'여배우\' than to \'정말\'.'
           ]
         },
         {
-          title: 'Attention Heapmap Analysis (Feature Misattribution)',
-          desc: 'Comparing attention weights for "그 감독은 정말 천재적이다" and "그 여감독은 정말 천재적이다". The [CLS] token assigns a high attention weight of 0.08 to the gender prefix \'여-\', which is comparable to the key sentiment word \'천재\' (0.11). This demonstrates that the model misattributes gender prefix as a salient sentiment feature.',
+          title: '어텐션 맵 분석 (특성 오귀인 규명) (Attention Heatmap Analysis)',
+          desc: '"그 감독은 정말 천재적이다"와 "그 여감독은 정말 천재적이다"를 비교했습니다. [CLS] 토큰은 여성 접두사 \'여-\'에 0.08의 높은 가중치를 할당했는데, 이는 문장 내 핵심 감성 단어인 \'천재\'(0.11)에 육박하는 수준입니다. 즉, 모델이 단지 성별 정보일 뿐인 접두사를 강력한 감성 판단 근거로 오인하는 \'특성 오귀인\'이 입증되었습니다.\n\nComparing attention weights for "그 감독은 정말 천재적이다" and "그 여감독은 정말 천재적이다". The [CLS] token assigns a high attention weight of 0.08 to the gender prefix \'여-\', which is comparable to the key sentiment word \'천재\' (0.11). This demonstrates that the model misattributes gender prefix as a salient sentiment feature.',
           figs: [SHEN_fig_5, SHEN_fig_6],
           captions: [
-            'Figure 5: Attention Heatmap for male director (focuses on sentiment words).',
-            'Figure 6: Attention Heatmap for female director (strongly focuses on gender prefix \'여-\').'
+            '그림 5: 남성 감독 문장의 어텐션 맵 (감성어 위주로 집중)\n\nFigure 5: Attention Heatmap for male director (focuses on sentiment words).',
+            '그림 6: 여성 감독 문장의 어텐션 맵 (여- 접두사에 비정상적으로 집중)\n\nFigure 6: Attention Heatmap for female director (strongly focuses on gender prefix \'여-\').'
           ]
         }
       ],
-      conclusion: 'Our study reveals a stark contrast between surface-level performance and internal model behavior. Looking only at prediction scores, no consistent bias was found. However, XAI tools (LIME and Attention Heatmaps) show that the model fixates on gender prefixes as sentiment features. While it currently produces correct predictions by chance, this poses a latent risk. Future research must focus on guiding models to attend to appropriate contextual cues rather than gender.'
+      conclusion: '본 연구는 모델의 겉보기 분류 성능과 실제 내부 동작 메커니즘 사이에 큰 차이가 존재함을 드러냅니다. 겉으로는 중립적으로 보일지라도, 모델 내부는 성별 접두사를 감성 특성으로 오인하고 있습니다. 이는 실제 서빙 환경에서 예측 신뢰도의 불안정성을 키우는 요인입니다. 향후 편향 완화 학습을 설계하여 올바른 맥락 정보에 주의를 기울이도록 유도해야 합니다.\n\nOur study reveals a stark contrast between surface-level performance and internal model behavior. Looking only at prediction scores, no consistent bias was found. However, XAI tools (LIME and Attention Heatmaps) show that the model fixates on gender prefixes as sentiment features. While it currently produces correct predictions by chance, this poses a latent risk. Future research must focus on guiding models to attend to appropriate contextual cues rather than gender.'
     }
   },
   mus: {
     id: 'mus',
     title: "µ's: Music Understanding via Spectrogram evaluation",
-    subtitle: 'Music Genre Classification using Transfer Learning on Log-Mel Spectrogram Images',
+    subtitle: 'Music Genre Classification using Transfer Learning on Log-Mel Spectrogram Images / 전이 학습 기반 음악 장르 이미지 분류 시스템',
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@sogang.ac.kr',
     tags: ['Computer Vision', 'Audio Processing', 'Transfer Learning', 'ResNet50'],
-    abstract: 'This project addresses the problem of Music Genre Classification in the audio domain by approaching it as a Computer Vision task. We extract visual features by converting audio signals into 2D Mel-Spectrogram images and employ a Transfer Learning methodology using a ResNet50 model pre-trained on ImageNet. Experimental results on the standard GTZAN dataset demonstrate a test accuracy of 72.56% across 10 genre classifications. Furthermore, we visually clarify misclassification patterns between genres sharing similar auditory characteristics through Confusion Matrix analysis.',
+    abstract: '본 프로젝트는 음악 장르 분류 문제를 컴퓨터 비전 작업으로 재정의하여 오디오 영역의 분류 난제를 해결합니다. 오디오 신호를 2D Mel-Spectrogram 이미지로 변환하여 시각적 특징을 추출하고, ImageNet으로 사전 학습된 ResNet50 모델을 활용하는 전이 학습 방법론을 적용했습니다. 표준 GTZAN 데이터셋을 통한 실험 결과 10개 장르 분류에서 72.56%의 테스트 정확도를 보였으며, 오차 행렬(Confusion Matrix) 분석을 통해 유사한 청각적 특징을 공유하는 장르 간의 오분류 패턴을 시각적으로 규명했습니다.\n\nThis project addresses the problem of Music Genre Classification in the audio domain by approaching it as a Computer Vision task. We extract visual features by converting audio signals into 2D Mel-Spectrogram images and employ a Transfer Learning methodology using a ResNet50 model pre-trained on ImageNet. Experimental results on the standard GTZAN dataset demonstrate a test accuracy of 72.56% across 10 genre classifications. Furthermore, we visually clarify misclassification patterns between genres sharing similar auditory characteristics through Confusion Matrix analysis.',
     sections: {
-      introduction: 'In Music Information Retrieval (MIR), Convolutional Neural Networks (CNNs) have recently demonstrated remarkable performance by analyzing spectrograms as visual representations. We propose µ\'s, a music genre classification system that adopts a computer vision approach, enabling the automatic learning of complex features directly from Mel-Spectrograms rather than relying on traditional hand-crafted features like MFCCs. To overcome the small scale of music datasets, we leverage transfer learning using a ResNet50 backbone pre-trained on ImageNet, extracting visual patterns (textures) from audio data.',
+      introduction: '음악 정보 검색(MIR) 분야에서 합성곱 신경망(CNN)은 최근 스펙트로그램을 시각적 표상으로 분석하여 탁월한 성능을 발휘해 왔습니다. 우리는 전통적인 수작업 특징(MFCC 등)에 의존하는 대신 Mel-Spectrogram에서 직접 복잡한 특성을 자동으로 학습하는 컴퓨터 비전 접근 방식의 음악 장르 분류 시스템인 µ\'s를 제안합니다. 소규모 음악 데이터셋의 학습 한계를 극복하기 위해 ImageNet 사전 학습 ResNet50 백본을 활용한 전이 학습을 적용하여 오디오 데이터로부터 풍부한 시각적 텍스처 패턴을 추출했습니다.\n\nIn Music Information Retrieval (MIR), Convolutional Neural Networks (CNNs) have recently demonstrated remarkable performance by analyzing spectrograms as visual representations. We propose µ\'s, a music genre classification system that adopts a computer vision approach, enabling the automatic learning of complex features directly from Mel-Spectrograms rather than relying on traditional hand-crafted features like MFCCs. To overcome the small scale of music datasets, we leverage transfer learning using a ResNet50 backbone pre-trained on ImageNet, extracting visual patterns (textures) from audio data.',
       methodology: [
         {
-          title: 'Data Preprocessing Pipeline',
-          desc: '1. Segmentation: Dividing 30-second tracks in the GTZAN dataset into ten 3-second clips. This expands the dataset from 1,000 to 10,000 samples and enables learning from short-interval features.\n2. Mel-Spectrogram Conversion: Performing STFT and converting to Mel scale (n_mels: 128).\n3. 3-Channel Adaptation: Stacking the 1-channel grayscale spectrograms three times to create an RGB-like (128x130x3) tensor, fitting ResNet50 input requirements.',
+          title: '데이터 전처리 파이프라인 (Data Preprocessing Pipeline)',
+          desc: '1. 세그멘테이션: GTZAN 데이터셋의 30초 음원을 3초 단위의 클립 10개로 분할하여 데이터 크기를 1,000개에서 10,000개로 10배 확장하고 짧은 시간대의 특징 학습을 유도.\n2. 멜-스펙트로그램 변환: STFT(단시간 푸리에 변환)를 거쳐 멜 스케일(n_mels: 128) 이미지로 변환.\n3. 채널 복제: 1채널 그레이스케일 스펙트로그램을 3번 쌓아 RGB와 유사한 (128x130x3) 텐서로 변환하여 ResNet50의 입력 요구 규격 충족.\n\n1. Segmentation: Dividing 30-second tracks in the GTZAN dataset into ten 3-second clips. This expands the dataset from 1,000 to 10,000 samples and enables learning from short-interval features.\n2. Mel-Spectrogram Conversion: Performing STFT and converting to Mel scale (n_mels: 128).\n3. 3-Channel Adaptation: Stacking the 1-channel grayscale spectrograms three times to create an RGB-like (128x130x3) tensor, fitting ResNet50 input requirements.',
           fig: mus_fig_1,
-          caption: 'Figure 1: Preprocessing pipeline. Segments original audio to 3-second clips, converts to log-mel spectrogram, and replicates channels.'
+          caption: '그림 1: 전처리 파이프라인. 원본 오디오를 3초 클립으로 분할하고, 로그-멜 스펙트로그램으로 변환 후 채널을 복제합니다.\n\nFigure 1: Preprocessing pipeline. Segments original audio to 3-second clips, converts to log-mel spectrogram, and replicates channels.'
         },
         {
-          title: 'Model & Training Strategy',
-          desc: 'We used ResNet50 with custom classification top layers (GlobalAveragePooling2D, Dropout 0.3, and 10-unit Softmax Dense layer). Training followed a two-phase strategy:\n- Phase 1 (Feature Extraction): Freezing ResNet50 weights, training only the classification head using Adam (learning rate: 1e-3).\n- Phase 2 (Fine-Tuning): Unfreezing the backbone, training the entire model with a very low learning rate (1e-5) to prevent catastrophic forgetting.'
+          title: '모델 및 학습 전략 (Model & Training Strategy)',
+          desc: '분류 레이어(GlobalAveragePooling2D, Dropout 0.3, Softmax Dense Layer)가 탑재된 ResNet50 모델을 구성하고 2단계 학습 전략을 취했습니다.\n- 1단계 (특징 추출): ResNet50 백본 가중치를 동결하고 커스텀 분류 헤드만 프리징을 유지한 채 Adam 옵티마이저(학습률 1e-3)로 학습.\n- 2단계 (미세 조정): 백본 동결을 해제하고 전체 네트워크를 극소 학습률(1e-5)로 학습시켜 급격한 정보 유실(Catastrophic Forgetting)을 방지했습니다.\n\nWe used ResNet50 with custom classification top layers (GlobalAveragePooling2D, Dropout 0.3, and 10-unit Softmax Dense layer). Training followed a two-phase strategy:\n- Phase 1 (Feature Extraction): Freezing ResNet50 weights, training only the classification head using Adam (learning rate: 1e-3).\n- Phase 2 (Fine-Tuning): Unfreezing the backbone, training the entire model with a very low learning rate (1e-5) to prevent catastrophic forgetting.'
         }
       ],
       results: [
         {
-          title: 'Quantitative Performance',
-          desc: 'The final model evaluated on the independent test set (1,498 segments) achieved a test accuracy of 72.56%. The ability to classify genres accurately using only short 3-second clips demonstrates the effectiveness of spectrogram-based visual feature extraction.',
+          title: '양적 성능 지표 (Quantitative Performance)',
+          desc: '독립된 테스트 세트(1,498개 세그먼트)에서 최종 평가를 실시하여 72.56%의 정확도를 획득했습니다. 짧은 3초 클립만으로 정확하게 장르를 분류할 수 있다는 점은 스펙트로그램 기반의 시각적 특징 추출 성능이 뛰어남을 증명합니다.\n\nThe final model evaluated on the independent test set (1,498 segments) achieved a test accuracy of 72.56%. The ability to classify genres accurately using only short 3-second clips demonstrates the effectiveness of spectrogram-based visual feature extraction.',
           figs: [mus_fig_2, mus_fig_4],
           captions: [
-            'Figure 2: Accuracy & Loss curves showing stable convergence.',
-            'Figure 4: Confusion Matrix. Exceptional performance on Classical (99.3%) and Disco (76.7%).'
+            '그림 2: 안정적인 수렴을 보이는 정확도 및 손실 곡선.\n\nFigure 2: Accuracy & Loss curves showing stable convergence.',
+            '그림 4: 오차 행렬. 클래식(99.3%)과 디스코(76.7%) 장르에서 두드러진 성능을 보였습니다.\n\nFigure 4: Confusion Matrix. Exceptional performance on Classical (99.3%) and Disco (76.7%).'
           ]
         },
         {
-          title: 'Visual Patterns & Qualitative Analysis',
-          desc: 'The model distinguishes genres based on key visual patterns:\n- Vertical Patterns: Consistent beats (Hip-hop, Disco) show vertical lines in low-frequency bands.\n- Horizontal Textures: Harmonic instruments (Classical, Jazz) show smooth horizontal textures.\n- Noise Density (Complexity): Metal and Rock show rough, noisy, high-frequency distortion textures.',
+          title: '시각적 패턴 및 정성적 분석 (Visual Patterns & Qualitative Analysis)',
+          desc: '모델은 이미지의 시각적 텍스처 특징에 의존해 장르를 분류합니다:\n- 수직 줄무늬: 비트가 뚜렷한 힙합이나 디스코는 저주파 영역에 수직선 형태로 나타납니다.\n- 수평 흐름: 화성이 풍부한 클래식이나 재즈는 부드럽고 일정한 수평선 텍스처를 띱니다.\n- 노이즈 밀도: 메탈과 록은 고주파 대역에 노이지하고 왜곡된 거친 텍스처 분포를 가집니다.\n\nThe model distinguishes genres based on key visual patterns:\n- Vertical Patterns: Consistent beats (Hip-hop, Disco) show vertical lines in low-frequency bands.\n- Horizontal Textures: Harmonic instruments (Classical, Jazz) show smooth horizontal textures.\n- Noise Density (Complexity): Metal and Rock show rough, noisy, high-frequency distortion textures.',
           figs: [mus_fig_3, mus_fig_5, mus_fig_6],
           captions: [
-            'Figure 3: Spectrogram comparison of contrasting genres (Classical vs Metal).',
-            'Figure 5 & 6: Qualitative analysis case studies: Yesterday (misclassified Rock->Country due to acoustic guitar strings textures), Symphony No. 5 (correct Classical), and Snow Halation (correct Pop).'
+            '그림 3: 대조적인 장르(클래식 vs 메탈)의 스펙트로그램 시각적 비교.\n\nFigure 3: Spectrogram comparison of contrasting genres (Classical vs Metal).',
+            '그림 5 & 6: 정성 분석 케이스 스터디: 어쿠스틱 기타 선율 텍스처 때문에 록에서 컨트리로 오분류된 Yesterday, 클래식으로 정확히 분류된 운명 교향곡, 팝 장르로 정확히 분류된 Snow Halation.\n\nFigure 5 & 6: Qualitative analysis case studies: Yesterday (misclassified Rock->Country due to acoustic guitar strings textures), Symphony No. 5 (correct Classical), and Snow Halation (correct Pop).'
           ]
         }
       ],
-      conclusion: 'We proposed a computer vision framework for music genre classification. By combining log-mel spectrograms with transfer learning (ResNet50), we reached a test accuracy of 72.56%. Qualitative analysis verified that the model indeed relies on visual textures (harmonics, beats, and noise) rather than traditional symbolic metrics. Limitations include the model relying on texture details instead of structural musical context (lyrics, tonality).'
+      conclusion: '우리는 음악 장르 분류 문제를 컴퓨터 비전 전이 학습(ResNet50)으로 해결하는 프레임워크를 제안하여 72.56%의 정확도를 달성했습니다. 정성 분석 결과 모델이 전통적인 음향 변수 대신 실제 스펙트로그램 이미지의 시각적 텍스처(화성, 비트, 노이즈)에 의존하고 있음이 입증되었습니다. 다만 가사나 음악적 구조 맥락을 포착하기 어렵다는 한계가 존재합니다.\n\nWe proposed a computer vision framework for music genre classification. By combining log-mel spectrograms with transfer learning (ResNet50), we reached a test accuracy of 72.56%. Qualitative analysis verified that the model indeed relies on visual textures (harmonics, beats, and noise) rather than traditional symbolic metrics. Limitations include the model relying on texture details instead of structural musical context (lyrics, tonality).'
     }
   },
   scout: {
     id: 'scout',
     title: 'AI Football Scouter',
-    subtitle: 'Data and Sentiment Driven Player Recommendation System',
+    subtitle: 'Data and Sentiment Driven Player Recommendation System / 데이터 및 감성 분석 기반 축구 선수 추천 시스템',
     author: 'Joohyoung Yi, Yongseop Shin, Changyoung Lee',
     affiliation: 'NLP Class Project, Sogang University (2025 1st Semester)',
     email: 'yjh020701@sogang.ac.kr',
     tags: ['NLP', 'Sentiment Analysis', 'BERT', 'LLM', 'phi-1.5'],
-    abstract: 'This project introduces AI Football Scouter, a data-driven recommendation system that combines objective player statistics with subjective community sentiments from Reddit. Designed to overcome the limitations of numbers-only scouting, the system filters candidates from a dataset of player attributes, performs 3-way BERT sentiment and separate toxicity analyses on Reddit fan comments, applies a rule-based recommendation logic, and generates a human-like scouting summary using a local lightweight LLM (phi-1.5). We also report key edge cases including position query normalization fixes and contextual toxicity classification errors caused by strong football fan slang.',
+    abstract: '본 프로젝트는 축구 선수의 객관적인 능력치 데이터와 Reddit 커뮤니티의 주관적인 팬 여론 감성을 결합한 데이터 기반의 하이브리드 선수 추천 시스템인 AI Football Scouter를 제안합니다. 능력치 기반 필터링으로 후보군을 1차 선별한 뒤, Reddit 댓글 데이터를 수집하여 BERT 다국어 감성 모델 및 독성(Toxicity) 분석을 수행하고, 자체 정의한 규칙 기반 알고리즘을 적용한 후 로컬 경량 LLM(phi-1.5)을 사용해 자연어 스카우팅 보고서를 생성합니다. 더불어 포지션 키워드 정규화 처리와 축구 팬 특유의 강한 슬랭 및 sarcastic 표현으로 인한 오분류 예외 처리 모델 고도화 결과도 포함합니다.\n\nThis project introduces AI Football Scouter, a data-driven recommendation system that combines objective player statistics with subjective community sentiments from Reddit. Designed to overcome the limitations of numbers-only scouting, the system filters candidates from a dataset of player attributes, performs 3-way BERT sentiment and separate toxicity analyses on Reddit fan comments, applies a rule-based recommendation logic, and generates a human-like scouting summary using a local lightweight LLM (phi-1.5). We also report key edge cases including position query normalization fixes and contextual toxicity classification errors caused by strong football fan slang.',
     sections: {
-      introduction: 'Modern football scouting is no longer just about numbers. Community perception and fan sentiment increasingly affect player valuation, confidence, and media representation. The goal of this project is to combine players\' objective statistics with community opinions on Reddit. Our system ingests player metrics from a CSV file, accepts natural language profile queries, performs Reddit API extraction and sentiment/toxicity categorization, and outputs a synthesized scouting report to help head coaches and technical directors make informed decisions.',
+      introduction: '현대 축구 스카우팅은 단순히 기록 수치에만 의존하지 않습니다. 팬들의 반응과 여론은 선수의 시장 가치, 심리적 상태, 미디어 노출에 지대한 영향을 미칩니다. 본 프로젝트는 CSV 데이터의 선수 스태츠와 Reddit에 누적된 팬들의 여론 데이터를 유기적으로 융합합니다. 자연어 프로필 쿼리를 입력받아 조건에 맞는 후보군을 필터링하고, Reddit API를 호출해 감성 수치 및 독성을 분석한 뒤 감독과 구단 프런트가 직관적인 결정을 내릴 수 있도록 자연어 보고서 형태로 요약 제공합니다.\n\nModern football scouting is no longer just about numbers. Community perception and fan sentiment increasingly affect player valuation, confidence, and media representation. The goal of this project is to combine players\' objective statistics with community opinions on Reddit. Our system ingests player metrics from a CSV file, accepts natural language profile queries, performs Reddit API extraction and sentiment/toxicity categorization, and outputs a synthesized scouting report to help head coaches and technical directors make informed decisions.',
       methodology: [
         {
-          title: 'Step 01: CSV-Based Player Filtering & Query Normalization',
-          desc: 'The system loads objective player attributes (pace, stamina, shooting, dribbling, etc.). Initially, searching a query like "goalkeeper" returned forwards like Salah because the classifier selected general attributes like "defending" or "stamina".\n\nTo resolve this, we implemented `normalize_position_input()` to map natural language queries directly to standard position codes (GK, DF, MF, FW) and added `filter_players_by_position()` to restrict recommendations to the appropriate playing zone before applying attribute scores.',
+          title: 'Step 01: CSV 기반 선수 필터링 및 쿼리 정규화 (CSV-Based Player Filtering & Query Normalization)',
+          desc: '선수의 상세 객관적 능력치 속성을 로드하여 조건부 스코어링을 수행합니다. 초기 개발 시 "goalkeeper"를 검색했을 때 defending이나 stamina 등 범용 속성이 높게 측정된 살라와 같은 공격수가 최상위에 추천되는 문제가 존재했습니다. 이를 해결하기 위해 입력된 자연어 쿼리를 표준 포지션 코드(GK, DF, MF, FW)로 자동 매핑해 주는 `normalize_position_input()` 함수 및 해당 축구 구역에 할당된 선수군만 1차로 필터링하는 `filter_players_by_position()` 로직을 추가하여 포지션 오류를 원천 차단했습니다.\n\nThe system loads objective player attributes (pace, stamina, shooting, dribbling, etc.). Initially, searching a query like "goalkeeper" returned forwards like Salah because the classifier selected general attributes like "defending" or "stamina".\n\nTo resolve this, we implemented `normalize_position_input()` to map natural language queries directly to standard position codes (GK, DF, MF, FW) and added `filter_players_by_position()` to restrict recommendations to the appropriate playing zone before applying attribute scores.',
           figs: [scout_report_fig_1, scout_report_fig_13],
           captions: [
-            'Figure 1: Code snippet for normalize_position_input() mapping query keywords to position codes.',
-            'Figure 2: Code snippet for filter_players_by_position() ensuring strict position filtering.'
+            '그림 1: 자연어 쿼리를 표준 포지션 코드로 변환하는 normalize_position_input() 함수 코드 스니펫.\n\nFigure 1: Code snippet for normalize_position_input() mapping query keywords to position codes.',
+            '그림 2: 엄격한 포지션 필터링을 보장하는 filter_players_by_position() 함수 코드 스니펫.\n\nFigure 2: Code snippet for filter_players_by_position() ensuring strict position filtering.'
           ]
         },
         {
-          title: 'Step 02: Reddit Fan Sentiment & Toxicity Analysis',
-          desc: 'We collect recent Reddit posts and comments using PRAW. The sentiment is analyzed using the `nlptown/bert-base-multilingual-uncased-sentiment` model (predicting positive, neutral, negative ratios). Concurrently, toxicity is measured separately using `unitary/toxic-bert` from Hugging Face.'
+          title: 'Step 02: Reddit 팬 의견 감성 및 독성 분석 (Reddit Fan Sentiment & Toxicity Analysis)',
+          desc: 'PRAW 라이브러리를 활용해 특정 선수명으로 Reddit 내 최근 게시글과 댓글 데이터를 크롤링합니다. 수집된 텍스트는 `nlptown/bert-base-multilingual-uncased-sentiment` 허깅페이스 모델을 활용해 긍정/중립/부정 비율로 분류하며, 동시에 독성 욕설 유무는 `unitary/toxic-bert` 모델을 통해 교차 분석합니다.\n\nWe collect recent Reddit posts and comments using PRAW. The sentiment is analyzed using the `nlptown/bert-base-multilingual-uncased-sentiment` model (predicting positive, neutral, negative ratios). Concurrently, toxicity is measured separately using `unitary/toxic-bert` from Hugging Face.'
         },
         {
-          title: 'Step 03: Recommendation Logic & LLM Summarization',
-          desc: 'We apply a rule-based labeling algorithm:\n- Toxicity >= 0.55 -> Not Recommended\n- Positive >= 0.5 & low toxicity -> Recommended\n- Negative >= 0.5 -> Not Recommended\n\nFor the recommended top players, a locally-run phi-1.5 model synthesizes a detailed scouting report combining objective ratings and public fan sentiment statistics.',
+          title: 'Step 03: 추천 로직 결정 및 LLM 요약 (Recommendation Logic & LLM Summarization)',
+          desc: '자체 수립한 규칙 기반 필터링 알고리즘을 사용해 최종 등급을 분류합니다:\n- 독성 점수 >= 0.55 -> 추천 보류 (비난 여론 우세)\n- 긍정 비율 >= 0.5 & 저독성 -> 추천 대상\n- 부정 비율 >= 0.5 -> 추천 제외\n추천된 최상위 선수 리스트는 기기에 탑재된 경량 로컬 LLM인 phi-1.5를 통해 정량 지표와 정성 지표를 종합한 인간 스카우터 수준의 보고서로 자동 생성됩니다.\n\nWe apply a rule-based labeling algorithm:\n- Toxicity >= 0.55 -> Not Recommended\n- Positive >= 0.5 & low toxicity -> Recommended\n- Negative >= 0.5 -> Not Recommended\n\nFor the recommended top players, a locally-run phi-1.5 model synthesizes a detailed scouting report combining objective ratings and public fan sentiment statistics.',
           fig: scout_slides_fig_25,
-          caption: 'Figure: Output sample from local phi-1.5 model generating a human-like scouting report.'
+          caption: '그림: 로컬 phi-1.5 모델을 구동하여 생성한 자연어 형태의 선수 분석 및 종합 보고서 출력 샘플.\n\nFigure: Output sample from local phi-1.5 model generating a human-like scouting report.'
         }
       ],
       results: [
         {
-          title: 'System Walkthrough & Code Details',
-          desc: 'The user enters a profile query like "strong midfielder" in the Streamlit UI. The system matches attributes, filters candidates (e.g., Bruno Fernandes, Cole Palmer), retrieves fan sentiments, and generates the scouting summaries.',
+          title: '시스템 실행 방식 및 코드 결과 (System Walkthrough & Code Details)',
+          desc: 'Streamlit 기반 사용자 UI에서 "strong midfielder"와 같은 자연어 요구 성능을 입력하면 시스템이 백엔드 속성 스코어링을 통해 Palmer, Fernandes 등의 후보를 선별하고, 이들의 최근 해외 팬 여론을 분석해 요약 보고서를 즉각 화면에 뿌려줍니다.\n\nThe user enters a profile query like "strong midfielder" in the Streamlit UI. The system matches attributes, filters candidates (e.g., Bruno Fernandes, Cole Palmer), retrieves fan sentiments, and generates the scouting summaries.',
           figs: [scout_slides_fig_22, scout_slides_fig_18, scout_slides_fig_17],
           captions: [
-            'Figure 3: Streamlit Search UI interface.',
-            'Figure 4: Candidate filtering results table for "strong midfielder".',
-            'Figure 5: Fan sentiment analysis JSON output (Cole Palmer: positive_ratio: 0.53, toxic: 0.03).'
+            '그림 3: Streamlit 검색 UI 메인 화면.\n\nFigure 3: Streamlit Search UI interface.',
+            '그림 4: "strong midfielder" 쿼리에 따라 선별된 선수 후보 필터링 결과 테이블.\n\nFigure 4: Candidate filtering results table for "strong midfielder".',
+            '그림 5: 팬 감성 및 독성 분석 JSON 출력 값 (Cole Palmer: 긍정 0.53, 독성 0.03).\n\nFigure 5: Fan sentiment analysis JSON output (Cole Palmer: positive_ratio: 0.53, toxic: 0.03).'
           ]
         },
         {
-          title: 'Key Challenge: Slang, Sarcasm & Positive Toxicity',
-          desc: 'A significant challenge arose with the model misinterpreting strong fan language as negative. For example, Cole Palmer\'s comment "...thank fuck he\'s good at football" contains toxic words but is contextually positive. Similarly, Bruno Guimarães\'s comment "Cunt but he\'s their cunt" was flagged as toxic, yet contextually expresses deep admiration. These examples show the difficulty models face in capturing sarcasm and positive-use profanity in passionate online sports forums.',
+          title: '한계 극복: 슬랭, 반어법 및 맥락적 독성 탐지 오류 (Key Challenge: Slang, Sarcasm & Positive Toxicity)',
+          desc: '축구 커뮤니티 특유의 거친 격려 및 슬랭 표현을 모델이 단순 욕설로 오판하는 한계가 발견되었습니다. 예컨대 Cole Palmer의 팬들이 남긴 "...thank fuck he\'s good" 문장은 감정적 찬사임에도 toxic-bert가 욕설 토큰 때문에 위험군으로 판단했습니다. Bruno Guimarães의 "Cunt but he\'s our cunt" 역시 강한 애착 표현임에도 높은 독성 수치로 감지되었습니다. 이는 도메인 특화 슬랭 분류 모델의 미세 조정 필요성을 시사합니다.\n\nA significant challenge arose with the model misinterpreting strong fan language as negative. For example, Cole Palmer\'s comment "...thank fuck he\'s good at football" contains toxic words but is contextually positive. Similarly, Bruno Guimarães\'s comment "Cunt but he\'s their cunt" was flagged as toxic, yet contextually expresses deep admiration. These examples show the difficulty models face in capturing sarcasm and positive-use profanity in passionate online sports forums.'
         }
       ],
-      conclusion: 'AI Football Scouter successfully showcases a hybrid recommendation system bridging numerical statistics and public opinion. While the local lightweight models (BERT, phi-1.5) perform adequately, contextual slang and sarcasm pose limitations on sentiment accuracy. Future improvements include integrating multi-platform data (Twitter, YouTube) and fine-tuning models on domain-specific football fan vernacular.'
+      conclusion: 'AI Football Scouter는 수치 통계와 텍스트 여론을 결합한 유의미한 추천 방법론을 제시했습니다. 로컬 경량 모델(BERT, phi-1.5)이 효율적으로 잘 동작하지만, 온라인 스포츠 포럼의 맥락적 슬랭과 반어법을 정확히 해석하기엔 한계가 있습니다. 향후 트위터, 유튜브 등으로 데이터 채널을 확장하고 도메인 슬랭 코퍼스로 추가 파인튜닝을 계획하고 있습니다.\n\nAI Football Scouter successfully showcases a hybrid recommendation system bridging numerical statistics and public opinion. While the local lightweight models (BERT, phi-1.5) perform adequately, contextual slang and sarcasm pose limitations on sentiment accuracy. Future improvements include integrating multi-platform data (Twitter, YouTube) and fine-tuning models on domain-specific football fan vernacular.'
     }
   },
   archive: {
     id: 'archive',
     title: 'Milestone & Project Archive',
-    subtitle: 'Comprehensive record of academic milestones, research publications, and engineering projects',
+    subtitle: 'Comprehensive record of academic milestones, research publications, and engineering projects / 학업 이력 및 연구 프로젝트 아카이브',
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@sogang.ac.kr',
     tags: ['Academic', 'Research', 'Engineering', 'Timeline'],
-    abstract: 'This timeline archive provides a detailed documentation of my academic milestones, published research papers, software engineering projects, and interactive designs since joining Sogang University. It encapsulates key projects spanning Sentiment Bias Analysis, Music Genre Recognition, NLP-based Recommendation Engines, and Web Architectures.',
+    abstract: '본 타임라인 아카이브는 서강대학교 입학 이후 수행한 학업 마일스톤, 학술 논문 게재 이력, 소프트웨어 엔지니어링 및 인터랙티브 프로젝트들을 상세히 문서화한 기록 보관소입니다. 젠더 편향 감성 분석, 음악 장르 스펙트로그램 변환 분류, NLP 추천 스카우터 및 웹 아키텍처 연동 이력을 망라합니다.\n\nThis timeline archive provides a detailed documentation of my academic milestones, published research papers, software engineering projects, and interactive designs since joining Sogang University. It encapsulates key projects spanning Sentiment Bias Analysis, Music Genre Recognition, NLP-based Recommendation Engines, and Web Architectures.',
     sections: {
-      introduction: 'Welcome to the complete milestone and archive list. Below is a detailed view of academic achievements, publications, and software systems developed during my university curriculum.',
+      introduction: '학업 과정 및 개인 프로젝트 일람입니다. 하단 타임라인을 통해 대학 재학 중 구축한 핵심 시스템과 연구 논문 성과를 한눈에 살펴보실 수 있습니다.\n\nWelcome to the complete milestone and archive list. Below is a detailed view of academic achievements, publications, and software systems developed during my university curriculum.',
       methodology: [
         {
           title: '2026: Modern Web & Systems Deployments',
-          desc: '• Bento Portfolio v1.1: Designed and built a premium responsive Bento Grid website with custom interactive dark/light modes using React, Vite, and Tailwind CSS.\n• Explored Explainable AI user interface designs to present complex model decisions visually.'
+          desc: '• Bento Portfolio v1.1: React, Vite, Tailwind CSS를 활용해 다크/라이트 모드와 최신 레이아웃을 지원하는 프리미엄 반응형 포트폴리오 웹사이트 구축.\n• 설명 가능 인공지능(XAI) 분석 결과를 직관적으로 이해할 수 있는 웹 모달 인터페이스 구현.\n\n• Bento Portfolio v1.1: Designed and built a premium responsive Bento Grid website with custom interactive dark/light modes using React, Vite, and Tailwind CSS.\n• Explored Explainable AI user interface designs to present complex model decisions visually.'
         },
         {
           title: '2025: NLP & Computer Vision Advancements',
-          desc: '• SHEN Publication: Co-authored research investigating gender bias prefix allocations in Korean language models, identifying feature misattributions.\n• µ\'s Framework: Built a spectrogram-based classification pipeline with ResNet50 for musical genre recognition, achieving a test accuracy of 72.56%.\n• AI Football Scouter: Integrated statistical player filters, multilingual sentiment analyses, and local LLM summary generation into a single recommendation application.'
+          desc: '• SHEN 논문: 한국어 PLM의 젠더 편향을 어텐션과 LIME 기법을 통해 특성 오귀인 현상으로 분석한 학술지 논문 공동 게재.\n• µ\'s 장르 분류기: 오디오 파형을 멜-스펙트로그램 이미지로 변환하여 ResNet50 전이 학습을 적용한 분류 파이프라인 개발 (정확도 72.56%).\n• AI Football Scouter: 선수 데이터 분석 필터 및 Reddit API 감성 분류, 로컬 LLM 보고서 생성을 통합한 축구 추천 서비스 구현.\n\n• SHEN Publication: Co-authored research investigating gender bias prefix allocations in Korean language models, identifying feature misattributions.\n• µ\'s Framework: Built a spectrogram-based classification pipeline with ResNet50 for musical genre recognition, achieving a test accuracy of 72.56%.\n• AI Football Scouter: Integrated statistical player filters, multilingual sentiment analyses, and local LLM summary generation into a single recommendation application.'
         },
         {
           title: '2021: Foundational Computing & Department Admission',
-          desc: '• Admission to Sogang University Department of Art & Technology.\n• Developed core programming competencies in Python, deep learning framework APIs (PyTorch), and digital signal processing basics.'
+          desc: '• 서강대학교 아트&테크놀로지 학과 학사 과정 입학.\n• 파이썬 기본 코딩 역량, PyTorch 딥러닝 API 활용법, 디지털 오디오 가공의 기초 전처리 이론 습득.\n\n• Admission to Sogang University Department of Art & Technology.\n• Developed core programming competencies in Python, deep learning framework APIs (PyTorch), and digital signal processing basics.'
         }
       ],
       results: [
         {
-          title: 'Historical Milestone Logs Summary',
-          desc: '1. Dec 2025: Finished SHEN Gender Bias Research (Paper / NLP)\n2. Nov 2025: Designed µ\'s Mel-Spectrogram pipeline (Project / CV & Audio)\n3. Jun 2025: Finished AI Football Scouter NLP Project (Project / BERT & LLM)\n4. Mar 2021: Entered Sogang University Art & Technology (Academic / Admission)'
+          title: '타임라인 주요 이벤트 요약 (Historical Milestone Logs Summary)',
+          desc: '1. 2025년 12월: SHEN 젠더 편향 분석 논문 완료 (Paper / NLP)\n2. 2025년 11월: µ\'s 멜-스펙트로그램 음악 분류 완료 (Project / CV & Audio)\n3. 2025년 6월: AI Football Scouter 추천 시스템 개발 (Project / BERT & LLM)\n4. 2021년 3월: 서강대학교 아트&테크놀로지 입학 (Academic / Admission)'
         }
       ],
-      conclusion: 'This archive acts as a living document, updated as new projects are completed and papers are published. For collaborations or technical discussions, feel free to get in touch.'
+      conclusion: '본 아카이브는 프로젝트가 완료되고 논문이 게재됨에 따라 지속적으로 업데이트되는 살아있는 보존 기록입니다. 협업 및 기술적 소통은 언제든 열려 있습니다.\n\nThis archive acts as a living document, updated as new projects are completed and papers are published. For collaborations or technical discussions, feel free to get in touch.'
     }
   }
 };
@@ -359,7 +359,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
       onClick={handleClose}
     >
       <div 
-        className={`glass-panel w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${
+        className={`glass-panel w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/55 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${
           isClosing ? 'animate-modal-out' : 'animate-modal-in'
         }`}
         onClick={(e) => e.stopPropagation()}
@@ -377,7 +377,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
             <h1 className="text-xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-snug">
               {project.title}
             </h1>
-            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300 font-medium">
+            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-350 font-medium">
               {project.subtitle}
             </p>
             <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
@@ -423,14 +423,14 @@ export const ProjectModal = ({ projectId, onClose }) => {
                 <h3 className="text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
                   <Award size={14} /> Abstract
                 </h3>
-                <p className="text-slate-600 dark:text-slate-350 text-sm md:text-base leading-relaxed bg-slate-50 dark:bg-slate-950/40 p-5 rounded-2xl border border-slate-200/30 dark:border-slate-800/20">
+                <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed bg-slate-50 dark:bg-slate-950/40 p-5 rounded-2xl border border-slate-200/30 dark:border-slate-800/20 whitespace-pre-line">
                   {project.abstract}
                 </p>
               </div>
 
               <div className="space-y-3">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">1. Introduction</h3>
-                <p className="text-slate-600 dark:text-slate-400 text-xs md:text-sm leading-relaxed whitespace-pre-line">
+                <p className="text-slate-600 dark:text-slate-300 text-xs md:text-sm leading-relaxed whitespace-pre-line">
                   {project.sections.introduction}
                 </p>
               </div>
@@ -462,7 +462,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       alt="Preprocessing Pipeline" 
                       className="max-h-56 md:max-h-64 object-contain rounded-xl shadow-md border border-slate-200/40 dark:border-slate-800/40 bg-white p-2" 
                     />
-                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm">
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm whitespace-pre-line">
                       {project.sections.methodology[0].caption}
                     </p>
                   </div>
@@ -480,7 +480,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                         <span className="text-[8px] text-slate-400 mt-1">Female Director Attention</span>
                       </div>
                     </div>
-                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm">
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm whitespace-pre-line">
                       Figure: Attention weights comparison between male/female directors (highlights the misattribution on the gender prefix '여-').
                     </p>
                   </div>
@@ -498,7 +498,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       alt="filter_players_by_position" 
                       className="max-h-24 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1" 
                     />
-                    <p className="text-[10px] text-slate-400 dark:text-slate-500 text-center max-w-sm">
+                    <p className="text-[10px] text-slate-400 dark:text-slate-500 text-center max-w-sm whitespace-pre-line">
                       Figures: Python code snippets implementing query position normalization and candidate filtering based on player positions to resolve recommendations error.
                     </p>
                   </div>
@@ -516,7 +516,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       <Zap size={14} className="text-indigo-500" />
                       {r.title}
                     </h3>
-                    <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300 leading-relaxed">
+                    <p className="text-xs md:text-sm text-slate-500 dark:text-slate-350 leading-relaxed whitespace-pre-line">
                       {r.desc}
                     </p>
                   </div>
@@ -529,7 +529,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                         alt={r.caption} 
                         className="max-h-[500px] object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2" 
                       />
-                      <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl">
+                      <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl whitespace-pre-line">
                         {r.caption}
                       </p>
                     </div>
@@ -561,7 +561,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       </div>
                       <div className="space-y-1.5 text-center">
                         {r.captions.map((cap, cIdx) => (
-                          <p key={cIdx} className="text-[10px] text-slate-400 dark:text-slate-500">
+                          <p key={cIdx} className="text-[10px] text-slate-400 dark:text-slate-500 whitespace-pre-line">
                             {cap}
                           </p>
                         ))}
@@ -573,7 +573,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
 
               <div className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-5">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-1">Conclusion</h4>
-                <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                   {project.sections.conclusion}
                 </p>
               </div>

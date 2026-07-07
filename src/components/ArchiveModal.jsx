@@ -9,7 +9,7 @@ const archiveLogs = [
     color: 'emerald',
     icon: Code,
     projectId: 'tabilens',
-    description: 'Developed TabiLenS, a Flutter-based real-time Japanese menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
+    description: 'Gemini 2.5 Flash OCR 및 네이티브 TTS를 활용한 Flutter 기반 실시간 일본어 메뉴판 번역 및 식문화 가이드 앱 개발.\n\nDeveloped TabiLenS, a Flutter-based real-time Japanese menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
     tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
   },
   {
@@ -19,7 +19,7 @@ const archiveLogs = [
     color: 'indigo',
     icon: Code,
     projectId: 'unseenmap',
-    description: 'Developed Unseen Map Explorer, a Leaflet-based interactive web map service that parses photo EXIF GPS data to overlay trip history, using a grid-based frontier exploration algorithm to recommend local POIs in unvisited alleys.',
+    description: '사진 EXIF GPS 메타데이터 파싱 기반 여행 경로 매핑 및 프론티어 그리드 탐색 알고리즘 기반 미방문지 골목 POI 추천 Leaflet 웹 서비스 개발.\n\nDeveloped Unseen Map Explorer, a Leaflet-based interactive web map service that parses photo EXIF GPS data to overlay trip history, using a grid-based frontier exploration algorithm to recommend local POIs in unvisited alleys.',
     tags: ['Leaflet.js', 'exifr', 'Overpass API', 'Vanilla JS']
   },
   {
@@ -29,7 +29,7 @@ const archiveLogs = [
     color: 'amber',
     icon: Code,
     projectId: 'halligalli',
-    description: 'Developed Online HalliGalli, a real-time web multiplayer card board game with single-player (vs COM AI) modes and Firebase Realtime Database syncing.',
+    description: 'Firebase Realtime Database 동기화 및 COM AI 대전 모드를 지원하는 WebRTC 기반 실시간 멀티플레이어 할리갈리 보드 게임 개발.\n\nDeveloped Online HalliGalli, a real-time web multiplayer card board game with single-player (vs COM AI) modes and Firebase Realtime Database syncing.',
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Firebase']
   },
   {
@@ -39,7 +39,7 @@ const archiveLogs = [
     color: 'indigo',
     icon: FileText,
     projectId: 'shen',
-    description: 'Co-authored paper evaluating hidden bias footprints in Korean pre-trained transformer architectures. Highlighted "Feature Misattribution" where gendered prefixes hijack sentiment predictions.',
+    description: '한국어 사전 학습 트랜스포머 모델의 잠재적 편향성 평가 및 젠더 접두사가 감성 예측을 왜곡하는 \'특성 오귀인\' 분석 공동 논문 저술.\n\nCo-authored paper evaluating hidden bias footprints in Korean pre-trained transformer architectures. Highlighted "Feature Misattribution" where gendered prefixes hijack sentiment predictions.',
     tags: ['NLP', 'XAI', 'Transformers', 'KcELECTRA', 'LIME/SHAP']
   },
   {
@@ -49,7 +49,7 @@ const archiveLogs = [
     color: 'purple',
     icon: Code,
     projectId: 'mus',
-    description: 'Implemented a Computer Vision model for classifying music audio clips by converting signals into 2D Log-Mel Spectrogram representations, feeding into ResNet50 classification layers.',
+    description: '오디오 신호를 2D Log-Mel Spectrogram 표현으로 변환하여 ResNet50 분류 신경망으로 분석하는 음악 장르 분류 컴퓨터 비전 모델 개발.\n\nImplemented a Computer Vision model for classifying music audio clips by converting signals into 2D Log-Mel Spectrogram representations, feeding into ResNet50 classification layers.',
     tags: ['Computer Vision', 'PyTorch', 'Librosa', 'ResNet50', 'Audio Processing']
   },
   {
@@ -59,7 +59,7 @@ const archiveLogs = [
     color: 'amber',
     icon: Code,
     projectId: 'scout',
-    description: 'Developed an NLP recommendation system combining numeric football player cards metrics with subjective fan commentaries scraped via Reddit APIs. Summaries generated using local phi-1.5 model.',
+    description: '객관적인 선수 능력치 스태츠와 Reddit API로 수집한 팬들의 주관적인 의견 감성 분석 및 로컬 phi-1.5 모델의 자연어 축구 선수 스카우팅 추천 시스템 개발.\n\nDeveloped an NLP recommendation system combining numeric football player cards metrics with subjective fan commentaries scraped via Reddit APIs. Summaries generated using local phi-1.5 model.',
     tags: ['BERT', 'phi-1.5', 'Reddit API', 'Streamlit', 'Text Toxicity']
   },
   {
@@ -68,7 +68,7 @@ const archiveLogs = [
     category: 'Military',
     color: 'slate',
     icon: Award,
-    description: '대한민국 공군 병 845기로서 성실히 군 복무를 수행하고 만기전역하였습니다.',
+    description: '대한민국 공군 병 845기로서 성실히 군 복무를 수행하고 만기전역하였습니다.\n\nServed honorably and completed military service as Sergeant in the Republic of Korea Air Force (845th batch).',
     tags: ['공군', '군복무', '만기전역']
   },
   {
@@ -77,7 +77,7 @@ const archiveLogs = [
     category: 'Academic',
     color: 'blue',
     icon: GraduationCap,
-    description: 'Began undergraduate study in the Art & Technology department, focusing on creative systems integration, machine learning architectures, and computational media arts.',
+    description: '창의융합 시스템 설계, 머신러닝 아키텍처, 컴퓨터 미디어 아트를 중점으로 서강대학교 아트&테크놀로지 학부 입학 및 학사 과정 시작.\n\nBegan undergraduate study in the Art & Technology department, focusing on creative systems integration, machine learning architectures, and computational media arts.',
     tags: ['Art & Technology', 'Sogang University', 'Interactive Art', 'Admissions']
   }
 ];
