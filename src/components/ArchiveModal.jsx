@@ -13,6 +13,16 @@ const archiveLogs = [
     tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
   },
   {
+    date: 'Jun 2026',
+    title: 'Released Online HalliGalli Web Game',
+    category: 'Project',
+    color: 'amber',
+    icon: Code,
+    projectId: 'halligalli',
+    description: 'Developed Online HalliGalli, a real-time web multiplayer card board game with single-player (vs COM AI) modes and Firebase Realtime Database syncing.',
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'Firebase']
+  },
+  {
     date: 'Dec 2025',
     title: 'Finished SHEN Gender Bias Research',
     category: 'Paper',
