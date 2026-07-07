@@ -26,10 +26,16 @@ import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 
 // Card Wrapper with premium micro-interactions
 export const Card = ({ children, className = '', span = '', onClick }) => {
+  const isClickable = !!onClick;
   return (
     <div 
       onClick={onClick}
-      className={`glass-panel glow-primary rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 group cursor-pointer overflow-hidden ${span} ${className}`}
+      className={`glass-panel glow-primary rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 
+        ${isClickable 
+          ? 'hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 cursor-pointer' 
+          : 'cursor-default'
+        } 
+        group overflow-hidden ${span} ${className}`}
     >
       {children}
     </div>
@@ -41,12 +47,6 @@ export const HeroCard = () => {
   return (
     <Card span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-2">
       <div className="flex flex-col gap-4">
-        {/* Availability Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-semibold w-fit animate-pulse-slow">
-          <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-          Available for Collaboration
-        </div>
-        
         {/* Title & Subtitle */}
         <div className="space-y-3 mt-4">
           <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
@@ -66,7 +66,7 @@ export const HeroCard = () => {
       {/* Social / Contact Links */}
       <div className="flex items-center gap-4 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
         <a 
-          href="mailto:yjh020701@sogang.ac.kr" 
+          href="mailto:yjh020701@gmail.com" 
           className="flex items-center justify-center p-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
           title="Email"
         >
@@ -120,7 +120,7 @@ export const AcademicCard = ({ onOpen }) => {
           </h2>
           
           <div className="space-y-2">
-            <p className="text-xs font-semibold text-slate-400 dark:text-slate-550">
+            <p className="text-xs font-semibold text-slate-500 dark:text-slate-300">
               Investigating Gender Bias in Korean PLMs via Attention & XAI
             </p>
             <div className="h-[1px] w-12 bg-slate-200 dark:bg-slate-800"></div>
@@ -205,7 +205,7 @@ export const ShowroomCard = ({ onOpen }) => {
           <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
             µ's : Music Understanding via Spectrogram evaluation
           </h2>
-          <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400">
+          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300">
             A Computer Vision framework for Music Genre Classification. Converts 1-channel audio waveforms into 2D log-mel spectrogram representations and leverages ResNet50 transfer learning.
           </p>
         </div>
@@ -220,7 +220,7 @@ export const ShowroomCard = ({ onOpen }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-555 dark:text-slate-400 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
+        <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
           <span>Explore Pipeline & Results (72.56% Accuracy)</span>
           <ArrowUpRight size={16} />
         </div>
@@ -314,9 +314,11 @@ export const StatusCard = () => {
 // 7. Archive / Log List Card (Medium/Long: 1x2)
 export const ArchiveCard = ({ onOpen }) => {
   const logs = [
+    { date: 'Jul 2026', title: 'Released TabiLenS Mobile App', type: 'Project', color: 'bg-emerald-500', projectId: 'tabilens' },
     { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500', projectId: 'shen' },
-    { date: 'Nov 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500', projectId: 'mus' },
+    { date: 'Dec 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500', projectId: 'mus' },
     { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project', color: 'bg-amber-500', projectId: 'scout' },
+    { date: 'Nov 2024', title: '대한민국 공군 만기전역', type: 'Military', color: 'bg-slate-500' },
     { date: 'Mar 2021', title: 'Entered Sogang University Art & Tech', type: 'Academic', color: 'bg-blue-500' }
   ];
 
@@ -348,10 +350,10 @@ export const ArchiveCard = ({ onOpen }) => {
                 
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center gap-2">
-                    <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-555">{log.date}</span>
+                    <span className="text-[9px] font-mono font-bold text-slate-400 dark:text-slate-300">{log.date}</span>
                     <span className="px-1.5 py-0.2 rounded text-[7px] font-bold uppercase tracking-wider bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400">{log.type}</span>
                   </div>
-                  <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-355 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
+                  <h3 className="text-xs font-semibold text-slate-700 dark:text-slate-200 group-hover/item:text-indigo-500 dark:group-hover/item:text-indigo-400 transition-colors duration-150 leading-snug">
                     {log.title}
                   </h3>
                 </div>
@@ -362,7 +364,7 @@ export const ArchiveCard = ({ onOpen }) => {
 
         <button 
           onClick={() => onOpen('archive')}
-          className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-850 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200"
+          className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200"
         >
           <span>View Archive</span>
           <ExternalLink size={12} />

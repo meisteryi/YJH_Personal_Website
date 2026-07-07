@@ -3,6 +3,16 @@ import { X, Calendar, Search, Award, Code, FileText, GraduationCap, ArrowRight }
 
 const archiveLogs = [
   {
+    date: 'Jul 2026',
+    title: 'Released TabiLenS Mobile App',
+    category: 'Project',
+    color: 'emerald',
+    icon: Code,
+    projectId: 'tabilens',
+    description: 'Developed TabiLenS, a Flutter-based real-time Japanese menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
+    tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
+  },
+  {
     date: 'Dec 2025',
     title: 'Finished SHEN Gender Bias Research',
     category: 'Paper',
@@ -13,7 +23,7 @@ const archiveLogs = [
     tags: ['NLP', 'XAI', 'Transformers', 'KcELECTRA', 'LIME/SHAP']
   },
   {
-    date: 'Nov 2025',
+    date: 'Dec 2025',
     title: "Designed µ's Mel-Spectrogram pipeline",
     category: 'Project',
     color: 'purple',
@@ -33,6 +43,15 @@ const archiveLogs = [
     tags: ['BERT', 'phi-1.5', 'Reddit API', 'Streamlit', 'Text Toxicity']
   },
   {
+    date: 'Feb 2023 - Nov 2024',
+    title: '대한민국 공군 만기전역',
+    category: 'Military',
+    color: 'slate',
+    icon: Award,
+    description: '대한민국 공군 병 845기로서 성실히 군 복무를 수행하고 만기전역하였습니다.',
+    tags: ['공군', '군복무', '만기전역']
+  },
+  {
     date: 'Mar 2021',
     title: 'Entered Sogang University Art & Tech',
     category: 'Academic',
@@ -47,13 +66,19 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [expandedIndex, setExpandedIndex] = useState(null);
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(onClose, 200);
+  };
 
   const categories = ['All', 'Project', 'Paper', 'Release', 'Academic'];
 
   const filteredLogs = archiveLogs.filter(log => {
-    const matchesSearch = log.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                          log.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                          log.tags.some(t => t.toLowerCase().includes(searchTerm.toLowerCase()));
+    const matchesSearch = log.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      log.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      log.tags.some(t => t.toLowerCase().includes(searchTerm.toLowerCase()));
     const matchesCategory = selectedCategory === 'All' || log.category === selectedCategory;
     return matchesSearch && matchesCategory;
   });
@@ -79,9 +104,14 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-950/75 backdrop-blur-lg animate-fade-in">
-      <div 
-        className="glass-panel w-full max-w-4xl max-h-[85vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95"
+    <div
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-950/75 ${isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
+        }`}
+      onClick={handleClose}
+    >
+      <div
+        className={`glass-panel w-full max-w-4xl max-h-[85vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 transition-all duration-300 ${isClosing ? 'animate-modal-out' : 'animate-modal-in'
+          }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -91,12 +121,12 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
               <Calendar className="text-indigo-500" size={24} />
               Interactive Timeline Archive
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-xs text-slate-550 dark:text-slate-400">
               Explore key milestones, publications, and technical project history.
             </p>
           </div>
-          <button 
-            onClick={onClose}
+          <button
+            onClick={handleClose}
             className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150"
           >
             <X size={20} />
@@ -111,11 +141,10 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 ${
-                  selectedCategory === cat
-                    ? 'bg-indigo-500 border-indigo-500 text-white shadow-md shadow-indigo-500/20'
-                    : 'bg-white dark:bg-slate-900 border-slate-200/60 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
-                }`}
+                className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 ${selectedCategory === cat
+                  ? 'bg-indigo-500 border-indigo-500 text-white shadow-md shadow-indigo-500/20'
+                  : 'bg-white dark:bg-slate-900 border-slate-200/60 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
+                  }`}
               >
                 {cat}
               </button>
@@ -130,7 +159,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
               placeholder="Search history, tech stack..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/85 dark:border-slate-800/80 text-xs text-slate-800 dark:text-slate-250 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
+              className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/85 dark:border-slate-800/80 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
             />
           </div>
         </div>
@@ -138,7 +167,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         {/* Scrollable Timeline */}
         <div className="flex-1 overflow-y-auto p-6 md:p-8">
           {filteredLogs.length === 0 ? (
-            <div className="text-center py-12 text-slate-450 dark:text-slate-500 font-mono text-xs">
+            <div className="text-center py-12 text-slate-400 dark:text-slate-500 font-mono text-xs">
               No matching archive logs found.
             </div>
           ) : (
@@ -155,13 +184,12 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                     </div>
 
                     {/* Timeline card content */}
-                    <div 
+                    <div
                       onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-                      className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${
-                        isExpanded 
-                          ? 'bg-slate-50 dark:bg-slate-850/50 border-indigo-500/40 dark:border-indigo-500/30 shadow-lg shadow-indigo-500/5' 
-                          : 'bg-white/60 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/80 dark:hover:bg-slate-850/20 hover:border-slate-200/80 dark:hover:border-slate-850 shadow-sm'
-                      }`}
+                      className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${isExpanded
+                        ? 'bg-slate-50 dark:bg-slate-900/50 border-indigo-500/40 dark:border-indigo-500/30 shadow-lg shadow-indigo-500/5'
+                        : 'bg-white/60 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm'
+                        }`}
                     >
                       {/* Top row Info */}
                       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
@@ -173,13 +201,13 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                         </div>
                       </div>
 
-                      <h3 className="text-sm md:text-base font-bold text-slate-800 dark:text-slate-150 mt-2 leading-snug">
+                      <h3 className="text-sm md:text-base font-bold text-slate-800 dark:text-slate-100 mt-2 leading-snug">
                         {log.title}
                       </h3>
 
                       {/* Expandable Section */}
                       <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
-                        <p className="text-xs md:text-sm text-slate-600 dark:text-slate-355 leading-relaxed">
+                        <p className="text-xs md:text-sm text-slate-650 dark:text-slate-300 leading-relaxed">
                           {log.description}
                         </p>
 
@@ -206,7 +234,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                           </button>
                         )}
                       </div>
-                      
+
                       {!isExpanded && (
                         <p className="text-xs text-slate-400 mt-2 line-clamp-1">
                           {log.description}
@@ -223,8 +251,8 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         {/* Footer */}
         <div className="p-4 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-6 md:px-8">
           <span className="text-[10px] text-slate-400 font-mono">[Interactive Timeline v1.0]</span>
-          <button 
-            onClick={onClose}
+          <button
+            onClick={handleClose}
             className="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150 shadow-md shadow-indigo-500/10"
           >
             Close Archive

@@ -24,7 +24,53 @@ import scout_slides_fig_18 from '../assets/scout_slides_fig_18.png';
 import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 import scout_slides_fig_25 from '../assets/scout_slides_fig_25.png';
 
+// Import TabiLenS screenshots
+import tabilens_1 from '../assets/tabilens_1.png';
+import tabilens_2 from '../assets/tabilens_2.png';
+
 export const projectsData = {
+  tabilens: {
+    id: 'tabilens',
+    title: 'TabiLenS',
+    subtitle: '실시간 일본어 메뉴판 번역 및 주문 도우미 서비스 / Real-time Japanese Menu Translator & Ordering Assistant',
+    author: 'Joohyoung Yi',
+    affiliation: 'Art & Technology, Sogang University',
+    email: 'yjh020701@gmail.com',
+    tags: ['Flutter', 'Riverpod', 'Gemini API', 'TTS', 'Shared Preferences'],
+    abstract: 'TabiLenS는 일본을 여행하는 한국인들이 메뉴판이나 간판을 읽을 때 겪는 언어적·문화적 장벽을 해소하기 위해 개발된 Flutter 기반의 멀티플랫폼 앱입니다. 단순히 기계적인 텍스트 번역을 넘어 Gemini 2.5 Flash를 통한 지능형 OCR 영역 검출 및 터치 매핑, 음식 유래/재료/알레르기 정보를 다루는 식문화 가이드 제공, 그리고 상황별 일본어 문장 생성 및 TTS 오디오 원어민 발음 기능을 한데 제공합니다.\n\nTabiLenS is a Flutter-based cross-platform (Android / iOS / Web) application designed to assist Korean travelers in Japan by translating menus and signs. It goes beyond simple literal translation by using Gemini 2.5 Flash for high-speed OCR bounding-box detection, providing detailed guides on local food culture (ingredients, allergies, origins, dining tips), and dynamically generating custom ordering sentences in Japanese with native Text-to-Speech (TTS) and pronunciation guides.',
+    sections: {
+      introduction: '일본 현지 식당의 세로쓰기, 손글씨 메뉴판은 관광객들에게 큰 진입장벽입니다. TabiLenS는 단순한 직역 번역기가 아닌, 친절한 식문화 안내서이자 대화형 주문 도우미로서 여행자들이 자신감 있게 식사할 수 있도록 돕습니다.\n\nNavigating Japanese restaurants can be a major hurdle for foreign travelers due to handwritten fonts, vertical writing formats, and a lack of visual food illustrations. TabiLenS was created to solve this problem. It acts as both a cultural food guide and an interactive ordering assistant, giving travelers the confidence to dine like locals by providing comprehensive context instead of word-for-word machine translation.',
+      methodology: [
+        {
+          title: 'OCR & 영역 좌표 매핑 (OCR & Bounding Box Coordinates Mapping)',
+          desc: 'Google Gemini 2.5 Flash API를 활용하여 이미지 속 일본어 텍스트와 2D 영역 좌표를 검출합니다. EXIF 회전각 자동 정렬 보정 전처리 모듈 및 안전 여백(Padding Margin) 처리를 추가하여, 모바일 화면에서 터치 좌표가 어긋나거나 잘리지 않는 매끄러운 텍스트 블록 오버레이를 구현했습니다.\n\nWe leverage the Google Gemini 2.5 Flash API to analyze captured menu images. Gemini returns detected Japanese text blocks along with their 2D coordinate bounding boxes. To ensure smooth mapping, we developed EXIF Rotation Correction and Boundary Safe Margin Padding.'
+        },
+        {
+          title: '동적 주문 문장 생성 & TTS (Dynamic Speech Generation & flutter_tts)',
+          desc: '사용자가 탭하여 선택한 메뉴 이름을 기반으로 일본어 핵심 주문 템플릿(예: "~ 하나 주세요", "~에서 와사비는 빼주세요")에 동적으로 조립하고 한글 발음 표기를 제공합니다. `flutter_tts` 라이브러리를 통해 네이티브 음성 출력을 지원하여 점원에게 쉽게 원어 발음으로 의사를 전달할 수 있습니다.\n\nOnce the user selects a menu item, the app integrates the translated dish name into situational Japanese ordering templates. It generates phonetic Korean guides and utilizes the `flutter_tts` package to play native Japanese audio directly, helping users communicate with staff.'
+        },
+        {
+          title: '상태 관리 및 로컬 영구 저장 (State Management & Local Persistence)',
+          desc: 'Riverpod을 활용해 촬영, 이미지 분석, 즐겨찾기 폴더 등의 상태를 유기적으로 동기화합니다. 사용자가 이모지별로 직접 커스터마이징하여 만든 북마크 리스트와 최근 히스토리는 `shared_preferences`를 사용하여 디바이스 내부에 로컬 영구 저장되므로 인터넷 환경이 열악한 여행지에서도 끊김 없이 유실 없는 기능을 제공합니다.\n\nWe adopted Flutter Riverpod for unified state management across scanning, translating, and bookmarking. User histories and customizable emoji-categorized bookmark folders are persisted locally using `shared_preferences` for reliable offline utilization during travel.'
+        }
+      ],
+      results: [
+        {
+          title: '인터랙티브 메뉴 스캔 화면 (Interactive Menu Scanning Interface)',
+          desc: '메뉴판을 촬영하면 텍스트 블록 위에 직접 터치할 수 있는 인터랙티브 경계 박스가 오버레이되어 사용자가 번역하려는 대상을 직관적으로 고를 수 있습니다.\n\nThe user snaps a photo of a menu. The app processes the image and overlays touch-interactive bounding boxes directly over the Japanese text segments, allowing the user to select what they want to decipher.',
+          figs: [tabilens_1],
+          captions: ['Figure 1: Smart OCR boundary boxes mapped directly over Japanese characters on the image.']
+        },
+        {
+          title: '식문화 가이드 및 음성 합성 출력 (Food Culture Guide & Audio Speech Synthesis)',
+          desc: '선택된 요리의 한글 이름, 유래 설명, 포함 식재료 정보, 알레르기 안내를 확인하고 원하는 주문 문장을 골라 TTS 네이티브 오디오 발음을 듣거나 상대방에게 재생할 수 있습니다.\n\nTapping a menu item reveals a card displaying the translation, visual reference, dish origin, allergy check (ingredients), and recommended ordering phrases with TTS playback.',
+          figs: [tabilens_2],
+          captions: ['Figure 2: Translation detail showing cultural explanation, ingredient breakdown, and audio speech synthesis.']
+        }
+      ],
+      conclusion: 'TabiLenS는 Flutter의 하이브리드 생산성과 Gemini의 고속 멀티모달 능력을 성공적으로 융합한 실제 여행 유틸리티입니다. 현지 컨텍스트에 맞춤화된 설명과 주문 보조 기능을 제공합니다. 향후 오프라인 사전 데이터베이스 내장 및 동아시아 다국어 확장을 계획 중입니다.\n\nTabiLenS successfully implements a highly responsive travel utility. By combining Flutter\'s cross-platform UI rendering with Gemini\'s multimodal capabilities, it delivers contextual translation and conversational assistance. Future updates will focus on fully offline translation dictionaries and additional Asian languages.'
+    }
+  },
   shen: {
     id: 'shen',
     title: 'SHEN: Sentiment Hidden Eye aNalysis',
@@ -211,13 +257,26 @@ export const projectsData = {
 export const ProjectModal = ({ projectId, onClose }) => {
   const project = projectsData[projectId];
   const [activeTab, setActiveTab] = useState('overview');
+  const [isClosing, setIsClosing] = useState(false);
+
+  const handleClose = () => {
+    setIsClosing(true);
+    setTimeout(onClose, 200);
+  };
 
   if (!project) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-950/70 backdrop-blur-md animate-fade-in">
+    <div 
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-950/70 ${
+        isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
+      }`}
+      onClick={handleClose}
+    >
       <div 
-        className="glass-panel w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90"
+        className={`glass-panel w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${
+          isClosing ? 'animate-modal-out' : 'animate-modal-in'
+        }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -233,7 +292,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
             <h1 className="text-xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-snug">
               {project.title}
             </h1>
-            <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400 font-medium">
+            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300 font-medium">
               {project.subtitle}
             </p>
             <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
@@ -242,7 +301,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
             </div>
           </div>
           <button 
-            onClick={onClose}
+            onClick={handleClose}
             className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150"
           >
             <X size={20} />
@@ -303,7 +362,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                         <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
                         {m.title}
                       </h3>
-                      <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400 leading-relaxed whitespace-pre-line">
+                      <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                         {m.desc}
                       </p>
                     </div>
@@ -372,7 +431,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       <Zap size={14} className="text-indigo-500" />
                       {r.title}
                     </h3>
-                    <p className="text-xs md:text-sm text-slate-550 dark:text-slate-400 leading-relaxed">
+                    <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300 leading-relaxed">
                       {r.desc}
                     </p>
                   </div>
@@ -383,7 +442,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                       <img 
                         src={r.fig} 
                         alt={r.caption} 
-                        className="max-h-64 object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2" 
+                        className="max-h-[500px] object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2" 
                       />
                       <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl">
                         {r.caption}
@@ -394,13 +453,23 @@ export const ProjectModal = ({ projectId, onClose }) => {
                   {/* Multi-Figure displays */}
                   {r.figs && (
                     <div className="space-y-4">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div className={r.figs.length === 1 
+                        ? "flex justify-center" 
+                        : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+                      }>
                         {r.figs.map((f, fIdx) => (
-                          <div key={fIdx} className="flex flex-col items-center p-3 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-xl">
+                          <div 
+                            key={fIdx} 
+                            className={`flex flex-col items-center p-3 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-xl ${
+                              r.figs.length === 1 ? 'max-w-md w-full' : ''
+                            }`}
+                          >
                             <img 
                               src={f} 
                               alt="Figure component" 
-                              className="max-h-48 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1.5" 
+                              className={`object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1.5 w-full ${
+                                r.figs.length === 1 ? 'max-h-[520px]' : 'max-h-48'
+                              }`} 
                             />
                           </div>
                         ))}
@@ -431,7 +500,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
         <div className="p-4 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-6 md:px-8">
           <span className="text-[10px] text-slate-400 font-mono">[Sogang Univ. Art & Tech Portfolio Project]</span>
           <button 
-            onClick={onClose}
+            onClick={handleClose}
             className="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150"
           >
             Close Details
