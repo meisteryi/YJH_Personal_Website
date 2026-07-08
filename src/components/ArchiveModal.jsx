@@ -72,6 +72,15 @@ const archiveLogs = [
     tags: ['공군', '군복무', '만기전역']
   },
   {
+    date: 'Mar 2022 - Dec 2022',
+    title: 'Elected Art & Tech Student Council President',
+    category: 'Academic',
+    color: 'purple',
+    icon: Award,
+    description: '서강대학교 아트&테크놀로지 학과 학생회장으로 선출되어 학과 리더십을 발휘하고 다양한 학술/행사 프로그램을 기획 및 운영했습니다.\n\nElected and served as the Student Council President of the Art & Technology department at Sogang University, leading student initiatives and organizing various academic and cultural events.',
+    tags: ['Leadership', 'Sogang University', 'Student Council', 'Event Planning']
+  },
+  {
     date: 'Mar 2021',
     title: 'Entered Sogang University Art & Tech',
     category: 'Academic',

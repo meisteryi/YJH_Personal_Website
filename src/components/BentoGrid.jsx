@@ -330,6 +330,7 @@ export const ArchiveCard = ({ onOpen }) => {
     { date: 'Dec 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500', projectId: 'mus' },
     { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project', color: 'bg-amber-500', projectId: 'scout' },
     { date: 'Nov 2024', title: '대한민국 공군 만기전역', type: 'Military', color: 'bg-slate-500' },
+    { date: 'Mar-Dec 2022', title: 'Elected Art & Tech Student Council President / 아트&테크놀로지 학과 학생회장', type: 'Academic', color: 'bg-purple-500' },
     { date: 'Mar 2021', title: 'Entered Sogang University Art & Tech', type: 'Academic', color: 'bg-blue-500' }
   ];
 
