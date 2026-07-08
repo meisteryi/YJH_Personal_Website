@@ -43,11 +43,10 @@ function App() {
   };
 
   useEffect(() => {
-    // Check local storage or system preference
+    // Check local storage only
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+    if (savedTheme === 'dark') {
       setDarkMode(true);
       document.documentElement.classList.add('dark');
     } else {
