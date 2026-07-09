@@ -37,42 +37,6 @@ import unseenmap_1 from '../assets/unseenmap_1.png';
 import gachatodo_preview from '../assets/gachatodo_preview.png';
 
 export const projectsData = {
-  gachatodo: {
-    id: 'gachatodo',
-    title: 'Gacha To-Do',
-    subtitle: '할 일 완료로 모으는 코인과 픽셀 아쿠아리움 방치형 육성 게임 / Pixel Aquarium Idle Game Integrated with To-Do List',
-    author: 'Joohyoung Yi',
-    affiliation: 'Art & Technology, Sogang University',
-    email: 'yjh020701@gmail.com',
-    tags: ['Flutter', 'ValueNotifier', 'Shared Preferences', 'Pixel Art', 'State Management'],
-    abstract: '가챠 투두(Gacha To-Do)는 일상적인 할 일 관리(To-Do List)에 가챠(Gacha)와 방치형 육성 요소를 결합하여 지속적인 동기부여를 제공하는 Flutter 기반 모바일 애플리케이션입니다. 할 일을 완료해 획득한 코인으로 20여 종의 독특한 픽셀 물고기와 10여 종의 다채로운 수초를 수집하고 수조를 취향껏 인테리어할 수 있습니다. 일일/주간 미션, 먹이 주기와 영양제를 활용한 물고기 육성, 고유 ID 기반 클라우드 백업 시스템을 제공하며, 한국어, 영어, 일본어, 스페인어의 4개국 다국어를 전면 탑재했습니다.\n\nGacha To-Do is a Flutter-based mobile application that combines task management with gacha collection and idle aquarium decoration mechanics to keep users motivated. Completing to-do tasks rewards coins that players spend to roll gacha for 20+ pixelated fish types and 10+ aquatic plants. Users can arrange plants via interactive drag-and-drop, nurture fish (level up, special color modes), fulfill daily/weekly goals, and secure data using a quick alphanumeric cloud backup. The app fully implements native translation support for Korean, English, Japanese, and Spanish.',
-    sections: {
-      introduction: '가챠 투두는 따분한 일상 작업 관리에 귀여운 픽셀 아쿠아리움 꾸미기 게임을 결합하여, 유저에게 보상 중심의 지속 가능한 동기부여를 제공하려는 목표로 시작되었습니다. Flutter의 유연한 그래픽 엔진을 통해 매끄러운 픽셀 그래픽 렌더링과 드래그 앤 드롭 인테리어 에디터를 모바일 디바이스에 최적화했습니다.\n\nGacha To-Do was conceived to transform the routine chores of task management into a playful, reward-driven experience. By combining a gamified pixel aquarium with standard to-do features, the app gives users a cute, visual incentive to stay organized. Using Flutter\'s responsive UI engine, we optimized pixel graphics rendering and interactive decoration widgets directly for mobile devices.',
-      methodology: [
-        {
-          title: '드래그 앤 드롭 수초 배치 및 물리 생태 알고리즘 (Interactive Decoration & Fish Ecosystem Physics)',
-          desc: '획득한 수초 오브젝트를 드래그 앤 드롭하여 배치하거나 더블 탭으로 제거할 수 있는 직관적인 수조 편집 모드를 구축했습니다. 물고기 캐릭터들은 디바이스 크기에 맞게 가속도와 마찰력이 반영된 랜덤 바운싱 수중 유영 알고리즘(Bouncing Physics)을 적용받아 살아 움직이는 아쿠아리움 생태를 묘사합니다.\n\nWe designed an interactive aquarium decoration system where users drag and drop aquatic plants or double-tap to delete objects. The fish character models run on a custom aquatic locomotion script that dynamically calculates boundary bouncing, acceleration, and friction relative to the screen dimensions to simulate natural aquatic movements.'
-        },
-        {
-          title: '반응형 로컬 상태 연동 및 영구 저장 (Reactive Local State & Shared Preferences)',
-          desc: '별도의 복잡한 상태 관리 라이브러리 없이, ValueNotifier와 Custom ThemeManager를 결합하여 테마 전환, 코인 변동, 물고기 경험치 상태를 고성능으로 동기화했습니다. 획득한 아이템 데이터와 할 일 히스토리는 shared_preferences 패키지를 이용해 영구적으로 기기 내에 보존됩니다.\n\nTo maintain lightweight efficiency, we implemented native ValueNotifiers combined with a Custom ThemeManager for lightweight state synchronization of coin balances, items, and experience points. All collected items, fish levels, and checklist history are stored locally using the shared_preferences package.'
-        },
-        {
-          title: '알파뉴메릭 고유 ID 기반 클라우드 백업 (Alphanumeric ID Cloud Save API)',
-          desc: '복잡한 소셜 로그인 연동 없이, 유저마다 발급되는 알파뉴메릭 난수 고유 ID를 키값으로 사용해 수조 정보와 컬렉션 데이터셋을 클라우드 서버에 저장하고 복원할 수 있는 http API 통신 파이프라인을 구축하여 사용자 편의성을 극대화했습니다.\n\nTo ensure privacy and easy data mobility, we built a server-side JSON backup pipeline using HTTP REST APIs. Users can generate a unique alphanumeric backup ID, allowing them to upload and download their current inventory, aquarium arrangements, and history without requiring complex social registration processes.'
-        }
-      ],
-      results: [
-        {
-          title: '가챠 투두 메인 픽셀 아트 화면 (Gacha To-Do Main Mockup)',
-          desc: '할 일 목록을 처리하여 코인을 획득하고, 가챠 샵에서 뽑은 물고기와 수초를 자유롭게 배치하여 감상할 수 있는 레트로 감성의 픽셀 아쿠아리움 화면입니다.\n\nThe main screen showing a retro pixel aquarium dashboard. Tasks are completed to earn currency, which can be spent at the gacha shop to collect, upgrade, and place aquarium assets.',
-          figs: [gachatodo_preview],
-          captions: ['Figure 1: Smart Gacha To-Do mockup showing task completion widgets and custom pixel aquarium.']
-        }
-      ],
-      conclusion: '가챠 투두는 생산성 도구에 게임 요소를 정교하게 이식한 게이미피케이션(Gamification) 프로젝트입니다. 향후 사운드 효과 삽입, 물고기 간의 상호작용 인공지능 강화, 소셜 수조 공유 기능 도입을 통해 지속적인 사용자 경험 확장을 노리고 있습니다.\n\nGacha To-Do represents a successful implementation of gamification in task management. By introducing collection rewards, it encourages consistent daily planning. Future iterations will focus on background music integration, fish-to-fish interactions, and social aquarium sharing.'
-    }
-  },
   tabilens: {
     id: 'tabilens',
     title: 'TabiLenS',
@@ -113,6 +77,42 @@ export const projectsData = {
         }
       ],
       conclusion: 'TabiLenS는 Flutter의 하이브리드 생산성과 Gemini의 고속 멀티모달 능력을 성공적으로 융합한 실제 여행 유틸리티입니다. 현지 컨텍스트에 맞춤화된 설명과 주문 보조 기능을 제공합니다. 향후 오프라인 사전 데이터베이스 내장 및 동아시아 다국어 확장을 계획 중입니다.\n\nTabiLenS successfully implements a highly responsive travel utility. By combining Flutter\'s cross-platform UI rendering with Gemini\'s multimodal capabilities, it delivers contextual translation and conversational assistance. Future updates will focus on fully offline translation dictionaries and additional Asian languages.'
+    }
+  },
+  gachatodo: {
+    id: 'gachatodo',
+    title: 'Gacha To-Do',
+    subtitle: '할 일 완료로 모으는 코인과 픽셀 아쿠아리움 방치형 육성 게임 / Pixel Aquarium Idle Game Integrated with To-Do List',
+    author: 'Joohyoung Yi',
+    affiliation: 'Art & Technology, Sogang University',
+    email: 'yjh020701@gmail.com',
+    tags: ['Flutter', 'ValueNotifier', 'Shared Preferences', 'Pixel Art', 'State Management'],
+    abstract: '가챠 투두(Gacha To-Do)는 일상적인 할 일 관리(To-Do List)에 가챠(Gacha)와 방치형 육성 요소를 결합하여 지속적인 동기부여를 제공하는 Flutter 기반 모바일 애플리케이션입니다. 할 일을 완료해 획득한 코인으로 20여 종의 독특한 픽셀 물고기와 10여 종의 다채로운 수초를 수집하고 수조를 취향껏 인테리어할 수 있습니다. 일일/주간 미션, 먹이 주기와 영양제를 활용한 물고기 육성, 고유 ID 기반 클라우드 백업 시스템을 제공하며, 한국어, 영어, 일본어, 스페인어의 4개국 다국어를 전면 탑재했습니다.\n\nGacha To-Do is a Flutter-based mobile application that combines task management with gacha collection and idle aquarium decoration mechanics to keep users motivated. Completing to-do tasks rewards coins that players spend to roll gacha for 20+ pixelated fish types and 10+ aquatic plants. Users can arrange plants via interactive drag-and-drop, nurture fish (level up, special color modes), fulfill daily/weekly goals, and secure data using a quick alphanumeric cloud backup. The app fully implements native translation support for Korean, English, Japanese, and Spanish.',
+    sections: {
+      introduction: '가챠 투두는 따분한 일상 작업 관리에 귀여운 픽셀 아쿠아리움 꾸미기 게임을 결합하여, 유저에게 보상 중심의 지속 가능한 동기부여를 제공하려는 목표로 시작되었습니다. Flutter의 유연한 그래픽 엔진을 통해 매끄러운 픽셀 그래픽 렌더링과 드래그 앤 드롭 인테리어 에디터를 모바일 디바이스에 최적화했습니다.\n\nGacha To-Do was conceived to transform the routine chores of task management into a playful, reward-driven experience. By combining a gamified pixel aquarium with standard to-do features, the app gives users a cute, visual incentive to stay organized. Using Flutter\'s responsive UI engine, we optimized pixel graphics rendering and interactive decoration widgets directly for mobile devices.',
+      methodology: [
+        {
+          title: '드래그 앤 드롭 수초 배치 및 물리 생태 알고리즘 (Interactive Decoration & Fish Ecosystem Physics)',
+          desc: '획득한 수초 오브젝트를 드래그 앤 드롭하여 배치하거나 더블 탭으로 제거할 수 있는 직관적인 수조 편집 모드를 구축했습니다. 물고기 캐릭터들은 디바이스 크기에 맞게 가속도와 마찰력이 반영된 랜덤 바운싱 수중 유영 알고리즘(Bouncing Physics)을 적용받아 살아 움직이는 아쿠아리움 생태를 묘사합니다.\n\nWe designed an interactive aquarium decoration system where users drag and drop aquatic plants or double-tap to delete objects. The fish character models run on a custom aquatic locomotion script that dynamically calculates boundary bouncing, acceleration, and friction relative to the screen dimensions to simulate natural aquatic movements.'
+        },
+        {
+          title: '반응형 로컬 상태 연동 및 영구 저장 (Reactive Local State & Shared Preferences)',
+          desc: '별도의 복잡한 상태 관리 라이브러리 없이, ValueNotifier와 Custom ThemeManager를 결합하여 테마 전환, 코인 변동, 물고기 경험치 상태를 고성능으로 동기화했습니다. 획득한 아이템 데이터와 할 일 히스토리는 shared_preferences 패키지를 이용해 영구적으로 기기 내에 보존됩니다.\n\nTo maintain lightweight efficiency, we implemented native ValueNotifiers combined with a Custom ThemeManager for lightweight state synchronization of coin balances, items, and experience points. All collected items, fish levels, and checklist history are stored locally using the shared_preferences package.'
+        },
+        {
+          title: '알파뉴메릭 고유 ID 기반 클라우드 백업 (Alphanumeric ID Cloud Save API)',
+          desc: '복잡한 소셜 로그인 연동 없이, 유저마다 발급되는 알파뉴메릭 난수 고유 ID를 키값으로 사용해 수조 정보와 컬렉션 데이터셋을 클라우드 서버에 저장하고 복원할 수 있는 http API 통신 파이프라인을 구축하여 사용자 편의성을 극대화했습니다.\n\nTo ensure privacy and easy data mobility, we built a server-side JSON backup pipeline using HTTP REST APIs. Users can generate a unique alphanumeric backup ID, allowing them to upload and download their current inventory, aquarium arrangements, and history without requiring complex social registration processes.'
+        }
+      ],
+      results: [
+        {
+          title: '가챠 투두 메인 픽셀 아트 화면 (Gacha To-Do Main Mockup)',
+          desc: '할 일 목록을 처리하여 코인을 획득하고, 가챠 샵에서 뽑은 물고기와 수초를 자유롭게 배치하여 감상할 수 있는 레트로 감성의 픽셀 아쿠아리움 화면입니다.\n\nThe main screen showing a retro pixel aquarium dashboard. Tasks are completed to earn currency, which can be spent at the gacha shop to collect, upgrade, and place aquarium assets.',
+          figs: [gachatodo_preview],
+          captions: ['Figure 1: Smart Gacha To-Do mockup showing task completion widgets and custom pixel aquarium.']
+        }
+      ],
+      conclusion: '가챠 투두는 생산성 도구에 게임 요소를 정교하게 이식한 게이미피케이션(Gamification) 프로젝트입니다. 향후 사운드 효과 삽입, 물고기 간의 상호작용 인공지능 강화, 소셜 수조 공유 기능 도입을 통해 지속적인 사용자 경험 확장을 노리고 있습니다.\n\nGacha To-Do represents a successful implementation of gamification in task management. By introducing collection rewards, it encourages consistent daily planning. Future iterations will focus on background music integration, fish-to-fish interactions, and social aquarium sharing.'
     }
   },
   unseenmap: {
