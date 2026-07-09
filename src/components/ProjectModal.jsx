@@ -27,6 +27,7 @@ import scout_slides_fig_25 from '../assets/scout_slides_fig_25.png';
 // Import TabiLenS screenshots
 import tabilens_1 from '../assets/tabilens_1.png';
 import tabilens_2 from '../assets/tabilens_2.png';
+import tabilens_3 from '../assets/tabilens_3.png';
 
 // Import HalliGalli screenshots
 import halligalli_1 from '../assets/halligalli_1.png';
@@ -35,6 +36,11 @@ import halligalli_2 from '../assets/halligalli_2.png';
 // Import Unseen Map Explorer preview
 import unseenmap_1 from '../assets/unseenmap_1.png';
 import gachatodo_preview from '../assets/gachatodo_preview.png';
+import gachatodo_1 from '../assets/gachatodo_1.png';
+import gachatodo_2 from '../assets/gachatodo_2.png';
+import gachatodo_3 from '../assets/gachatodo_3.png';
+import gachatodo_4 from '../assets/gachatodo_4.png';
+import gachatodo_5 from '../assets/gachatodo_5.png';
 
 export const projectsData = {
   tabilens: {
@@ -64,16 +70,22 @@ export const projectsData = {
       ],
       results: [
         {
-          title: '인터랙티브 메뉴 스캔 화면 (Interactive Menu Scanning Interface)',
-          desc: '메뉴판을 촬영하면 텍스트 블록 위에 직접 터치할 수 있는 인터랙티브 경계 박스가 오버레이되어 사용자가 번역하려는 대상을 직관적으로 고를 수 있습니다.\n\nThe user snaps a photo of a menu. The app processes the image and overlays touch-interactive bounding boxes directly over the Japanese text segments, allowing the user to select what they want to decipher.',
+          title: '여행 국가 선택 화면 (Country Selection Interface)',
+          desc: '앱 초기 실행 또는 설정 시 사용자가 여행 중인 국가(예: 일본)를 선택하여 번역 엔진 및 현지 식문화 가이드 데이터를 맞춤형으로 활성화하는 시작 화면입니다.\n\nThe startup screen where users select their current travel destination (e.g., Japan) to dynamically configure the OCR translation database and dining guidelines accordingly.',
           figs: [tabilens_1],
-          captions: ['Figure 1: Smart OCR boundary boxes mapped directly over Japanese characters on the image.']
+          captions: ['Figure 1: Country selection screen to customize translation databases and local culture guides.']
         },
         {
-          title: '식문화 가이드 및 음성 합성 출력 (Food Culture Guide & Audio Speech Synthesis)',
-          desc: '선택된 요리의 한글 이름, 유래 설명, 포함 식재료 정보, 알레르기 안내를 확인하고 원하는 주문 문장을 골라 TTS 네이티브 오디오 발음을 듣거나 상대방에게 재생할 수 있습니다.\n\nTapping a menu item reveals a card displaying the translation, visual reference, dish origin, allergy check (ingredients), and recommended ordering phrases with TTS playback.',
+          title: '카메라 스캔 및 이미지 불러오기 (Menu Scanner Dashboard)',
+          desc: '일본어 메뉴판 번역을 위해 모바일 카메라로 직접 촬영하거나 기기에 저장된 갤러리 이미지에서 사진을 선택하여 텍스트 분석을 요청할 수 있는 기능입니다.\n\nThe main scanner dashboard providing immediate actions: snapping a live photo of a Japanese menu or importing an image from the photo gallery for analysis.',
           figs: [tabilens_2],
-          captions: ['Figure 2: Translation detail showing cultural explanation, ingredient breakdown, and audio speech synthesis.']
+          captions: ['Figure 2: Scan dashboard presenting direct camera capture or gallery import options.']
+        },
+        {
+          title: '식문화 해설 및 주문 도우미 결과 화면 (Food Culture Guide & Order Assistant Details)',
+          desc: 'Gemini OCR 분석 결과를 기반으로 요리의 이름뿐 아니라 유래, 포함 식재료, 알레르기 유발 물질 같은 문화적 해설을 제공합니다. 또한 현지 주문용 실전 템플릿 문장 및 TTS 원어민 발음 기능이 탑재되어 실제 주문 시 소통을 돕습니다.\n\nThe detailed analysis output containing OCR text translation alongside contextual food explanations (origin, ingredients, allergen info). It also generates situational ordering templates in Japanese with native Text-to-Speech (TTS) voice playback.',
+          figs: [tabilens_3],
+          captions: ['Figure 3: Translation detail showing cultural explanation, ingredient breakdown, and audio speech synthesis.']
         }
       ],
       conclusion: 'TabiLenS는 Flutter의 하이브리드 생산성과 Gemini의 고속 멀티모달 능력을 성공적으로 융합한 실제 여행 유틸리티입니다. 현지 컨텍스트에 맞춤화된 설명과 주문 보조 기능을 제공합니다. 향후 오프라인 사전 데이터베이스 내장 및 동아시아 다국어 확장을 계획 중입니다.\n\nTabiLenS successfully implements a highly responsive travel utility. By combining Flutter\'s cross-platform UI rendering with Gemini\'s multimodal capabilities, it delivers contextual translation and conversational assistance. Future updates will focus on fully offline translation dictionaries and additional Asian languages.'
@@ -106,10 +118,34 @@ export const projectsData = {
       ],
       results: [
         {
-          title: '가챠 투두 메인 픽셀 아트 화면 (Gacha To-Do Main Mockup)',
-          desc: '할 일 목록을 처리하여 코인을 획득하고, 가챠 샵에서 뽑은 물고기와 수초를 자유롭게 배치하여 감상할 수 있는 레트로 감성의 픽셀 아쿠아리움 화면입니다.\n\nThe main screen showing a retro pixel aquarium dashboard. Tasks are completed to earn currency, which can be spent at the gacha shop to collect, upgrade, and place aquarium assets.',
-          figs: [gachatodo_preview],
-          captions: ['Figure 1: Smart Gacha To-Do mockup showing task completion widgets and custom pixel aquarium.']
+          title: '가챠 머신 화면 (Gacha Machine Interface)',
+          desc: '할 일을 완료해 모은 코인을 사용하여 새로운 물고기나 수초를 뽑는 가챠 머신 화면입니다. 1회 뽑기(1 코인)와 10회 연속 뽑기(10 코인)를 지원하며, 슬롯이 돌아가는 형태의 릴(Reel) 회전 애니메이션 연출(slot_machine.dart)을 통해 뽑기의 몰입감을 높였습니다. 화면 상단에는 먹이 개수와 현재 보유 코인이 실시간으로 업데이트되어 표시됩니다.\n\nThe gacha machine interface where users spend earned coins to draw fish or plants. It supports single draw (1 coin) and 10-consecutive draws (10 coins) with custom spinning reel animations (slot_machine.dart). The top dashboard displays real-time updates for coins and fish food.',
+          figs: [gachatodo_1],
+          captions: ['Figure 1: Custom pixel-style gacha machine with spin animations and coin-drawing mechanics.']
+        },
+        {
+          title: '할 일 관리 화면 (To-Do List Interface)',
+          desc: '날짜별 할 일(To-Do) 목록을 생성, 수정 및 완료 처리할 수 있는 할 일 관리 화면입니다. 당일 완료한 작업 비중에 따라 상단의 오늘의 달성률 프로그레스 바가 차오르며, 우측 하단의 추가(+) 버튼으로 세부 정보(시간, 알림 설정, 장소, 메모 등) 및 카테고리를 분류해 등록할 수 있습니다.\n\nThe to-do list manager supporting task creation, edits, and completions. A visual progress bar at the top displays the daily completion rate. The bottom-right add (+) button allows registering detailed tasks (including category, alarm time, location, and memos) and switching dates.',
+          figs: [gachatodo_2],
+          captions: ['Figure 2: Daily task planner with completion rate tracking and customized task categories.']
+        },
+        {
+          title: '아쿠아리움 수조 화면 (My Aquarium Sandbox)',
+          desc: '획득한 물고기들과 수초들로 나만의 수조를 자유롭게 가꾸는 메인 아쿠아리움 화면입니다. 수초는 드래그 앤 드롭 편집 모드를 통해 원하는 좌표에 자유롭게 배치하거나 더블 탭으로 제거할 수 있으며, 물고기는 가속도와 마찰력이 적용된 무작위 유영 알고리즘에 따라 돌아다닙니다. 먹이 투여를 통해 레벨업(Lv.Max 5)하거나 영양제를 사용해 경험치 버프를 줄 수 있습니다.\n\nThe sandbox aquarium dashboard where collected fish and plants are arranged. Seaweed objects can be positioned via drag-and-drop decoration mode or removed via double-tap, while fish swim using custom boundary-collision physics. Users can feed fish to level up (up to Lv.5) or apply supplement buffs.',
+          figs: [gachatodo_3],
+          captions: ['Figure 3: Interactive aquarium dashboard with custom swim physics, decoration editors, and level-up systems.']
+        },
+        {
+          title: '미션 및 퀘스트 화면 (Daily Quests & Missions)',
+          desc: '출석체크, 가챠 실행, 물고기 먹이 주기, 특정 개수 이상의 투두 완료 등 매일 00시에 자동 리셋되는 일일 퀘스트와 연속 출석 등의 주간 미션을 추적하는 화면입니다. 조건 충족 시 비활성화되어 있던 \'보상 받기\' 버튼이 활성화되며, 누르면 코인, 먹이, 영양제 등의 인게임 아이템 보상이 지급됩니다.\n\nThe quest tracker displaying daily/weekly achievements (e.g., attendance checks, daily tasks, feeding). When requirements are met, the \'Claim Reward\' button activates, granting in-game rewards like coins, food, and supplements.',
+          figs: [gachatodo_4],
+          captions: ['Figure 4: Automated daily quest dashboard rewarding tasks like gacha rolls and fish feeding.']
+        },
+        {
+          title: '아이템 상점 카테고리 화면 (Item Shop Categories)',
+          desc: '가챠(동물/수초 뽑기)와 소모품(먹이/영양제 상점), 수조 내부 데코 장식물 상점 등 다양한 인게임 물품을 구매할 수 있는 상점 카테고리 진입 화면입니다. 각 카테고리 카드별로 고유 픽셀 아트 아이콘이 렌더링되며, 업데이트 예정인 슬롯에는 자물쇠가 달린 비활성 아이콘(Locked)이 표현됩니다.\n\nThe main shop navigation menu categorized into Animal Gacha, Seaweed Gacha, Feed/Supplements, and Decorations. Each item shop features custom pixel art icons, with locked cards placeholder-staged for future item updates.',
+          figs: [gachatodo_5],
+          captions: ['Figure 5: In-game store catalog grouping fish/plant drawing modules and consumable items.']
         }
       ],
       conclusion: '가챠 투두는 생산성 도구에 게임 요소를 정교하게 이식한 게이미피케이션(Gamification) 프로젝트입니다. 향후 사운드 효과 삽입, 물고기 간의 상호작용 인공지능 강화, 소셜 수조 공유 기능 도입을 통해 지속적인 사용자 경험 확장을 노리고 있습니다.\n\nGacha To-Do represents a successful implementation of gamification in task management. By introducing collection rewards, it encourages consistent daily planning. Future iterations will focus on background music integration, fish-to-fish interactions, and social aquarium sharing.'

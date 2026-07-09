@@ -26,6 +26,7 @@ const searchProjects = [
 function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [modalSource, setModalSource] = useState(null); // 'projects', 'archive'
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -40,6 +41,7 @@ function App() {
       setIsArchiveOpen(true);
     } else {
       setSelectedProject(id);
+      setModalSource(null);
     }
   };
 
@@ -187,6 +189,7 @@ function App() {
                         key={project.id}
                         onClick={() => {
                           setSelectedProject(project.id);
+                          setModalSource(null);
                           setSearchQuery('');
                           setIsSearchExpanded(false);
                         }}
@@ -230,54 +233,73 @@ function App() {
           {/* 1. Hero Card (2x2) */}
           <HeroCard />
 
-          {/* 2. Academic / Research Card (1x2) - SHEN */}
-          <AcademicCard onOpen={setSelectedProject} />
-
-          {/* 3. Small Personal Project Card (1x1) - TabiLenS */}
-          <PersonalProjectCard onOpen={setSelectedProject} />
-
-          {/* 4. Small Interactive Card (1x1) */}
-          <InteractiveCard />
-
-          {/* 5. Product Showroom Card (2x2) - µ's */}
-          <ShowroomCard onOpen={setSelectedProject} />
-
-
-
-          {/* 7. Archive / Logs Timeline Card (1x2) */}
-          <ArchiveCard onOpen={handleOpenProject} />
-        </div>
-      </main>
-
-      {/* Render Project Detail Modal */}
-      {selectedProject && (
-        <ProjectModal 
-          projectId={selectedProject} 
-          onClose={() => setSelectedProject(null)} 
-        />
-      )}
-
-      {/* Render Timeline Archive Modal */}
-      {isArchiveOpen && (
-        <ArchiveModal 
-          onClose={() => setIsArchiveOpen(false)}
-          onOpenProject={(id) => {
-            setIsArchiveOpen(false);
-            setSelectedProject(id);
-          }}
-        />
-      )}
-
-      {/* Render Projects List Modal */}
-      {isProjectsOpen && (
-        <ProjectsModal 
-          onClose={() => setIsProjectsOpen(false)}
-          onOpenProject={(id) => {
-            setIsProjectsOpen(false);
-            setSelectedProject(id);
-          }}
-        />
-      )}
+           {/* 2. Academic / Research Card (1x2) - SHEN */}
+           <AcademicCard onOpen={(id) => {
+             setSelectedProject(id);
+             setModalSource(null);
+           }} />
+ 
+           {/* 3. Small Personal Project Card (1x1) - TabiLenS */}
+           <PersonalProjectCard onOpen={(id) => {
+             setSelectedProject(id);
+             setModalSource(null);
+           }} />
+ 
+           {/* 4. Small Interactive Card (1x1) */}
+           <InteractiveCard />
+ 
+           {/* 5. Product Showroom Card (2x2) - µ's */}
+           <ShowroomCard onOpen={(id) => {
+             setSelectedProject(id);
+             setModalSource(null);
+           }} />
+ 
+ 
+ 
+           {/* 7. Archive / Logs Timeline Card (1x2) */}
+           <ArchiveCard onOpen={handleOpenProject} />
+         </div>
+       </main>
+ 
+       {/* Render Project Detail Modal */}
+       {selectedProject && (
+         <ProjectModal 
+           projectId={selectedProject} 
+           onClose={() => {
+             setSelectedProject(null);
+             if (modalSource === 'projects') {
+               setIsProjectsOpen(true);
+             } else if (modalSource === 'archive') {
+               setIsArchiveOpen(true);
+             }
+             setModalSource(null);
+           }} 
+         />
+       )}
+ 
+       {/* Render Timeline Archive Modal */}
+       {isArchiveOpen && (
+         <ArchiveModal 
+           onClose={() => setIsArchiveOpen(false)}
+           onOpenProject={(id) => {
+             setIsArchiveOpen(false);
+             setSelectedProject(id);
+             setModalSource('archive');
+           }}
+         />
+       )}
+ 
+       {/* Render Projects List Modal */}
+       {isProjectsOpen && (
+         <ProjectsModal 
+           onClose={() => setIsProjectsOpen(false)}
+           onOpenProject={(id) => {
+             setIsProjectsOpen(false);
+             setSelectedProject(id);
+             setModalSource('projects');
+           }}
+         />
+       )}
 
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-4 md:px-8 py-8 mt-12 border-t border-slate-200/30 dark:border-slate-800/30 flex flex-col md:flex-row items-center justify-between gap-4">

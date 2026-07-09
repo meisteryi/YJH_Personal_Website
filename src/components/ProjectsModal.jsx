@@ -9,10 +9,10 @@ import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 import tabilens_1 from '../assets/tabilens_1.png';
 import halligalli_1 from '../assets/halligalli_1.png';
 import unseenmap_1 from '../assets/unseenmap_1.png';
-import gachatodo_preview from '../assets/gachatodo_preview.png';
+import gachatodo_3 from '../assets/gachatodo_3.png';
 
 const projectImages = {
-  gachatodo: gachatodo_preview,
+  gachatodo: gachatodo_3,
   tabilens: tabilens_1,
   unseenmap: unseenmap_1,
   halligalli: halligalli_1,
