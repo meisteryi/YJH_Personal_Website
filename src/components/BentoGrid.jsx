@@ -324,6 +324,7 @@ export const PersonalProjectCard = ({ onOpen }) => {
 export const ArchiveCard = ({ onOpen }) => {
   const logs = [
     { date: 'Jul 2026', title: 'Released TabiLenS Mobile App', type: 'Project', color: 'bg-emerald-500', projectId: 'tabilens' },
+    { date: 'Jun 2026', title: 'Started Gacha To-Do (Ongoing) / 가챠 투두 개발 시작 (진행 중)', type: 'Project', color: 'bg-teal-500', projectId: 'gachatodo' },
     { date: 'Jun 2026', title: 'Released Unseen Map Explorer', type: 'Project', color: 'bg-indigo-500', projectId: 'unseenmap' },
     { date: 'Jun 2026', title: 'Released Online HalliGalli Web Game', type: 'Project', color: 'bg-amber-500', projectId: 'halligalli' },
     { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500', projectId: 'shen' },

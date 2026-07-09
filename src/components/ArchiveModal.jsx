@@ -14,6 +14,16 @@ const archiveLogs = [
   },
   {
     date: 'Jun 2026',
+    title: 'Started Gacha To-Do (Ongoing)',
+    category: 'Project',
+    color: 'teal',
+    icon: Code,
+    projectId: 'gachatodo',
+    description: '할 일 완료 보상 코인으로 픽셀 아쿠아리움을 꾸미는 가챠/육성 요소 결합 Flutter 기반 모바일 애플리케이션 개발 시작 (진행 중).\n\nStarted development of Gacha To-Do, a Flutter-based mobile application integrating daily task management with gacha collection mechanics and pixel aquarium decoration.',
+    tags: ['Flutter', 'ValueNotifier', 'Local Storage', 'Pixel Art', 'Gamification']
+  },
+  {
+    date: 'Jun 2026',
     title: 'Released Unseen Map Explorer',
     category: 'Project',
     color: 'indigo',

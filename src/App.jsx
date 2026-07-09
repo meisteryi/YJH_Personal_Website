@@ -14,6 +14,7 @@ import { ProjectsModal } from './components/ProjectsModal';
 import logo from './assets/logo.png';
 
 const searchProjects = [
+  { id: 'gachatodo', title: 'Gacha To-Do', category: 'Project', description: '할 일 완료로 모으는 코인과 픽셀 아쿠아리움 방치형 육성 게임 앱' },
   { id: 'tabilens', title: 'TabiLenS', category: 'Project', description: '실시간 일본어 메뉴판 번역 및 식문화 가이드 주문 도우미 서비스' },
   { id: 'unseenmap', title: 'Unseen Map Explorer', category: 'Project', description: '사진 EXIF GPS 메타데이터 파싱 기반 여행 경로 매핑 서비스' },
   { id: 'halligalli', title: 'Online HalliGalli', category: 'Project', description: 'WebRTC 기반 실시간 멀티플레이어 할리갈리 웹 게임' },
