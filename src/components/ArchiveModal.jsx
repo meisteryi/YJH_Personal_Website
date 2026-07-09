@@ -9,7 +9,7 @@ const archiveLogs = [
     color: 'emerald',
     icon: Code,
     projectId: 'tabilens',
-    description: 'Gemini 2.5 Flash OCR 및 네이티브 TTS를 활용한 Flutter 기반 실시간 일본어 메뉴판 번역 및 식문화 가이드 앱 개발.\n\nDeveloped TabiLenS, a Flutter-based real-time Japanese menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
+    description: 'Gemini 2.5 Flash OCR 및 네이티브 TTS를 활용한 Flutter 기반 실시간 다국어 메뉴판 번역 및 식문화 가이드 앱 개발.\n\nDeveloped TabiLenS, a Flutter-based real-time multilingual menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
     tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
   },
   {
@@ -71,6 +71,15 @@ const archiveLogs = [
     projectId: 'scout',
     description: '객관적인 선수 능력치 스태츠와 Reddit API로 수집한 팬들의 주관적인 의견 감성 분석 및 로컬 phi-1.5 모델의 자연어 축구 선수 스카우팅 추천 시스템 개발.\n\nDeveloped an NLP recommendation system combining numeric football player cards metrics with subjective fan commentaries scraped via Reddit APIs. Summaries generated using local phi-1.5 model.',
     tags: ['BERT', 'phi-1.5', 'Reddit API', 'Streamlit', 'Text Toxicity']
+  },
+  {
+    date: 'Mar 2025',
+    title: 'Declared Artificial Intelligence as Double Major',
+    category: 'Academic',
+    color: 'blue',
+    icon: GraduationCap,
+    description: '서강대학교 인공지능(AI) 학과 복수전공을 시작하여, 컴퓨터 비전, 자연어 처리(NLP), 강화학습 등 고급 인공지능 엔지니어링 교과를 이수하고 딥러닝 응용 역량을 고도화하고 있습니다.\n\nDeclared Artificial Intelligence as a double major at Sogang University, focusing on advanced machine learning engineering, computer vision, and NLP to build solid deep learning application expertise.',
+    tags: ['Artificial Intelligence', 'Sogang University', 'Double Major', 'Deep Learning']
   },
   {
     date: 'Feb 2023 - Nov 2024',

@@ -53,7 +53,7 @@ export const HeroCard = () => {
             Joohyoung Yi
           </h1>
           <p className="text-lg md:text-xl font-medium text-indigo-600 dark:text-indigo-400">
-            Art & Technology Student @ Sogang Univ.
+            Art & Technology & Artificial Intelligence Student @ Sogang Univ.
           </p>
         </div>
 
@@ -307,8 +307,8 @@ export const PersonalProjectCard = ({ onOpen }) => {
           TabiLenS
         </h3>
         <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-2">
-          실시간 일본어 메뉴판 번역 및 식문화 가이드<br />
-          Real-time Japanese menu translator & dining guide
+          실시간 다국어 메뉴판 번역 및 식문화 가이드<br />
+          Real-time Multilingual menu translator & dining guide
         </p>
       </div>
 
@@ -330,6 +330,7 @@ export const ArchiveCard = ({ onOpen }) => {
     { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500', projectId: 'shen' },
     { date: 'Dec 2025', title: 'Designed µ\'s Mel-Spectrogram pipeline', type: 'Project', color: 'bg-purple-500', projectId: 'mus' },
     { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project', color: 'bg-amber-500', projectId: 'scout' },
+    { date: 'Mar 2025', title: 'Declared Artificial Intelligence as Double Major / 인공지능학과 복수전공 진입', type: 'Academic', color: 'bg-blue-500' },
     { date: 'Nov 2024', title: '대한민국 공군 만기전역', type: 'Military', color: 'bg-slate-500' },
     { date: 'Mar-Dec 2022', title: 'Elected Art & Tech Student Council President / 아트&테크놀로지 학과 학생회장', type: 'Academic', color: 'bg-purple-500' },
     { date: 'Mar 2021', title: 'Entered Sogang University Art & Tech', type: 'Academic', color: 'bg-blue-500' }
