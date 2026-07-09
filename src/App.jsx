@@ -43,16 +43,36 @@ function App() {
   };
 
   useEffect(() => {
-    // Check local storage only
     const savedTheme = localStorage.getItem('theme');
+    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     
-    if (savedTheme === 'dark') {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
+    const applyTheme = (theme) => {
+      if (theme === 'dark') {
+        setDarkMode(true);
+        document.documentElement.classList.add('dark');
+      } else {
+        setDarkMode(false);
+        document.documentElement.classList.remove('dark');
+      }
+    };
+
+    // Initial load
+    if (savedTheme) {
+      applyTheme(savedTheme);
     } else {
-      setDarkMode(false);
-      document.documentElement.classList.remove('dark');
+      // Default to system time-based preference
+      applyTheme(mediaQuery.matches ? 'dark' : 'light');
     }
+
+    // Listener for system preference changes (runs only if user has not set a manual override)
+    const handleSystemThemeChange = (e) => {
+      const hasManualOverride = localStorage.getItem('theme');
+      if (!hasManualOverride) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    };
+
+    mediaQuery.addEventListener('change', handleSystemThemeChange);
 
     // Scroll listener for sticky header styling
     const handleScroll = () => {
@@ -63,7 +83,11 @@ function App() {
       }
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleSystemThemeChange);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   // Click outside to collapse search

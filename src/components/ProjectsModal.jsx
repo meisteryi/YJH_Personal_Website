@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, ArrowRight, Code } from 'lucide-react';
 import { projectsData } from './ProjectModal';
 
@@ -21,11 +21,37 @@ const projectImages = {
 
 export const ProjectsModal = ({ onClose, onOpenProject }) => {
   const [isClosing, setIsClosing] = useState(false);
+  const scrollContainerRef = useRef(null);
   
   const handleClose = () => {
     setIsClosing(true);
     setTimeout(onClose, 200);
   };
+
+  useEffect(() => {
+    // Prevent background page body scroll while modal is active
+    document.body.style.overflow = 'hidden';
+
+    // Intercept mouse wheel vertical scroll and redirect to horizontal scroll
+    const container = scrollContainerRef.current;
+    if (container) {
+      const handleWheel = (e) => {
+        if (e.deltaY === 0) return;
+        e.preventDefault();
+        container.scrollLeft += e.deltaY;
+      };
+      container.addEventListener('wheel', handleWheel, { passive: false });
+
+      return () => {
+        container.removeEventListener('wheel', handleWheel);
+        document.body.style.overflow = '';
+      };
+    }
+
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, []);
 
   // Filter out the 'archive' entry from the projects list
   const projects = Object.values(projectsData).filter(p => p.id !== 'archive');
@@ -63,7 +89,7 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Projects Horizontal Scroll Container */}
-        <div className="flex-1 overflow-x-auto p-6 md:p-8 flex items-stretch scrollbar-thin">
+        <div ref={scrollContainerRef} className="flex-1 overflow-x-auto p-6 md:p-8 flex items-stretch scrollbar-thin">
           <div className="flex gap-6 pb-2">
             {projects.map((project) => {
               const image = projectImages[project.id];
@@ -71,7 +97,7 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
                 <div 
                   key={project.id}
                   onClick={() => onOpenProject(project.id)}
-                  className="group flex flex-col justify-between rounded-2xl border border-slate-100 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/40 p-5 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1 w-[290px] sm:w-[320px] md:w-[350px] shrink-0"
+                  className="group flex flex-col justify-between rounded-2xl border border-slate-100 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/40 p-5 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1 w-[290px] sm:w-[320px] md:w-[350px] h-[400px] shrink-0 overflow-hidden"
                 >
                   <div className="space-y-4">
                     {/* Project Preview Image */}
@@ -101,8 +127,8 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
                         {project.title}
                       </h3>
                       
-                      <p className="text-xs text-slate-500 dark:text-slate-300 line-clamp-3 leading-relaxed">
-                        {project.abstract}
+                      <p className="text-xs text-slate-500 dark:text-slate-300 line-clamp-2 leading-relaxed overflow-hidden">
+                        {project.abstract.split('\n\n')[0]}
                       </p>
                     </div>
                   </div>
