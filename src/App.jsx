@@ -304,8 +304,8 @@ function App() {
       </header>
 
       {/* Bento Grid Area */}
-      <main className="max-w-7xl mx-auto px-4 md:px-8 pt-28 pb-10 md:pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-auto">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 auto-rows-auto">
           {/* 1. Hero Card (2x2) */}
           <HeroCard />
 

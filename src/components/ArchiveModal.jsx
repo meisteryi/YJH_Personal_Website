@@ -159,43 +159,43 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-950/75 ${isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/75 ${isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
         }`}
       onClick={handleClose}
     >
       <div
-        className={`glass-panel w-full max-w-4xl max-h-[85vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 transition-all duration-300 ${isClosing ? 'animate-modal-out' : 'animate-modal-in'
+        className={`glass-panel w-full max-w-4xl max-h-[92vh] md:max-h-[85vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 transition-all duration-300 ${isClosing ? 'animate-modal-out' : 'animate-modal-in'
           }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
+        <div className="p-4 sm:p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
           <div className="space-y-1">
-            <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
-              <Calendar className="text-indigo-500" size={24} />
+            <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
+              <Calendar className="text-indigo-500" size={20} sm:size={24} />
               Interactive Timeline Archive
             </h2>
-            <p className="text-xs text-slate-500 dark:text-slate-400">
+            <p className="text-[10px] sm:text-xs text-slate-500 dark:text-slate-350">
               Explore key milestones, publications, and technical project history.
             </p>
           </div>
           <button
             onClick={handleClose}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150"
+            className="p-1.5 sm:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150 cursor-pointer"
           >
-            <X size={20} />
+            <X size={16} sm:size={20} />
           </button>
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="p-6 border-b border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 flex flex-col md:flex-row gap-4 items-center justify-between">
+        <div className="p-4 sm:p-6 border-b border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 flex flex-col md:flex-row gap-3 sm:gap-4 items-center justify-between">
           {/* Categories */}
           <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
             {categories.map(cat => (
               <button
                 key={cat}
                 onClick={() => setSelectedCategory(cat)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 ${selectedCategory === cat
+                className={`px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold border transition-all duration-200 cursor-pointer ${selectedCategory === cat
                   ? 'bg-indigo-500 border-indigo-500 text-white shadow-md shadow-indigo-500/20'
                   : 'bg-white dark:bg-slate-900 border-slate-200/60 dark:border-slate-800/80 text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800'
                   }`}
@@ -207,26 +207,26 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
 
           {/* Search Input */}
           <div className="relative w-full md:w-64">
-            <Search className="absolute left-3 top-2.5 text-slate-400" size={16} />
+            <Search className="absolute left-3 top-2 sm:top-2.5 text-slate-400" size={14} sm:size={16} />
             <input
               type="text"
               placeholder="Search history, tech stack..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-9 pr-4 py-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/85 dark:border-slate-800/80 text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
+              className="w-full pl-9 pr-4 py-1.5 sm:py-2 rounded-xl bg-white dark:bg-slate-950 border border-slate-200/85 dark:border-slate-800/80 text-[11px] sm:text-xs text-slate-800 dark:text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all duration-200"
             />
           </div>
         </div>
 
         {/* Scrollable Timeline */}
-        <div className="overflow-y-auto max-h-[50vh] p-6 md:p-8">
+        <div className="overflow-y-auto max-h-[55vh] md:max-h-[50vh] p-4 sm:p-6 md:p-8">
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12 text-slate-400 dark:text-slate-500 font-mono text-xs">
               No matching archive logs found.
             </div>
           ) : (
-            <div className="space-y-6">
-              <div className="relative pl-6 md:pl-10 border-l-2 border-slate-200 dark:border-slate-800 space-y-8 ml-4 md:ml-8 py-2">
+            <div className="space-y-4 sm:space-y-6">
+              <div className="relative pl-5 md:pl-10 border-l-2 border-slate-200 dark:border-slate-800 space-y-6 sm:space-y-8 ml-2 sm:ml-4 md:ml-8 py-2">
                 {filteredLogs.slice(0, visibleCount).map((log, idx) => {
                   const LogIcon = log.icon;
                   const isExpanded = expandedIndex === idx;
@@ -234,14 +234,14 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                   return (
                     <div key={idx} className="relative group/timeline">
                       {/* Floating Dot Icon */}
-                      <div className={`absolute -left-[37px] md:-left-[53px] top-1.5 w-7 h-7 md:w-8 md:h-8 rounded-full border-4 border-white dark:border-slate-950 ${getDotColor(log.category)} flex items-center justify-center text-white shadow-md transition-transform duration-200 group-hover/timeline:scale-110`}>
-                        <LogIcon size={12} className="md:size-[14px]" />
+                      <div className={`absolute -left-[33px] md:-left-[53px] top-1 sm:top-1.5 w-6 h-6 md:w-8 md:h-8 rounded-full border-4 border-white dark:border-slate-950 ${getDotColor(log.category)} flex items-center justify-center text-white shadow-md transition-transform duration-200 group-hover/timeline:scale-110`}>
+                        <LogIcon size={10} className="md:size-[14px]" />
                       </div>
 
                       {/* Timeline card content */}
                       <div
                         onClick={() => setExpandedIndex(isExpanded ? null : idx)}
-                        className={`p-5 rounded-2xl border transition-all duration-300 cursor-pointer ${isExpanded
+                        className={`p-4 sm:p-5 rounded-xl sm:rounded-2xl border transition-all duration-300 cursor-pointer ${isExpanded
                           ? 'bg-slate-50 dark:bg-slate-900/50 border-indigo-500/40 dark:border-indigo-500/30 shadow-lg shadow-indigo-500/5'
                           : 'bg-white/60 dark:bg-slate-900/40 border-slate-100 dark:border-slate-800/50 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm'
                           }`}
@@ -256,20 +256,20 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                           </div>
                         </div>
 
-                        <h3 className="text-sm md:text-base font-bold text-slate-800 dark:text-slate-100 mt-2 leading-snug">
+                        <h3 className="text-xs sm:text-sm md:text-base font-bold text-slate-800 dark:text-slate-100 mt-1.5 sm:mt-2 leading-snug">
                           {log.title}
                         </h3>
 
                         {/* Expandable Section */}
-                        <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
-                          <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                        <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 mt-3 sm:mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
+                          <p className="text-[11px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                             {log.description}
                           </p>
 
                           {/* Tech tags */}
-                          <div className="flex flex-wrap gap-1.5 mt-4">
+                          <div className="flex flex-wrap gap-1 mt-3 sm:mt-4">
                             {log.tags.map((tag, tIdx) => (
-                              <span key={tIdx} className="px-2 py-1 rounded bg-slate-100 dark:bg-slate-950 text-[9px] font-mono text-slate-500 dark:text-slate-400 border border-slate-200/30 dark:border-slate-800/40">
+                              <span key={tIdx} className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-950 text-[8px] sm:text-[9px] font-mono text-slate-500 dark:text-slate-400 border border-slate-200/30 dark:border-slate-800/40">
                                 {tag}
                               </span>
                             ))}
@@ -282,16 +282,16 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                                 e.stopPropagation();
                                 onOpenProject(log.projectId);
                               }}
-                              className="mt-5 flex items-center gap-1 text-[11px] font-semibold text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-150"
+                              className="mt-4 sm:mt-5 flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-150 cursor-pointer"
                             >
                               <span>Open Project Details</span>
-                              <ArrowRight size={12} className="animate-pulse" />
+                              <ArrowRight size={10} sm:size={12} className="animate-pulse" />
                             </button>
                           )}
                         </div>
 
                         {!isExpanded && (
-                          <p className="text-xs text-slate-400 mt-2 line-clamp-1">
+                          <p className="text-[11px] sm:text-xs text-slate-400 mt-1.5 sm:mt-2 line-clamp-1">
                             {log.description}
                           </p>
                         )}
@@ -304,7 +304,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                 <div className="flex justify-center pt-2">
                   <button
                     onClick={() => setVisibleCount(prev => prev + 5)}
-                    className="px-6 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
+                    className="px-5 py-2 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300 transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer"
                   >
                     Load More (+{Math.min(5, filteredLogs.length - visibleCount)})
                   </button>
@@ -315,11 +315,11 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-6 md:px-8">
-          <span className="text-[10px] text-slate-400 font-mono">[Interactive Timeline v1.0]</span>
+        <div className="p-3 sm:p-4 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-4 sm:px-6 md:px-8">
+          <span className="text-[9px] sm:text-[10px] text-slate-400 font-mono">[Interactive Timeline v1.0]</span>
           <button
             onClick={handleClose}
-            className="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150 shadow-md shadow-indigo-500/10"
+            className="px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150 shadow-md shadow-indigo-500/10 cursor-pointer"
           >
             Close Archive
           </button>

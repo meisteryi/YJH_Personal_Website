@@ -30,7 +30,7 @@ export const Card = ({ children, className = '', span = '', onClick }) => {
   return (
     <div
       onClick={onClick}
-      className={`glass-panel glow-primary rounded-3xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 
+      className={`glass-panel glow-primary rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col justify-between transition-all duration-300 
         ${isClickable
           ? 'hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 cursor-pointer'
           : 'cursor-default'
@@ -48,50 +48,50 @@ export const HeroCard = () => {
     <Card span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-2">
       <div className="flex flex-col gap-4">
         {/* Title & Subtitle */}
-        <div className="space-y-3 mt-4">
-          <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+        <div className="space-y-2 mt-2 sm:mt-4">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
             Joohyoung Yi
           </h1>
-          <p className="text-lg md:text-xl font-medium text-indigo-600 dark:text-indigo-400">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-indigo-600 dark:text-indigo-400">
             Art & Technology & Artificial Intelligence Student @ Sogang Univ.
           </p>
         </div>
 
-        <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-sm md:text-base mt-2">
+        <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-xs sm:text-sm md:text-base mt-1 sm:mt-2">
           안녕하세요! 인공지능, 설명 가능한 시스템(XAI), 그리고 음악 및 스포츠 데이터 분석의 교차점을 탐색합니다. 딥러닝 모델의 의사결정을 시각화하고 해석하는 파이프라인을 설계하며, 창의적인 엔지니어링 시스템을 설계하고 있습니다.<br /><br />
           Hello! I explore the intersection of artificial intelligence, explainable systems (XAI), and music/sports data analytics. I design pipelines that interpret deep learning decisions and build systems for creative engineering.
         </p>
       </div>
 
       {/* Social / Contact Links */}
-      <div className="flex items-center gap-4 mt-8 pt-6 border-t border-slate-100 dark:border-slate-800">
+      <div className="flex items-center gap-2 sm:gap-4 mt-4 sm:mt-8 pt-4 sm:pt-6 border-t border-slate-100 dark:border-slate-800">
         <a
           href="mailto:yjh020701@gmail.com"
-          className="flex items-center justify-center p-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
+          className="flex items-center justify-center p-2 sm:p-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
           title="Email"
         >
-          <Mail size={20} />
+          <Mail size={16} sm:size={20} />
         </a>
         <a
           href="https://github.com/meisteryi"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
+          className="flex items-center justify-center p-2 sm:p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
           title="GitHub"
         >
-          <Github size={20} />
+          <Github size={16} sm:size={20} />
         </a>
         <a
           href="https://linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
+          className="flex items-center justify-center p-2 sm:p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
           title="LinkedIn"
         >
-          <Linkedin size={20} />
+          <Linkedin size={16} sm:size={20} />
         </a>
 
-        <span className="text-xs text-slate-400 ml-auto flex items-center gap-1">
+        <span className="text-[10px] sm:text-xs text-slate-400 ml-auto flex items-center gap-1">
           Seoul, South Korea
         </span>
       </div>
@@ -106,40 +106,40 @@ export const AcademicCard = ({ onOpen }) => {
       onClick={() => onOpen('shen')}
       span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2"
     >
-      <div className="flex flex-col gap-4 h-full justify-between">
-        <div className="space-y-4">
+      <div className="flex flex-col gap-3 sm:gap-4 h-full justify-between">
+        <div className="space-y-2.5 sm:space-y-4">
           <div className="flex items-center justify-between">
-            <span className="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold tracking-wider uppercase">
+            <span className="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-[10px] sm:text-xs font-bold tracking-wider uppercase">
               Academic Paper
             </span>
-            <BookOpen size={18} className="text-slate-400" />
+            <BookOpen size={16} className="text-slate-400" />
           </div>
 
-          <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100 leading-snug group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-200">
+          <h2 className="text-base sm:text-lg md:text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100 leading-snug group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors duration-200">
             SHEN: Sentiment Hidden Eye aNalysis
           </h2>
 
-          <div className="space-y-2">
-            <p className="text-xs font-semibold text-slate-500 dark:text-slate-300">
+          <div className="space-y-1.5 sm:space-y-2">
+            <p className="text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-300">
               Investigating Gender Bias in Korean PLMs via Attention & XAI
             </p>
             <div className="h-[1px] w-12 bg-slate-200 dark:bg-slate-800"></div>
           </div>
 
-          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-6">
+          <p className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-4 sm:line-clamp-5 md:line-clamp-6">
             한국어 PLM의 젠더 편향성 평가 및 설명 가능 인공지능(XAI) 분석 공동 논문 저술. Attention과 LIME 기법을 통해 젠더 접두사가 감성 분류 결과를 왜곡하는 특성 오귀인 현상을 규명했습니다.<br /><br />
             Co-authored research evaluating gender bias in Korean PLMs. Attention and LIME analysis reveal the model misattributes gender prefixes as salient sentiment weights.
           </p>
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-2 sm:space-y-3">
           {/* Subtle figure snapshot */}
-          <div className="h-16 rounded-xl border border-slate-200/50 dark:border-slate-800/80 bg-white dark:bg-slate-950 p-1 flex justify-center overflow-hidden">
+          <div className="h-12 sm:h-16 rounded-xl border border-slate-200/50 dark:border-slate-800/80 bg-white dark:bg-slate-950 p-1 flex justify-center overflow-hidden">
             <img src={SHEN_fig_6} alt="Attention Heatmap preview" className="h-full object-contain" />
           </div>
-          <button className="flex items-center justify-between w-full px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-xs font-semibold transition-all duration-200 text-slate-700 dark:text-slate-300">
+          <button className="flex items-center justify-between w-full px-3 py-2.5 rounded-xl border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800/50 text-[11px] sm:text-xs font-semibold transition-all duration-200 text-slate-700 dark:text-slate-300 cursor-pointer">
             <span>Read Publication</span>
-            <FileText size={14} className="text-slate-400 group-hover:translate-x-0.5 transition-transform duration-200" />
+            <FileText size={12} sm:size={14} className="text-slate-400 group-hover:translate-x-0.5 transition-transform duration-200" />
           </button>
         </div>
       </div>
@@ -168,18 +168,18 @@ export const VisualCard = ({ onOpen }) => {
       </div>
 
       {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent flex flex-col justify-end p-6 md:p-8">
+      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-8">
         <div className="flex items-center justify-between">
           <div>
-            <span className="px-2 py-0.5 rounded bg-white/20 text-white text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
+            <span className="px-2 py-0.5 rounded bg-white/20 text-white text-[9px] sm:text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
               NLP Class Project
             </span>
-            <h2 className="text-lg md:text-xl font-bold text-white mt-2">
+            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mt-1 sm:mt-2">
               AI Football Scouter: Sentiment-Driven Player Recommendation
             </h2>
           </div>
-          <div className="p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors duration-200">
-            <ArrowUpRight size={18} />
+          <div className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors duration-200">
+            <ArrowUpRight size={14} sm:size={18} />
           </div>
         </div>
       </div>
@@ -187,33 +187,34 @@ export const VisualCard = ({ onOpen }) => {
   );
 };
 
-// 4. Product / App Showroom Card (Medium: 2x2) - µ's Music Genre Project
-export const ShowroomCard = ({ onOpen }) => {
+// 4. Music/Research Card (Vertical: 1x1) - µ's
+export const MusicResearchCard = ({ onOpen }) => {
   return (
     <Card
       onClick={() => onOpen('mus')}
-      span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-2"
+      span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1"
+      className="!p-4 sm:!p-5"
     >
-      <div className="flex flex-col gap-4 h-full justify-between">
-        <div className="space-y-3">
+      <div className="flex flex-col gap-3 sm:gap-4 h-full justify-between">
+        <div className="space-y-2 sm:space-y-3">
           <div className="flex items-center justify-between">
-            <span className="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400 text-xs font-bold tracking-wider uppercase">
+            <span className="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400 text-[10px] sm:text-xs font-bold tracking-wider uppercase">
               Research Project
             </span>
-            <Music size={18} className="text-slate-400" />
+            <Music size={16} className="text-slate-400" />
           </div>
 
-          <h2 className="text-xl md:text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
+          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
             µ's : Music Understanding via Spectrogram evaluation
           </h2>
-          <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300">
+          <p className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-350">
             음악 오디오 파형 신호를 2D Log-Mel Spectrogram 이미지 표현으로 변환하여 ResNet50 전이 학습 신경망으로 장르를 분류하는 컴퓨터 비전 프레임워크입니다.<br /><br />
             A Computer Vision framework for Music Genre Classification. Converts audio waveforms into 2D log-mel spectrogram representations and leverages ResNet50 transfer learning.
           </p>
         </div>
 
         {/* Pipeline Container Preview */}
-        <div className="my-4 h-36 md:h-44 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80 flex items-center justify-center p-3 relative overflow-hidden group/mockup">
+        <div className="my-2 sm:my-4 h-24 sm:h-36 md:h-44 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/50 dark:border-slate-800/80 flex items-center justify-center p-3 relative overflow-hidden group/mockup">
           <img src={mus_fig_1} alt="Preprocessing Pipeline" className="h-full object-contain transition-transform duration-300 group-hover/mockup:scale-[1.03]" />
 
           <div className="absolute top-2 right-2 flex items-center gap-1.5 px-2 py-0.5 rounded bg-slate-950/80 text-[8px] font-mono text-emerald-400 shadow-sm border border-slate-800">
@@ -222,9 +223,9 @@ export const ShowroomCard = ({ onOpen }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-between text-xs font-semibold text-slate-500 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
+        <div className="flex items-center justify-between text-[11px] sm:text-xs font-semibold text-slate-500 dark:text-slate-300 hover:text-indigo-500 dark:hover:text-indigo-400 transition-colors duration-200">
           <span>Explore Pipeline & Results (72.56% Accuracy)</span>
-          <ArrowUpRight size={16} />
+          <ArrowUpRight size={14} sm:size={16} />
         </div>
       </div>
     </Card>
@@ -241,7 +242,7 @@ export const InteractiveCard = () => {
   };
 
   return (
-    <Card span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1" className="justify-between !p-5">
+    <Card span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1" className="justify-between !p-4 sm:!p-5">
       <div className="flex items-center justify-between w-full">
         <span className="text-[10px] font-bold tracking-widest uppercase text-indigo-500 dark:text-indigo-400">
           Skills
@@ -290,7 +291,7 @@ export const PersonalProjectCard = ({ onOpen }) => {
     <Card
       onClick={() => onOpen('tabilens')}
       span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1"
-      className="justify-between !p-5 hover:border-emerald-500/30 dark:hover:border-emerald-400/40"
+      className="justify-between !p-4 sm:!p-5 hover:border-emerald-500/30 dark:hover:border-emerald-400/40"
     >
       <div className="flex items-center justify-between">
         <span className="text-[10px] font-bold tracking-widest uppercase text-emerald-500">
@@ -339,20 +340,20 @@ export const ArchiveCard = ({ onOpen }) => {
   return (
     <Card span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2">
       <div className="flex flex-col justify-between h-full">
-        <div className="space-y-4 flex-grow flex flex-col">
+        <div className="space-y-2.5 sm:space-y-4 flex-grow flex flex-col">
           <div className="flex items-center justify-between">
-            <span className="px-2.5 py-1 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold tracking-wider uppercase">
+            <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] sm:text-xs font-bold tracking-wider uppercase">
               Milestones
             </span>
-            <Calendar size={18} className="text-slate-400" />
+            <Calendar size={16} className="text-slate-400" />
           </div>
 
-          <h2 className="text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
+          <h2 className="text-base sm:text-lg md:text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
             Timeline Logs
           </h2>
 
           {/* Vertical line timeline structure - distributed compact to fit 5 items */}
-          <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 flex-grow flex flex-col justify-between mt-5 mb-2 ml-2 min-h-[250px]">
+          <div className="relative pl-4 border-l border-slate-200 dark:border-slate-800 flex-grow flex flex-col justify-between mt-3 sm:mt-5 mb-1 sm:mb-2 ml-2 min-h-[180px] sm:min-h-[220px] md:min-h-[250px]">
             {logs.slice(0, 5).map((log, idx) => (
               <div
                 key={idx}
@@ -378,10 +379,10 @@ export const ArchiveCard = ({ onOpen }) => {
 
         <button
           onClick={() => onOpen('archive')}
-          className="flex items-center justify-center gap-1.5 w-full py-2.5 mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200"
+          className="flex items-center justify-center gap-1.5 w-full py-2 sm:py-2.5 mt-3 sm:mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200 cursor-pointer"
         >
           <span>View Archive</span>
-          <ExternalLink size={12} />
+          <ExternalLink size={10} sm:size={12} />
         </button>
       </div>
     </Card>

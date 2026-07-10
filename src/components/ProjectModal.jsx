@@ -426,48 +426,48 @@ export const ProjectModal = ({ projectId, onClose }) => {
 
   return (
     <div 
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6 bg-slate-950/70 ${
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/70 ${
         isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
       }`}
       onClick={handleClose}
     >
       <div 
-        className={`glass-panel w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/55 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${
+        className={`glass-panel w-full max-w-5xl max-h-[95vh] md:max-h-[90vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/55 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${
           isClosing ? 'animate-modal-out' : 'animate-modal-in'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-start gap-4">
-          <div className="space-y-2">
-            <div className="flex flex-wrap gap-1.5">
+        <div className="p-4 sm:p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-start gap-3 sm:gap-4">
+          <div className="space-y-1.5 sm:space-y-2">
+            <div className="flex flex-wrap gap-1">
               {project.tags.map((tag, idx) => (
-                <span key={idx} className="px-2 py-0.5 rounded-md text-[10px] font-bold tracking-wider uppercase bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                <span key={idx} className="px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] font-bold tracking-wider uppercase bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
                   {tag}
                 </span>
               ))}
             </div>
-            <h1 className="text-xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-snug">
+            <h1 className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-snug">
               {project.title}
             </h1>
-            <p className="text-xs md:text-sm text-slate-500 dark:text-slate-350 font-medium">
+            <p className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-350 font-medium">
               {project.subtitle}
             </p>
-            <div className="text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
+            <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
               <span>{project.author}</span>
               <span>{project.affiliation}</span>
             </div>
           </div>
           <button 
             onClick={handleClose}
-            className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150"
+            className="p-1.5 sm:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150 cursor-pointer"
           >
-            <X size={20} />
+            <X size={16} sm:size={20} />
           </button>
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="flex border-b border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 px-4 md:px-8">
+        <div className="flex border-b border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 px-2 sm:px-4 md:px-8">
           {[
             { id: 'overview', label: 'Abstract & Intro', icon: BookOpen },
             { id: 'methodology', label: 'Methodology', icon: Cpu },
@@ -476,27 +476,27 @@ export const ProjectModal = ({ projectId, onClose }) => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 px-4 py-3.5 text-xs md:text-sm font-semibold border-b-2 transition-all duration-200 ${
+              className={`flex items-center gap-1.5 px-2.5 py-2.5 sm:px-4 sm:py-3.5 text-xs md:text-sm font-semibold border-b-2 transition-all duration-200 cursor-pointer ${
                 activeTab === tab.id 
                   ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' 
                   : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300'
               }`}
             >
-              <tab.icon size={14} />
+              <tab.icon size={12} sm:size={14} />
               <span>{tab.label}</span>
             </button>
           ))}
         </div>
 
         {/* Modal Content - Scrollable */}
-        <div className="flex-1 overflow-y-auto p-6 md:p-8 space-y-6">
+        <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
           {activeTab === 'overview' && (
-            <div className="space-y-6 animate-fade-in">
-              <div className="space-y-3">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
-                  <Award size={14} /> Abstract
+            <div className="space-y-4 sm:space-y-6 animate-fade-in">
+              <div className="space-y-2 sm:space-y-3">
+                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
+                  <Award size={12} sm:size={14} /> Abstract
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed bg-slate-50 dark:bg-slate-950/40 p-5 rounded-2xl border border-slate-200/30 dark:border-slate-800/20 whitespace-pre-line">
+                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed bg-slate-50 dark:bg-slate-950/40 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/30 dark:border-slate-800/20 whitespace-pre-line">
                   {project.abstract}
                 </p>
               </div>
@@ -584,63 +584,69 @@ export const ProjectModal = ({ projectId, onClose }) => {
             <div className="space-y-8 animate-fade-in">
               {project.sections.results.map((r, idx) => (
                 <div key={idx} className="space-y-4 border-b border-slate-200/20 dark:border-slate-800/20 pb-6 last:border-0 last:pb-0">
-                  <div className="space-y-1.5">
-                    <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-                      <Zap size={14} className="text-indigo-500" />
-                      {r.title}
-                    </h3>
-                    <p className="text-xs md:text-sm text-slate-500 dark:text-slate-350 leading-relaxed whitespace-pre-line">
-                      {r.desc}
-                    </p>
-                  </div>
-
-                  {/* Figure displays */}
-                  {r.fig && (
-                    <div className="flex flex-col items-center p-4 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-2xl w-fit mx-auto max-w-full">
-                      <img 
-                        src={r.fig} 
-                        alt={r.caption} 
-                        className="max-h-[500px] object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2" 
-                      />
-                      <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl whitespace-pre-line">
-                        {r.caption}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                    {/* Left Column: Description */}
+                    <div className="space-y-3">
+                      <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                        <Zap size={14} className="text-indigo-500" />
+                        {r.title}
+                      </h3>
+                      <p className="text-xs md:text-sm text-slate-500 dark:text-slate-350 leading-relaxed whitespace-pre-line bg-slate-50/50 dark:bg-slate-950/20 p-4 rounded-xl border border-slate-200/10 dark:border-slate-800/10">
+                        {r.desc}
                       </p>
                     </div>
-                  )}
 
-                  {/* Multi-Figure displays */}
-                  {r.figs && (
-                    <div className="space-y-4">
-                      <div className={r.figs.length === 1 
-                        ? "flex justify-center" 
-                        : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
-                      }>
-                        {r.figs.map((f, fIdx) => (
-                          <div 
-                            key={fIdx} 
-                            className={`flex flex-col items-center p-3 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-xl ${
-                              r.figs.length === 1 ? 'max-w-md w-full' : ''
-                            }`}
-                          >
-                            <img 
-                              src={f} 
-                              alt="Figure component" 
-                              className={`object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1.5 w-full ${
-                                r.figs.length === 1 ? 'max-h-[520px]' : 'max-h-48'
-                              }`} 
-                            />
-                          </div>
-                        ))}
-                      </div>
-                      <div className="space-y-1.5 text-center">
-                        {r.captions.map((cap, cIdx) => (
-                          <p key={cIdx} className="text-[10px] text-slate-400 dark:text-slate-500 whitespace-pre-line">
-                            {cap}
+                    {/* Right Column: Figures */}
+                    <div className="w-full">
+                      {/* Figure displays */}
+                      {r.fig && (
+                        <div className="flex flex-col items-center p-3 sm:p-4 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-2xl w-full mx-auto">
+                          <img 
+                            src={r.fig} 
+                            alt={r.caption} 
+                            className="max-h-[300px] sm:max-h-[380px] md:max-h-[420px] object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2 w-full" 
+                          />
+                          <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl whitespace-pre-line">
+                            {r.caption}
                           </p>
-                        ))}
-                      </div>
+                        </div>
+                      )}
+
+                      {/* Multi-Figure displays */}
+                      {r.figs && (
+                        <div className="space-y-4">
+                          <div className={r.figs.length === 1 
+                            ? "flex justify-center" 
+                            : "grid grid-cols-1 sm:grid-cols-2 gap-4"
+                          }>
+                            {r.figs.map((f, fIdx) => (
+                              <div 
+                                key={fIdx} 
+                                className={`flex flex-col items-center p-3 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-xl ${
+                                  r.figs.length === 1 ? 'max-w-md w-full' : ''
+                                }`}
+                              >
+                                <img 
+                                  src={f} 
+                                  alt="Figure component" 
+                                  className={`object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1.5 w-full ${
+                                    r.figs.length === 1 ? 'max-h-[300px] sm:max-h-[380px] md:max-h-[420px]' : 'max-h-36 sm:max-h-40 md:max-h-48'
+                                  }`} 
+                                />
+                              </div>
+                            ))}
+                          </div>
+                          <div className="space-y-1.5 text-center">
+                            {r.captions.map((cap, cIdx) => (
+                              <p key={cIdx} className="text-[10px] text-slate-400 dark:text-slate-500 whitespace-pre-line">
+                                {cap}
+                              </p>
+                            ))}
+                          </div>
+                        </div>
+                      )}
                     </div>
-                  )}
+                  </div>
                 </div>
               ))}
 
