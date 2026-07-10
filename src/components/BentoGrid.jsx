@@ -187,13 +187,12 @@ export const VisualCard = ({ onOpen }) => {
   );
 };
 
-// 4. Music/Research Card (Vertical: 1x1) - µ's
-export const MusicResearchCard = ({ onOpen }) => {
+// 4. Product / App Showroom Card (Medium: 2x2) - µ's Music Genre Project
+export const ShowroomCard = ({ onOpen }) => {
   return (
     <Card
       onClick={() => onOpen('mus')}
-      span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1"
-      className="!p-4 sm:!p-5"
+      span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-2"
     >
       <div className="flex flex-col gap-3 sm:gap-4 h-full justify-between">
         <div className="space-y-2 sm:space-y-3">
