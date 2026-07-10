@@ -53,13 +53,13 @@ export const HeroCard = () => {
             Joohyoung Yi
           </h1>
           <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-indigo-600 dark:text-indigo-400">
-            Art & Technology & Artificial Intelligence Student @ Sogang Univ.
+            Art & Technology / Artificial Intelligence Undergraduate student @ Sogang Univ.
           </p>
         </div>
 
         <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-xs sm:text-sm md:text-base mt-1 sm:mt-2">
-          안녕하세요! 인공지능, 설명 가능한 시스템(XAI), 그리고 음악 및 스포츠 데이터 분석의 교차점을 탐색합니다. 딥러닝 모델의 의사결정을 시각화하고 해석하는 파이프라인을 설계하며, 창의적인 엔지니어링 시스템을 설계하고 있습니다.<br /><br />
-          Hello! I explore the intersection of artificial intelligence, explainable systems (XAI), and music/sports data analytics. I design pipelines that interpret deep learning decisions and build systems for creative engineering.
+          안녕하세요! 인공지능, 설명 가능한 시스템(XAI), 그리고 음악 및 스포츠 데이터 분석 등 여러 분야의 데이터를 활용해 프로젝트를 진행했습니다. 별로 쓸데 없는 아이디어라도, 여러가지 아이디어를 직접 앱으로 만들어 보고 있습니다.<br /><br />
+          Hello! I have worked on projects utilizing data from various fields, including Artificial Intelligence, Explainable AI (XAI), and music/sports analytics. I love bringing all kinds of ideas to life by building them into actual apps, even the simple or quirky ones.
         </p>
       </div>
 
