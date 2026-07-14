@@ -91,6 +91,16 @@ const archiveLogs = [
     tags: ['공군', '군복무', '만기전역']
   },
   {
+    date: 'Dec 2022',
+    title: 'Released YENA Fanpage Web Project',
+    category: 'Project',
+    color: 'pink',
+    icon: Code,
+    projectId: 'yenafanpage',
+    description: '서강대학교 아트&테크놀로지 2022년 2학기 Network Media 과목의 기말 프로젝트로 개발한 최예나 아티스트 반응형 웹 팬페이지.\n\nDeveloped a responsive web fanpage for the artist Choi Ye-na as a final project for the Network Media course (2022-2) in Art & Technology at Sogang University.',
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'jQuery', 'Lightbox']
+  },
+  {
     date: 'Mar 2022 - Dec 2022',
     title: 'Elected Art & Tech Student Council President',
     category: 'Academic',

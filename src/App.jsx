@@ -20,7 +20,8 @@ const searchProjects = [
   { id: 'halligalli', title: 'Online HalliGalli', category: 'Project', description: 'WebRTC 기반 실시간 멀티플레이어 할리갈리 웹 게임' },
   { id: 'shen', title: 'SHEN', category: 'Research', description: '한국어 거대 언어 모델의 젠더 편향성 조사 및 설명 가능 인공지능 연구' },
   { id: 'mus', title: 'µ\'s', category: 'Research', description: '멜-스펙트로그램 변환 및 ResNet50 전이 학습 기반 음악 장르 분류 시스템' },
-  { id: 'scout', title: 'AI Football Scouter', category: 'Project', description: '스태츠 필터링 및 팬 오피니언 다차원 감성 분석 기반 축구 선수 추천 시스템' }
+  { id: 'scout', title: 'AI Football Scouter', category: 'Project', description: '스태츠 필터링 및 팬 오피니언 다차원 감성 분석 기반 축구 선수 추천 시스템' },
+  { id: 'yenafanpage', title: 'YENA Fanpage', category: 'Project', description: '최예나 아티스트 반응형 웹 팬페이지 기말 프로젝트' }
 ];
 
 function App() {

@@ -127,7 +127,7 @@ export const AcademicCard = ({ onOpen }) => {
           </div>
 
           <p className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-4 sm:line-clamp-5 md:line-clamp-6">
-            한국어 PLM의 젠더 편향성 평가 및 설명 가능 인공지능(XAI) 분석 공동 논문 저술. Attention과 LIME 기법을 통해 젠더 접두사가 감성 분류 결과를 왜곡하는 특성 오귀인 현상을 규명했습니다.<br /><br />
+            한국어 PLM의 젠더 편향성 평가 및 설명 가능 인공지능(XAI) 분석 보고서 저술. Attention과 LIME 기법을 통해 젠더 접두사가 감성 분류 결과를 왜곡하는 특성 오귀인 현상을 규명했습니다.<br /><br />
             Co-authored research evaluating gender bias in Korean PLMs. Attention and LIME analysis reveal the model misattributes gender prefixes as salient sentiment weights.
           </p>
         </div>
@@ -324,7 +324,7 @@ export const PersonalProjectCard = ({ onOpen }) => {
 export const ArchiveCard = ({ onOpen }) => {
   const logs = [
     { date: 'Jul 2026', title: 'Released TabiLenS Mobile App', type: 'Project', color: 'bg-emerald-500', projectId: 'tabilens' },
-    { date: 'Jun 2026', title: 'Started Gacha To-Do (Ongoing) / 가챠 투두 개발 시작 (진행 중)', type: 'Project', color: 'bg-teal-500', projectId: 'gachatodo' },
+    { date: 'Jun 2026', title: 'Released Gacha To-Do Mobile App (Ongoing)', type: 'Project', color: 'bg-teal-500', projectId: 'gachatodo' },
     { date: 'Jun 2026', title: 'Released Unseen Map Explorer', type: 'Project', color: 'bg-indigo-500', projectId: 'unseenmap' },
     { date: 'Jun 2026', title: 'Released Online HalliGalli Web Game', type: 'Project', color: 'bg-amber-500', projectId: 'halligalli' },
     { date: 'Dec 2025', title: 'Finished SHEN Gender Bias Research', type: 'Paper', color: 'bg-indigo-500', projectId: 'shen' },
@@ -332,6 +332,7 @@ export const ArchiveCard = ({ onOpen }) => {
     { date: 'Jun 2025', title: 'Finished AI Football Scouter NLP Project', type: 'Project', color: 'bg-amber-500', projectId: 'scout' },
     { date: 'Mar 2025', title: 'Declared Artificial Intelligence as Double Major / 인공지능학과 복수전공 진입', type: 'Academic', color: 'bg-blue-500' },
     { date: 'Nov 2024', title: '대한민국 공군 만기전역', type: 'Military', color: 'bg-slate-500' },
+    { date: 'Dec 2022', title: 'Released YENA Fanpage Web Project / 최예나 반응형 팬페이지 제작', type: 'Project', color: 'bg-pink-500', projectId: 'yenafanpage' },
     { date: 'Mar-Dec 2022', title: 'Elected Art & Tech Student Council President / 아트&테크놀로지 학과 학생회장', type: 'Academic', color: 'bg-purple-500' },
     { date: 'Mar 2021', title: 'Entered Sogang University Art & Tech', type: 'Academic', color: 'bg-blue-500' }
   ];

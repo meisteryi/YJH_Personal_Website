@@ -10,6 +10,7 @@ import tabilens_1 from '../assets/tabilens_1.png';
 import halligalli_1 from '../assets/halligalli_1.png';
 import unseenmap_1 from '../assets/unseenmap_1.png';
 import gachatodo_3 from '../assets/gachatodo_3.png';
+import yena_fanpage_profile from '../assets/yena_fanpage_profile.jpg';
 
 const projectImages = {
   gachatodo: gachatodo_3,
@@ -18,7 +19,8 @@ const projectImages = {
   halligalli: halligalli_1,
   shen: SHEN_fig_6,
   mus: mus_fig_1,
-  scout: scout_slides_fig_22
+  scout: scout_slides_fig_22,
+  yenafanpage: yena_fanpage_profile
 };
 
 export const ProjectsModal = ({ onClose, onOpenProject }) => {
