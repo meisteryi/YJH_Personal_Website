@@ -6,7 +6,8 @@ import {
   ShowroomCard, 
   InteractiveCard, 
   PersonalProjectCard, 
-  ArchiveCard 
+  ArchiveCard,
+  CertificatesCard
 } from './components/BentoGrid';
 import { ProjectModal } from './components/ProjectModal';
 import { ArchiveModal } from './components/ArchiveModal';
@@ -335,6 +336,9 @@ function App() {
  
            {/* 7. Archive / Logs Timeline Card (1x2) */}
            <ArchiveCard onOpen={handleOpenProject} />
+
+           {/* 8. Certificates Card (1x2) */}
+           <CertificatesCard />
          </div>
        </main>
  

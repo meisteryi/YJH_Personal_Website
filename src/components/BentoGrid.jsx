@@ -15,7 +15,8 @@ import {
   CheckCircle,
   FileText,
   Music,
-  Search
+  Search,
+  Award
 } from 'lucide-react';
 
 // Import preview figures
@@ -384,6 +385,71 @@ export const ArchiveCard = ({ onOpen }) => {
           <span>View Archive</span>
           <ExternalLink size={10} sm:size={12} />
         </button>
+      </div>
+    </Card>
+  );
+};
+
+// 8. Certificates Card (Medium/Long: 1x2)
+// ========================================================
+// [직접 수정 가이드] 
+// 아래 certificates 배열의 객체들을 본인의 자격증 정보로 수정해 주세요.
+// - name: 자격증명 또는 수상명
+// - issuer: 발급 기관
+// - date: 취득년월 (YYYY.MM)
+// - status: 상태 (예: 'Completed', 'Active' 등)
+// ========================================================
+export const CertificatesCard = () => {
+  const certificates = [
+    { name: 'JLPT N1', issuer: '일본국제교류기금', date: '2024.01', status: 'Completed' },
+    { name: '추가 자격증을 여기에 입력하세요 (예: SQLD)', issuer: '발행 기관 (예: 한국데이터산업진흥원)', date: '2025.09', status: 'Completed' },
+    { name: '어학 자격증 등을 여기에 입력하세요 (예: OPIc)', issuer: '발행 기관 (예: ACTFL)', date: '2025.12', status: 'Active' },
+    { name: '기타 활동 증명 혹은 수상 이력', issuer: '기관/단체명', date: '2025.06', status: 'Completed' }
+  ];
+
+  return (
+    <Card span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2">
+      <div className="flex flex-col justify-between h-full">
+        <div className="space-y-2.5 sm:space-y-4 flex-grow flex flex-col">
+          <div className="flex items-center justify-between">
+            <span className="px-2 py-0.5 rounded-md bg-pink-500/10 text-pink-600 dark:text-pink-400 text-[10px] sm:text-xs font-bold tracking-wider uppercase">
+              Credentials
+            </span>
+            <Award size={16} className="text-slate-400" />
+          </div>
+
+          <h2 className="text-base sm:text-lg md:text-xl font-bold tracking-tight text-slate-800 dark:text-slate-100">
+            Certificates & Awards
+          </h2>
+
+          <div className="flex-grow flex flex-col justify-between mt-3 sm:mt-5 mb-1 sm:mb-2 min-h-[180px] sm:min-h-[220px] md:min-h-[250px]">
+            <div className="space-y-3.5 sm:space-y-4">
+              {certificates.map((cert, idx) => (
+                <div key={idx} className="relative flex flex-col gap-1 pl-3 border-l-2 border-slate-200/80 dark:border-slate-800/80 hover:border-pink-500 dark:hover:border-pink-400 transition-colors duration-200 py-0.5 group/cert">
+                  <div className="flex items-center justify-between gap-2">
+                    <h3 className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-200 group-hover/cert:text-pink-500 dark:group-hover/cert:text-pink-400 transition-colors duration-150 leading-snug">
+                      {cert.name}
+                    </h3>
+                    <span className="px-1.5 py-0.5 rounded text-[8px] font-semibold bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 select-none">
+                      {cert.date}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500">
+                    <span>{cert.issuer}</span>
+                    <span className="text-emerald-500 font-mono font-bold flex items-center gap-0.5">
+                      <CheckCircle size={8} /> {cert.status}
+                    </span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-1.5 text-[10px] text-slate-400 dark:text-slate-500 mt-3 pt-3 border-t border-slate-100 dark:border-slate-900">
+          <Terminal size={10} />
+          <span>Continuous Professional Dev</span>
+        </div>
       </div>
     </Card>
   );
