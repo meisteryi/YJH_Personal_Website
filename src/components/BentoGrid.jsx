@@ -402,9 +402,6 @@ export const ArchiveCard = ({ onOpen }) => {
 export const CertificatesCard = () => {
   const certificates = [
     { name: 'JLPT N1', issuer: '일본국제교류기금', date: '2024.01', status: 'Completed' },
-    { name: '추가 자격증을 여기에 입력하세요 (예: SQLD)', issuer: '발행 기관 (예: 한국데이터산업진흥원)', date: '2025.09', status: 'Completed' },
-    { name: '어학 자격증 등을 여기에 입력하세요 (예: OPIc)', issuer: '발행 기관 (예: ACTFL)', date: '2025.12', status: 'Active' },
-    { name: '기타 활동 증명 혹은 수상 이력', issuer: '기관/단체명', date: '2025.06', status: 'Completed' }
   ];
 
   return (
