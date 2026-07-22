@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play, CheckCircle } from 'lucide-react';
 
 // Import project figures (SHEN & mus)
@@ -461,6 +461,51 @@ export const ProjectModal = ({ projectId, onClose }) => {
   const project = projectsData[projectId];
   const [activeTab, setActiveTab] = useState('overview');
   const [isClosing, setIsClosing] = useState(false);
+  const scrollContainerRef = useRef(null);
+
+  // Reset scroll position to top when switching tabs or projects
+  useEffect(() => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
+  }, [activeTab, projectId]);
+
+  const getSectionsForTab = () => {
+    if (activeTab === 'overview') {
+      return [
+        { id: 'sec-abstract', label: 'Abstract' },
+        { id: 'sec-introduction', label: '1. Introduction' }
+      ];
+    }
+    if (activeTab === 'methodology') {
+      return project.sections.methodology.map((m, idx) => ({
+        id: `sec-methodology-${idx}`,
+        label: m.title.split(' (')[0]
+      }));
+    }
+    if (activeTab === 'results') {
+      const items = project.sections.results ? project.sections.results.map((r, idx) => ({
+        id: `sec-results-${idx}`,
+        label: r.title.split(' (')[0]
+      })) : [];
+      if (project.sections.conclusion) {
+        items.push({ id: 'sec-conclusion', label: 'Conclusion' });
+      }
+      return items;
+    }
+    return [];
+  };
+
+  const scrollToSection = (id) => {
+    const container = scrollContainerRef.current;
+    const target = document.getElementById(id);
+    if (container && target) {
+      const containerTop = container.getBoundingClientRect().top;
+      const targetTop = target.getBoundingClientRect().top;
+      const scrollOffset = targetTop - containerTop + container.scrollTop - 20;
+      container.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+    }
+  };
 
   const handleClose = () => {
     setIsClosing(true);
@@ -483,7 +528,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
-        <div className="p-4 sm:p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-start gap-3 sm:gap-4">
+        <div className="p-3.5 sm:p-5 md:py-4 md:px-6 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-start gap-3 sm:gap-4">
           <div className="space-y-1.5 sm:space-y-2">
             <div className="flex flex-wrap gap-1">
               {project.tags.map((tag, idx) => (
@@ -511,33 +556,37 @@ export const ProjectModal = ({ projectId, onClose }) => {
           </button>
         </div>
 
-        {/* Modal Navigation Tabs */}
-        <div className="flex border-b border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 px-2 sm:px-4 md:px-8">
-          {[
-            { id: 'overview', label: 'Abstract & Intro', icon: BookOpen },
-            { id: 'methodology', label: 'Methodology', icon: Cpu },
-            { id: 'results', label: 'Results & Figures', icon: BarChart2 }
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-1.5 px-2.5 py-2.5 sm:px-4 sm:py-3.5 text-xs md:text-sm font-semibold border-b-2 transition-all duration-200 cursor-pointer ${
-                activeTab === tab.id 
-                  ? 'border-indigo-500 text-indigo-600 dark:text-indigo-400' 
-                  : 'border-transparent text-slate-500 hover:text-slate-800 dark:hover:text-slate-300'
-              }`}
-            >
-              <tab.icon size={12} sm:size={14} />
-              <span>{tab.label}</span>
-            </button>
-          ))}
-        </div>
+        {/* Main Body Layout: Sidebar + Main Content + Right TOC */}
+        <div className="flex-1 flex flex-col md:flex-row overflow-hidden min-h-0">
+          {/* Left Sidebar: Modal Navigation Tabs */}
+          <div className="flex md:flex-col shrink-0 border-b md:border-b-0 md:border-r border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 px-2 sm:px-3 md:px-2 md:py-4 overflow-x-auto md:overflow-x-visible md:overflow-y-auto md:w-40">
+            <div className="flex flex-row md:flex-col w-full md:space-y-0.5">
+              {[
+                { id: 'overview', label: 'Abstract & Intro', icon: BookOpen },
+                { id: 'methodology', label: 'Methodology', icon: Cpu },
+                { id: 'results', label: 'Results & Figures', icon: BarChart2 }
+              ].map(tab => (
+                <button
+                  key={tab.id}
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`flex items-center gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 md:py-2 md:px-3 text-xs md:text-xs font-semibold transition-all duration-200 cursor-pointer w-auto md:w-full md:rounded-lg text-left shrink-0 ${
+                    activeTab === tab.id 
+                      ? 'border-b-2 border-indigo-500 md:border-b-0 md:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold' 
+                      : 'border-b-2 border-transparent md:border-b-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-350 hover:bg-slate-100/50 dark:hover:bg-slate-800/30'
+                  }`}
+                >
+                  <tab.icon size={12} sm:size={13} className="shrink-0" />
+                  <span className="truncate">{tab.label}</span>
+                </button>
+              ))}
+            </div>
+          </div>
 
-        {/* Modal Content - Scrollable */}
-        <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8 space-y-4 sm:space-y-6">
+          {/* Modal Content - Scrollable */}
+          <div ref={scrollContainerRef} className="flex-1 min-w-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
           {activeTab === 'overview' && (
             <div className="space-y-4 sm:space-y-6 animate-fade-in">
-              <div className="space-y-2 sm:space-y-3">
+              <div id="sec-abstract" className="space-y-2 sm:space-y-3">
                 <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
                   <Award size={12} sm:size={14} /> Abstract
                 </h3>
@@ -546,7 +595,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                 </p>
               </div>
 
-              <div className="space-y-3">
+              <div id="sec-introduction" className="space-y-3">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">1. Introduction</h3>
                 <p className="text-slate-600 dark:text-slate-300 text-xs md:text-sm leading-relaxed whitespace-pre-line">
                   {project.sections.introduction}
@@ -560,7 +609,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
               <div className={['mus', 'shen', 'scout'].includes(project.id) ? "grid grid-cols-1 lg:grid-cols-2 gap-6" : "space-y-6"}>
                 <div className="space-y-6">
                   {project.sections.methodology.map((m, idx) => (
-                    <div key={idx} className="space-y-2 bg-slate-50 dark:bg-slate-950/20 p-5 rounded-2xl border border-slate-200/20 dark:border-slate-800/10">
+                    <div id={`sec-methodology-${idx}`} key={idx} className="space-y-2 bg-slate-50 dark:bg-slate-950/20 p-5 rounded-2xl border border-slate-200/20 dark:border-slate-800/10">
                       <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
                         <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
                         {m.title}
@@ -628,7 +677,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
           {activeTab === 'results' && (
             <div className="space-y-8 animate-fade-in">
               {project.sections.results.map((r, idx) => (
-                <div key={idx} className="space-y-4 border-b border-slate-200/20 dark:border-slate-800/20 pb-6 last:border-0 last:pb-0">
+                <div id={`sec-results-${idx}`} key={idx} className="space-y-4 border-b border-slate-200/20 dark:border-slate-800/20 pb-6 last:border-0 last:pb-0">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
                     {/* Left Column: Description */}
                     <div className="space-y-3">
@@ -695,7 +744,7 @@ export const ProjectModal = ({ projectId, onClose }) => {
                 </div>
               ))}
 
-              <div className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-5">
+              <div id="sec-conclusion" className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-5">
                 <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-1">Conclusion</h4>
                 <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
                   {project.sections.conclusion}
@@ -705,12 +754,34 @@ export const ProjectModal = ({ projectId, onClose }) => {
           )}
         </div>
 
+        {/* Right Sidebar: Table of Contents / Outline */}
+        <div className="hidden lg:flex flex-col w-36 shrink-0 border-l border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-950/10 p-4 space-y-3 overflow-y-auto min-h-0">
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              On this page
+            </span>
+            <div className="h-0.5 w-8 bg-indigo-500 rounded-full"></div>
+          </div>
+          <nav className="flex flex-col space-y-3">
+            {getSectionsForTab().map((sec) => (
+              <button
+                key={sec.id}
+                onClick={() => scrollToSection(sec.id)}
+                className="text-left text-[10px] font-semibold text-slate-500 hover:text-indigo-500 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors duration-150 cursor-pointer hover:underline line-clamp-2 leading-tight"
+              >
+                {sec.label}
+              </button>
+            ))}
+          </nav>
+        </div>
+      </div>
+
         {/* Modal Footer */}
-        <div className="p-4 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-6 md:px-8">
+        <div className="p-3 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-5 md:px-6">
           <span className="text-[10px] text-slate-400 font-mono">[Sogang Univ. Art & Tech Portfolio Project]</span>
           <button 
             onClick={handleClose}
-            className="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150"
+            className="px-4 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150"
           >
             Close Details
           </button>

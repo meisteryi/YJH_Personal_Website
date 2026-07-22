@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Calendar, Search, Award, Code, FileText, GraduationCap, ArrowRight } from 'lucide-react';
 
 const archiveLogs = [
@@ -11,6 +11,15 @@ const archiveLogs = [
     projectId: 'tabilens',
     description: 'Gemini 2.5 Flash OCR 및 네이티브 TTS를 활용한 Flutter 기반 실시간 다국어 메뉴판 번역 및 식문화 가이드 앱 개발.\n\nDeveloped TabiLenS, a Flutter-based real-time multilingual menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
     tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
+  },
+  {
+    date: 'Apr 2026 - Jul 2026',
+    title: 'Sophia University Exchange Program',
+    category: 'Academic',
+    color: 'blue',
+    icon: GraduationCap,
+    description: '일본 上智대학교(Sophia University) 교환학생 파견 (전공: FLA).\n\nCompleted exchange student program at Sophia University, Japan (Major: FLA - Faculty of Liberal Arts).',
+    tags: ['Exchange Program', 'Sophia University', 'FLA', 'Japan']
   },
   {
     date: 'Jun 2026',
@@ -126,10 +135,14 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
   const [expandedIndex, setExpandedIndex] = useState(null);
   const [isClosing, setIsClosing] = useState(false);
   const [visibleCount, setVisibleCount] = useState(5);
+  const scrollContainerRef = useRef(null);
 
-  // Reset visible count when search or category changes
+  // Reset visible count and scroll to top when search or category changes
   useEffect(() => {
     setVisibleCount(5);
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTop = 0;
+    }
   }, [searchTerm, selectedCategory]);
 
   const handleClose = () => {
@@ -229,7 +242,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Scrollable Timeline */}
-        <div className="overflow-y-auto max-h-[55vh] md:max-h-[50vh] p-4 sm:p-6 md:p-8">
+        <div ref={scrollContainerRef} className="overflow-y-auto max-h-[55vh] md:max-h-[50vh] p-4 sm:p-6 md:p-8">
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12 text-slate-400 dark:text-slate-500 font-mono text-xs">
               No matching archive logs found.
