@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play, CheckCircle } from 'lucide-react';
+import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play, CheckCircle, Globe } from 'lucide-react';
 
 // Import project figures (SHEN & mus)
 import SHEN_fig_1 from '../assets/SHEN_fig_1.png';
@@ -56,6 +56,8 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@gmail.com',
+    link: 'https://github.com/meisteryi/TabiLenS',
+    page: 'https://meisteryi.github.io/TabiLenS/',
     tags: ['Flutter', 'Riverpod', 'Gemini API', 'TTS', 'Shared Preferences'],
     abstract: 'TabiLenS는 해외를 여행하는 다양한 국가의 여행자들이 메뉴판이나 간판을 읽을 때 겪는 언어적·문화적 장벽을 해소하기 위해 개발된 Flutter 기반의 멀티플랫폼 앱입니다. 단순히 기계적인 텍스트 번역을 넘어 Gemini 2.5 Flash를 통한 지능형 OCR 영역 검출 및 터치 매핑, 음식 유래/재료/알레르기 정보를 다루는 식문화 가이드 제공, 그리고 상황별 맞춤형 문장 생성 및 TTS 오디오 원어민 발음 기능을 제공합니다. 특히 출발 언어와 대상 언어 모두 완벽한 다국어(영어, 일본어, 중국어, 스페인어, 한국어, 프랑스어 등)를 지원하며, 국가 간 상호 번역(타국어-타국어 포함)을 지원하여 전 세계 여행자들의 소통을 돕습니다.\n\nTabiLenS is a Flutter-based cross-platform (Android / iOS / Web) application designed to assist global travelers from various countries by translating menus and signs in foreign destinations. It goes beyond simple literal translation by using Gemini 2.5 Flash for high-speed OCR bounding-box detection, providing detailed guides on local food culture (ingredients, allergies, origins, dining tips), and dynamically generating custom ordering sentences with native Text-to-Speech (TTS) and pronunciation guides. Specifically, it features fully localized multilingual support for both input and output target languages (including English, Japanese, Chinese, Spanish, Korean, and French), enabling seamless cross-translation for travelers worldwide.',
     sections: {
@@ -104,6 +106,8 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@gmail.com',
+    link: 'https://github.com/meisteryi/Gachagame_todo',
+    page: 'https://meisteryi.github.io/Gachagame_todo/',
     tags: ['Flutter', 'ValueNotifier', 'Shared Preferences', 'Pixel Art', 'State Management'],
     abstract: '가챠 투두(Gacha To-Do)는 일상적인 할 일 관리(To-Do List)에 가챠(Gacha)와 방치형 육성 요소를 결합하여 지속적인 동기부여를 제공하는 Flutter 기반 모바일 애플리케이션입니다. 할 일을 완료해 획득한 코인으로 20여 종의 독특한 픽셀 물고기와 10여 종의 다채로운 수초를 수집하고 수조를 취향껏 인테리어할 수 있습니다. 일일/주간 미션, 먹이 주기와 영양제를 활용한 물고기 육성, 고유 ID 기반 클라우드 백업 시스템을 제공하며, 한국어, 영어, 일본어, 스페인어의 4개국 다국어를 전면 탑재했습니다.\n\nGacha To-Do is a Flutter-based mobile application that combines task management with gacha collection and idle aquarium decoration mechanics to keep users motivated. Completing to-do tasks rewards coins that players spend to roll gacha for 20+ pixelated fish types and 10+ aquatic plants. Users can arrange plants via interactive drag-and-drop, nurture fish (level up, special color modes), fulfill daily/weekly goals, and secure data using a quick alphanumeric cloud backup. The app fully implements native translation support for Korean, English, Japanese, and Spanish.',
     sections: {
@@ -164,6 +168,8 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@gmail.com',
+    link: 'https://github.com/meisteryi/FindAnUnknownPlace',
+    page: 'https://meisteryi.github.io/FindAnUnknownPlace/',
     tags: ['Leaflet.js', 'exifr', 'Overpass API', 'Vanilla JS', 'CSS Animations'],
     abstract: 'Unseen Map Explorer는 사용자가 업로드한 다중 사진에서 EXIF GPS 메타데이터를 추출해 개별 여행 좌표로 변환하고 클러스터링(MarkerCluster) 기법으로 시각화합니다. 나아가 현재 지도상의 방문 지역을 300m x 300m의 동적 가상 그리드로 분할하여, 이미 방문한 그리드와 인접하지만 아직 가보지 않은 \'프론티어(Frontier) 미개척 그리드\'를 실시간으로 계산합니다. 그 후 Overpass API를 통해 해당 미개척 그리드 내부의 카페, 음식점, 베이커리 등 POI 데이터를 동적으로 쿼리하여 사용자에게 추천하며, 지도상의 경로가 애니메이션 형태로 뻗어나가는 커스텀 SVG 경로 연출을 더해 탐색의 흥미를 배가시킵니다.\n\nUnseen Map Explorer is a Leaflet-based interactive web map system that parses photo EXIF GPS data to overlay trip history. It uses a grid-based frontier exploration algorithm (300m x 300m tiles) to determine visited areas, and queries the OpenStreetMap Overpass API dynamically to recommend hidden local POIs in unvisited alleys. It features customized SVG route extending animations to enhance user exploration experiences.',
     sections: {
@@ -200,6 +206,8 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@gmail.com',
+    link: 'https://github.com/meisteryi/HalliGalli',
+    page: 'https://meisteryi.github.io/HalliGalli/',
     tags: ['HTML5', 'CSS3', 'JavaScript', 'Firebase Realtime DB'],
     abstract: 'Online HalliGalli는 실시간 멀티플레이어를 지원하는 정적 웹 기반 할리갈리 보드게임입니다. 싱글 플레이(인공지능 COM 대결, 3단계 난이도) 모드와 Firebase Realtime Database 기반의 멀티 플레이(PvP 방 만들기 및 대기실 매칭) 모드를 모두 탑재했습니다. 스탠다드 규칙 외에도 다양한 확장 카드가 포함된 익스텐디드 확장 규칙 모드를 지원하며, 동글동글하고 귀여운 레트로 웹 UI 테마로 플레이어 경험을 강화했습니다.\n\nOnline HalliGalli is a web-based, real-time multiplayer board game adaptation of HalliGalli. It features Single-player vs COM with 3 difficulty levels (reaction speeds) and Online Multiplayer PvP using Firebase Realtime Database for room creation, user ready states, and real-time syncing. The project implements both standard fruit rules and an extended game mode with custom card layouts, powered by a customized retro responsive CSS framework.',
     sections: {
@@ -242,6 +250,8 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@sogang.ac.kr',
+    link: '',
+    page: '',
     tags: ['XAI', 'NLP', 'Bias Analysis', 'KcELECTRA'],
     abstract: '사전 학습 언어 모델(PLM)은 감성 분석에서 뛰어난 성능을 보이지만, 사회적 편향을 상속할 위험이 있습니다. 본 연구는 KcELECTRA 모델이 예측 점수와 어텐션 메커니즘을 통해 젠더 정보를 처리하는 방식을 조사합니다. 실험 결과, 젠더어 교체에 따른 예측 점수의 변화는 직업 및 맥락에 따라 상이하여 여성이 항상 부정적으로 평가된다는 일관된 편향은 관찰되지 않았습니다. 그러나 어텐션 시각화 분석을 통해 모델이 감성 강조 부사(\'정말\' 등)와 유사한 수준의 높은 어텐션 가중치를 \'여-\'와 같은 젠더 접두사에 할당하는 \'특성 오귀인(Feature Misattribution)\' 현상을 발견했습니다. 이는 감성 분류에 불필요한 젠더 정보를 모델이 중요 특성으로 오인하고 있음을 보여주며, 예측 신뢰성에 잠재적인 무작위성을 초래함을 결론지었습니다.\n\nAlthough Pre-trained Language Models (PLMs) show high performance in sentiment analysis, they risk inheriting social biases. This study investigates how the KcELECTRA model processes gender information using Prediction Scores and Attention Mechanisms. Experimental results show that changes in prediction scores due to gender swapping vary by profession and context, with no consistent evidence that female terms are universally evaluated negatively. However, attention visualization revealed that the model assigns high attention weights to gender prefixes such as \'여-\', comparable to those assigned to sentiment-intensifying adverbs such as \'정말\' (e.g., "really"). This suggests a Feature Misattribution, where the model misidentifies gender as a salient feature for sentiment classification. We conclude that while directional bias is inconsistent, the model\'s over-attention to gender creates unpredictability in sentiment prediction.',
     sections: {
@@ -292,7 +302,9 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@sogang.ac.kr',
-    tags: ['Computer Vision', 'Audio Processing', 'Transfer Learning', 'ResNet50'],
+    link: '',
+    page: '',
+    tags: ['Deep Learning', 'PyTorch', 'Audio DSP', 'Spectrogram Trans', 'Transfer Learning', 'ResNet50'],
     abstract: '본 프로젝트는 음악 장르 분류 문제를 컴퓨터 비전 작업으로 재정의하여 오디오 영역의 분류 난제를 해결합니다. 오디오 신호를 2D Mel-Spectrogram 이미지로 변환하여 시각적 특징을 추출하고, ImageNet으로 사전 학습된 ResNet50 모델을 활용하는 전이 학습 방법론을 적용했습니다. 표준 GTZAN 데이터셋을 통한 실험 결과 10개 장르 분류에서 72.56%의 테스트 정확도를 보였으며, 오차 행렬(Confusion Matrix) 분석을 통해 유사한 청각적 특징을 공유하는 장르 간의 오분류 패턴을 시각적으로 규명했습니다.\n\nThis project addresses the problem of Music Genre Classification in the audio domain by approaching it as a Computer Vision task. We extract visual features by converting audio signals into 2D Mel-Spectrogram images and employ a Transfer Learning methodology using a ResNet50 model pre-trained on ImageNet. Experimental results on the standard GTZAN dataset demonstrate a test accuracy of 72.56% across 10 genre classifications. Furthermore, we visually clarify misclassification patterns between genres sharing similar auditory characteristics through Confusion Matrix analysis.',
     sections: {
       introduction: '음악 정보 검색(MIR) 분야에서 합성곱 신경망(CNN)은 최근 스펙트로그램을 시각적 표상으로 분석하여 탁월한 성능을 발휘해 왔습니다. 우리는 전통적인 수작업 특징(MFCC 등)에 의존하는 대신 Mel-Spectrogram에서 직접 복잡한 특성을 자동으로 학습하는 컴퓨터 비전 접근 방식의 음악 장르 분류 시스템인 µ\'s를 제안합니다. 소규모 음악 데이터셋의 학습 한계를 극복하기 위해 ImageNet 사전 학습 ResNet50 백본을 활용한 전이 학습을 적용하여 오디오 데이터로부터 풍부한 시각적 텍스처 패턴을 추출했습니다.\n\nIn Music Information Retrieval (MIR), Convolutional Neural Networks (CNNs) have recently demonstrated remarkable performance by analyzing spectrograms as visual representations. We propose µ\'s, a music genre classification system that adopts a computer vision approach, enabling the automatic learning of complex features directly from Mel-Spectrograms rather than relying on traditional hand-crafted features like MFCCs. To overcome the small scale of music datasets, we leverage transfer learning using a ResNet50 backbone pre-trained on ImageNet, extracting visual patterns (textures) from audio data.',
@@ -320,7 +332,7 @@ export const projectsData = {
         },
         {
           title: '시각적 패턴 및 정성적 분석 (Visual Patterns & Qualitative Analysis)',
-          desc: '모델은 이미지의 시각적 텍스처 특징에 의존해 장르를 분류합니다:\n- 수직 줄무늬: 비트가 뚜렷한 힙합이나 디스코는 저주파 영역에 수직선 형태로 나타납니다.\n- 수평 흐름: 화성이 풍부한 클래식이나 재즈는 부드럽고 일정한 수평선 텍스처를 띱니다.\n- 노이즈 밀도: 메탈과 록은 고주파 대역에 노이지하고 왜곡된 거친 텍스처 분포를 가집니다.\n\nThe model distinguishes genres based on key visual patterns:\n- Vertical Patterns: Consistent beats (Hip-hop, Disco) show vertical lines in low-frequency bands.\n- Horizontal Textures: Harmonic instruments (Classical, Jazz) show smooth horizontal textures.\n- Noise Density (Complexity): Metal and Rock show rough, noisy, high-frequency distortion textures.',
+          desc: '모델은 이미지의 시각적 텍스처 특징에 의존해 장르를 분류합니다:\n- 수직 줄무늬: 비트가 뚜렷한 힙합이나 디스코는 저주파 영역에 수직선 형태로 나타납니다.\n- 수평 흐름: 화성이 풍부한 클래식이나 재즈는 부드럽고 일정한 수평선 텍스처를 십니다.\n- 노이즈 밀도: 메탈과 록은 고주파 대역에 노이지하고 왜곡된 거친 텍스처 분포를 가집니다.\n\nThe model distinguishes genres based on key visual patterns:\n- Vertical Patterns: Consistent beats (Hip-hop, Disco) show vertical lines in low-frequency bands.\n- Horizontal Textures: Harmonic instruments (Classical, Jazz) show smooth horizontal textures.\n- Noise Density (Complexity): Metal and Rock show rough, noisy, high-frequency distortion textures.',
           figs: [mus_fig_3, mus_fig_5, mus_fig_6],
           captions: [
             '그림 3: 대조적인 장르(클래식 vs 메탈)의 스펙트로그램 시각적 비교.\n\nFigure 3: Spectrogram comparison of contrasting genres (Classical vs Metal).',
@@ -338,7 +350,9 @@ export const projectsData = {
     author: 'Joohyoung Yi, Yongseop Shin, Changyoung Lee',
     affiliation: 'NLP Class Project, Sogang University (2025 1st Semester)',
     email: 'yjh020701@sogang.ac.kr',
-    tags: ['NLP', 'Sentiment Analysis', 'BERT', 'LLM', 'phi-1.5'],
+    link: '',
+    page: '',
+    tags: ['Python', 'NLP', 'KoBERT', 'Sentiment Analysis', 'Stat Filtering'],
     abstract: '본 프로젝트는 축구 선수의 객관적인 능력치 데이터와 Reddit 커뮤니티의 주관적인 팬 여론 감성을 결합한 데이터 기반의 하이브리드 선수 추천 시스템인 AI Football Scouter를 제안합니다. 능력치 기반 필터링으로 후보군을 1차 선별한 뒤, Reddit 댓글 데이터를 수집하여 BERT 다국어 감성 모델 및 독성(Toxicity) 분석을 수행하고, 자체 정의한 규칙 기반 알고리즘을 적용한 후 로컬 경량 LLM(phi-1.5)을 사용해 자연어 스카우팅 보고서를 생성합니다. 더불어 포지션 키워드 정규화 처리와 축구 팬 특유의 강한 슬랭 및 sarcastic 표현으로 인한 오분류 예외 처리 모델 고도화 결과도 포함합니다.\n\nThis project introduces AI Football Scouter, a data-driven recommendation system that combines objective player statistics with subjective community sentiments from Reddit. Designed to overcome the limitations of numbers-only scouting, the system filters candidates from a dataset of player attributes, performs 3-way BERT sentiment and separate toxicity analyses on Reddit fan comments, applies a rule-based recommendation logic, and generates a human-like scouting summary using a local lightweight LLM (phi-1.5). We also report key edge cases including position query normalization fixes and contextual toxicity classification errors caused by strong football fan slang.',
     sections: {
       introduction: '현대 축구 스카우팅은 단순히 기록 수치에만 의존하지 않습니다. 팬들의 반응과 여론은 선수의 시장 가치, 심리적 상태, 미디어 노출에 지대한 영향을 미칩니다. 본 프로젝트는 CSV 데이터의 선수 스태츠와 Reddit에 누적된 팬들의 여론 데이터를 유기적으로 융합합니다. 자연어 프로필 쿼리를 입력받아 조건에 맞는 후보군을 필터링하고, Reddit API를 호출해 감성 수치 및 독성을 분석한 뒤 감독과 구단 프런트가 직관적인 결정을 내릴 수 있도록 자연어 보고서 형태로 요약 제공합니다.\n\nModern football scouting is no longer just about numbers. Community perception and fan sentiment increasingly affect player valuation, confidence, and media representation. The goal of this project is to combine players\' objective statistics with community opinions on Reddit. Our system ingests player metrics from a CSV file, accepts natural language profile queries, performs Reddit API extraction and sentiment/toxicity categorization, and outputs a synthesized scouting report to help head coaches and technical directors make informed decisions.',
@@ -389,7 +403,9 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University (2022 2nd Semester)',
     email: 'yjh020701@gmail.com',
-    tags: ['HTML5', 'CSS3', 'JavaScript', 'jQuery', 'Lightbox', 'Responsive Web'],
+    link: 'https://github.com/meisteryi/YENA_Fanpage_2022',
+    page: '',
+    tags: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Web', 'Class Project'],
     abstract: '최예나 아티스트 팬페이지는 2022년 2학기 서강대학교 아트&테크놀로지 학과의 "Network Media" 과목 기말 프로젝트로 제작된 반응형 웹사이트입니다. 아티스트의 정보, 앨범 소개, 관련 공지, 미디어 갤러리 및 월간 스케줄러 등 팬페이지에 필수적인 기능들을 설계 및 구현하였습니다. 데스크톱과 모바일 등 서로 다른 스케줄 및 해상도 환경을 모두 커버하는 미디어 쿼리 기반 반응형 네비게이션을 설계하였으며, 바닐라 자바스크립트 기반의 홈배너 이미지 슬라이드쇼, jQuery 및 Lightbox 라이브러리를 활용한 고해상도 이미지 오버레이 뷰어, 유기적인 앨범 카드 인터랙션을 적용했습니다.\n\nThe YENA Fanpage is a responsive web application designed and built as a final project for the "Network Media" course (2022 2nd Semester) in Art & Technology at Sogang University. Dedicated to the artist Choi Ye-na, the platform consolidates biography details, rich album cards, multimedia newsletters, a photo gallery with lightbox support, and an active schedule calendar. By using CSS Media Queries, it delivers a fully responsive responsive layout supporting seamless navigation toggles across mobile and desktop. It incorporates a vanilla JavaScript banner slideshow, hover-responsive profile states, and interactive jQuery Lightbox popups for high-resolution image viewing.',
     sections: {
       introduction: 'Network Media 과목의 기말 과제로서, 웹 인터랙션과 미디어 연동을 유기적으로 결합하는 실용적인 웹 환경 설계를 목적으로 삼았습니다. 단순한 정보 나열을 넘어 아티스트의 타이틀곡 분위기에 어울리는 화사하고 키치한 핑크빛 비주얼 테마를 구성하고, 사용자 친화적인 레이아웃과 미디어 쿼리를 통한 유연한 다바이스 대응 방안을 연구했습니다.\n\nAs the final project for the Network Media course, this project aims to create a highly practical and visually cohesive web portfolio. Striving beyond plain list displays, the fanpage adopts a vibrant, kitsch pink palette inspired by the artist\'s signature concepts ("SMiLEY" & "SMARTPHONE"). It focuses on designing user-friendly interactive grids and responsive media wrappers to adapt dynamically to diverse viewing resolutions.',
@@ -428,6 +444,7 @@ export const projectsData = {
     author: 'Joohyoung Yi',
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@sogang.ac.kr',
+    link: '',
     tags: ['Academic', 'Research', 'Engineering', 'Timeline'],
     abstract: '본 타임라인 아카이브는 서강대학교 입학 이후 수행한 학업 마일스톤, 학술 논문 게재 이력, 소프트웨어 엔지니어링 및 인터랙티브 프로젝트들을 상세히 문서화한 기록 보관소입니다. 젠더 편향 감성 분석, 음악 장르 스펙트로그램 변환 분류, NLP 추천 스카우터 및 웹 아키텍처 연동 이력을 망라합니다.\n\nThis timeline archive provides a detailed documentation of my academic milestones, published research papers, software engineering projects, and interactive designs since joining Sogang University. It encapsulates key projects spanning Sentiment Bias Analysis, Music Genre Recognition, NLP-based Recommendation Engines, and Web Architectures.',
     sections: {
@@ -515,16 +532,14 @@ export const ProjectModal = ({ projectId, onClose }) => {
   if (!project) return null;
 
   return (
-    <div 
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/70 ${
-        isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
-      }`}
+    <div
+      className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/70 ${isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
+        }`}
       onClick={handleClose}
     >
-      <div 
-        className={`glass-panel w-full max-w-5xl max-h-[95vh] md:max-h-[90vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/55 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${
-          isClosing ? 'animate-modal-out' : 'animate-modal-in'
-        }`}
+      <div
+        className={`glass-panel w-full max-w-5xl max-h-[95vh] md:max-h-[90vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/55 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${isClosing ? 'animate-modal-out' : 'animate-modal-in'
+          }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Modal Header */}
@@ -548,12 +563,44 @@ export const ProjectModal = ({ projectId, onClose }) => {
               <span>{project.affiliation}</span>
             </div>
           </div>
-          <button 
-            onClick={handleClose}
-            className="p-1.5 sm:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150 cursor-pointer"
-          >
-            <X size={16} sm:size={20} />
-          </button>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <a
+              href={project.page || '#'}
+              onClick={(e) => {
+                if (!project.page) {
+                  e.preventDefault();
+                  alert('해당 프로젝트의 라이브 웹 페이지(Pages)가 등록되어 있지 않거나 준비 중입니다.');
+                }
+              }}
+              target={project.page ? "_blank" : "_self"}
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
+            >
+              <span>Visit Pages</span>
+              <Globe size={12} sm:size={14} className="shrink-0" />
+            </a>
+            <a
+              href={project.link || '#'}
+              onClick={(e) => {
+                if (!project.link) {
+                  e.preventDefault();
+                  alert('해당 프로젝트의 소스 코드 저장소(Github)가 등록되어 있지 않거나 제공되지 않습니다.');
+                }
+              }}
+              target={project.link ? "_blank" : "_self"}
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
+            >
+              <span>Visit Project</span>
+              <ArrowUpRight size={12} sm:size={14} className="shrink-0" />
+            </a>
+            <button
+              onClick={handleClose}
+              className="p-1.5 sm:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150 cursor-pointer"
+            >
+              <X size={16} sm:size={20} />
+            </button>
+          </div>
         </div>
 
         {/* Main Body Layout: Sidebar + Main Content + Right TOC */}
@@ -569,11 +616,10 @@ export const ProjectModal = ({ projectId, onClose }) => {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 md:py-2 md:px-3 text-xs md:text-xs font-semibold transition-all duration-200 cursor-pointer w-auto md:w-full md:rounded-lg text-left shrink-0 ${
-                    activeTab === tab.id 
-                      ? 'border-b-2 border-indigo-500 md:border-b-0 md:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold' 
-                      : 'border-b-2 border-transparent md:border-b-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-350 hover:bg-slate-100/50 dark:hover:bg-slate-800/30'
-                  }`}
+                  className={`flex items-center gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 md:py-2 md:px-3 text-xs md:text-xs font-semibold transition-all duration-200 cursor-pointer w-auto md:w-full md:rounded-lg text-left shrink-0 ${activeTab === tab.id
+                    ? 'border-b-2 border-indigo-500 md:border-b-0 md:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold'
+                    : 'border-b-2 border-transparent md:border-b-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-350 hover:bg-slate-100/50 dark:hover:bg-slate-800/30'
+                    }`}
                 >
                   <tab.icon size={12} sm:size={13} className="shrink-0" />
                   <span className="truncate">{tab.label}</span>
@@ -584,202 +630,200 @@ export const ProjectModal = ({ projectId, onClose }) => {
 
           {/* Modal Content - Scrollable */}
           <div ref={scrollContainerRef} className="flex-1 min-w-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
-          {activeTab === 'overview' && (
-            <div className="space-y-4 sm:space-y-6 animate-fade-in">
-              <div id="sec-abstract" className="space-y-2 sm:space-y-3">
-                <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
-                  <Award size={12} sm:size={14} /> Abstract
-                </h3>
-                <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed bg-slate-50 dark:bg-slate-950/40 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/30 dark:border-slate-800/20 whitespace-pre-line">
-                  {project.abstract}
-                </p>
-              </div>
-
-              <div id="sec-introduction" className="space-y-3">
-                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">1. Introduction</h3>
-                <p className="text-slate-600 dark:text-slate-300 text-xs md:text-sm leading-relaxed whitespace-pre-line">
-                  {project.sections.introduction}
-                </p>
-              </div>
-            </div>
-          )}
-
-          {activeTab === 'methodology' && (
-            <div className="space-y-6 animate-fade-in">
-              <div className={['mus', 'shen', 'scout'].includes(project.id) ? "grid grid-cols-1 lg:grid-cols-2 gap-6" : "space-y-6"}>
-                <div className="space-y-6">
-                  {project.sections.methodology.map((m, idx) => (
-                    <div id={`sec-methodology-${idx}`} key={idx} className="space-y-2 bg-slate-50 dark:bg-slate-950/20 p-5 rounded-2xl border border-slate-200/20 dark:border-slate-800/10">
-                      <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-                        <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
-                        {m.title}
-                      </h3>
-                      <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300 leading-relaxed whitespace-pre-line">
-                        {m.desc}
-                      </p>
-                    </div>
-                  ))}
+            {activeTab === 'overview' && (
+              <div className="space-y-4 sm:space-y-6 animate-fade-in">
+                <div id="sec-abstract" className="space-y-2 sm:space-y-3">
+                  <h3 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-indigo-500 dark:text-indigo-400 flex items-center gap-1.5">
+                    <Award size={12} sm:size={14} /> Abstract
+                  </h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-xs sm:text-sm md:text-base leading-relaxed bg-slate-50 dark:bg-slate-950/40 p-3.5 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200/30 dark:border-slate-800/20 whitespace-pre-line">
+                    {project.abstract}
+                  </p>
                 </div>
 
-                {/* Show Methodology Diagram if it exists */}
-                {project.id === 'mus' && (
-                  <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl">
-                    <img 
-                      src={mus_fig_1} 
-                      alt="Preprocessing Pipeline" 
-                      className="max-h-56 md:max-h-64 object-contain rounded-xl shadow-md border border-slate-200/40 dark:border-slate-800/40 bg-white p-2" 
-                    />
-                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm whitespace-pre-line">
-                      {project.sections.methodology[0].caption}
-                    </p>
-                  </div>
-                )}
-
-                {project.id === 'shen' && (
-                  <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl">
-                    <div className="grid grid-cols-2 gap-2 w-full">
-                      <div className="flex flex-col items-center">
-                        <img src={SHEN_fig_5} alt="Attention Heatmap Male" className="max-h-24 md:max-h-28 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white" />
-                        <span className="text-[8px] text-slate-400 mt-1">Male Director Attention</span>
-                      </div>
-                      <div className="flex flex-col items-center">
-                        <img src={SHEN_fig_6} alt="Attention Heatmap Female" className="max-h-24 md:max-h-28 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white" />
-                        <span className="text-[8px] text-slate-400 mt-1">Female Director Attention</span>
-                      </div>
-                    </div>
-                    <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm whitespace-pre-line">
-                      Figure: Attention weights comparison between male/female directors (highlights the misattribution on the gender prefix '여-').
-                    </p>
-                  </div>
-                )}
-
-                {project.id === 'scout' && (
-                  <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl gap-4">
-                    <img 
-                      src={scout_report_fig_1} 
-                      alt="normalize_position_input" 
-                      className="max-h-36 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1" 
-                    />
-                    <img 
-                      src={scout_report_fig_13} 
-                      alt="filter_players_by_position" 
-                      className="max-h-24 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1" 
-                    />
-                    <p className="text-[10px] text-slate-400 dark:text-slate-500 text-center max-w-sm whitespace-pre-line">
-                      Figures: Python code snippets implementing query position normalization and candidate filtering based on player positions to resolve recommendations error.
-                    </p>
-                  </div>
-                )}
+                <div id="sec-introduction" className="space-y-3">
+                  <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">1. Introduction</h3>
+                  <p className="text-slate-600 dark:text-slate-300 text-xs md:text-sm leading-relaxed whitespace-pre-line">
+                    {project.sections.introduction}
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
-          {activeTab === 'results' && (
-            <div className="space-y-8 animate-fade-in">
-              {project.sections.results.map((r, idx) => (
-                <div id={`sec-results-${idx}`} key={idx} className="space-y-4 border-b border-slate-200/20 dark:border-slate-800/20 pb-6 last:border-0 last:pb-0">
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
-                    {/* Left Column: Description */}
-                    <div className="space-y-3">
-                      <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
-                        <Zap size={14} className="text-indigo-500" />
-                        {r.title}
-                      </h3>
-                      <p className="text-xs md:text-sm text-slate-500 dark:text-slate-350 leading-relaxed whitespace-pre-line bg-slate-50/50 dark:bg-slate-950/20 p-4 rounded-xl border border-slate-200/10 dark:border-slate-800/10">
-                        {r.desc}
+            {activeTab === 'methodology' && (
+              <div className="space-y-6 animate-fade-in">
+                <div className={['mus', 'shen', 'scout'].includes(project.id) ? "grid grid-cols-1 lg:grid-cols-2 gap-6" : "space-y-6"}>
+                  <div className="space-y-6">
+                    {project.sections.methodology.map((m, idx) => (
+                      <div id={`sec-methodology-${idx}`} key={idx} className="space-y-2 bg-slate-50 dark:bg-slate-950/20 p-5 rounded-2xl border border-slate-200/20 dark:border-slate-800/10">
+                        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>
+                          {m.title}
+                        </h3>
+                        <p className="text-xs md:text-sm text-slate-500 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                          {m.desc}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Show Methodology Diagram if it exists */}
+                  {project.id === 'mus' && (
+                    <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl">
+                      <img
+                        src={mus_fig_1}
+                        alt="Preprocessing Pipeline"
+                        className="max-h-56 md:max-h-64 object-contain rounded-xl shadow-md border border-slate-200/40 dark:border-slate-800/40 bg-white p-2"
+                      />
+                      <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm whitespace-pre-line">
+                        {project.sections.methodology[0].caption}
                       </p>
                     </div>
+                  )}
 
-                    {/* Right Column: Figures */}
-                    <div className="w-full">
-                      {/* Figure displays */}
-                      {r.fig && (
-                        <div className="flex flex-col items-center p-3 sm:p-4 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-2xl w-full mx-auto">
-                          <img 
-                            src={r.fig} 
-                            alt={r.caption} 
-                            className="max-h-[300px] sm:max-h-[380px] md:max-h-[420px] object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2 w-full" 
-                          />
-                          <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl whitespace-pre-line">
-                            {r.caption}
-                          </p>
+                  {project.id === 'shen' && (
+                    <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl">
+                      <div className="grid grid-cols-2 gap-2 w-full">
+                        <div className="flex flex-col items-center">
+                          <img src={SHEN_fig_5} alt="Attention Heatmap Male" className="max-h-24 md:max-h-28 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white" />
+                          <span className="text-[8px] text-slate-400 mt-1">Male Director Attention</span>
                         </div>
-                      )}
+                        <div className="flex flex-col items-center">
+                          <img src={SHEN_fig_6} alt="Attention Heatmap Female" className="max-h-24 md:max-h-28 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white" />
+                          <span className="text-[8px] text-slate-400 mt-1">Female Director Attention</span>
+                        </div>
+                      </div>
+                      <p className="text-[10px] text-slate-400 dark:text-slate-500 mt-3 text-center max-w-sm whitespace-pre-line">
+                        Figure: Attention weights comparison between male/female directors (highlights the misattribution on the gender prefix '여-').
+                      </p>
+                    </div>
+                  )}
 
-                      {/* Multi-Figure displays */}
-                      {r.figs && (
-                        <div className="space-y-4">
-                          <div className={r.figs.length === 1 
-                            ? "flex justify-center" 
-                            : "grid grid-cols-1 sm:grid-cols-2 gap-4"
-                          }>
-                            {r.figs.map((f, fIdx) => (
-                              <div 
-                                key={fIdx} 
-                                className={`flex flex-col items-center p-3 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-xl ${
-                                  r.figs.length === 1 ? 'max-w-md w-full' : ''
-                                }`}
-                              >
-                                <img 
-                                  src={f} 
-                                  alt="Figure component" 
-                                  className={`object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1.5 w-full ${
-                                    r.figs.length === 1 ? 'max-h-[300px] sm:max-h-[380px] md:max-h-[420px]' : 'max-h-36 sm:max-h-40 md:max-h-48'
-                                  }`} 
-                                />
-                              </div>
-                            ))}
+                  {project.id === 'scout' && (
+                    <div className="flex flex-col justify-center items-center p-4 bg-slate-100/50 dark:bg-slate-950/40 border border-slate-200/55 dark:border-slate-800/50 rounded-2xl gap-4">
+                      <img
+                        src={scout_report_fig_1}
+                        alt="normalize_position_input"
+                        className="max-h-36 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1"
+                      />
+                      <img
+                        src={scout_report_fig_13}
+                        alt="filter_players_by_position"
+                        className="max-h-24 object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1"
+                      />
+                      <p className="text-[10px] text-slate-400 dark:text-slate-500 text-center max-w-sm whitespace-pre-line">
+                        Figures: Python code snippets implementing query position normalization and candidate filtering based on player positions to resolve recommendations error.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'results' && (
+              <div className="space-y-8 animate-fade-in">
+                {project.sections.results.map((r, idx) => (
+                  <div id={`sec-results-${idx}`} key={idx} className="space-y-4 border-b border-slate-200/20 dark:border-slate-800/20 pb-6 last:border-0 last:pb-0">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+                      {/* Left Column: Description */}
+                      <div className="space-y-3">
+                        <h3 className="text-sm font-bold text-slate-800 dark:text-slate-200 flex items-center gap-2">
+                          <Zap size={14} className="text-indigo-500" />
+                          {r.title}
+                        </h3>
+                        <p className="text-xs md:text-sm text-slate-500 dark:text-slate-350 leading-relaxed whitespace-pre-line bg-slate-50/50 dark:bg-slate-950/20 p-4 rounded-xl border border-slate-200/10 dark:border-slate-800/10">
+                          {r.desc}
+                        </p>
+                      </div>
+
+                      {/* Right Column: Figures */}
+                      <div className="w-full">
+                        {/* Figure displays */}
+                        {r.fig && (
+                          <div className="flex flex-col items-center p-3 sm:p-4 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-2xl w-full mx-auto">
+                            <img
+                              src={r.fig}
+                              alt={r.caption}
+                              className="max-h-[300px] sm:max-h-[380px] md:max-h-[420px] object-contain rounded-lg shadow-sm border border-slate-200 dark:border-slate-800 bg-white p-2 w-full"
+                            />
+                            <p className="text-[10px] font-medium text-slate-500 dark:text-slate-400 mt-2.5 text-center max-w-xl whitespace-pre-line">
+                              {r.caption}
+                            </p>
                           </div>
-                          <div className="space-y-1.5 text-center">
-                            {r.captions.map((cap, cIdx) => (
-                              <p key={cIdx} className="text-[10px] text-slate-400 dark:text-slate-500 whitespace-pre-line">
-                                {cap}
-                              </p>
-                            ))}
+                        )}
+
+                        {/* Multi-Figure displays */}
+                        {r.figs && (
+                          <div className="space-y-4">
+                            <div className={r.figs.length === 1
+                              ? "flex justify-center"
+                              : "grid grid-cols-1 sm:grid-cols-2 gap-4"
+                            }>
+                              {r.figs.map((f, fIdx) => (
+                                <div
+                                  key={fIdx}
+                                  className={`flex flex-col items-center p-3 bg-slate-50 dark:bg-slate-950/30 border border-slate-200/30 dark:border-slate-800/20 rounded-xl ${r.figs.length === 1 ? 'max-w-md w-full' : ''
+                                    }`}
+                                >
+                                  <img
+                                    src={f}
+                                    alt="Figure component"
+                                    className={`object-contain rounded border border-slate-200 dark:border-slate-800 bg-white p-1.5 w-full ${r.figs.length === 1 ? 'max-h-[300px] sm:max-h-[380px] md:max-h-[420px]' : 'max-h-36 sm:max-h-40 md:max-h-48'
+                                      }`}
+                                  />
+                                </div>
+                              ))}
+                            </div>
+                            <div className="space-y-1.5 text-center">
+                              {r.captions.map((cap, cIdx) => (
+                                <p key={cIdx} className="text-[10px] text-slate-400 dark:text-slate-500 whitespace-pre-line">
+                                  {cap}
+                                </p>
+                              ))}
+                            </div>
                           </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
                   </div>
+                ))}
+
+                <div id="sec-conclusion" className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-5">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-1">Conclusion</h4>
+                  <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                    {project.sections.conclusion}
+                  </p>
                 </div>
-              ))}
-
-              <div id="sec-conclusion" className="bg-indigo-500/5 border border-indigo-500/10 rounded-2xl p-5">
-                <h4 className="text-xs font-bold uppercase tracking-wider text-indigo-500 mb-1">Conclusion</h4>
-                <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed whitespace-pre-line">
-                  {project.sections.conclusion}
-                </p>
               </div>
-            </div>
-          )}
-        </div>
-
-        {/* Right Sidebar: Table of Contents / Outline */}
-        <div className="hidden lg:flex flex-col w-36 shrink-0 border-l border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-950/10 p-4 space-y-3 overflow-y-auto min-h-0">
-          <div className="space-y-1">
-            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              On this page
-            </span>
-            <div className="h-0.5 w-8 bg-indigo-500 rounded-full"></div>
+            )}
           </div>
-          <nav className="flex flex-col space-y-3">
-            {getSectionsForTab().map((sec) => (
-              <button
-                key={sec.id}
-                onClick={() => scrollToSection(sec.id)}
-                className="text-left text-[10px] font-semibold text-slate-500 hover:text-indigo-500 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors duration-150 cursor-pointer hover:underline line-clamp-2 leading-tight"
-              >
-                {sec.label}
-              </button>
-            ))}
-          </nav>
+
+          {/* Right Sidebar: Table of Contents / Outline */}
+          <div className="hidden lg:flex flex-col w-36 shrink-0 border-l border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-950/10 p-4 space-y-3 overflow-y-auto min-h-0">
+            <div className="space-y-1">
+              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                On this page
+              </span>
+              <div className="h-0.5 w-8 bg-indigo-500 rounded-full"></div>
+            </div>
+            <nav className="flex flex-col space-y-3">
+              {getSectionsForTab().map((sec) => (
+                <button
+                  key={sec.id}
+                  onClick={() => scrollToSection(sec.id)}
+                  className="text-left text-[10px] font-semibold text-slate-500 hover:text-indigo-500 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors duration-150 cursor-pointer hover:underline line-clamp-2 leading-tight"
+                >
+                  {sec.label}
+                </button>
+              ))}
+            </nav>
+          </div>
         </div>
-      </div>
 
         {/* Modal Footer */}
         <div className="p-3 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-5 md:px-6">
           <span className="text-[10px] text-slate-400 font-mono">[Sogang Univ. Art & Tech Portfolio Project]</span>
-          <button 
+          <button
             onClick={handleClose}
             className="px-4 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150"
           >

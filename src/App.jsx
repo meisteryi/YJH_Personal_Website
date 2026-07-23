@@ -7,7 +7,9 @@ import {
   InteractiveCard, 
   PersonalProjectCard, 
   ArchiveCard,
-  CertificatesCard
+  CertificatesCard,
+  PhotoExhibitionCard,
+  VisualCard
 } from './components/BentoGrid';
 import { ProjectModal } from './components/ProjectModal';
 import { ArchiveModal } from './components/ArchiveModal';
@@ -307,7 +309,7 @@ function App() {
 
       {/* Bento Grid Area */}
       <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 auto-rows-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 auto-rows-[220px] sm:auto-rows-[200px] md:auto-rows-[230px] lg:auto-rows-[250px] xl:auto-rows-[270px]">
           {/* 1. Hero Card (2x2) */}
           <HeroCard />
 
@@ -339,6 +341,12 @@ function App() {
 
            {/* 8. Certificates Card (1x2) */}
            <CertificatesCard />
+
+           {/* 9. Photo Exhibition Card (2x1) */}
+           <PhotoExhibitionCard />
+
+           {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
+           <VisualCard onOpen={handleOpenProject} />
          </div>
        </main>
  

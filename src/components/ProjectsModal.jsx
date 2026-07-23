@@ -68,13 +68,13 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
       onClick={handleClose}
     >
       <div 
-        className={`glass-panel w-full max-w-5xl max-h-[92vh] md:max-h-[85vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 transition-all duration-300 ${
+        className={`glass-panel w-full max-w-5xl h-[95vh] md:h-[90vh] max-h-[95vh] md:max-h-[90vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 transition-all duration-300 ${
           isClosing ? 'animate-modal-out' : 'animate-modal-in'
         }`}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="p-4 sm:p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
+        <div className="py-3 px-4 sm:py-4 sm:px-6 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
           <div className="space-y-1">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
               <Code className="text-indigo-500" size={20} sm:size={24} />
@@ -93,15 +93,15 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Projects Horizontal Scroll Container */}
-        <div ref={scrollContainerRef} className="flex-1 overflow-x-auto p-4 sm:p-6 md:p-8 flex items-stretch scrollbar-thin">
-          <div className="flex gap-4 sm:gap-6 pb-2">
+        <div ref={scrollContainerRef} className="flex-1 overflow-x-auto overflow-y-hidden pt-4 pb-2 sm:pt-5 sm:pb-3 md:pt-6 md:pb-3 md:px-8 flex items-stretch scrollbar-thin">
+          <div className="flex gap-4 sm:gap-6 pb-1 h-full items-stretch">
             {projects.map((project) => {
               const image = projectImages[project.id];
               return (
                 <div 
                   key={project.id}
                   onClick={() => onOpenProject(project.id)}
-                  className="group flex flex-col justify-between rounded-2xl border border-slate-100 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/40 p-4 sm:p-5 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1 w-[260px] sm:w-[300px] md:w-[350px] h-[340px] sm:h-[370px] md:h-[400px] shrink-0 overflow-hidden"
+                  className="group flex flex-col justify-between rounded-2xl border border-slate-100 dark:border-slate-800/60 bg-white/50 dark:bg-slate-900/40 p-4 sm:p-5 hover:bg-slate-50/80 dark:hover:bg-slate-900/20 hover:border-slate-200/80 dark:hover:border-slate-800 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer transform hover:-translate-y-1 w-[260px] sm:w-[300px] md:w-[350px] h-full shrink-0 overflow-hidden"
                 >
                   <div className="space-y-3 sm:space-y-4">
                     {/* Project Preview Image */}
@@ -131,7 +131,7 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
                         {project.title}
                       </h3>
                       
-                      <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-350 line-clamp-2 leading-relaxed overflow-hidden">
+                      <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-350 line-clamp-4 leading-relaxed overflow-hidden">
                         {project.abstract.split('\n\n')[0]}
                       </p>
                     </div>
