@@ -14,6 +14,7 @@ import {
 import { ProjectModal } from './components/ProjectModal';
 import { ArchiveModal } from './components/ArchiveModal';
 import { ProjectsModal } from './components/ProjectsModal';
+import { PhotoExhibitionModal } from './components/PhotoExhibitionModal';
 import logo from './assets/logo.png';
 
 const searchProjects = [
@@ -33,6 +34,7 @@ function App() {
   const [modalSource, setModalSource] = useState(null); // 'projects', 'archive'
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isPhotoExhibitionOpen, setIsPhotoExhibitionOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -44,6 +46,8 @@ function App() {
   const handleOpenProject = (id) => {
     if (id === 'archive') {
       setIsArchiveOpen(true);
+    } else if (id === 'photoexhibition') {
+      setIsPhotoExhibitionOpen(true);
     } else {
       setSelectedProject(id);
       setModalSource(null);
@@ -112,7 +116,7 @@ function App() {
 
   // Prevent background scrolling when any modal is open
   useEffect(() => {
-    if (selectedProject || isArchiveOpen || isProjectsOpen) {
+    if (selectedProject || isArchiveOpen || isProjectsOpen || isPhotoExhibitionOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -120,7 +124,7 @@ function App() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [selectedProject, isArchiveOpen, isProjectsOpen]);
+  }, [selectedProject, isArchiveOpen, isProjectsOpen, isPhotoExhibitionOpen]);
 
   const toggleTheme = () => {
     if (darkMode) {
@@ -343,7 +347,7 @@ function App() {
            <CertificatesCard />
 
            {/* 9. Photo Exhibition Card (2x1) */}
-           <PhotoExhibitionCard />
+           <PhotoExhibitionCard onOpen={handleOpenProject} />
 
            {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
            <VisualCard onOpen={handleOpenProject} />
@@ -372,8 +376,12 @@ function App() {
            onClose={() => setIsArchiveOpen(false)}
            onOpenProject={(id) => {
              setIsArchiveOpen(false);
-             setSelectedProject(id);
-             setModalSource('archive');
+             if (id === 'photoexhibition') {
+               setIsPhotoExhibitionOpen(true);
+             } else {
+               setSelectedProject(id);
+               setModalSource('archive');
+             }
            }}
          />
        )}
@@ -384,9 +392,20 @@ function App() {
            onClose={() => setIsProjectsOpen(false)}
            onOpenProject={(id) => {
              setIsProjectsOpen(false);
-             setSelectedProject(id);
-             setModalSource('projects');
+             if (id === 'photoexhibition') {
+               setIsPhotoExhibitionOpen(true);
+             } else {
+               setSelectedProject(id);
+               setModalSource('projects');
+             }
            }}
+         />
+       )}
+
+       {/* Render Photo Exhibition Fullscreen Modal */}
+       {isPhotoExhibitionOpen && (
+         <PhotoExhibitionModal 
+           onClose={() => setIsPhotoExhibitionOpen(false)}
          />
        )}
 

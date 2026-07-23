@@ -11,8 +11,10 @@ import halligalli_1 from '../assets/halligalli_1.png';
 import unseenmap_1 from '../assets/unseenmap_1.png';
 import gachatodo_3 from '../assets/gachatodo_3.png';
 import yena_fanpage_profile from '../assets/yena_fanpage_profile.jpg';
+import photo_exhibition_cover from '../assets/photo_exhibition_cover.png';
 
 const projectImages = {
+  photoexhibition: photo_exhibition_cover,
   gachatodo: gachatodo_3,
   tabilens: tabilens_1,
   unseenmap: unseenmap_1,

@@ -13,6 +13,16 @@ const archiveLogs = [
     tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
   },
   {
+    date: 'Jul 2026',
+    title: 'Released Photo Exhibition Web Service',
+    category: 'Project',
+    color: 'pink',
+    icon: Code,
+    projectId: 'photoexhibition',
+    description: 'EXIF 메타데이터 자동 추출 및 반응형 메이슨리 레이아웃, 모노그래프 전시 감상 모드를 제공하는 감성적인 온라인 사진 전시회 서비스 개발.\n\nDeveloped Photo Exhibition, an editorial online photo gallery featuring automatic EXIF metadata parsing, responsive masonry grids, single-heart likes, and a monograph presentation view mode.',
+    tags: ['React', 'exifreader', 'CSS Variables', 'Photography']
+  },
+  {
     date: 'Apr 2026 - Jul 2026',
     title: 'Sophia University Exchange Program',
     category: 'Academic',

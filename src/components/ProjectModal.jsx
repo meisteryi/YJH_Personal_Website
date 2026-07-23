@@ -49,6 +49,38 @@ import yena_smartphone_albumcover from '../assets/yena_smartphone_albumcover.jpg
 import yenalogo_pink from '../assets/yenalogo_pink.png';
 
 export const projectsData = {
+  photoexhibition: {
+    id: 'photoexhibition',
+    title: 'Photo Exhibition',
+    subtitle: '감성적인 사진 전시회 & 아카이브 웹 서비스 / Editorial Photography Exhibition & Archive Service',
+    author: 'Joohyoung Yi',
+    affiliation: 'Art & Technology, Sogang University',
+    email: 'yjh020701@gmail.com',
+    link: 'https://github.com/meisteryi/PhotoExhibition',
+    page: '#',
+    tags: ['React', 'exifreader', 'CSS Variables', 'Responsive Grid', 'UX/UI'],
+    abstract: 'Photo Exhibition은 사진 촬영 시 함께 메타데이터로 저장되는 EXIF 정보를 자동으로 추출하여 에세이와 함께 전시하는 예술적 온라인 아카이브 플랫폼입니다. 반응형 메이슨리 그리드 레이아웃을 통해 자유롭게 사진들을 탐색하고, 감성적인 모노그래프 모드를 통해 사진들을 한 장씩 몰입하여 감상할 수 있습니다. 또한, 사용자는 모바일 기기 터치 및 PC 마우스 휠을 통해 직관적이고 부드러운 스냅 스크롤링과 더블 탭 하트 리액션을 경험할 수 있습니다.\n\nPhoto Exhibition is an editorial online archive platform that automatically extracts EXIF metadata from uploaded images and showcases them alongside personal essays. Users can explore photos through a responsive masonry grid or immerse themselves in a monograph presentation mode that snaps vertically with custom ease-in-out scroll controllers. It also features client-side image uploading, administrative content management, and a physics-inspired radiating heart reaction system.',
+    sections: {
+      introduction: '이 프로젝트는 아티스트이자 개발자로서, 일상의 찰나들을 포착한 사진 데이터와 그 이면의 생각(에세이)들을 웹상에서 가장 세련되고 몰입감 있는 레이아웃으로 표현하기 위해 기획되었습니다. EXIF 정보를 직접 파싱하여 작품의 무드를 결정짓는 기술적 세부사항을 투명하게 노출하고, 갤러리 관람 경험과 유사한 전시 모드를 구축하였습니다.\n\nThis project was conceived to present daily photography captures alongside personal reflections (essays) in the most refined and immersive layout on the web. By parsing and displaying EXIF metadata, it offers a transparent view of the technical choices behind each mood, replicating a physical gallery observation experience.',
+      methodology: [
+        {
+          title: 'EXIF 메타데이터 파싱 (EXIF Metadata Extraction via exifreader)',
+          desc: '`exifreader` 라이브러리를 사용해 사진 파일이 보유한 노출 시간, 조리개 값, 카메라 제조사 및 모델, 렌즈 초점 거리, ISO 값, GPS 좌표 등의 촬영 데이터를 클라이언트 측에서 즉시 추출하여 전시 카드 정보로 구조화합니다.\n\nLeveraged the `exifreader` package to dynamically extract internal camera metadata: exposure time, aperture, ISO, camera make/model, lens specification, and location coordinates directly inside the client on image upload.',
+        },
+        {
+          title: '모노그래프 스냅 스크롤링 및 인터랙션 (Monograph View Snap Scrolling & Physics Hearts)',
+          desc: '1. `requestAnimationFrame`과 `easeInOutCubic` 이징 함수를 활용한 커스텀 스크롤 글라이더를 제작하여 부드러운 페이지 스냅 전환 효과를 부여했습니다.\n2. `HeartButton` 컴포넌트는 사용자의 클릭 시 방사형으로 날아가는 8개의 입자 하트 애니메이션(CSS custom variables 및 keyframe 연동)을 트리거합니다.\n\n1. Implemented a custom scroll glider leveraging `requestAnimationFrame` and an `easeInOutCubic` easing utility to provide smooth vertical snap slide transitions.\n2. Features a physics-inspired `HeartButton` component triggering radiating heart particles driven by CSS custom property mappings and keyframe animations.',
+        }
+      ],
+      results: [
+        {
+          title: '아카이브 메이슨리 그리드 및 관리 모드 (Archive Masonry & Manager Mode)',
+          desc: '반응형 메이슨리 그리드를 구성하여 가로세로 비율이 서로 다른 사진들을 고르게 레이아웃하고 마우스 호버 시 촬영 정보 요약을 오버레이로 제공합니다. 또한 비밀번호로 보호된 관리자 모드(기본값: admin)에서 카테고리를 편집하거나 사진을 삭제하고, EXIF 정보와 함께 에세이를 업로드할 수 있습니다.\n\nConstructed a responsive masonry grid that cleanly floats photos with varying aspect ratios. In addition, an admin dashboard protected by a verification key (default: admin) permits category renaming/deletion, photo removal, and upload logs integrated with real-time parsed EXIF cards.',
+        }
+      ],
+      conclusion: 'Photo Exhibition은 바닐라 CSS의 자유도 높은 스타일링과 React의 모듈식 상태 머신을 융합하여 개발된 하이엔드 온라인 사진 전시 플랫폼입니다. 로컬 스토리지를 활용한 데이터 동기화와 최적화된 모바일 반응형 터치 인터랙션을 결합하여 사용자에게 오프라인 갤러리 이상의 깊이 있는 감상 경험을 제공합니다.\n\nThe Photo Exhibition integrates modular React architecture with clean vanilla CSS variables. By combining LocalStorage database updates with tailored touch event bindings, it serves as a high-fidelity virtual showroom delivering an interactive, deeply personal artwork review platform.',
+    }
+  },
   tabilens: {
     id: 'tabilens',
     title: 'TabiLenS',

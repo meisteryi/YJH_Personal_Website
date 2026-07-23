@@ -469,10 +469,10 @@ export const CertificatesCard = () => {
 };
 
 // 9. Photo Exhibition Card (Horizontal: 2x1)
-export const PhotoExhibitionCard = () => {
+export const PhotoExhibitionCard = ({ onOpen }) => {
   return (
     <Card
-      onClick={() => window.open('https://meisteryi.github.io/PhotoExhibition/', '_blank')}
+      onClick={() => onOpen('photoexhibition')}
       span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1"
       className="relative !p-0"
     >
