@@ -1,17 +1,31 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Calendar, Search, Award, Code, FileText, GraduationCap, ArrowRight } from 'lucide-react';
+import { projectsData } from './ProjectModal';
+
+// Import project featured images/figures
+import SHEN_fig_6 from '../assets/SHEN_fig_6.png';
+import mus_fig_1 from '../assets/mus_fig_1.png';
+import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
+import tabilens_1 from '../assets/tabilens_1.png';
+import halligalli_1 from '../assets/halligalli_1.png';
+import unseenmap_1 from '../assets/unseenmap_1.png';
+import gachatodo_3 from '../assets/gachatodo_3.png';
+import yena_fanpage_profile from '../assets/yena_fanpage_profile.jpg';
+import photo_exhibition_cover from '../assets/photo_exhibition_cover.png';
+
+const projectImages = {
+  photoexhibition: photo_exhibition_cover,
+  gachatodo: gachatodo_3,
+  tabilens: tabilens_1,
+  unseenmap: unseenmap_1,
+  halligalli: halligalli_1,
+  shen: SHEN_fig_6,
+  mus: mus_fig_1,
+  scout: scout_slides_fig_22,
+  yenafanpage: yena_fanpage_profile
+};
 
 const archiveLogs = [
-  {
-    date: 'Jul 2026',
-    title: 'Released TabiLenS Mobile App',
-    category: 'Project',
-    color: 'emerald',
-    icon: Code,
-    projectId: 'tabilens',
-    description: 'Gemini 2.5 Flash OCR 및 네이티브 TTS를 활용한 Flutter 기반 실시간 다국어 메뉴판 번역 및 식문화 가이드 앱 개발.\n\nDeveloped TabiLenS, a Flutter-based real-time multilingual menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
-    tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
-  },
   {
     date: 'Jul 2026',
     title: 'Released Photo Exhibition Web Service',
@@ -21,6 +35,16 @@ const archiveLogs = [
     projectId: 'photoexhibition',
     description: 'EXIF 메타데이터 자동 추출 및 반응형 메이슨리 레이아웃, 모노그래프 전시 감상 모드를 제공하는 감성적인 온라인 사진 전시회 서비스 개발.\n\nDeveloped Photo Exhibition, an editorial online photo gallery featuring automatic EXIF metadata parsing, responsive masonry grids, single-heart likes, and a monograph presentation view mode.',
     tags: ['React', 'exifreader', 'CSS Variables', 'Photography']
+  },
+  {
+    date: 'Jul 2026',
+    title: 'Released TabiLenS Mobile App',
+    category: 'Project',
+    color: 'emerald',
+    icon: Code,
+    projectId: 'tabilens',
+    description: 'Gemini 2.5 Flash OCR 및 네이티브 TTS를 활용한 Flutter 기반 실시간 다국어 메뉴판 번역 및 식문화 가이드 앱 개발.\n\nDeveloped TabiLenS, a Flutter-based real-time multilingual menu translator and dining guide app using Gemini 2.5 Flash OCR and native Text-to-Speech.',
+    tags: ['Flutter', 'Gemini API', 'Riverpod', 'TTS', 'Travel Utility']
   },
   {
     date: 'Apr 2026 - Jul 2026',
@@ -240,7 +264,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
 
           {/* Search Input */}
           <div className="relative w-full md:w-64">
-            <Search className="absolute left-3 top-2 sm:top-2.5 text-slate-400" size={14} sm:size={16} />
+            <Search className="absolute left-3 top-2 sm:top-2.5 text-slate-400" size={14} />
             <input
               type="text"
               placeholder="Search history, tech stack..."
@@ -263,6 +287,8 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                 {filteredLogs.slice(0, visibleCount).map((log, idx) => {
                   const LogIcon = log.icon;
                   const isExpanded = expandedIndex === idx;
+                  const project = log.projectId ? projectsData[log.projectId] : null;
+                  const image = log.projectId ? projectImages[log.projectId] : null;
 
                   return (
                     <div key={idx} className="relative group/timeline">
@@ -294,32 +320,73 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
                         </h3>
 
                         {/* Expandable Section */}
-                        <div className={`overflow-hidden transition-all duration-300 ${isExpanded ? 'max-h-96 mt-3 sm:mt-4 opacity-100' : 'max-h-0 opacity-0'}`}>
-                          <p className="text-[11px] sm:text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                            {log.description}
-                          </p>
+                        <div className={`overflow-hidden transition-all duration-550 ease-in-out ${isExpanded ? 'max-h-[1200px] mt-4 opacity-100' : 'max-h-0 opacity-0 pointer-events-none'}`}>
+                          {project ? (
+                            <div className="grid grid-cols-1 md:grid-cols-12 gap-5 pt-4 border-t border-slate-200/40 dark:border-slate-800/40 text-left">
+                              {/* Left details pane */}
+                              <div className="md:col-span-8 space-y-4">
+                                {project.subtitle && (
+                                  <p className="text-xs font-semibold text-indigo-500 dark:text-indigo-400">
+                                    {project.subtitle}
+                                  </p>
+                                )}
+                                <div className="space-y-2 text-xs md:text-sm text-slate-650 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                                  {project.abstract}
+                                </div>
+                                {/* Tech tags */}
+                                <div className="flex flex-wrap gap-1.5 pt-2">
+                                  {project.tags.map((tag, tIdx) => (
+                                    <span key={tIdx} className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[9px] font-mono font-medium text-slate-500 dark:text-slate-400 border border-slate-200/40 dark:border-slate-800/40">
+                                      {tag}
+                                    </span>
+                                  ))}
+                                </div>
+                              </div>
 
-                          {/* Tech tags */}
-                          <div className="flex flex-wrap gap-1 mt-3 sm:mt-4">
-                            {log.tags.map((tag, tIdx) => (
-                              <span key={tIdx} className="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-950 text-[8px] sm:text-[9px] font-mono text-slate-500 dark:text-slate-400 border border-slate-200/30 dark:border-slate-800/40">
-                                {tag}
-                              </span>
-                            ))}
-                          </div>
-
-                          {/* Project Link */}
-                          {log.projectId && (
-                            <button
-                              onClick={(e) => {
-                                e.stopPropagation();
-                                onOpenProject(log.projectId);
-                              }}
-                              className="mt-4 sm:mt-5 flex items-center gap-1 text-[10px] sm:text-[11px] font-semibold text-indigo-500 hover:text-indigo-600 dark:hover:text-indigo-400 transition-colors duration-150 cursor-pointer"
-                            >
-                              <span>Open Project Details</span>
-                              <ArrowRight size={10} sm:size={12} className="animate-pulse" />
-                            </button>
+                              {/* Right sidebar pane */}
+                              <div className="md:col-span-4 flex flex-col justify-between p-4 rounded-xl bg-slate-100/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-slate-800/50">
+                                {image && (
+                                  <div className="h-28 w-full rounded-xl bg-white dark:bg-slate-900 flex items-center justify-center overflow-hidden border border-slate-250/20 dark:border-slate-800/40 p-2 mb-4">
+                                    <img 
+                                      src={image} 
+                                      alt={project.title} 
+                                      className="max-h-full max-w-full object-contain transition-transform duration-300 group-hover/timeline:scale-105"
+                                    />
+                                  </div>
+                                )}
+                                <div className="space-y-3 mt-auto">
+                                  {project.affiliation && (
+                                    <p className="text-[10px] text-slate-400 dark:text-slate-500 leading-normal">
+                                      {project.affiliation}
+                                    </p>
+                                  )}
+                                  <button
+                                    onClick={(e) => {
+                                      e.stopPropagation();
+                                      onOpenProject(log.projectId);
+                                    }}
+                                    className="w-full py-2 px-3 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-all duration-200 flex items-center justify-center gap-1 shadow-md shadow-indigo-500/10 hover:shadow-lg cursor-pointer"
+                                  >
+                                    <span>Open Project Details</span>
+                                    <ArrowRight size={12} className="animate-pulse" />
+                                  </button>
+                                </div>
+                              </div>
+                            </div>
+                          ) : (
+                            <div className="pt-4 border-t border-slate-200/40 dark:border-slate-800/40 space-y-4 text-left">
+                              <p className="text-xs md:text-sm text-slate-655 dark:text-slate-300 leading-relaxed whitespace-pre-line">
+                                {log.description}
+                              </p>
+                              {/* Tech tags */}
+                              <div className="flex flex-wrap gap-1.5">
+                                {log.tags.map((tag, tIdx) => (
+                                  <span key={tIdx} className="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-[9px] font-mono font-medium text-slate-350 dark:text-slate-400 border border-slate-200/45 dark:border-slate-700/50">
+                                    {tag}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
                           )}
                         </div>
 

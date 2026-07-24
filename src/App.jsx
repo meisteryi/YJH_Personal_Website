@@ -46,8 +46,6 @@ function App() {
   const handleOpenProject = (id) => {
     if (id === 'archive') {
       setIsArchiveOpen(true);
-    } else if (id === 'photoexhibition') {
-      setIsPhotoExhibitionOpen(true);
     } else {
       setSelectedProject(id);
       setModalSource(null);
@@ -347,7 +345,7 @@ function App() {
            <CertificatesCard />
 
            {/* 9. Photo Exhibition Card (2x1) */}
-           <PhotoExhibitionCard onOpen={handleOpenProject} />
+           <PhotoExhibitionCard onOpen={() => setIsPhotoExhibitionOpen(true)} />
 
            {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
            <VisualCard onOpen={handleOpenProject} />
@@ -367,6 +365,7 @@ function App() {
              }
              setModalSource(null);
            }} 
+           onOpenPhotoExhibition={() => setIsPhotoExhibitionOpen(true)}
          />
        )}
  
@@ -376,12 +375,8 @@ function App() {
            onClose={() => setIsArchiveOpen(false)}
            onOpenProject={(id) => {
              setIsArchiveOpen(false);
-             if (id === 'photoexhibition') {
-               setIsPhotoExhibitionOpen(true);
-             } else {
-               setSelectedProject(id);
-               setModalSource('archive');
-             }
+             setSelectedProject(id);
+             setModalSource('archive');
            }}
          />
        )}
@@ -392,12 +387,8 @@ function App() {
            onClose={() => setIsProjectsOpen(false)}
            onOpenProject={(id) => {
              setIsProjectsOpen(false);
-             if (id === 'photoexhibition') {
-               setIsPhotoExhibitionOpen(true);
-             } else {
-               setSelectedProject(id);
-               setModalSource('projects');
-             }
+             setSelectedProject(id);
+             setModalSource('projects');
            }}
          />
        )}
