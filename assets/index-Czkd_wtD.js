@@ -782,6 +782,9 @@ Began undergraduate study in the Art & Technology department, focusing on creati
             transform: translate3d(calc(var(--mouse-x, -100px) - 1px), calc(var(--mouse-y, -100px) - 1px), 0);
             will-change: transform;
             transition: opacity 0.2s ease;
+            
+            /* High visibility crimson shadow glow */
+            filter: drop-shadow(0 2px 5px rgba(255, 51, 102, 0.45));
           }
 
           /* Inner Element: Handles triangle shape and smooth scale animation on hover */
@@ -789,7 +792,7 @@ Began undergraduate study in the Art & Technology department, focusing on creati
             width: 16px;
             height: 16px;
             border-radius: 0%;
-            background-color: #6366f1; /* indigo-500 */
+            background-color: #ff3366; /* Vibrant Neon Rose / Crimson */
             clip-path: polygon(0% 0%, 100% 30%, 30% 100%);
             transform: scale(1);
             transform-origin: 0% 0%; /* Scale from the tip so the hot-spot stays exactly locked! */
@@ -802,7 +805,7 @@ Began undergraduate study in the Art & Technology department, focusing on creati
 
           /* Clickable state: Scales up slightly and changes color */
           .custom-cursor-inner.state-clickable {
-            background-color: #4f46e5; /* indigo-600 */
+            background-color: #e61f50; /* Slightly darker crimson */
             transform: scale(1.35);
           }
         }
