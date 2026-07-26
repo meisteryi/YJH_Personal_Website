@@ -16,6 +16,7 @@ import { ArchiveModal } from './components/ArchiveModal';
 import { ProjectsModal } from './components/ProjectsModal';
 import { PhotoExhibitionModal } from './components/PhotoExhibitionModal';
 import logo from './assets/logo.png';
+import { CustomCursor } from './components/CustomCursor';
 
 const searchProjects = [
   { id: 'gachatodo', title: 'Gacha To-Do', category: 'Project', description: '할 일 완료로 모으는 코인과 픽셀 아쿠아리움 방치형 육성 게임 앱' },
@@ -138,6 +139,7 @@ function App() {
 
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 transition-colors duration-300 relative overflow-x-hidden">
+      <CustomCursor />
       
       {/* Background Decorative Gradient Orbs */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/5 dark:to-purple-500/5 rounded-full blur-3xl -z-10 pointer-events-none will-change-transform transform-gpu"></div>
