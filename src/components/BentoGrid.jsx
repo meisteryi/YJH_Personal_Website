@@ -43,56 +43,55 @@ export const Card = ({ children, className = '', span = '', onClick }) => {
     </div>
   );
 };
-
 // 1. Hero Card (Large: 2x2)
 export const HeroCard = () => {
   return (
-    <Card span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-3 sm:row-span-2">
+    <Card span="lg:col-span-2 lg:row-span-2 md:col-span-2 md:row-span-2 col-span-1 row-span-1 sm:row-span-2" className="!p-4 sm:!p-6 md:!p-8">
       <div className="flex flex-col gap-2 sm:gap-4 flex-1 min-h-0">
         {/* Title & Subtitle */}
-        <div className="space-y-1 sm:space-y-2 mt-1 sm:mt-4 shrink-0">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
+        <div className="space-y-1 sm:space-y-2 mt-0.5 sm:mt-4 shrink-0">
+          <h1 className="text-xl sm:text-3xl md:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-slate-900 to-slate-700 dark:from-white dark:to-slate-300 bg-clip-text text-transparent">
             Joohyoung Yi
           </h1>
-          <p className="text-sm sm:text-base md:text-lg lg:text-xl font-medium text-indigo-600 dark:text-indigo-400">
+          <p className="text-xs sm:text-base md:text-lg lg:text-xl font-medium text-indigo-600 dark:text-indigo-400">
             Art & Technology / Artificial Intelligence Undergraduate student @ Sogang Univ.
           </p>
         </div>
 
-        <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-xs sm:text-sm md:text-base mt-1 sm:mt-2 overflow-y-auto flex-1 min-h-0 pr-1">
+        <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-[11px] sm:text-sm md:text-base mt-1 sm:mt-2 overflow-y-auto flex-1 min-h-0 pr-1">
           안녕하세요! 인공지능, 설명 가능한 시스템(XAI), 그리고 음악 및 스포츠 데이터 분석 등 여러 분야의 데이터를 활용해 프로젝트를 진행했습니다. 별로 쓸데 없는 아이디어라도, 여러가지 아이디어를 직접 앱으로 만들어 보고 있습니다.
         </p>
       </div>
 
       {/* Social / Contact Links */}
-      <div className="flex items-center gap-2 sm:gap-4 mt-3 sm:mt-8 pt-3 sm:pt-6 border-t border-slate-100 dark:border-slate-800 shrink-0">
+      <div className="flex items-center gap-2 sm:gap-4 mt-2 sm:mt-8 pt-2 sm:pt-6 border-t border-slate-100 dark:border-slate-800 shrink-0">
         <a
           href="mailto:yjh020701@gmail.com"
-          className="flex items-center justify-center p-2 sm:p-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
+          className="flex items-center justify-center p-1.5 sm:p-3 rounded-full bg-indigo-500 hover:bg-indigo-600 text-white transition-colors duration-200"
           title="Email"
         >
-          <Mail className="w-4 h-4 sm:w-5 sm:h-5" />
+          <Mail className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
         </a>
         <a
           href="https://github.com/meisteryi"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center p-2 sm:p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
+          className="flex items-center justify-center p-1.5 sm:p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
           title="GitHub"
         >
-          <Github className="w-4 h-4 sm:w-5 sm:h-5" />
+          <Github className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
         </a>
         <a
           href="https://linkedin.com"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center justify-center p-2 sm:p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
+          className="flex items-center justify-center p-1.5 sm:p-3 rounded-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-750 text-slate-700 dark:text-slate-300 transition-colors duration-200"
           title="LinkedIn"
         >
-          <Linkedin className="w-4 h-4 sm:w-5 sm:h-5" />
+          <Linkedin className="w-3.5 h-3.5 sm:w-5 sm:h-5" />
         </a>
 
-        <span className="text-[10px] sm:text-xs text-slate-400 ml-auto flex items-center gap-1">
+        <span className="text-[9px] sm:text-xs text-slate-400 ml-auto flex items-center gap-1">
           Seoul, South Korea
         </span>
       </div>

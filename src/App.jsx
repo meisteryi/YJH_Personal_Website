@@ -51,6 +51,16 @@ function App() {
     }
   };
 
+  const handleGoHome = () => {
+    setSelectedProject(null);
+    setIsArchiveOpen(false);
+    setIsProjectsOpen(false);
+    setIsPhotoExhibitionOpen(false);
+    setSearchQuery('');
+    setIsSearchExpanded(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   useEffect(() => {
     // Clear any cached dark mode classes
     document.documentElement.classList.remove('dark');
@@ -115,7 +125,10 @@ function App() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
-          <div className="flex items-center gap-2 sm:gap-3">
+          <div 
+            onClick={handleGoHome}
+            className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none"
+          >
             <img src={logo} alt="Logo" className="w-8 h-8 sm:w-10 sm:h-10 rounded-full object-contain" />
             <span className="font-mono text-sm sm:text-base md:text-lg tracking-wider font-bold">
               Meisteryi
@@ -297,7 +310,7 @@ function App() {
         />
       ) : (
         /* Bento Grid Area (Home View) */
-        <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16">
+        <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16 animate-page-in">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 auto-rows-[220px] sm:auto-rows-[200px] md:auto-rows-[230px] lg:auto-rows-[250px] xl:auto-rows-[270px]">
             {/* 1. Hero Card (2x2) */}
             <HeroCard />

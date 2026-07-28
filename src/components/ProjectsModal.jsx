@@ -55,7 +55,7 @@ export const ProjectsModal = ({ onClose, onOpenProject }) => {
 
   return (
     <main
-      className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16 w-full animate-fade-in flex flex-col gap-4"
+      className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16 w-full animate-page-in flex flex-col gap-4"
     >
       {/* Back button */}
       <div className="flex items-center justify-between">
