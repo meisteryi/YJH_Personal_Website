@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Sun, Moon, Sparkles, Cpu, Search } from 'lucide-react';
+import { Sparkles, Cpu, Search } from 'lucide-react';
 import { 
   HeroCard, 
   AcademicCard, 
@@ -29,7 +29,6 @@ const searchProjects = [
 ];
 
 function App() {
-  const [darkMode, setDarkMode] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
   const [modalSource, setModalSource] = useState(null); // 'projects', 'archive'
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
@@ -53,36 +52,9 @@ function App() {
   };
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    const applyTheme = (theme) => {
-      if (theme === 'dark') {
-        setDarkMode(true);
-        document.documentElement.classList.add('dark');
-      } else {
-        setDarkMode(false);
-        document.documentElement.classList.remove('dark');
-      }
-    };
-
-    // Initial load
-    if (savedTheme) {
-      applyTheme(savedTheme);
-    } else {
-      // Default to system time-based preference
-      applyTheme(mediaQuery.matches ? 'dark' : 'light');
-    }
-
-    // Listener for system preference changes (runs only if user has not set a manual override)
-    const handleSystemThemeChange = (e) => {
-      const hasManualOverride = localStorage.getItem('theme');
-      if (!hasManualOverride) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
-    };
-
-    mediaQuery.addEventListener('change', handleSystemThemeChange);
+    // Clear any cached dark mode classes
+    document.documentElement.classList.remove('dark');
+    localStorage.removeItem('theme');
 
     // Scroll listener for sticky header styling
     const handleScroll = () => {
@@ -95,7 +67,6 @@ function App() {
     window.addEventListener('scroll', handleScroll);
 
     return () => {
-      mediaQuery.removeEventListener('change', handleSystemThemeChange);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -124,17 +95,7 @@ function App() {
     };
   }, [selectedProject, isArchiveOpen, isProjectsOpen, isPhotoExhibitionOpen]);
 
-  const toggleTheme = () => {
-    if (darkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      setDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      setDarkMode(true);
-    }
-  };
+
 
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 transition-colors duration-300 relative overflow-x-hidden">
@@ -243,20 +204,11 @@ function App() {
             >
               All Projects
             </button>
-
-            {/* Premium Theme Switcher Button */}
-            <button 
-              onClick={toggleTheme}
-              className="p-2 sm:p-2.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 transition-all duration-200 cursor-pointer"
-              aria-label="Toggle Theme"
-            >
-              {darkMode ? <Sun size={16} /> : <Moon size={16} />}
-            </button>
           </div>
         </div>
 
         {/* Mobile Search Bar Dropdown */}
-        <div className={`md:hidden transition-all duration-300 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md relative ${
+        <div className={`md:hidden transition-all duration-300 bg-white/95 backdrop-blur-md relative ${
           isSearchExpanded 
             ? 'max-h-24 opacity-100 py-3 px-4 border-t border-slate-200/50 dark:border-slate-800/50 overflow-visible' 
             : 'max-h-0 opacity-0 py-0 px-4 border-t border-transparent pointer-events-none overflow-hidden'
