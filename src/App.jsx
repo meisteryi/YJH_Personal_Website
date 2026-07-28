@@ -8,7 +8,6 @@ import {
   PersonalProjectCard, 
   ArchiveCard,
   CertificatesCard,
-  PhotoExhibitionCard,
   VisualCard
 } from './components/BentoGrid';
 import { ProjectModal } from './components/ProjectModal';
@@ -345,9 +344,6 @@ function App() {
 
            {/* 8. Certificates Card (1x2) */}
            <CertificatesCard />
-
-           {/* 9. Photo Exhibition Card (2x1) */}
-           <PhotoExhibitionCard onOpen={() => setIsPhotoExhibitionOpen(true)} />
 
            {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
            <VisualCard onOpen={handleOpenProject} />

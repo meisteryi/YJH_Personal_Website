@@ -217,7 +217,7 @@ export function PhotoExhibitionModal({ onClose }) {
     : photos.filter(p => p.series === activeCategory);
 
   return (
-    <div className="photo-exhibition-theme fixed inset-0 z-[100] overflow-y-auto w-full h-full bg-[#f6f5f0] text-[#1c1917] flex flex-col font-sans select-none select-text">
+    <div className="photo-exhibition-theme fixed inset-0 z-[100] overflow-y-auto w-full h-full bg-[var(--bg-primary)] text-[var(--text-primary)] flex flex-col font-sans select-none select-text">
       {/* Site Header */}
       {viewMode === 'archive' && (
         <Header
@@ -293,7 +293,7 @@ export function PhotoExhibitionModal({ onClose }) {
           color: 'var(--text-muted)',
           fontFamily: 'var(--font-serif)',
           letterSpacing: '1px',
-          backgroundColor: '#f6f5f0'
+          backgroundColor: 'var(--bg-primary)'
         }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.4rem' }}>
             <span>© {new Date().getFullYear()} YJH Photography Archive. All Rights Reserved.</span>
@@ -309,15 +309,15 @@ export function PhotoExhibitionModal({ onClose }) {
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&family=Noto+Serif+KR:wght@300;400;600&family=Noto+Sans+KR:wght@300;400;500&display=swap');
 
         .photo-exhibition-theme {
-          /* Color Palette - Warm Ivory / Off-White Editorial */
-          --bg-primary: #f6f5f0;      /* Warm Ivory */
-          --bg-secondary: #ffffff;    /* Pure White */
-          --bg-tertiary: #eae8e1;     /* Darker Ivory for borders/accent */
-          --text-primary: #1c1917;    /* Deep Charcoal */
-          --text-secondary: #57534e;  /* Muted Charcoal */
-          --text-muted: #a8a29e;      /* Beige Grey */
-          --accent: #e11d48;          /* Rose Red */
-          --accent-glow: rgba(225, 29, 72, 0.08);
+          /* Color Palette - Custom Warm Cream & Deep Slate Blue */
+          --bg-primary: #f6d6bd;      /* Warm Cream */
+          --bg-secondary: #ffffff;    /* White */
+          --bg-tertiary: #c3a38a;     /* Soft Tan */
+          --text-primary: #08141e;    /* Deep Dark Blue */
+          --text-secondary: #0f2a3f;  /* Dark Slate Blue */
+          --text-muted: #4e495f;      /* Dark Muted Purple */
+          --accent: #997577;          /* Muted Rose */
+          --accent-glow: rgba(153, 117, 119, 0.08);
           
           /* Fonts */
           --font-serif: 'Cormorant Garamond', 'Noto Serif KR', serif;

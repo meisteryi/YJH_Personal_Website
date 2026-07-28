@@ -114,8 +114,8 @@ export const CustomCursor = () => {
             will-change: transform;
             transition: opacity 0.2s ease;
             
-            /* High visibility crimson shadow glow */
-            filter: drop-shadow(0 2px 5px rgba(255, 51, 102, 0.45));
+            /* High visibility shadow glow */
+            filter: drop-shadow(0 2px 5px rgba(129, 98, 113, 0.45));
           }
 
           /* Inner Element: Handles triangle shape and smooth scale animation on hover */
@@ -123,7 +123,7 @@ export const CustomCursor = () => {
             width: 16px;
             height: 16px;
             border-radius: 0%;
-            background-color: #ff3366; /* Vibrant Neon Rose / Crimson */
+            background-color: #816271; /* Plum */
             clip-path: polygon(0% 0%, 100% 30%, 30% 100%);
             transform: scale(1);
             transform-origin: 0% 0%; /* Scale from the tip so the hot-spot stays exactly locked! */
@@ -136,7 +136,7 @@ export const CustomCursor = () => {
 
           /* Clickable state: Scales up slightly and changes color */
           .custom-cursor-inner.state-clickable {
-            background-color: #e61f50; /* Slightly darker crimson */
+            background-color: #997577; /* Rose */
             transform: scale(1.35);
           }
         }

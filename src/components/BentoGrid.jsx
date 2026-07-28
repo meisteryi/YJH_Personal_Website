@@ -24,7 +24,6 @@ import SHEN_fig_6 from '../assets/SHEN_fig_6.png';
 import mus_fig_1 from '../assets/mus_fig_1.png';
 import mus_fig_3 from '../assets/mus_fig_3.png';
 import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
-import photo_exhibition_cover from '../assets/photo_exhibition_cover.png';
 import tabilens_3 from '../assets/tabilens_3.png';
 
 // Card Wrapper with premium micro-interactions
@@ -61,8 +60,7 @@ export const HeroCard = () => {
         </div>
 
         <p className="text-slate-600 dark:text-slate-400 leading-relaxed max-w-md text-xs sm:text-sm md:text-base mt-1 sm:mt-2 overflow-y-auto flex-1 min-h-0 pr-1">
-          안녕하세요! 인공지능, 설명 가능한 시스템(XAI), 그리고 음악 및 스포츠 데이터 분석 등 여러 분야의 데이터를 활용해 프로젝트를 진행했습니다. 별로 쓸데 없는 아이디어라도, 여러가지 아이디어를 직접 앱으로 만들어 보고 있습니다.<br /><br />
-          Hello! I have worked on projects utilizing data from various fields, including Artificial Intelligence, Explainable AI (XAI), and music/sports analytics. I love bringing all kinds of ideas to life by building them into actual apps, even the simple or quirky ones.
+          안녕하세요! 인공지능, 설명 가능한 시스템(XAI), 그리고 음악 및 스포츠 데이터 분석 등 여러 분야의 데이터를 활용해 프로젝트를 진행했습니다. 별로 쓸데 없는 아이디어라도, 여러가지 아이디어를 직접 앱으로 만들어 보고 있습니다.
         </p>
       </div>
 
@@ -151,7 +149,7 @@ export const VisualCard = ({ onOpen }) => {
   return (
     <Card
       onClick={() => onOpen('scout')}
-      span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1"
+      span="lg:col-span-4 lg:row-span-1 md:col-span-4 md:row-span-1 col-span-1 row-span-1"
       className="relative !p-0"
     >
       {/* Background Screenshot Image */}
@@ -235,8 +233,8 @@ export const InteractiveCard = () => {
   const [activeStack, setActiveStack] = useState('tech');
 
   const stacks = {
-    tech: ['PyTorch', 'Librosa', 'Transformers', 'React', 'Tailwind'],
-    tools: ['Hugging Face', 'Colab', 'Git', 'Figma', 'VSCode']
+    tech: ['Python', 'PyTorch', 'Librosa', 'Transformers', 'C', 'C++', 'SQL'],
+    tools: ['Hugging Face', 'Colab', 'Git', 'Figma', 'VSCode', 'Photoshop']
   };
 
   return (
@@ -468,42 +466,4 @@ export const CertificatesCard = () => {
   );
 };
 
-// 9. Photo Exhibition Card (Horizontal: 2x1)
-export const PhotoExhibitionCard = ({ onOpen }) => {
-  return (
-    <Card
-      onClick={() => onOpen('photoexhibition')}
-      span="lg:col-span-2 lg:row-span-1 md:col-span-2 md:row-span-1 col-span-1 row-span-1"
-      className="relative !p-0"
-    >
-      {/* Background Screenshot Image */}
-      <div className="absolute inset-0 bg-slate-100 dark:bg-slate-900 flex items-center justify-center overflow-hidden">
-        <img
-          src={photo_exhibition_cover}
-          alt="Photo Exhibition Interface"
-          className="w-full h-full object-cover opacity-75 dark:opacity-40 filter contrast-125 dark:contrast-100 transition-transform duration-500 group-hover:scale-105"
-        />
-        <div className="absolute inset-0 bg-slate-950/10 dark:bg-slate-950/40"></div>
-        {/* Gradient Orbs */}
-        <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-indigo-500/10 to-transparent blur-3xl"></div>
-      </div>
 
-      {/* Overlay for text readability */}
-      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/40 to-transparent flex flex-col justify-end p-4 sm:p-6 md:p-8">
-        <div className="flex items-center justify-between">
-          <div>
-            <span className="px-2 py-0.5 rounded bg-white/20 text-white text-[9px] sm:text-[10px] font-bold tracking-widest uppercase backdrop-blur-md">
-              Live Project
-            </span>
-            <h2 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mt-1 sm:mt-2">
-              Photo Exhibition: 감성적인 사진 전시회 웹사이트
-            </h2>
-          </div>
-          <div className="p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-colors duration-200">
-            <ArrowUpRight size={14} sm:size={18} />
-          </div>
-        </div>
-      </div>
-    </Card>
-  );
-};
