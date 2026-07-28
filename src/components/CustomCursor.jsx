@@ -115,7 +115,7 @@ export const CustomCursor = () => {
             transition: opacity 0.2s ease;
             
             /* High visibility shadow glow */
-            filter: drop-shadow(0 2px 5px rgba(129, 98, 113, 0.45));
+            filter: drop-shadow(0 2px 4px rgba(8, 20, 30, 0.3));
           }
 
           /* Inner Element: Handles triangle shape and smooth scale animation on hover */
@@ -123,7 +123,7 @@ export const CustomCursor = () => {
             width: 16px;
             height: 16px;
             border-radius: 0%;
-            background-color: #816271; /* Plum */
+            background-color: #20394f; /* Steel Blue */
             clip-path: polygon(0% 0%, 100% 30%, 30% 100%);
             transform: scale(1);
             transform-origin: 0% 0%; /* Scale from the tip so the hot-spot stays exactly locked! */

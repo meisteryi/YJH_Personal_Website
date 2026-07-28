@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Calendar, Search, Award, Code, FileText, GraduationCap, ArrowRight } from 'lucide-react';
+import { X, Calendar, Search, Award, Code, FileText, GraduationCap, ArrowRight, ArrowLeft } from 'lucide-react';
 import { projectsData } from './ProjectModal';
 
 // Import project featured images/figures
@@ -180,8 +180,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
   }, [searchTerm, selectedCategory]);
 
   const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(onClose, 200);
+    onClose();
   };
 
   const categories = ['All', 'Project', 'Paper', 'Release', 'Academic'];
@@ -215,18 +214,23 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
   };
 
   return (
-    <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/75 ${isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
-        }`}
-      onClick={handleClose}
+    <main
+      className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16 w-full animate-fade-in flex flex-col gap-4"
     >
-      <div
-        className={`glass-panel w-full max-w-4xl max-h-[92vh] md:max-h-[85vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/50 dark:border-slate-800/80 bg-white/95 dark:bg-slate-900/95 transition-all duration-300 ${isClosing ? 'animate-modal-out' : 'animate-modal-in'
-          }`}
-        onClick={(e) => e.stopPropagation()}
-      >
+      {/* Back button */}
+      <div className="flex items-center justify-between">
+        <button
+          onClick={handleClose}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200/60 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-800 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 text-xs font-bold transition-all duration-200 cursor-pointer"
+        >
+          <ArrowLeft size={14} />
+          <span>Back to Home</span>
+        </button>
+      </div>
+
+
         {/* Header */}
-        <div className="p-4 sm:p-6 md:p-8 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
+        <div className="pb-6 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
           <div className="space-y-1">
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-2">
               <Calendar className="text-indigo-500" size={20} sm:size={24} />
@@ -245,7 +249,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Filter & Search Bar */}
-        <div className="p-4 sm:p-6 border-b border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 flex flex-col md:flex-row gap-3 sm:gap-4 items-center justify-between">
+        <div className="py-4 border-b border-slate-200/30 dark:border-slate-800/30 flex flex-col md:flex-row gap-3 sm:gap-4 items-center justify-between">
           {/* Categories */}
           <div className="flex flex-wrap gap-1.5 w-full md:w-auto">
             {categories.map(cat => (
@@ -276,7 +280,7 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Scrollable Timeline */}
-        <div ref={scrollContainerRef} className="overflow-y-auto max-h-[55vh] md:max-h-[50vh] p-4 sm:p-6 md:p-8">
+        <div className="py-6">
           {filteredLogs.length === 0 ? (
             <div className="text-center py-12 text-slate-400 dark:text-slate-500 font-mono text-xs">
               No matching archive logs found.
@@ -415,16 +419,9 @@ export const ArchiveModal = ({ onClose, onOpenProject }) => {
         </div>
 
         {/* Footer */}
-        <div className="p-3 sm:p-4 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-4 sm:px-6 md:px-8">
+        <div className="py-6 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center">
           <span className="text-[9px] sm:text-[10px] text-slate-400 font-mono">[Interactive Timeline v1.0]</span>
-          <button
-            onClick={handleClose}
-            className="px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150 shadow-md shadow-indigo-500/10 cursor-pointer"
-          >
-            Close Archive
-          </button>
         </div>
-      </div>
-    </div>
+    </main>
   );
 };

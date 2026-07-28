@@ -83,9 +83,9 @@ function App() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Prevent background scrolling when any modal is open
+  // Prevent background scrolling ONLY when the photo exhibition modal is open
   useEffect(() => {
-    if (selectedProject || isArchiveOpen || isProjectsOpen || isPhotoExhibitionOpen) {
+    if (isPhotoExhibitionOpen) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
@@ -93,7 +93,7 @@ function App() {
     return () => {
       document.body.style.overflow = '';
     };
-  }, [selectedProject, isArchiveOpen, isProjectsOpen, isPhotoExhibitionOpen]);
+  }, [isPhotoExhibitionOpen]);
 
 
 
@@ -110,7 +110,7 @@ function App() {
         ref={searchContainerRef}
         className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 border-b ${
           isScrolled 
-            ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md border-slate-200/80 dark:border-slate-800/80 shadow-md py-4' 
+            ? 'bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md border-slate-200/80 dark:border-slate-800/80 shadow-md py-4' 
             : 'bg-transparent border-transparent py-6'
         }`}
       >
@@ -125,7 +125,7 @@ function App() {
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Search Input Container */}
             <div className="relative flex items-center">
-              <div className={`hidden md:flex items-center bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden transition-all duration-300 ${
+              <div className={`hidden md:flex items-center bg-slate-100/70 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden transition-all duration-300 ${
                 isSearchExpanded ? 'w-48 lg:w-64 px-3 py-1.5 opacity-100' : 'w-0 opacity-0 pointer-events-none border-transparent'
               }`}>
                 <input
@@ -152,7 +152,7 @@ function App() {
                     }, 100);
                   }
                 }}
-                className={`p-2 sm:p-2.5 rounded-full border border-slate-200/60 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 transition-all duration-200 cursor-pointer ${
+                className={`p-2 sm:p-2.5 rounded-full border border-slate-200/60 dark:border-slate-850 bg-slate-100/70 dark:bg-slate-800 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 transition-all duration-200 cursor-pointer ${
                   isSearchExpanded ? 'md:ml-2' : ''
                 }`}
                 aria-label="Search"
@@ -162,7 +162,7 @@ function App() {
 
               {/* Desktop Autocomplete Dropdown */}
               {isSearchExpanded && searchQuery && (
-                <div className="hidden md:block absolute right-0 top-full mt-2 w-64 sm:w-72 md:w-80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden py-1">
+                <div className="hidden md:block absolute right-0 top-full mt-2 w-64 sm:w-72 md:w-80 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden py-1">
                   {searchProjects.filter(p => 
                     p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                     p.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -183,7 +183,7 @@ function App() {
                           setSearchQuery('');
                           setIsSearchExpanded(false);
                         }}
-                        className="px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer flex flex-col gap-0.5 border-b border-slate-100/50 dark:border-slate-800/30 last:border-b-0 text-left"
+                        className="px-4 py-2.5 hover:bg-slate-100/75 dark:hover:bg-slate-800/50 cursor-pointer flex flex-col gap-0.5 border-b border-slate-100/50 dark:border-slate-800/30 last:border-b-0 text-left"
                       >
                         <div className="flex items-center justify-between">
                           <span className="text-xs font-bold text-slate-800 dark:text-slate-200">{project.title}</span>
@@ -208,12 +208,12 @@ function App() {
         </div>
 
         {/* Mobile Search Bar Dropdown */}
-        <div className={`md:hidden transition-all duration-300 bg-white/95 backdrop-blur-md relative ${
+        <div className={`md:hidden transition-all duration-300 bg-slate-50/95 backdrop-blur-md relative ${
           isSearchExpanded 
             ? 'max-h-24 opacity-100 py-3 px-4 border-t border-slate-200/50 dark:border-slate-800/50 overflow-visible' 
             : 'max-h-0 opacity-0 py-0 px-4 border-t border-transparent pointer-events-none overflow-hidden'
         }`}>
-          <div className="flex items-center bg-slate-50 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl px-3 py-1.5">
+          <div className="flex items-center bg-slate-100/70 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl px-3 py-1.5">
             <input
               type="text"
               placeholder="Search projects..."
@@ -226,7 +226,7 @@ function App() {
 
           {/* Mobile Autocomplete Dropdown */}
           {searchQuery && (
-            <div className="absolute left-4 right-4 top-full mt-1 bg-white/98 dark:bg-slate-900/98 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden py-1">
+            <div className="absolute left-4 right-4 top-full mt-1 bg-slate-50/98 dark:bg-slate-900/98 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden py-1">
               {searchProjects.filter(p => 
                 p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
                 p.description.toLowerCase().includes(searchQuery.toLowerCase())
@@ -247,7 +247,7 @@ function App() {
                       setSearchQuery('');
                       setIsSearchExpanded(false);
                     }}
-                    className="px-4 py-2.5 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer flex flex-col gap-0.5 border-b border-slate-100/50 dark:border-slate-800/30 last:border-b-0 text-left"
+                    className="px-4 py-2.5 hover:bg-slate-100/75 dark:hover:bg-slate-800/50 cursor-pointer flex flex-col gap-0.5 border-b border-slate-100/50 dark:border-slate-800/30 last:border-b-0 text-left"
                   >
                     <div className="flex items-center justify-between">
                       <span className="text-xs font-bold text-slate-800 dark:text-slate-200">{project.title}</span>
@@ -262,86 +262,78 @@ function App() {
         </div>
       </header>
 
-      {/* Bento Grid Area */}
-      <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 auto-rows-[220px] sm:auto-rows-[200px] md:auto-rows-[230px] lg:auto-rows-[250px] xl:auto-rows-[270px]">
-          {/* 1. Hero Card (2x2) */}
-          <HeroCard />
+      {/* Main Content Area */}
+      {selectedProject ? (
+        <ProjectModal 
+          projectId={selectedProject} 
+          onClose={() => {
+            setSelectedProject(null);
+            if (modalSource === 'projects') {
+              setIsProjectsOpen(true);
+            } else if (modalSource === 'archive') {
+              setIsArchiveOpen(true);
+            }
+            setModalSource(null);
+          }} 
+          onOpenPhotoExhibition={() => setIsPhotoExhibitionOpen(true)}
+        />
+      ) : isArchiveOpen ? (
+        <ArchiveModal 
+          onClose={() => setIsArchiveOpen(false)}
+          onOpenProject={(id) => {
+            setIsArchiveOpen(false);
+            setSelectedProject(id);
+            setModalSource('archive');
+          }}
+        />
+      ) : isProjectsOpen ? (
+        <ProjectsModal 
+          onClose={() => setIsProjectsOpen(false)}
+          onOpenProject={(id) => {
+            setIsProjectsOpen(false);
+            setSelectedProject(id);
+            setModalSource('projects');
+          }}
+        />
+      ) : (
+        /* Bento Grid Area (Home View) */
+        <main className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 auto-rows-[220px] sm:auto-rows-[200px] md:auto-rows-[230px] lg:auto-rows-[250px] xl:auto-rows-[270px]">
+            {/* 1. Hero Card (2x2) */}
+            <HeroCard />
 
-           {/* 2. Academic / Research Card (1x2) - SHEN */}
-           <AcademicCard onOpen={(id) => {
-             setSelectedProject(id);
-             setModalSource(null);
-           }} />
+            {/* 2. Academic / Research Card (1x2) - SHEN */}
+            <AcademicCard onOpen={(id) => {
+              setSelectedProject(id);
+              setModalSource(null);
+            }} />
  
-           {/* 3. Small Personal Project Card (1x1) - TabiLenS */}
-           <PersonalProjectCard onOpen={(id) => {
-             setSelectedProject(id);
-             setModalSource(null);
-           }} />
+            {/* 3. Small Personal Project Card (1x1) - TabiLenS */}
+            <PersonalProjectCard onOpen={(id) => {
+              setSelectedProject(id);
+              setModalSource(null);
+            }} />
  
-           {/* 4. Small Interactive Card (1x1) */}
-           <InteractiveCard />
+            {/* 4. Small Interactive Card (1x1) */}
+            <InteractiveCard />
  
-           {/* 5. Product Showroom Card (2x2) - µ's */}
-           <ShowroomCard onOpen={(id) => {
-             setSelectedProject(id);
-             setModalSource(null);
-           }} />
- 
- 
- 
-           {/* 7. Archive / Logs Timeline Card (1x2) */}
-           <ArchiveCard onOpen={handleOpenProject} />
+            {/* 5. Product Showroom Card (2x2) - µ's */}
+            <ShowroomCard onOpen={(id) => {
+              setSelectedProject(id);
+              setModalSource(null);
+            }} />
 
-           {/* 8. Certificates Card (1x2) */}
-           <CertificatesCard />
+            {/* 7. Archive / Logs Timeline Card (1x2) */}
+            <ArchiveCard onOpen={handleOpenProject} />
 
-           {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
-           <VisualCard onOpen={handleOpenProject} />
-         </div>
-       </main>
- 
-       {/* Render Project Detail Modal */}
-       {selectedProject && (
-         <ProjectModal 
-           projectId={selectedProject} 
-           onClose={() => {
-             setSelectedProject(null);
-             if (modalSource === 'projects') {
-               setIsProjectsOpen(true);
-             } else if (modalSource === 'archive') {
-               setIsArchiveOpen(true);
-             }
-             setModalSource(null);
-           }} 
-           onOpenPhotoExhibition={() => setIsPhotoExhibitionOpen(true)}
-         />
-       )}
- 
-       {/* Render Timeline Archive Modal */}
-       {isArchiveOpen && (
-         <ArchiveModal 
-           onClose={() => setIsArchiveOpen(false)}
-           onOpenProject={(id) => {
-             setIsArchiveOpen(false);
-             setSelectedProject(id);
-             setModalSource('archive');
-           }}
-         />
-       )}
- 
-       {/* Render Projects List Modal */}
-       {isProjectsOpen && (
-         <ProjectsModal 
-           onClose={() => setIsProjectsOpen(false)}
-           onOpenProject={(id) => {
-             setIsProjectsOpen(false);
-             setSelectedProject(id);
-             setModalSource('projects');
-           }}
-         />
-       )}
+            {/* 8. Certificates Card (1x2) */}
+            <CertificatesCard />
+
+            {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
+            <VisualCard onOpen={handleOpenProject} />
+          </div>
+        </main>
+      )}
 
        {/* Render Photo Exhibition Fullscreen Modal */}
        {isPhotoExhibitionOpen && (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play, CheckCircle, Globe } from 'lucide-react';
+import { X, BookOpen, Cpu, BarChart2, Award, ArrowUpRight, Zap, Play, CheckCircle, Globe, ArrowLeft } from 'lucide-react';
 
 // Import project figures (SHEN & mus)
 import SHEN_fig_1 from '../assets/SHEN_fig_1.png';
@@ -522,6 +522,7 @@ export const ProjectModal = ({ projectId, onClose, onOpenPhotoExhibition }) => {
   const [activeTab, setActiveTab] = useState('overview');
   const [isClosing, setIsClosing] = useState(false);
   const scrollContainerRef = useRef(null);
+  const isPaper = ['shen', 'mus'].includes(projectId);
 
   // Reset scroll position to top when switching tabs or projects
   useEffect(() => {
@@ -533,8 +534,8 @@ export const ProjectModal = ({ projectId, onClose, onOpenPhotoExhibition }) => {
   const getSectionsForTab = () => {
     if (activeTab === 'overview') {
       return [
-        { id: 'sec-abstract', label: 'Abstract' },
-        { id: 'sec-introduction', label: '1. Introduction' }
+        { id: 'sec-abstract', label: isPaper ? 'Abstract' : 'Overview' },
+        { id: 'sec-introduction', label: isPaper ? '1. Introduction' : '1. Intro' }
       ];
     }
     if (activeTab === 'methodology') {
@@ -557,137 +558,139 @@ export const ProjectModal = ({ projectId, onClose, onOpenPhotoExhibition }) => {
   };
 
   const scrollToSection = (id) => {
-    const container = scrollContainerRef.current;
     const target = document.getElementById(id);
-    if (container && target) {
-      const containerTop = container.getBoundingClientRect().top;
-      const targetTop = target.getBoundingClientRect().top;
-      const scrollOffset = targetTop - containerTop + container.scrollTop - 20;
-      container.scrollTo({ top: scrollOffset, behavior: 'smooth' });
+    if (target) {
+      const rect = target.getBoundingClientRect();
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      window.scrollTo({
+        top: rect.top + scrollTop - 100,
+        behavior: 'smooth'
+      });
     }
   };
 
   const handleClose = () => {
-    setIsClosing(true);
-    setTimeout(onClose, 200);
+    onClose();
   };
 
   if (!project) return null;
 
   return (
-    <div
-      className={`fixed inset-0 z-[100] flex items-center justify-center p-2 sm:p-4 md:p-6 bg-slate-950/70 ${isClosing ? 'animate-backdrop-out' : 'animate-backdrop-in'
-        }`}
-      onClick={handleClose}
+    <main
+      className="max-w-7xl mx-auto px-3 sm:px-4 md:px-8 pt-20 sm:pt-24 md:pt-28 pb-6 sm:pb-10 md:pb-16 w-full animate-fade-in flex flex-col gap-6"
     >
-      <div
-        className={`glass-panel w-full max-w-5xl max-h-[95vh] md:max-h-[90vh] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col shadow-2xl border border-slate-200/55 dark:border-slate-800/80 bg-white/90 dark:bg-slate-900/90 transition-all duration-300 ${isClosing ? 'animate-modal-out' : 'animate-modal-in'
-          }`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        {/* Modal Header */}
-        <div className="p-3.5 sm:p-5 md:py-4 md:px-6 border-b border-slate-200/40 dark:border-slate-800/40 flex justify-between items-start gap-3 sm:gap-4">
-          <div className="space-y-1.5 sm:space-y-2">
-            <div className="flex flex-wrap gap-1">
-              {project.tags.map((tag, idx) => (
-                <span key={idx} className="px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] font-bold tracking-wider uppercase bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            <h1 className="text-lg sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white leading-snug">
-              {project.title}
-            </h1>
-            <p className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-350 font-medium">
-              {project.subtitle}
-            </p>
-            <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
-              <span>{project.author}</span>
-              <span>{project.affiliation}</span>
-            </div>
+      {/* Back button */}
+      <div className="flex items-center justify-between">
+        <button
+          onClick={handleClose}
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl border border-slate-200/60 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-800 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 text-xs font-bold transition-all duration-200 cursor-pointer"
+        >
+          <ArrowLeft size={14} />
+          <span>Back to Home</span>
+        </button>
+      </div>
+
+      {/* Header Section (Borderless) */}
+      <div className="border-b border-slate-200/40 dark:border-slate-800/40 pb-6 flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+        <div className="space-y-1.5 sm:space-y-2 flex-1">
+          <div className="flex flex-wrap gap-1">
+            {project.tags.map((tag, idx) => (
+              <span key={idx} className="px-1.5 py-0.5 rounded text-[8px] sm:text-[10px] font-bold tracking-wider uppercase bg-indigo-500/10 text-indigo-600 dark:text-indigo-400">
+                {tag}
+              </span>
+            ))}
           </div>
-          <div className="flex items-center gap-1.5 sm:gap-2">
-            {project.id === 'photoexhibition' ? (
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  if (onOpenPhotoExhibition) {
-                    onOpenPhotoExhibition();
-                  }
-                }}
-                className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
-              >
-                <span>Visit Pages</span>
-                <Globe size={12} sm:size={14} className="shrink-0" />
-              </button>
-            ) : (
-              <a
-                href={project.page || '#'}
-                onClick={(e) => {
-                  if (!project.page) {
-                    e.preventDefault();
-                    alert('해당 프로젝트의 라이브 웹 페이지(Pages)가 등록되어 있지 않거나 준비 중입니다.');
-                  }
-                }}
-                target={project.page ? "_blank" : "_self"}
-                rel="noopener noreferrer"
-                className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
-              >
-                <span>Visit Pages</span>
-                <Globe size={12} sm:size={14} className="shrink-0" />
-              </a>
-            )}
-            <a
-              href={project.link || '#'}
+          <h1 className="text-xl sm:text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-snug">
+            {project.title}
+          </h1>
+          <p className="text-[11px] sm:text-xs md:text-sm text-slate-500 dark:text-slate-350 font-medium">
+            {project.subtitle}
+          </p>
+          <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 dark:text-slate-500 flex flex-wrap gap-x-4">
+            <span>{project.author}</span>
+            <span>{project.affiliation}</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+          {project.id === 'photoexhibition' ? (
+            <button
               onClick={(e) => {
-                if (!project.link) {
-                  e.preventDefault();
-                  alert('해당 프로젝트의 소스 코드 저장소(Github)가 등록되어 있지 않거나 제공되지 않습니다.');
+                e.preventDefault();
+                if (onOpenPhotoExhibition) {
+                  onOpenPhotoExhibition();
                 }
               }}
-              target={project.link ? "_blank" : "_self"}
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
+              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
             >
-              <span>Visit Project</span>
-              <ArrowUpRight size={12} sm:size={14} className="shrink-0" />
-            </a>
-            <button
-              onClick={handleClose}
-              className="p-1.5 sm:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white transition-colors duration-150 cursor-pointer"
-            >
-              <X size={16} sm:size={20} />
+              <span>Visit Pages</span>
+              <Globe size={12} sm:size={14} className="shrink-0" />
             </button>
+          ) : (
+            <a
+              href={project.page || '#'}
+              onClick={(e) => {
+                if (!project.page) {
+                  e.preventDefault();
+                  alert('해당 프로젝트의 라이브 웹 페이지(Pages)가 등록되어 있지 않거나 준비 중입니다.');
+                }
+              }}
+              target={project.page ? "_blank" : "_self"}
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
+            >
+              <span>Visit Pages</span>
+              <Globe size={12} sm:size={14} className="shrink-0" />
+            </a>
+          )}
+          <a
+            href={project.link || '#'}
+            onClick={(e) => {
+              if (!project.link) {
+                e.preventDefault();
+                alert('해당 프로젝트의 소스 코드 저장소(Github)가 등록되어 있지 않거나 제공되지 않습니다.');
+              }
+            }}
+            target={project.link ? "_blank" : "_self"}
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
+          >
+            <span>Visit Project</span>
+            <ArrowUpRight size={12} sm:size={14} className="shrink-0" />
+          </a>
+        </div>
+      </div>
+
+      {/* Main Body Layout: Sidebar + Main Content + Right TOC */}
+      <div className="flex flex-col md:flex-row gap-6 w-full">
+        {/* Left Sidebar Menu */}
+        <div className="flex md:flex-col shrink-0 md:w-40 md:sticky md:top-28 md:self-start bg-slate-100/50 dark:bg-slate-900/50 border border-slate-200/50 dark:border-slate-800/50 rounded-2xl p-3 sm:p-4 gap-1.5 md:gap-0.5">
+          <div className="flex flex-row md:flex-col w-full md:space-y-0.5">
+            {[
+              { id: 'overview', label: isPaper ? 'Abstract & Intro' : 'Overview', icon: BookOpen },
+              { id: 'methodology', label: isPaper ? 'Methodology' : 'Features', icon: Cpu },
+              { id: 'results', label: isPaper ? 'Results & Figures' : 'Demo & Screenshots', icon: BarChart2 }
+            ].map(tab => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex items-center gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 md:py-2 md:px-3 text-xs md:text-xs font-semibold transition-all duration-200 cursor-pointer w-auto md:w-full md:rounded-lg text-left shrink-0 ${activeTab === tab.id
+                  ? 'border-b-2 border-indigo-500 md:border-b-0 md:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold'
+                  : 'border-b-2 border-transparent md:border-b-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-350 hover:bg-slate-100/50 dark:hover:bg-slate-800/30'
+                  }`}
+              >
+                <tab.icon size={12} sm:size={13} className="shrink-0" />
+                <span className="truncate">{tab.label}</span>
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Main Body Layout: Sidebar + Main Content + Right TOC */}
-        <div className="flex-1 flex flex-col md:flex-row overflow-hidden min-h-0">
-          {/* Left Sidebar: Modal Navigation Tabs */}
-          <div className="flex md:flex-col shrink-0 border-b md:border-b-0 md:border-r border-slate-200/30 dark:border-slate-800/30 bg-slate-50/50 dark:bg-slate-950/20 px-2 sm:px-3 md:px-2 md:py-4 overflow-x-auto md:overflow-x-visible md:overflow-y-auto md:w-40">
-            <div className="flex flex-row md:flex-col w-full md:space-y-0.5">
-              {[
-                { id: 'overview', label: 'Abstract & Intro', icon: BookOpen },
-                { id: 'methodology', label: 'Methodology', icon: Cpu },
-                { id: 'results', label: 'Results & Figures', icon: BarChart2 }
-              ].map(tab => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 md:py-2 md:px-3 text-xs md:text-xs font-semibold transition-all duration-200 cursor-pointer w-auto md:w-full md:rounded-lg text-left shrink-0 ${activeTab === tab.id
-                    ? 'border-b-2 border-indigo-500 md:border-b-0 md:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-bold'
-                    : 'border-b-2 border-transparent md:border-b-0 text-slate-500 hover:text-slate-800 dark:hover:text-slate-350 hover:bg-slate-100/50 dark:hover:bg-slate-800/30'
-                    }`}
-                >
-                  <tab.icon size={12} sm:size={13} className="shrink-0" />
-                  <span className="truncate">{tab.label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
 
-          {/* Modal Content - Scrollable */}
-          <div ref={scrollContainerRef} className="flex-1 min-w-0 overflow-y-auto p-3.5 sm:p-5 md:p-6 space-y-4 sm:space-y-6">
+        {/* Center Pane: Main Content Area */}
+        <div 
+          ref={scrollContainerRef}
+          className="flex-1 min-w-0 bg-white/70 dark:bg-slate-900/70 border border-slate-200/55 dark:border-slate-800/80 rounded-2xl sm:rounded-3xl p-5 sm:p-8 md:p-10 shadow-sm space-y-6 sm:space-y-8"
+        >
             {activeTab === 'overview' && (
               <div className="space-y-4 sm:space-y-6 animate-fade-in">
                 <div id="sec-abstract" className="space-y-2 sm:space-y-3">
@@ -856,39 +859,32 @@ export const ProjectModal = ({ projectId, onClose, onOpenPhotoExhibition }) => {
             )}
           </div>
 
-          {/* Right Sidebar: Table of Contents / Outline */}
-          <div className="hidden lg:flex flex-col w-36 shrink-0 border-l border-slate-200/30 dark:border-slate-800/30 bg-slate-50/20 dark:bg-slate-950/10 p-4 space-y-3 overflow-y-auto min-h-0">
-            <div className="space-y-1">
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                On this page
-              </span>
-              <div className="h-0.5 w-8 bg-indigo-500 rounded-full"></div>
-            </div>
-            <nav className="flex flex-col space-y-3">
-              {getSectionsForTab().map((sec) => (
-                <button
-                  key={sec.id}
-                  onClick={() => scrollToSection(sec.id)}
-                  className="text-left text-[10px] font-semibold text-slate-500 hover:text-indigo-500 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors duration-150 cursor-pointer hover:underline line-clamp-2 leading-tight"
-                >
-                  {sec.label}
-                </button>
-              ))}
-            </nav>
+        {/* Right Sidebar: Table of Contents / Outline */}
+        <div className="hidden lg:flex flex-col w-36 shrink-0 lg:sticky lg:top-28 lg:self-start p-4 space-y-3">
+          <div className="space-y-1">
+            <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              On this page
+            </span>
+            <div className="h-0.5 w-8 bg-indigo-500 rounded-full"></div>
           </div>
-        </div>
-
-        {/* Modal Footer */}
-        <div className="p-3 bg-slate-50 dark:bg-slate-950/30 border-t border-slate-200/40 dark:border-slate-800/40 flex justify-between items-center px-5 md:px-6">
-          <span className="text-[10px] text-slate-400 font-mono">[Sogang Univ. Art & Tech Portfolio Project]</span>
-          <button
-            onClick={handleClose}
-            className="px-4 py-1.5 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white text-xs font-bold transition-colors duration-150"
-          >
-            Close Details
-          </button>
+          <nav className="flex flex-col space-y-3">
+            {getSectionsForTab().map((sec) => (
+              <button
+                key={sec.id}
+                onClick={() => scrollToSection(sec.id)}
+                className="text-left text-[10px] font-semibold text-slate-500 hover:text-indigo-500 dark:text-slate-400 dark:hover:text-indigo-400 transition-colors duration-150 cursor-pointer hover:underline line-clamp-2 leading-tight"
+              >
+                {sec.label}
+              </button>
+            ))}
+          </nav>
         </div>
       </div>
-    </div>
+
+      {/* Modal Footer */}
+      <div className="p-3 bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/40 dark:border-slate-800/40 rounded-2xl flex justify-between items-center px-5 md:px-6">
+        <span className="text-[10px] text-slate-400 font-mono">[Sogang Univ. Art & Tech Portfolio Project]</span>
+      </div>
+    </main>
   );
 };
