@@ -14,6 +14,7 @@ import { ProjectModal } from './components/ProjectModal';
 import { ArchiveModal } from './components/ArchiveModal';
 import { ProjectsModal } from './components/ProjectsModal';
 import { PhotoExhibitionModal } from './components/PhotoExhibitionModal';
+import { CertificatesModal } from './components/CertificatesModal';
 import logo from './assets/logo.png';
 import { CustomCursor } from './components/CustomCursor';
 
@@ -34,6 +35,7 @@ function App() {
   const [modalSource, setModalSource] = useState(null); // 'projects', 'archive'
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
+  const [isCertificatesOpen, setIsCertificatesOpen] = useState(false);
   const [isPhotoExhibitionOpen, setIsPhotoExhibitionOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
@@ -57,6 +59,7 @@ function App() {
     setIsArchiveOpen(false);
     setIsProjectsOpen(false);
     setIsPhotoExhibitionOpen(false);
+    setIsCertificatesOpen(false);
     setSearchQuery('');
     setIsSearchExpanded(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -300,6 +303,10 @@ function App() {
             setModalSource('archive');
           }}
         />
+      ) : isCertificatesOpen ? (
+        <CertificatesModal 
+          onClose={() => setIsCertificatesOpen(false)}
+        />
       ) : isProjectsOpen ? (
         <ProjectsModal 
           onClose={() => setIsProjectsOpen(false)}
@@ -341,7 +348,7 @@ function App() {
             <ArchiveCard onOpen={handleOpenProject} />
 
             {/* 8. Certificates Card (1x2) */}
-            <CertificatesCard />
+            <CertificatesCard onOpen={() => setIsCertificatesOpen(true)} />
 
             {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
             <VisualCard onOpen={handleOpenProject} />

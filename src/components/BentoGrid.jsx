@@ -413,10 +413,19 @@ export const ArchiveCard = ({ onOpen }) => {
 // - date: 취득년월 (YYYY.MM)
 // - status: 상태 (예: 'Completed', 'Active' 등)
 // ========================================================
-export const CertificatesCard = () => {
+export const CertificatesCard = ({ onOpen }) => {
   const certificates = [
+    { name: 'TOEFL iBT', issuer: 'ETS', date: '2025.04', status: '85점' },
+    { name: '매경TEST', issuer: '매일경제신문', date: '2024.05', status: '705점' },
+    { name: 'TESAT', issuer: '한국경제신문', date: '2024.04', status: '275점' },
+    { name: 'FLEX Japanese', issuer: '한국외국어대학교', date: '2024.03', status: '865점' },
+    { name: '한국사능력검정시험', issuer: '국사편찬위원회', date: '2024.02', status: '1급' },
     { name: 'JLPT N1', issuer: '일본국제교류기금', date: '2024.01', status: 'Completed' },
+    { name: 'JLPT N3', issuer: '일본국제교류기금', date: '2022.08', status: 'Completed' },
   ];
+
+  // Show top 5 certificates on the main card to optimize layout space
+  const visibleCerts = certificates.slice(0, 5);
 
   return (
     <Card span="lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2 col-span-1 row-span-2">
@@ -433,34 +442,35 @@ export const CertificatesCard = () => {
             Certificates & Awards
           </h2>
 
-          <div className="flex-grow flex flex-col justify-between mt-3 sm:mt-5 mb-1 sm:mb-2 min-h-[180px] sm:min-h-[220px] md:min-h-[250px]">
-            <div className="space-y-3.5 sm:space-y-4">
-              {certificates.map((cert, idx) => (
-                <div key={idx} className="relative flex flex-col gap-1 pl-3 border-l-2 border-slate-200/80 dark:border-slate-800/80 hover:border-pink-500 dark:hover:border-pink-400 transition-colors duration-200 py-0.5 group/cert">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-200 group-hover/cert:text-pink-500 dark:group-hover/cert:text-pink-400 transition-colors duration-150 leading-snug">
-                      {cert.name}
-                    </h3>
-                    <span className="px-1.5 py-0.5 rounded text-[8px] font-semibold bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 select-none">
-                      {cert.date}
-                    </span>
-                  </div>
-                  <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500">
-                    <span>{cert.issuer}</span>
-                    <span className="text-emerald-500 font-mono font-bold flex items-center gap-0.5">
-                      <CheckCircle size={8} /> {cert.status}
-                    </span>
-                  </div>
+          <div className="flex-grow flex flex-col justify-start mt-3 sm:mt-5 mb-1 sm:mb-2 gap-3 sm:gap-4">
+            {visibleCerts.map((cert, idx) => (
+              <div key={idx} className="relative flex flex-col gap-1 pl-3 border-l-2 border-slate-200/80 dark:border-slate-800/80 hover:border-pink-500 dark:hover:border-pink-400 transition-colors duration-200 py-0.5 group/cert">
+                <div className="flex items-center justify-between gap-2">
+                  <h3 className="text-[11px] sm:text-xs font-bold text-slate-700 dark:text-slate-200 group-hover/cert:text-pink-500 dark:group-hover/cert:text-pink-400 transition-colors duration-150 leading-snug">
+                    {cert.name}
+                  </h3>
+                  <span className="px-1.5 py-0.5 rounded text-[8px] font-semibold bg-slate-100 dark:bg-slate-900 text-slate-500 dark:text-slate-400 select-none">
+                    {cert.date}
+                  </span>
                 </div>
-              ))}
-            </div>
+                <div className="flex items-center justify-between text-[9px] sm:text-[10px] text-slate-400 dark:text-slate-500">
+                  <span>{cert.issuer}</span>
+                  <span className="text-emerald-500 font-mono font-bold flex items-center gap-0.5">
+                    <CheckCircle size={8} /> {cert.status}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="flex items-center gap-1.5 text-[10px] text-slate-400 dark:text-slate-500 mt-3 pt-3 border-t border-slate-100 dark:border-slate-900">
-          <Terminal size={10} />
-          <span>Continuous Professional Dev</span>
-        </div>
+        <button
+          onClick={onOpen}
+          className="flex items-center justify-center gap-1.5 w-full py-2 sm:py-2.5 mt-3 sm:mt-4 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-[11px] sm:text-xs font-semibold text-slate-700 dark:text-slate-300 transition-colors duration-200 cursor-pointer"
+        >
+          <span>View All ({certificates.length})</span>
+          <ExternalLink size={10} sm:size={12} />
+        </button>
       </div>
     </Card>
   );
