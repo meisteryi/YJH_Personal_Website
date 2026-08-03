@@ -336,6 +336,7 @@ export const PersonalProjectCard = ({ onOpen }) => {
 // 7. Archive / Log List Card (Medium/Long: 1x2)
 export const ArchiveCard = ({ onOpen }) => {
   const logs = [
+    { date: 'Jul 2026', title: 'Released Photo Exhibition Web Service', type: 'Project', color: 'bg-pink-500', projectId: 'photoexhibition' },
     { date: 'Jul 2026', title: 'Released TabiLenS Mobile App', type: 'Project', color: 'bg-emerald-500', projectId: 'tabilens' },
     { date: 'Jun 2026', title: 'Released Gacha To-Do Mobile App (Ongoing)', type: 'Project', color: 'bg-teal-500', projectId: 'gachatodo' },
     { date: 'Jun 2026', title: 'Released Unseen Map Explorer', type: 'Project', color: 'bg-indigo-500', projectId: 'unseenmap' },

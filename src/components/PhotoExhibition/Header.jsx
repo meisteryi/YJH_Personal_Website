@@ -21,7 +21,7 @@ export default function Header({ viewMode, setViewMode, onOpenUpload, onOpenMana
       }}>
         {/* Title */}
         <div>
-          <h1 
+          <h1
             onClick={() => setViewMode('archive')}
             onDoubleClick={onVerifyAdmin}
             style={{

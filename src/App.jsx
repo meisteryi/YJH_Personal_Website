@@ -18,6 +18,7 @@ import logo from './assets/logo.png';
 import { CustomCursor } from './components/CustomCursor';
 
 const searchProjects = [
+  { id: 'photoexhibition', title: 'Photo Exhibition', category: 'Project', description: 'EXIF 메타데이터 자동 추출 및 반응형 메이슨리 레이아웃, 모노그래프 전시 감상 모드를 제공하는 감성적인 온라인 사진 전시회 서비스' },
   { id: 'gachatodo', title: 'Gacha To-Do', category: 'Project', description: '할 일 완료로 모으는 코인과 픽셀 아쿠아리움 방치형 육성 게임 앱' },
   { id: 'tabilens', title: 'TabiLenS', category: 'Project', description: '실시간 다국어 메뉴판 번역 및 식문화 가이드 주문 도우미 서비스' },
   { id: 'unseenmap', title: 'Unseen Map Explorer', category: 'Project', description: '사진 EXIF GPS 메타데이터 파싱 기반 여행 경로 매핑 서비스' },
