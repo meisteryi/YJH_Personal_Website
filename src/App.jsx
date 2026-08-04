@@ -45,21 +45,50 @@ function App() {
   const desktopSearchInputRef = useRef(null);
   const mobileSearchInputRef = useRef(null);
 
+  const parseHashAndSetState = () => {
+    const hash = window.location.hash;
+    
+    let isArchive = false;
+    let isProjects = false;
+    let isCertificates = false;
+    let selectedProj = null;
+    let isPhotoExh = false;
+
+    if (hash === '#archive') {
+      isArchive = true;
+    } else if (hash === '#projects') {
+      isProjects = true;
+    } else if (hash === '#certificates') {
+      isCertificates = true;
+    } else if (hash === '#photoexhibition') {
+      isPhotoExh = true;
+    } else if (hash.startsWith('#project-')) {
+      const projId = hash.replace('#project-', '');
+      selectedProj = projId;
+    }
+
+    setIsArchiveOpen(isArchive);
+    setIsProjectsOpen(isProjects);
+    setIsCertificatesOpen(isCertificates);
+    setSelectedProject(selectedProj);
+    setIsPhotoExhibitionOpen(isPhotoExh);
+
+    // Scroll to top when view changes
+    window.scrollTo({ top: 0 });
+  };
+
   const handleOpenProject = (id) => {
     if (id === 'archive') {
-      setIsArchiveOpen(true);
+      setModalSource('archive');
+      window.location.hash = 'archive';
     } else {
-      setSelectedProject(id);
       setModalSource(null);
+      window.location.hash = `project-${id}`;
     }
   };
 
   const handleGoHome = () => {
-    setSelectedProject(null);
-    setIsArchiveOpen(false);
-    setIsProjectsOpen(false);
-    setIsPhotoExhibitionOpen(false);
-    setIsCertificatesOpen(false);
+    window.location.hash = '';
     setSearchQuery('');
     setIsSearchExpanded(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -80,8 +109,18 @@ function App() {
     };
     window.addEventListener('scroll', handleScroll);
 
+    const handleHashChange = () => {
+      parseHashAndSetState();
+    };
+
+    // Run initially for deep linking and setting state from load hash
+    parseHashAndSetState();
+
+    window.addEventListener('hashchange', handleHashChange);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
 
@@ -195,10 +234,10 @@ function App() {
                       <div
                         key={project.id}
                         onClick={() => {
-                          setSelectedProject(project.id);
                           setModalSource(null);
                           setSearchQuery('');
                           setIsSearchExpanded(false);
+                          window.location.hash = `project-${project.id}`;
                         }}
                         className="px-4 py-2.5 hover:bg-slate-100/75 dark:hover:bg-slate-800/50 cursor-pointer flex flex-col gap-0.5 border-b border-slate-100/50 dark:border-slate-800/30 last:border-b-0 text-left"
                       >
@@ -216,7 +255,10 @@ function App() {
 
             {/* All Projects Button */}
             <button 
-              onClick={() => setIsProjectsOpen(true)}
+              onClick={() => {
+                setModalSource('projects');
+                window.location.hash = 'projects';
+              }}
               className="px-3 py-1.5 sm:px-5 sm:py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white text-xs sm:text-sm font-bold transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
             >
               All Projects
@@ -259,10 +301,10 @@ function App() {
                   <div
                     key={project.id}
                     onClick={() => {
-                      setSelectedProject(project.id);
                       setModalSource(null);
                       setSearchQuery('');
                       setIsSearchExpanded(false);
+                      window.location.hash = `project-${project.id}`;
                     }}
                     className="px-4 py-2.5 hover:bg-slate-100/75 dark:hover:bg-slate-800/50 cursor-pointer flex flex-col gap-0.5 border-b border-slate-100/50 dark:border-slate-800/30 last:border-b-0 text-left"
                   >
@@ -284,36 +326,41 @@ function App() {
         <ProjectModal 
           projectId={selectedProject} 
           onClose={() => {
-            setSelectedProject(null);
             if (modalSource === 'projects') {
-              setIsProjectsOpen(true);
+              window.location.hash = 'projects';
             } else if (modalSource === 'archive') {
-              setIsArchiveOpen(true);
+              window.location.hash = 'archive';
+            } else {
+              window.location.hash = '';
             }
             setModalSource(null);
           }} 
-          onOpenPhotoExhibition={() => setIsPhotoExhibitionOpen(true)}
+          onOpenPhotoExhibition={() => {
+            window.location.hash = 'photoexhibition';
+          }}
         />
       ) : isArchiveOpen ? (
         <ArchiveModal 
-          onClose={() => setIsArchiveOpen(false)}
+          onClose={() => {
+            window.location.hash = '';
+          }}
           onOpenProject={(id) => {
-            setIsArchiveOpen(false);
-            setSelectedProject(id);
-            setModalSource('archive');
+            window.location.hash = `project-${id}`;
           }}
         />
       ) : isCertificatesOpen ? (
         <CertificatesModal 
-          onClose={() => setIsCertificatesOpen(false)}
+          onClose={() => {
+            window.location.hash = '';
+          }}
         />
       ) : isProjectsOpen ? (
         <ProjectsModal 
-          onClose={() => setIsProjectsOpen(false)}
+          onClose={() => {
+            window.location.hash = '';
+          }}
           onOpenProject={(id) => {
-            setIsProjectsOpen(false);
-            setSelectedProject(id);
-            setModalSource('projects');
+            window.location.hash = `project-${id}`;
           }}
         />
       ) : (
@@ -325,14 +372,14 @@ function App() {
 
             {/* 2. Academic / Research Card (1x2) - SHEN */}
             <AcademicCard onOpen={(id) => {
-              setSelectedProject(id);
               setModalSource(null);
+              window.location.hash = `project-${id}`;
             }} />
  
             {/* 3. Small Personal Project Card (1x1) - TabiLenS */}
             <PersonalProjectCard onOpen={(id) => {
-              setSelectedProject(id);
               setModalSource(null);
+              window.location.hash = `project-${id}`;
             }} />
  
             {/* 4. Small Interactive Card (1x1) */}
@@ -340,15 +387,17 @@ function App() {
  
             {/* 5. Product Showroom Card (2x2) - µ's */}
             <ShowroomCard onOpen={(id) => {
-              setSelectedProject(id);
               setModalSource(null);
+              window.location.hash = `project-${id}`;
             }} />
 
             {/* 7. Archive / Logs Timeline Card (1x2) */}
             <ArchiveCard onOpen={handleOpenProject} />
 
             {/* 8. Certificates Card (1x2) */}
-            <CertificatesCard onOpen={() => setIsCertificatesOpen(true)} />
+            <CertificatesCard onOpen={() => {
+              window.location.hash = 'certificates';
+            }} />
 
             {/* 10. Visual NLP Card (2x1) - AI Football Scouter */}
             <VisualCard onOpen={handleOpenProject} />
@@ -359,7 +408,13 @@ function App() {
        {/* Render Photo Exhibition Fullscreen Modal */}
        {isPhotoExhibitionOpen && (
          <PhotoExhibitionModal 
-           onClose={() => setIsPhotoExhibitionOpen(false)}
+           onClose={() => {
+             if (modalSource === 'projects' || selectedProject === 'photoexhibition') {
+               window.location.hash = 'project-photoexhibition';
+             } else {
+               window.location.hash = '';
+             }
+           }}
          />
        )}
 
