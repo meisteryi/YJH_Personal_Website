@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Github,
   Linkedin,
@@ -27,20 +27,86 @@ import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 import tabilens_3 from '../assets/tabilens_3.png';
 import liargame_1 from '../assets/liargame_1.png';
 
-// Card Wrapper with premium micro-interactions
+// Card Wrapper with premium micro-interactions & 3D Perspective Tilt
 export const Card = ({ children, className = '', span = '', onClick }) => {
   const isClickable = !!onClick;
+  const containerRef = useRef(null);
+  const cardRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (window.innerWidth < 768) return;
+    if (!containerRef.current || !cardRef.current) return;
+    const container = containerRef.current;
+    const card = cardRef.current;
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    
+    // Force reset if cursor goes beyond static container boundaries to prevent edge jitter loops
+    if (x < 0 || x > rect.width || y < 0 || y > rect.height) {
+      handleMouseLeave();
+      return;
+    }
+    
+    // Calculate normalized cursor position relative to the STATIC container
+    const normalizedX = (x / rect.width) - 0.5;
+    const normalizedY = (y / rect.height) - 0.5;
+    
+    const maxTilt = 15;
+    const rotateX = -(normalizedY * maxTilt).toFixed(2);
+    const rotateY = (normalizedX * maxTilt).toFixed(2);
+    
+    // Smooth rendering without animation loop conflicts
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.04, 1.04, 1.04)`;
+    card.style.boxShadow = `${-rotateY * 2.5}px ${rotateX * 2.5}px 35px rgba(99, 102, 241, 0.3), 0 20px 40px rgba(0, 0, 0, 0.2)`;
+    card.style.borderColor = 'rgba(99, 102, 241, 0.4)';
+    card.style.transition = 'transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.1s ease-out';
+  };
+
+  const handleMouseLeave = () => {
+    if (window.innerWidth < 768) return;
+    if (!cardRef.current) return;
+    const card = cardRef.current;
+    
+    // Reset smoothly on exit
+    card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    card.style.boxShadow = '';
+    card.style.borderColor = '';
+    card.style.transition = 'transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.5s ease, box-shadow 0.6s ease';
+  };
+
+  const handleMouseEnter = () => {
+    if (window.innerWidth < 768) return;
+    if (!cardRef.current) return;
+    card.style.transition = 'transform 0.1s ease-out';
+  };
+
   return (
     <div
-      onClick={onClick}
-      className={`glass-panel glow-primary rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col justify-between transition-all duration-300 h-full
-        ${isClickable
-          ? 'hover:-translate-y-1 hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 cursor-pointer'
-          : 'cursor-default'
-        } 
-        group overflow-hidden ${span} ${className}`}
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={`relative h-full w-full ${span}`}
+      style={{ perspective: '1000px' }}
     >
-      {children}
+      <div
+        ref={cardRef}
+        onClick={onClick}
+        className={`glass-panel glow-primary rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 flex flex-col justify-between h-full
+          ${isClickable
+            ? 'hover:shadow-xl hover:border-indigo-500/30 dark:hover:border-indigo-400/40 cursor-pointer'
+            : 'cursor-default'
+          } 
+          group overflow-hidden ${className}`}
+        style={{
+          transformStyle: 'preserve-3d',
+          transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+          willChange: 'transform',
+        }}
+      >
+        {children}
+      </div>
     </div>
   );
 };
