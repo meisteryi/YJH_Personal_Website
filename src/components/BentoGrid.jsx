@@ -25,6 +25,7 @@ import mus_fig_1 from '../assets/mus_fig_1.png';
 import mus_fig_3 from '../assets/mus_fig_3.png';
 import scout_slides_fig_22 from '../assets/scout_slides_fig_22.png';
 import tabilens_3 from '../assets/tabilens_3.png';
+import liargame_1 from '../assets/liargame_1.png';
 
 // Card Wrapper with premium micro-interactions
 export const Card = ({ children, className = '', span = '', onClick }) => {
@@ -280,31 +281,31 @@ export const InteractiveCard = () => {
   );
 };
 
-// 6. Latest Personal Project Card (Small: 1x1) - TabiLenS
+// 6. Latest Personal Project Card (Small: 1x1) - Liar Game
 export const PersonalProjectCard = ({ onOpen }) => {
   return (
     <Card
-      onClick={() => onOpen('tabilens')}
+      onClick={() => onOpen('liargame')}
       span="lg:col-span-1 lg:row-span-1 md:col-span-1 md:row-span-1 col-span-1 row-span-1"
       className="relative !p-0"
     >
       {/* Background Screenshot Image */}
       <div className="absolute inset-0 bg-slate-100 dark:bg-slate-900 flex items-center justify-center overflow-hidden">
         <img
-          src={tabilens_3}
-          alt="TabiLenS App preview"
+          src={liargame_1}
+          alt="Liar Game App preview"
           className="w-full h-full object-cover opacity-60 dark:opacity-35 filter contrast-110 dark:contrast-100 transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-slate-950/20 dark:bg-slate-950/50"></div>
         {/* Gradient Orbs */}
-        <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-emerald-500/10 to-transparent blur-3xl"></div>
+        <div className="absolute -top-12 -left-12 w-64 h-64 rounded-full bg-gradient-to-br from-indigo-500/10 to-transparent blur-3xl"></div>
       </div>
 
-      {/* Top green ping status indicator */}
-      <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/80 text-[8px] font-mono font-bold text-emerald-400 shadow-sm border border-emerald-800 backdrop-blur-sm z-10">
+      {/* Top status indicator */}
+      <div className="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-0.5 rounded bg-indigo-950/80 text-[8px] font-mono font-bold text-indigo-400 shadow-sm border border-indigo-800 backdrop-blur-sm z-10">
         <span className="relative flex h-1.5 w-1.5">
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-indigo-500"></span>
         </span>
         <span>LATEST</span>
       </div>
@@ -313,14 +314,14 @@ export const PersonalProjectCard = ({ onOpen }) => {
       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/45 to-transparent flex flex-col justify-end p-4 sm:p-5">
         <div className="flex flex-col gap-1 w-full">
           <div>
-            <span className="text-[9px] font-bold tracking-widest uppercase text-emerald-400">
+            <span className="text-[9px] font-bold tracking-widest uppercase text-indigo-400">
               Latest Project
             </span>
-            <h3 className="text-sm font-bold text-white mt-1 group-hover:text-emerald-300 transition-colors duration-200">
-              TabiLenS
+            <h3 className="text-sm font-bold text-white mt-1 group-hover:text-indigo-300 transition-colors duration-200">
+              Liar Game
             </h3>
             <p className="text-[10px] text-slate-350 dark:text-slate-400 leading-tight mt-0.5 line-clamp-2">
-              실시간 다국어 메뉴판 번역 및 식문화 가이드 서비스
+              Gemini API 기반 지능형 제시어 생성 멀티플레이어 모바일 파티 게임 앱
             </p>
           </div>
           <div className="text-[9px] font-mono text-slate-400 dark:text-slate-500 flex items-center justify-between pt-1.5 border-t border-white/5 mt-1">
@@ -336,6 +337,7 @@ export const PersonalProjectCard = ({ onOpen }) => {
 // 7. Archive / Log List Card (Medium/Long: 1x2)
 export const ArchiveCard = ({ onOpen }) => {
   const logs = [
+    { date: 'Aug 2026', title: 'Released Liar Game Mobile App', type: 'Project', color: 'bg-indigo-500', projectId: 'liargame' },
     { date: 'Jul 2026', title: 'Released Photo Exhibition Web Service', type: 'Project', color: 'bg-pink-500', projectId: 'photoexhibition' },
     { date: 'Jul 2026', title: 'Released TabiLenS Mobile App', type: 'Project', color: 'bg-emerald-500', projectId: 'tabilens' },
     { date: 'Jun 2026', title: 'Released Gacha To-Do Mobile App (Ongoing)', type: 'Project', color: 'bg-teal-500', projectId: 'gachatodo' },

@@ -12,8 +12,10 @@ import unseenmap_1 from '../assets/unseenmap_1.png';
 import gachatodo_3 from '../assets/gachatodo_3.png';
 import yena_fanpage_profile from '../assets/yena_fanpage_profile.jpg';
 import photo_exhibition_cover from '../assets/photo_exhibition_cover.png';
+import liargame_1 from '../assets/liargame_1.png';
 
 const projectImages = {
+  liargame: liargame_1,
   photoexhibition: photo_exhibition_cover,
   gachatodo: gachatodo_3,
   tabilens: tabilens_1,
@@ -26,6 +28,16 @@ const projectImages = {
 };
 
 const archiveLogs = [
+  {
+    date: 'Aug 2026',
+    title: 'Released Liar Game Mobile App',
+    category: 'Project',
+    color: 'indigo',
+    icon: Code,
+    projectId: 'liargame',
+    description: 'Gemini API 기반 지능형 제시어 생성 및 다양한 게임 모드를 제공하는 멀티플레이어 라이어 게임 모바일 앱 개발.\n\nDeveloped Liar Game, a Flutter-based mobile party application featuring Gemini API-powered intelligent word generation, pass-and-play card reveal, spy modes, and a comeback guess mechanism.',
+    tags: ['Flutter', 'Gemini API', 'Riverpod', 'Mobile Game']
+  },
   {
     date: 'Jul 2026',
     title: 'Released Photo Exhibition Web Service',

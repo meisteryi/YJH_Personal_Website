@@ -53,7 +53,65 @@ import photo_exhibition_1 from '../assets/photo_exhibition_1.png';
 import photo_exhibition_2 from '../assets/photo_exhibition_2.png';
 import photo_exhibition_3 from '../assets/photo_exhibition_3.png';
 
+// Import Liar Game screenshots
+import liargame_1 from '../assets/liargame_1.png';
+import liargame_2 from '../assets/liargame_2.png';
+import liargame_3 from '../assets/liargame_3.png';
+import liargame_4 from '../assets/liargame_4.png';
+
 export const projectsData = {
+  liargame: {
+    id: 'liargame',
+    title: 'Liar Game',
+    subtitle: '제미나이 API 기반의 지능형 제시어 생성 멀티플레이어 라이어 게임 / Gemini API-powered Intelligent Word Generator & Multiplayer Liar Game',
+    author: 'Joohyoung Yi',
+    affiliation: 'Art & Technology, Sogang University',
+    email: 'yjh020701@gmail.com',
+    link: 'https://github.com/meisteryi/Liar_game',
+    page: '#',
+    tags: ['Flutter', 'Gemini API', 'Riverpod', 'StateNotifier', 'Shared Preferences'],
+    abstract: 'Liar Game은 모바일 한 대로 여러 명이서 즐길 수 있는 오프라인 파티 게임을 Google Gemini API와 연동하여 디지털화한 Flutter 기반 모바일 애플리케이션입니다. 매번 뻔하고 단조로운 단어 대신, 사용자가 직접 설정한 테마(예: 영화 제목, IT 기기, 디저트 등)와 난이도(쉬움, 보통, 어려움)에 맞추어 Gemini가 똑똑하고 연관도 높은 비밀 제시어 쌍과 힌트를 실시간으로 생성합니다. 일반적인 라이어 게임의 규칙뿐만 아니라, 라이어와 유사한 단어를 지급받아 서로를 라이어로 오해하게 만드는 \'스파이(바보) 모드\'와 잡힌 라이어가 제시어를 맞춰 역전할 수 있는 기회 등 다채로운 룰과 상태 변화가 부드러운 UI 애니메이션과 함께 제공됩니다.\n\nLiar Game is a Flutter-based mobile party application that digitalizes the classic offline social game for multiple players using a single device. By leveraging Google Gemini API, it replaces static word lists with dynamically generated, high-context word pairs and hints based on custom themes and difficulties. It features a pass-and-play flow with private card reveals, a standard Liar mode, a Spy (Fool) mode where the spy receives a deceptive, closely related alternative word, and a final guess comeback mechanic for caught liars.',
+    sections: {
+      introduction: '이 프로젝트는 친구나 가족들과 오프라인에서 모여 즐길 수 있는 라이어 게임을 한층 더 스마트하고 예측 불가능하게 만들기 위해 개발되었습니다. 기존 라이어 게임 앱들이 고정된 단어 데이터베이스를 사용하여 쉽게 질리는 한계를 해결하기 위해, 거대 언어 모델(LLM)을 게임 제시어 생성 엔진으로 도입하였습니다. 특히 한국어 텍스트 매칭의 미묘한 난이도 조절과 스파이 모드를 위한 유사 단어 매핑을 Gemini API 프롬프트 엔지니어링 및 Response Schema 지정을 통해 자동화하였습니다.\n\nThis project was developed to make offline social games more dynamic and unpredictable. To overcome the static word databases of existing apps, it introduces a Large Language Model (LLM) as an intelligent generation engine. It automates delicate difficulty grading and context-aware alternative word mapping for Spy Mode through structured Gemini API prompts and JSON Response Schemas.',
+      methodology: [
+        {
+          title: 'Gemini API 기반 제시어 생성 & 스파이 모드 (Gemini API Word Generation & Response Schema)',
+          desc: 'GenerativeModel에 JSON Schema를 지정하여 target_word(플레이어 제시어), alternative_word(스파이/바보 제시어), hint(공통 힌트)를 구조화된 형태로 받아옵니다. 사용자가 지정한 난이도(\'쉬움\'부터 \'어려움\'까지)와 테마에 맞는 자연스럽고 재미있는 단어 쌍을 프롬프트 엔지니어링을 통해 생성하고, 임시 503 오류나 서비스 지연에 대비해 gemini-3.5-flash부터 gemini-2.0-flash까지의 모델 회전(Fallback Rotation) 메커니즘을 적용했습니다.\n\nLeverages the Google Generative AI SDK with response schemas to fetch structured JSON data. It uses detailed prompts to align generated word pairs with selected difficulties and themes. It also implements an API resilience mechanism by rotating through multiple fallback Gemini models (from gemini-3.5-flash to gemini-2.0-flash) in case of high-demand errors.'
+        },
+        {
+          title: '로컬 상태 및 점수 캐싱 (Riverpod & Local State Management)',
+          desc: 'StateNotifier를 상속한 GameNotifier를 통해 게임의 전체 진행 단계(대기, 단어 생성, 카드 확인, 토론, 투표, 결과)를 리액티브하게 제어합니다. 플레이어별 이름 수정 기능과 게임 라운드 간 누적되는 점수를 메모리에 안전하게 유지하며, 사용자의 API 키는 Shared Preferences를 활용해 기기에 안전하게 암호화 및 영구 저장됩니다.\n\nUnified game states (setup, loading, card reveals, discussion, voting, results) are handled reactively via Riverpod StateNotifier. It caches custom player names and scores in memory between rounds while storing the Gemini API key securely in local device storage using SharedPreferences.'
+        }
+      ],
+      results: [
+        {
+          title: '게임 설정 및 테마 입력 (Game Configuration & Theme Setup)',
+          desc: '플레이어 수(4~10명), 라이어 수 설정 및 일반/스파이 모드, 세밀한 난이도와 자유로운 커스텀 테마를 입력하고 API 키를 입력할 수 있는 직관적인 대시보드 화면입니다.\n\nThe setup dashboard where users customize player count, choose standard or spy mode, specify difficulty levels, input a game theme, and manage their Gemini API key.',
+          figs: [liargame_1],
+          captions: ['Figure 1: Main setup screen with options for players, mode, difficulty, theme, and API key management.']
+        },
+        {
+          title: '제시어 카드 확인 (Pass & Play Card Reveal)',
+          desc: '모바일 기기 한 대를 번갈아 가며 들고 보며 각자 본인의 제시어 카드를 터치하여 확인하고 숨기는 보안형 UI 스크린입니다.\n\nThe secure card check screen where players take turns holding the device to tap, reveal, and hide their assigned secret words in private.',
+          figs: [liargame_2],
+          captions: ['Figure 2: Card check screens displaying instructions to reveal or hide the assigned role word.']
+        },
+        {
+          title: '토론 및 라이어 투표 (Discussion & Voting)',
+          desc: '각 플레이어가 제시어에 대해 설명한 뒤, 의심되는 라이어를 지목하는 투표 화면으로, 직관적인 그리드 카드 선택을 지원합니다.\n\nThe screen transition from public discussion to selecting the suspected liar player using grid cards.',
+          figs: [liargame_3],
+          captions: ['Figure 3: Interactive discussion view and the card grid voting screen to select suspects.']
+        },
+        {
+          title: '투표 결과 및 라이어의 역전 기회 (Voting Results & Comeback Guess)',
+          desc: '투표를 통해 검거된 라이어가 최종적으로 진짜 제시어가 무엇이었는지 타이핑하여 정답을 맞추면 라이어가 역전승을 거두는 최후의 제시어 입력 화면입니다.\n\nThe results interface where the caught liar is given one final chance to type and guess the target word to steal the victory.',
+          figs: [liargame_4],
+          captions: ['Figure 4: Result screen displaying victory details or offering a comeback guess text field for the liar.']
+        }
+      ],
+      conclusion: 'Liar Game은 Gemini API의 유연한 텍스트 생성 능력과 Flutter의 기민한 상태 제어 및 크로스플랫폼 생산성을 결합하여 완성된 디지털 파티 게임입니다. API 자동 Fallback 아키텍처와 로컬 디바이스 영구 저장 설정을 결합하여 전 세계 어디서든 유연하게 작동할 수 있으며, 향후 로컬 블루투스/Wi-Fi 멀티플레이어 또는 온라인 웹 로비 기능으로의 확장을 목표로 하고 있습니다.\n\nLiar Game demonstrates a smooth, highly interactive mobile application by integrating Gemini API\'s text generation with Flutter\'s reactive state models. Combined with resilient model fallbacks and state caching, it delivers an engaging party game experience. Future updates will focus on local Bluetooth/Wi-Fi multiplayer lobbies and online room systems.'
+    }
+  },
   photoexhibition: {
     id: 'photoexhibition',
     title: 'Photo Exhibition',
@@ -62,7 +120,7 @@ export const projectsData = {
     affiliation: 'Art & Technology, Sogang University',
     email: 'yjh020701@gmail.com',
     link: 'https://github.com/meisteryi/PhotoExhibition',
-    page: '#',
+    page: 'https://meisteryi.github.io/PhotoExhibition/',
     tags: ['React', 'exifreader', 'CSS Variables', 'Responsive Grid', 'UX/UI'],
     abstract: 'Photo Exhibition은 사진 촬영 시 함께 메타데이터로 저장되는 EXIF 정보를 자동으로 추출하여 에세이와 함께 전시하는 예술적 온라인 아카이브 플랫폼입니다. 반응형 메이슨리 그리드 레이아웃을 통해 자유롭게 사진들을 탐색하고, 감성적인 모노그래프 모드를 통해 사진들을 한 장씩 몰입하여 감상할 수 있습니다. 또한, 사용자는 모바일 기기 터치 및 PC 마우스 휠을 통해 직관적이고 부드러운 스냅 스크롤링과 더블 탭 하트 리액션을 경험할 수 있습니다.\n\nPhoto Exhibition is an editorial online archive platform that automatically extracts EXIF metadata from uploaded images and showcases them alongside personal essays. Users can explore photos through a responsive masonry grid or immerse themselves in a monograph presentation mode that snaps vertically with custom ease-in-out scroll controllers. It also features client-side image uploading, administrative content management, and a physics-inspired radiating heart reaction system.',
     sections: {
@@ -612,36 +670,21 @@ export const ProjectModal = ({ projectId, onClose, onOpenPhotoExhibition }) => {
           </div>
         </div>
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-          {project.id === 'photoexhibition' ? (
-            <button
-              onClick={(e) => {
+          <a
+            href={project.page || '#'}
+            onClick={(e) => {
+              if (!project.page) {
                 e.preventDefault();
-                if (onOpenPhotoExhibition) {
-                  onOpenPhotoExhibition();
-                }
-              }}
-              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
-            >
-              <span>Visit Pages</span>
-              <Globe size={12} sm:size={14} className="shrink-0" />
-            </button>
-          ) : (
-            <a
-              href={project.page || '#'}
-              onClick={(e) => {
-                if (!project.page) {
-                  e.preventDefault();
-                  alert('해당 프로젝트의 라이브 웹 페이지(Pages)가 등록되어 있지 않거나 준비 중입니다.');
-                }
-              }}
-              target={project.page ? "_blank" : "_self"}
-              rel="noopener noreferrer"
-              className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
-            >
-              <span>Visit Pages</span>
-              <Globe size={12} sm:size={14} className="shrink-0" />
-            </a>
-          )}
+                alert('해당 프로젝트의 라이브 웹 페이지(Pages)가 등록되어 있지 않거나 준비 중입니다.');
+              }
+            }}
+            target={project.page ? "_blank" : "_self"}
+            rel="noopener noreferrer"
+            className="flex items-center gap-1 sm:gap-1.5 px-3 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-[10px] sm:text-xs font-bold transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer border border-transparent"
+          >
+            <span>Visit Pages</span>
+            <Globe size={12} sm:size={14} className="shrink-0" />
+          </a>
           <a
             href={project.link || '#'}
             onClick={(e) => {

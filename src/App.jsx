@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Sparkles, Cpu, Search } from 'lucide-react';
-import { 
-  HeroCard, 
-  AcademicCard, 
-  ShowroomCard, 
-  InteractiveCard, 
-  PersonalProjectCard, 
+import {
+  HeroCard,
+  AcademicCard,
+  ShowroomCard,
+  InteractiveCard,
+  PersonalProjectCard,
   ArchiveCard,
   CertificatesCard,
   VisualCard
@@ -13,12 +13,12 @@ import {
 import { ProjectModal } from './components/ProjectModal';
 import { ArchiveModal } from './components/ArchiveModal';
 import { ProjectsModal } from './components/ProjectsModal';
-import { PhotoExhibitionModal } from './components/PhotoExhibitionModal';
 import { CertificatesModal } from './components/CertificatesModal';
 import logo from './assets/logo.png';
 import { CustomCursor } from './components/CustomCursor';
 
 const searchProjects = [
+  { id: 'liargame', title: 'Liar Game', category: 'Project', description: 'Gemini API 기반 지능형 제시어 생성 및 다양한 게임 모드를 제공하는 멀티플레이어 모바일 파티 게임 앱' },
   { id: 'photoexhibition', title: 'Photo Exhibition', category: 'Project', description: 'EXIF 메타데이터 자동 추출 및 반응형 메이슨리 레이아웃, 모노그래프 전시 감상 모드를 제공하는 감성적인 온라인 사진 전시회 서비스' },
   { id: 'gachatodo', title: 'Gacha To-Do', category: 'Project', description: '할 일 완료로 모으는 코인과 픽셀 아쿠아리움 방치형 육성 게임 앱' },
   { id: 'tabilens', title: 'TabiLenS', category: 'Project', description: '실시간 다국어 메뉴판 번역 및 식문화 가이드 주문 도우미 서비스' },
@@ -36,7 +36,6 @@ function App() {
   const [isArchiveOpen, setIsArchiveOpen] = useState(false);
   const [isProjectsOpen, setIsProjectsOpen] = useState(false);
   const [isCertificatesOpen, setIsCertificatesOpen] = useState(false);
-  const [isPhotoExhibitionOpen, setIsPhotoExhibitionOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [isSearchExpanded, setIsSearchExpanded] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -47,12 +46,11 @@ function App() {
 
   const parseHashAndSetState = () => {
     const hash = window.location.hash;
-    
+
     let isArchive = false;
     let isProjects = false;
     let isCertificates = false;
     let selectedProj = null;
-    let isPhotoExh = false;
 
     if (hash === '#archive') {
       isArchive = true;
@@ -60,8 +58,6 @@ function App() {
       isProjects = true;
     } else if (hash === '#certificates') {
       isCertificates = true;
-    } else if (hash === '#photoexhibition') {
-      isPhotoExh = true;
     } else if (hash.startsWith('#project-')) {
       const projId = hash.replace('#project-', '');
       selectedProj = projId;
@@ -71,7 +67,6 @@ function App() {
     setIsProjectsOpen(isProjects);
     setIsCertificatesOpen(isCertificates);
     setSelectedProject(selectedProj);
-    setIsPhotoExhibitionOpen(isPhotoExh);
 
     // Scroll to top when view changes
     window.scrollTo({ top: 0 });
@@ -136,39 +131,28 @@ function App() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Prevent background scrolling ONLY when the photo exhibition modal is open
-  useEffect(() => {
-    if (isPhotoExhibitionOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = '';
-    }
-    return () => {
-      document.body.style.overflow = '';
-    };
-  }, [isPhotoExhibitionOpen]);
+
 
 
 
   return (
     <div className="min-h-screen bg-slate-50/50 dark:bg-slate-950/80 text-slate-800 dark:text-slate-100 transition-colors duration-300 relative overflow-x-hidden">
       <CustomCursor />
-      
+
       {/* Background Decorative Gradient Orbs */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gradient-to-br from-indigo-500/10 to-purple-500/10 dark:from-indigo-500/5 dark:to-purple-500/5 rounded-full blur-3xl -z-10 pointer-events-none will-change-transform transform-gpu"></div>
       <div className="absolute bottom-10 right-1/4 w-[600px] h-[600px] bg-gradient-to-tr from-pink-500/10 to-indigo-500/10 dark:from-pink-500/5 dark:to-indigo-500/5 rounded-full blur-3xl -z-10 pointer-events-none will-change-transform transform-gpu"></div>
 
       {/* Header section */}
-      <header 
+      <header
         ref={searchContainerRef}
-        className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 border-b ${
-          isScrolled 
-            ? 'bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md border-slate-200/80 dark:border-slate-800/80 shadow-md py-4' 
-            : 'bg-transparent border-transparent py-6'
-        }`}
+        className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 border-b ${isScrolled
+          ? 'bg-slate-50/90 dark:bg-slate-900/90 backdrop-blur-md border-slate-200/80 dark:border-slate-800/80 shadow-md py-4'
+          : 'bg-transparent border-transparent py-6'
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between">
-          <div 
+          <div
             onClick={handleGoHome}
             className="flex items-center gap-2 sm:gap-3 cursor-pointer select-none"
           >
@@ -181,9 +165,8 @@ function App() {
           <div className="flex items-center gap-2 sm:gap-4">
             {/* Search Input Container */}
             <div className="relative flex items-center">
-              <div className={`hidden md:flex items-center bg-slate-100/70 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden transition-all duration-300 ${
-                isSearchExpanded ? 'w-48 lg:w-64 px-3 py-1.5 opacity-100' : 'w-0 opacity-0 pointer-events-none border-transparent'
-              }`}>
+              <div className={`hidden md:flex items-center bg-slate-100/70 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-800 rounded-xl overflow-hidden transition-all duration-300 ${isSearchExpanded ? 'w-48 lg:w-64 px-3 py-1.5 opacity-100' : 'w-0 opacity-0 pointer-events-none border-transparent'
+                }`}>
                 <input
                   type="text"
                   placeholder="Search projects..."
@@ -208,9 +191,8 @@ function App() {
                     }, 100);
                   }
                 }}
-                className={`p-2 sm:p-2.5 rounded-full border border-slate-200/60 dark:border-slate-850 bg-slate-100/70 dark:bg-slate-800 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 transition-all duration-200 cursor-pointer ${
-                  isSearchExpanded ? 'md:ml-2' : ''
-                }`}
+                className={`p-2 sm:p-2.5 rounded-full border border-slate-200/60 dark:border-slate-850 bg-slate-100/70 dark:bg-slate-800 shadow-sm hover:shadow-md text-slate-600 dark:text-slate-300 transition-all duration-200 cursor-pointer ${isSearchExpanded ? 'md:ml-2' : ''
+                  }`}
                 aria-label="Search"
               >
                 <Search size={16} />
@@ -219,16 +201,16 @@ function App() {
               {/* Desktop Autocomplete Dropdown */}
               {isSearchExpanded && searchQuery && (
                 <div className="hidden md:block absolute right-0 top-full mt-2 w-64 sm:w-72 md:w-80 bg-slate-50/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden py-1">
-                  {searchProjects.filter(p => 
-                    p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                  {searchProjects.filter(p =>
+                    p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                     p.description.toLowerCase().includes(searchQuery.toLowerCase())
                   ).length === 0 ? (
                     <div className="px-4 py-3 text-xs text-slate-400 font-mono text-center">
                       No matching projects found
                     </div>
                   ) : (
-                    searchProjects.filter(p => 
-                      p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                    searchProjects.filter(p =>
+                      p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                       p.description.toLowerCase().includes(searchQuery.toLowerCase())
                     ).map(project => (
                       <div
@@ -254,7 +236,7 @@ function App() {
             </div>
 
             {/* All Projects Button */}
-            <button 
+            <button
               onClick={() => {
                 setModalSource('projects');
                 window.location.hash = 'projects';
@@ -267,11 +249,10 @@ function App() {
         </div>
 
         {/* Mobile Search Bar Dropdown */}
-        <div className={`md:hidden transition-all duration-300 bg-slate-50/95 backdrop-blur-md relative ${
-          isSearchExpanded 
-            ? 'max-h-24 opacity-100 py-3 px-4 border-t border-slate-200/50 dark:border-slate-800/50 overflow-visible' 
-            : 'max-h-0 opacity-0 py-0 px-4 border-t border-transparent pointer-events-none overflow-hidden'
-        }`}>
+        <div className={`md:hidden transition-all duration-300 bg-slate-50/95 backdrop-blur-md relative ${isSearchExpanded
+          ? 'max-h-24 opacity-100 py-3 px-4 border-t border-slate-200/50 dark:border-slate-800/50 overflow-visible'
+          : 'max-h-0 opacity-0 py-0 px-4 border-t border-transparent pointer-events-none overflow-hidden'
+          }`}>
           <div className="flex items-center bg-slate-100/70 dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 rounded-xl px-3 py-1.5">
             <input
               type="text"
@@ -286,16 +267,16 @@ function App() {
           {/* Mobile Autocomplete Dropdown */}
           {searchQuery && (
             <div className="absolute left-4 right-4 top-full mt-1 bg-slate-50/98 dark:bg-slate-900/98 backdrop-blur-md border border-slate-200 dark:border-slate-800 rounded-2xl shadow-xl z-50 overflow-hidden py-1">
-              {searchProjects.filter(p => 
-                p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+              {searchProjects.filter(p =>
+                p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 p.description.toLowerCase().includes(searchQuery.toLowerCase())
               ).length === 0 ? (
                 <div className="px-4 py-3 text-xs text-slate-400 font-mono text-center">
                   No matching projects found
                 </div>
               ) : (
-                searchProjects.filter(p => 
-                  p.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                searchProjects.filter(p =>
+                  p.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
                   p.description.toLowerCase().includes(searchQuery.toLowerCase())
                 ).map(project => (
                   <div
@@ -323,8 +304,8 @@ function App() {
 
       {/* Main Content Area */}
       {selectedProject ? (
-        <ProjectModal 
-          projectId={selectedProject} 
+        <ProjectModal
+          projectId={selectedProject}
           onClose={() => {
             if (modalSource === 'projects') {
               window.location.hash = 'projects';
@@ -334,13 +315,10 @@ function App() {
               window.location.hash = '';
             }
             setModalSource(null);
-          }} 
-          onOpenPhotoExhibition={() => {
-            window.location.hash = 'photoexhibition';
           }}
         />
       ) : isArchiveOpen ? (
-        <ArchiveModal 
+        <ArchiveModal
           onClose={() => {
             window.location.hash = '';
           }}
@@ -349,13 +327,13 @@ function App() {
           }}
         />
       ) : isCertificatesOpen ? (
-        <CertificatesModal 
+        <CertificatesModal
           onClose={() => {
             window.location.hash = '';
           }}
         />
       ) : isProjectsOpen ? (
-        <ProjectsModal 
+        <ProjectsModal
           onClose={() => {
             window.location.hash = '';
           }}
@@ -375,16 +353,16 @@ function App() {
               setModalSource(null);
               window.location.hash = `project-${id}`;
             }} />
- 
+
             {/* 3. Small Personal Project Card (1x1) - TabiLenS */}
             <PersonalProjectCard onOpen={(id) => {
               setModalSource(null);
               window.location.hash = `project-${id}`;
             }} />
- 
+
             {/* 4. Small Interactive Card (1x1) */}
             <InteractiveCard />
- 
+
             {/* 5. Product Showroom Card (2x2) - µ's */}
             <ShowroomCard onOpen={(id) => {
               setModalSource(null);
@@ -405,18 +383,7 @@ function App() {
         </main>
       )}
 
-       {/* Render Photo Exhibition Fullscreen Modal */}
-       {isPhotoExhibitionOpen && (
-         <PhotoExhibitionModal 
-           onClose={() => {
-             if (modalSource === 'projects' || selectedProject === 'photoexhibition') {
-               window.location.hash = 'project-photoexhibition';
-             } else {
-               window.location.hash = '';
-             }
-           }}
-         />
-       )}
+
 
       {/* Footer */}
       <footer className="max-w-7xl mx-auto px-4 md:px-8 py-8 mt-12 border-t border-slate-200/30 dark:border-slate-800/30 flex flex-col md:flex-row items-center justify-between gap-4">

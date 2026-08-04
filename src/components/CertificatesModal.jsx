@@ -50,8 +50,8 @@ export const CertificatesModal = ({ onClose }) => {
       <div className="py-6">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {certificates.map((cert, idx) => (
-            <div 
-              key={idx} 
+            <div
+              key={idx}
               className="glass-panel glow-primary rounded-2xl p-5 border border-slate-200/60 dark:border-slate-800/80 hover:border-pink-500/40 dark:hover:border-pink-400/40 transition-all duration-300 flex flex-col justify-between gap-4 group"
             >
               <div className="space-y-1.5">
