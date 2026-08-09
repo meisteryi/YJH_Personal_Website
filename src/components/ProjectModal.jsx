@@ -58,6 +58,7 @@ import liargame_1 from '../assets/liargame_1.png';
 import liargame_2 from '../assets/liargame_2.png';
 import liargame_3 from '../assets/liargame_3.png';
 import liargame_4 from '../assets/liargame_4.png';
+import liargame_5 from '../assets/liargame_5.png';
 
 export const projectsData = {
   liargame: {
@@ -85,28 +86,34 @@ export const projectsData = {
       ],
       results: [
         {
-          title: '게임 설정 및 테마 입력 (Game Configuration & Theme Setup)',
-          desc: '플레이어 수(4~10명), 라이어 수 설정 및 일반/스파이 모드, 세밀한 난이도와 자유로운 커스텀 테마를 입력하고 API 키를 입력할 수 있는 직관적인 대시보드 화면입니다.\n\nThe setup dashboard where users customize player count, choose standard or spy mode, specify difficulty levels, input a game theme, and manage their Gemini API key.',
+          title: '게임 설정 및 플레이어 구성 (Game Setup & Player Configuration)',
+          desc: '플레이어 수(3~10명), 플레이어 이름 및 스코어 현황, 라이어 수, 게임 모드(일반/바보 모드), 그리고 제시어 난이도를 직관적이고 세련되게 설정할 수 있는 게임 설정 화면입니다.\n\nThe game configuration screen where players customize participant counts (3–10 players), manage custom player names and score tracking, specify the liar count, choose the game mode (Standard or Spy), and select the word difficulty.',
           figs: [liargame_1],
-          captions: ['Figure 1: Main setup screen with options for players, mode, difficulty, theme, and API key management.']
+          captions: ['Figure 1: Main setup screen with options for player count, custom names, liar count, game mode, and difficulty setting.']
         },
         {
-          title: '제시어 카드 확인 (Pass & Play Card Reveal)',
-          desc: '모바일 기기 한 대를 번갈아 가며 들고 보며 각자 본인의 제시어 카드를 터치하여 확인하고 숨기는 보안형 UI 스크린입니다.\n\nThe secure card check screen where players take turns holding the device to tap, reveal, and hide their assigned secret words in private.',
+          title: '지능형 제시어 생성 (Gemini API Word Generation)',
+          desc: '원하는 제시어 주제(예: 과일 등)를 선택적으로 입력하면, Google Gemini API가 작동하여 주제와 난이도에 부합하는 똑똑하고 연관도 높은 단어를 실시간으로 생성하는 로딩 화면입니다.\n\nThe loading screen displaying the background process of calling the Google Gemini API to dynamically generate contextually relevant, high-quality secret words and alternative words based on the optional theme and difficulty.',
           figs: [liargame_2],
-          captions: ['Figure 2: Card check screens displaying instructions to reveal or hide the assigned role word.']
+          captions: ['Figure 2: Gemini API integration screen dynamically generating unique secret words based on the chosen theme.']
         },
         {
-          title: '토론 및 라이어 투표 (Discussion & Voting)',
-          desc: '각 플레이어가 제시어에 대해 설명한 뒤, 의심되는 라이어를 지목하는 투표 화면으로, 직관적인 그리드 카드 선택을 지원합니다.\n\nThe screen transition from public discussion to selecting the suspected liar player using grid cards.',
+          title: '보안형 제시어 카드 확인 (Pass & Play Card Reveal)',
+          desc: '모바일 기기 한 대를 번갈아 사용하며 각자의 제시어를 확인하는 보안 스크린입니다. 주변 사람이 단어를 보지 못하도록 터치하여 카드를 뒤집을 수 있는 직관적인 UI를 제공합니다.\n\nThe secure pass-and-play role reveal screen where players take turns holding the device to tap and temporarily flip the card, checking their assigned secret word without exposing it to others.',
           figs: [liargame_3],
-          captions: ['Figure 3: Interactive discussion view and the card grid voting screen to select suspects.']
+          captions: ['Figure 3: Pass-and-play screen allowing players to securely tap and reveal their secret word in private.']
         },
         {
-          title: '투표 결과 및 라이어의 역전 기회 (Voting Results & Comeback Guess)',
-          desc: '투표를 통해 검거된 라이어가 최종적으로 진짜 제시어가 무엇이었는지 타이핑하여 정답을 맞추면 라이어가 역전승을 거두는 최후의 제시어 입력 화면입니다.\n\nThe results interface where the caught liar is given one final chance to type and guess the target word to steal the victory.',
+          title: '토론 단계 및 추천 발언 순서 (Discussion Phase & Order Recommendation)',
+          desc: '모든 플레이어가 제시어를 확인한 후 토론을 진행하는 화면입니다. 각자 15초 내외로 모호하게 제시어를 설명할 수 있도록 돕고, 공정하고 유기적인 흐름을 위해 추천 발언 순서를 동적으로 제시합니다.\n\nThe discussion phase guide screen that prompts players to describe their secret words within 15 seconds. It displays a randomized recommended turn order to encourage a fair and structured debate.',
           figs: [liargame_4],
-          captions: ['Figure 4: Result screen displaying victory details or offering a comeback guess text field for the liar.']
+          captions: ['Figure 4: Discussion phase screen with suggested speaking order and citizen/liar game tips.']
+        },
+        {
+          title: '라이어 지목 투표 (Liar Voting Phase)',
+          desc: '토론 종료 후 플레이어들이 상의하여 가장 의심스러운 용의자를 투표하고 지목하는 화면입니다. 플레이어별 카드 레이아웃을 통해 직관적으로 지목하여 정체를 공개할 수 있습니다.\n\nThe interactive voting screen where players collectively decide and select the suspected liar player. Tapping a player\'s card registers the vote before revealing their identity.',
+          figs: [liargame_5],
+          captions: ['Figure 5: Voting interface to select and accuse the suspected liar player.']
         }
       ],
       conclusion: 'Liar Game은 Gemini API의 유연한 텍스트 생성 능력과 Flutter의 기민한 상태 제어 및 크로스플랫폼 생산성을 결합하여 완성된 디지털 파티 게임입니다. API 자동 Fallback 아키텍처와 로컬 디바이스 영구 저장 설정을 결합하여 전 세계 어디서든 유연하게 작동할 수 있으며, 향후 로컬 블루투스/Wi-Fi 멀티플레이어 또는 온라인 웹 로비 기능으로의 확장을 목표로 하고 있습니다.\n\nLiar Game demonstrates a smooth, highly interactive mobile application by integrating Gemini API\'s text generation with Flutter\'s reactive state models. Combined with resilient model fallbacks and state caching, it delivers an engaging party game experience. Future updates will focus on local Bluetooth/Wi-Fi multiplayer lobbies and online room systems.'
