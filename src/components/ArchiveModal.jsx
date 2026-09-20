@@ -75,11 +75,11 @@ const archiveLogs = [
   {
     date: 'Dec 2025',
     title: 'Finished SHEN Gender Bias Research',
-    category: 'Paper',
+    category: 'Research',
     color: 'indigo',
     icon: FileText,
     projectId: 'shen',
-    description: '한국어 사전 학습 트랜스포머 모델의 잠재적 편향성 평가 및 젠더 접두사가 감성 예측을 왜곡하는 \'특성 오귀인\' 분석 공동 논문 저술.\n\nCo-authored paper evaluating hidden bias footprints in Korean pre-trained transformer architectures. Highlighted "Feature Misattribution" where gendered prefixes hijack sentiment predictions.',
+    description: '한국어 사전 학습 트랜스포머 모델의 잠재적 편향성 평가 및 젠더 접두사가 감성 예측을 왜곡하는 \'특성 오귀인\' 현상 분석 전공 심화 리서치 수행.\n\nCoursework research evaluating hidden bias footprints in Korean pre-trained transformer architectures. Highlighted "Feature Misattribution" where gendered prefixes hijack sentiment predictions.',
     tags: ['NLP', 'XAI', 'Transformers', 'KcELECTRA', 'LIME/SHAP']
   },
   {
