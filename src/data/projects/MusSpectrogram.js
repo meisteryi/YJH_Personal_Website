@@ -15,6 +15,7 @@ export const mus = {
   link: '',
   page: '',
   tags: ['Deep Learning', 'PyTorch', 'Audio DSP', 'Spectrogram Trans', 'Transfer Learning', 'ResNet50'],
+  period: '2025.09 - 2025.12',
   featuredImage: mus_fig_1,
   abstract: '본 프로젝트는 음악 장르 분류 문제를 컴퓨터 비전 작업으로 재정의하여 오디오 영역의 분류 난제를 해결합니다. 오디오 신호를 2D Mel-Spectrogram 이미지로 변환하여 시각적 특징을 추출하고, ImageNet으로 사전 학습된 ResNet50 모델을 활용하는 전이 학습 방법론을 적용했습니다. 표준 GTZAN 데이터셋을 통한 실험 결과 10개 장르 분류에서 72.56%의 테스트 정확도를 보였으며, 오차 행렬(Confusion Matrix) 분석을 통해 유사한 청각적 특징을 공유하는 장르 간의 오분류 패턴을 시각적으로 규명했습니다.',
   sections: {

@@ -14,6 +14,7 @@ export const liargame = {
   link: 'https://github.com/meisteryi/Liar_game',
   page: '#',
   tags: ['Flutter', 'Gemini API', 'Riverpod', 'StateNotifier', 'Shared Preferences'],
+  period: '2026.07 - 2026.08',
   featuredImage: liargame_1,
   abstract: 'Liar Game은 모바일 한 대로 여러 명이서 즐길 수 있는 오프라인 파티 게임을 Google Gemini API와 연동하여 디지털화한 Flutter 기반 모바일 애플리케이션입니다. 매번 뻔하고 단조로운 단어 대신, 사용자가 직접 설정한 테마(예: 영화 제목, IT 기기, 디저트 등)와 난이도(쉬움, 보통, 어려움)에 맞추어 Gemini가 똑똑하고 연관도 높은 비밀 제시어 쌍과 힌트를 실시간으로 생성합니다. 일반적인 라이어 게임의 규칙뿐만 아니라, 라이어와 유사한 단어를 지급받아 서로를 라이어로 오해하게 만드는 \'스파이(바보) 모드\'와 잡힌 라이어가 제시어를 맞춰 역전할 수 있는 기회 등 다채로운 룰과 상태 변화가 부드러운 UI 애니메이션과 함께 제공됩니다.',
   sections: {

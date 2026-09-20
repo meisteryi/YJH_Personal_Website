@@ -11,6 +11,7 @@ export const halligalli = {
   link: 'https://github.com/meisteryi/HalliGalli',
   page: 'https://meisteryi.github.io/HalliGalli/',
   tags: ['HTML5', 'CSS3', 'JavaScript', 'Firebase Realtime DB'],
+  period: '2026.05 - 2026.06',
   featuredImage: halligalli_1,
   abstract: 'Online HalliGalli는 실시간 멀티플레이어를 지원하는 정적 웹 기반 할리갈리 보드게임입니다. 싱글 플레이(인공지능 COM 대결, 3단계 난이도) 모드와 Firebase Realtime Database 기반의 멀티 플레이(PvP 방 만들기 및 대기실 매칭) 모드를 모두 탑재했습니다. 스탠다드 규칙 외에도 다양한 확장 카드가 포함된 익스텐디드 확장 규칙 모드를 지원하며, 동글동글하고 귀여운 레트로 웹 UI 테마로 플레이어 경험을 강화했습니다.',
   sections: {

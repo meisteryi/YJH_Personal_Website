@@ -13,6 +13,7 @@ export const photoexhibition = {
   link: 'https://github.com/meisteryi/PhotoExhibition',
   page: 'https://meisteryi.github.io/PhotoExhibition/',
   tags: ['React', 'exifreader', 'CSS Variables', 'Responsive Grid', 'UX/UI'],
+  period: '2026.06 - 2026.07',
   featuredImage: photo_exhibition_cover,
   abstract: 'Photo Exhibition은 사진 촬영 시 함께 메타데이터로 저장되는 EXIF 정보를 자동으로 추출하여 에세이와 함께 전시하는 예술적 온라인 아카이브 플랫폼입니다. 반응형 메이슨리 그리드 레이아웃을 통해 자유롭게 사진들을 탐색하고, 감성적인 모노그래프 모드를 통해 사진들을 한 장씩 몰입하여 감상할 수 있습니다. 또한, 사용자는 모바일 기기 터치 및 PC 마우스 휠을 통해 직관적이고 부드러운 스냅 스크롤링과 더블 탭 하트 리액션을 경험할 수 있습니다.',
   sections: {

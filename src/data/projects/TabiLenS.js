@@ -12,6 +12,7 @@ export const tabilens = {
   link: 'https://github.com/meisteryi/TabiLenS',
   page: 'https://meisteryi.github.io/TabiLenS/',
   tags: ['Flutter', 'Riverpod', 'Gemini API', 'TTS', 'Shared Preferences'],
+  period: '2026.06 - 2026.07',
   featuredImage: tabilens_1,
   abstract: 'TabiLenS는 해외를 여행하는 다양한 국가의 여행자들이 메뉴판이나 간판을 읽을 때 겪는 언어적·문화적 장벽을 해소하기 위해 개발된 Flutter 기반의 멀티플랫폼 앱입니다. 단순히 기계적인 텍스트 번역을 넘어 Gemini 2.5 Flash를 통한 지능형 OCR 영역 검출 및 터치 매핑, 음식 유래/재료/알레르기 정보를 다루는 식문화 가이드 제공, 그리고 상황별 맞춤형 문장 생성 및 TTS 오디오 원어민 발음 기능을 제공합니다. 특히 출발 언어와 대상 언어 모두 완벽한 다국어(영어, 일본어, 중국어, 스페인어, 한국어, 프랑스어 등)를 지원하며, 국가 간 상호 번역(타국어-타국어 포함)을 지원하여 전 세계 여행자들의 소통을 돕습니다.',
   sections: {

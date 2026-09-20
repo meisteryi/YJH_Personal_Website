@@ -15,6 +15,7 @@ export const gachatodo = {
   link: 'https://github.com/meisteryi/Gachagame_todo',
   page: 'https://meisteryi.github.io/Gachagame_todo/',
   tags: ['Flutter', 'ValueNotifier', 'Shared Preferences', 'Pixel Art', 'State Management'],
+  period: '2026.05 - 2026.06',
   featuredImage: gachatodo_3,
   abstract: '가챠 투두(Gacha To-Do)는 일상적인 할 일 관리(To-Do List)에 가챠(Gacha)와 방치형 육성 요소를 결합하여 지속적인 동기부여를 제공하는 Flutter 기반 모바일 애플리케이션입니다. 할 일을 완료해 획득한 코인으로 20여 종의 독특한 픽셀 물고기와 10여 종의 다채로운 수초를 수집하고 수조를 취향껏 인테리어할 수 있습니다. 일일/주간 미션, 먹이 주기와 영양제를 활용한 물고기 육성, 고유 ID 기반 클라우드 백업 시스템을 제공하며, 한국어, 영어, 일본어, 스페인어의 4개국 다국어를 전면 탑재했습니다.',
   sections: {

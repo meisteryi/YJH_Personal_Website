@@ -13,6 +13,7 @@ export const eisenhower = {
   link: 'https://github.com/meisteryi/Todo_Eisenhower',
   page: '#',
   tags: ['Flutter', 'Cross-Platform', 'Firebase Auth/Sync', 'SQLite Local-First', 'Eisenhower Matrix', 'Pomodoro Timer'],
+  period: '2026.08 - 현재',
   featuredImage: eisenhower_2,
   abstract: '아이젠하워 투두(Eisenhower To-Do & Assistant)는 무한히 쌓이는 일상 작업의 인지 과부하(Cognitive Overload)를 해결하기 위해, 아이젠하워 매트릭스(4-Quadrant Priority Matrix)와 방치된 비본질 태스크의 자동 소각(Auto-Incinerator) 규칙을 결합한 Flutter 기반 올인원 크로스플랫폼 생산성 프로덕트입니다. 긴급성과 중요도 축으로 태스크를 Q1(Do First), Q2(Schedule), Q3(Delegate), Q4(Eliminate)로 자동 구조화하고, 25분 뽀모도로 몰입 타이머, 투두메이트형 카테고리 뷰, 반복 루틴 및 헬스 세트 트래커를 단일 프로덕트 플로우로 통합했습니다. SQLite 로컬 퍼스트(Local-first) 아키텍처에 Firebase Firestore 양방향 동기화 및 Apple/Google 소셜 로그인을 탑재하여, iOS(IPA), Android(APK), macOS(Desktop App) 크로스플랫폼 릴리즈 빌드를 완결했습니다.',
   sections: {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Globe, Github, CheckCircle2, Award, FileCode, Sparkles, Image as ImageIcon } from 'lucide-react';
+import { ArrowLeft, Globe, Github, CheckCircle2, Award, FileCode, Sparkles, Image as ImageIcon, Calendar } from 'lucide-react';
 import { projectsData } from '../data/projects';
 import { projectsSparData } from '../data/projectsSparData';
 
@@ -63,9 +63,17 @@ export const ProjectModal = ({ projectId, onClose }) => {
           ))}
         </div>
 
-        <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
-          {project.title}
-        </h1>
+        {/* Title and Project Period */}
+        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-x-6 gap-y-2">
+          <h1 className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.15]">
+            {project.title}
+          </h1>
+          {project.period && (
+            <span className="text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-bold shrink-0 whitespace-nowrap">
+              {project.period}
+            </span>
+          )}
+        </div>
 
         <p className="mt-3 text-lg sm:text-xl md:text-2xl text-slate-700 dark:text-slate-300 font-bold leading-relaxed">
           {project.subtitle}

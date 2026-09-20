@@ -13,6 +13,7 @@ export const yenafanpage = {
   link: 'https://github.com/meisteryi/YENA_Fanpage_2022',
   page: '',
   tags: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Web', 'Class Project'],
+  period: '2022.09 - 2022.12',
   featuredImage: yena_fanpage_profile,
   abstract: '최예나 아티스트 팬페이지는 2022년 2학기 서강대학교 아트&테크놀로지 학과의 "Network Media" 과목 기말 프로젝트로 제작된 반응형 웹사이트입니다. 아티스트의 정보, 앨범 소개, 관련 공지, 미디어 갤러리 및 월간 스케줄러 등 팬페이지에 필수적인 기능들을 설계 및 구현하였습니다. 데스크톱과 모바일 등 서로 다른 스케줄 및 해상도 환경을 모두 커버하는 미디어 쿼리 기반 반응형 네비게이션을 설계하였으며, 바닐라 자바스크립트 기반의 홈배너 이미지 슬라이드쇼, jQuery 및 Lightbox 라이브러리를 활용한 고해상도 이미지 오버레이 뷰어, 유기적인 앨범 카드 인터랙션을 적용했습니다.',
   sections: {
