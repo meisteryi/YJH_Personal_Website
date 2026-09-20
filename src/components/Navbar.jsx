@@ -41,11 +41,10 @@ export const Navbar = ({ onGoHome }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 z-40 w-full transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 z-40 w-full transition-all duration-300 ${isScrolled
           ? 'bg-[#f6d6bd]/90 dark:bg-[#08141e]/90 backdrop-blur-md border-b border-slate-200/50 dark:border-slate-800/50 shadow-xs py-1 md:py-1.5'
           : 'bg-[#f6d6bd] dark:bg-[#08141e] py-1 md:py-1.5'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand / Logo + '이주형' (Fills bar height on PC with minimal vertical margin) */}
@@ -59,9 +58,7 @@ export const Navbar = ({ onGoHome }) => {
             alt="Logo"
             className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-2xl object-contain shadow-xs group-hover:scale-105 transition-transform duration-200"
           />
-          <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black tracking-tight text-slate-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors leading-none">
-            이주형
-          </span>
+
         </a>
 
         {/* Right: Theme Toggle Only */}
