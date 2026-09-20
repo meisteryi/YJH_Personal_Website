@@ -9,6 +9,7 @@ import { mus } from './MusSpectrogram';
 import { scout } from './FootballScouter';
 import { yenafanpage } from './YenaFanpage';
 import { archive } from './MilestoneArchive';
+import { eisenhower } from './EisenhowerTodo';
 
 export const projectsData = {
   liargame,
@@ -21,7 +22,8 @@ export const projectsData = {
   mus,
   scout,
   yenafanpage,
-  archive
+  archive,
+  eisenhower
 };
 
 export const projectImages = {
@@ -34,5 +36,6 @@ export const projectImages = {
   shen: shen.featuredImage,
   mus: mus.featuredImage,
   scout: scout.featuredImage,
-  yenafanpage: yenafanpage.featuredImage
+  yenafanpage: yenafanpage.featuredImage,
+  eisenhower: eisenhower.featuredImage
 };

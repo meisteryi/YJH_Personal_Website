@@ -14,14 +14,9 @@ export const HeroSection = () => {
   };
 
   return (
-    <section id="about" className="relative pt-28 pb-14 md:pt-36 md:pb-20 overflow-hidden">
+    <section id="about" className="relative pt-28 pb-10 md:pt-36 md:pb-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Top Tag */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-panel border border-indigo-500/30 text-indigo-700 dark:text-indigo-300 text-xs sm:text-sm font-bold mb-6 shadow-sm">
-          <Sparkles className="w-4 h-4 text-indigo-500 animate-spin" style={{ animationDuration: '8s' }} />
-          <span>AI & Digital Service Planner</span>
-        </div>
 
         {/* Hero Title & Subtitle */}
         <div className="max-w-4xl space-y-4 sm:space-y-6">
@@ -46,7 +41,7 @@ export const HeroSection = () => {
             onClick={(e) => scrollToSection(e, '#projects')}
             className="px-6 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 cursor-pointer"
           >
-            <span>역량별 프로젝트 탐색</span>
+            <span>핵심 역량별 프로젝트 탐색</span>
             <ArrowDown className="w-4 h-4" />
           </a>
 
@@ -77,89 +72,6 @@ export const HeroSection = () => {
           >
             <Linkedin className="w-5 h-5" />
           </a>
-        </div>
-
-        {/* 3 Core Planner Competency Blocks with Large Headlines */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mt-12 sm:mt-16">
-          
-          {/* Card 1: 구조화 */}
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200/90 dark:border-slate-800 hover:border-indigo-500/40 transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-xl">
-            <div>
-              {/* Keyword Label */}
-              <div className="text-xs sm:text-sm font-bold tracking-wider text-indigo-600 dark:text-indigo-400 mb-2 flex items-center gap-1.5">
-                <span>• keyword 01</span>
-                <span>|</span>
-                <span className="font-extrabold uppercase">Structuring</span>
-              </div>
-
-              {/* Large Title */}
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                구조화
-              </h3>
-
-              {/* Concise 2-line Description */}
-              <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                두루뭉술한 아이디어나 복잡한 AI 기술을 누구나 이해하기 쉬운 서비스 플로우와 실질적인 기능으로 정리하는 능력
-              </p>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-bold text-indigo-600 dark:text-indigo-400">
-              #문제정의 #파이프라인설계 #정보구조(IA)
-            </div>
-          </div>
-
-          {/* Card 2: 실행력 */}
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200/90 dark:border-slate-800 hover:border-purple-500/40 transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-xl">
-            <div>
-              {/* Keyword Label */}
-              <div className="text-xs sm:text-sm font-bold tracking-wider text-purple-600 dark:text-purple-400 mb-2 flex items-center gap-1.5">
-                <span>• keyword 02</span>
-                <span>|</span>
-                <span className="font-extrabold uppercase">Execution</span>
-              </div>
-
-              {/* Large Title */}
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                실행력
-              </h3>
-
-              {/* Concise 2-line Description */}
-              <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                기획서에 머무르지 않고 직접 구동 가능한 프로토타입으로 구현하여 빠르게 가설을 검증하고 개선하는 능력
-              </p>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-bold text-purple-600 dark:text-purple-400">
-              #빠른MVP #Flutter개발 #가설검증
-            </div>
-          </div>
-
-          {/* Card 3: 몰입 설계 */}
-          <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200/90 dark:border-slate-800 hover:border-pink-500/40 transition-all duration-300 group flex flex-col justify-between shadow-sm hover:shadow-xl">
-            <div>
-              {/* Keyword Label */}
-              <div className="text-xs sm:text-sm font-bold tracking-wider text-pink-600 dark:text-pink-400 mb-2 flex items-center gap-1.5">
-                <span>• keyword 03</span>
-                <span>|</span>
-                <span className="font-extrabold uppercase">Engagement</span>
-              </div>
-
-              {/* Large Title */}
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
-                몰입 설계
-              </h3>
-
-              {/* Concise 2-line Description */}
-              <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
-                사용자의 동기부여 요소와 인터랙션을 파악하여 이탈 없이 지속적으로 머무르게 만드는 경험을 설계하는 능력
-              </p>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs font-bold text-pink-600 dark:text-pink-400">
-              #게이미피케이션 #리텐션루프 #인터랙션UX
-            </div>
-          </div>
-
         </div>
 
       </div>
