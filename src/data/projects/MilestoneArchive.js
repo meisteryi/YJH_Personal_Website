@@ -7,9 +7,9 @@ export const archive = {
   email: 'yjh020701@sogang.ac.kr',
   link: '',
   tags: ['Academic', 'Research', 'Engineering', 'Timeline'],
-  abstract: '본 타임라인 아카이브는 서강대학교 입학 이후 수행한 학업 마일스톤, 전공 심화 연구 프로젝트, 소프트웨어 엔지니어링 및 인터랙티브 프로젝트들을 상세히 문서화한 기록 보관소입니다. 젠더 편향 감성 분석, 음악 장르 스펙트로그램 변환 분류, NLP 추천 스카우터 및 웹 아키텍처 연동 이력을 망라합니다.\n\nThis timeline archive provides a detailed documentation of my academic milestones, coursework research projects, software engineering projects, and interactive designs since joining Sogang University. It encapsulates key projects spanning Sentiment Bias Analysis, Music Genre Recognition, NLP-based Recommendation Engines, and Web Architectures.',
+  abstract: '본 타임라인 아카이브는 서강대학교 입학 이후 수행한 학업 마일스톤, 전공 심화 연구 프로젝트, 소프트웨어 엔지니어링 및 인터랙티브 프로젝트들을 상세히 문서화한 기록 보관소입니다. 젠더 편향 감성 분석, 음악 장르 스펙트로그램 변환 분류, NLP 추천 스카우터 및 웹 아키텍처 연동 이력을 망라합니다.',
   sections: {
-    introduction: '학업 과정 및 개인 프로젝트 일람입니다. 하단 타임라인을 통해 대학 재학 중 구축한 핵심 시스템과 연구 프로젝트 성과를 한눈에 살펴보실 수 있습니다.\n\nWelcome to the complete milestone and archive list. Below is a detailed view of academic achievements, research projects, and software systems developed during my university curriculum.',
+    introduction: '학업 과정 및 개인 프로젝트 일람입니다. 하단 타임라인을 통해 대학 재학 중 구축한 핵심 시스템과 연구 프로젝트 성과를 한눈에 살펴보실 수 있습니다.',
     methodology: [
       {
         title: '2026: Modern Web & Systems Deployments',
@@ -26,10 +26,10 @@ export const archive = {
     ],
     results: [
       {
-        title: '타임라인 주요 이벤트 요약 (Historical Milestone Logs Summary)',
+        title: '타임라인 주요 이벤트 요약',
         desc: '1. 2025년 12월: SHEN 젠더 편향 분석 연구 프로젝트 완료 (Coursework / NLP)\n2. 2025년 11월: µ\'s 멜-스펙트로그램 음악 분류 완료 (Project / CV & Audio)\n3. 2025년 6월: AI Football Scouter 추천 시스템 개발 (Project / BERT & LLM)\n4. 2021년 3월: 서강대학교 아트&테크놀로지 입학 (Academic / Admission)'
       }
     ],
-    conclusion: '본 아카이브는 프로젝트가 진행됨에 따라 지속적으로 업데이트되는 살아있는 보존 기록입니다. 협업 및 기술적 소통은 언제든 열려 있습니다.\n\nThis archive acts as a living document, updated as new projects are completed and developed. For collaborations or technical discussions, feel free to get in touch.'
+    conclusion: '본 아카이브는 프로젝트가 진행됨에 따라 지속적으로 업데이트되는 살아있는 보존 기록입니다. 협업 및 기술적 소통은 언제든 열려 있습니다.'
   }
 };
