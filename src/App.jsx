@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ThemeToggle } from './components/ThemeToggle';
+import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ProjectGridSection } from './components/ProjectGridSection';
 import { EducationTimelineSection } from './components/EducationTimelineSection';
@@ -101,8 +101,8 @@ function App() {
       <div className="absolute top-[45%] right-1/4 w-[700px] h-[700px] bg-gradient-to-tr from-pink-500/10 to-indigo-500/10 dark:from-pink-500/5 dark:to-indigo-500/5 rounded-full blur-3xl -z-10 pointer-events-none will-change-transform transform-gpu"></div>
       <div className="absolute bottom-10 left-1/3 w-[800px] h-[800px] bg-gradient-to-br from-purple-500/10 to-pink-500/10 dark:from-purple-500/5 dark:to-pink-500/5 rounded-full blur-3xl -z-10 pointer-events-none will-change-transform transform-gpu"></div>
 
-      {/* Floating Minimal Theme Toggle */}
-      <ThemeToggle />
+      {/* Fixed Minimal Top Bar */}
+      <Navbar onGoHome={handleCloseModal} />
 
       {/* When a project is selected, show the Project Detail View */}
       {selectedProject ? (
