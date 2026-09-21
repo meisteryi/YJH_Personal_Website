@@ -31,8 +31,9 @@ function App() {
   };
 
   const getKeywordForProject = (projId) => {
-    if (['shen', 'mus'].includes(projId)) return '#데이터·AI융합';
-    return '#서비스설계';
+    if (['scout', 'unseenmap'].includes(projId)) return '#도메인분석';
+    if (['shen', 'mus', 'tabilens', 'kkumteul'].includes(projId)) return '#AI파이프라인';
+    return '#AI-UX';
   };
 
   const parseHashAndSetState = () => {

@@ -6,7 +6,8 @@ import {
   Globe2, 
   ShieldCheck, 
   Users, 
-  Building2 
+  Building2,
+  Megaphone 
 } from 'lucide-react';
 import { certificatesData } from '../data/certificates';
 
@@ -106,11 +107,11 @@ export const EducationTimelineSection = () => {
               </div>
             </div>
 
-            {/* 2. Leadership & Military Service Card */}
+            {/* 2. Leadership & Activities Card */}
             <div className="glass-panel p-6 sm:p-8 rounded-3xl border border-slate-200/80 dark:border-slate-800/80 shadow-xs">
               <div className="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 text-xs font-bold mb-4 uppercase tracking-wider">
                 <ShieldCheck className="w-4 h-4" />
-                <span>Leadership & Military Service</span>
+                <span>Leadership & Activities</span>
               </div>
 
               <div className="space-y-6">
@@ -139,6 +140,34 @@ export const EducationTimelineSection = () => {
                   </div>
                   <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
                     2022.03 ~ 2022.12
+                  </span>
+                </div>
+
+                {/* 11th ATC PR Team */}
+                <div className="flex items-start justify-between gap-4 pb-6 border-b border-slate-200/60 dark:border-slate-800/60">
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                      <Megaphone className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                          제11회 아트&테크놀로지 컨퍼런스 (11th ATC) 홍보팀
+                        </h4>
+                        <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold">
+                          PR 기획
+                        </span>
+                      </div>
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                        홍보(PR) 스태프 · 관람객 참여형 소셜 프로모션 기획 및 파트너십 홍보
+                      </p>
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                        누적 관람객 약 4,800여 명 규모의 컨퍼런스·전시에서 인스타그램 스토리 커스텀 스티커 바이럴 이벤트를 직접 기획·운영하고, 스마일게이트 및 현대차 정몽구 재단 온드림 소사이어티 협업 홍보를 지원했습니다.
+                      </p>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
+                    2022.07 ~ 2022.11
                   </span>
                 </div>
 

@@ -3,28 +3,28 @@ import { ArrowUpRight, Github, ChevronDown, Sparkles } from 'lucide-react';
 import { projectImages } from '../data/projects';
 
 export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenProject }) => {
-  // 3 Giant Interactive Keywords
+  // 3 Giant Interactive Keywords (Recommended Set B: AI Planning Specialization)
   const keywords = [
     {
-      id: 'service_arch',
-      tag: '#서비스설계',
-      title: '서비스 설계',
-      englishLabel: 'SERVICE ARCHITECTURE',
-      description: '두루뭉술한 아이디어나 복잡한 AI 기능을 사용자가 쓰기 편한 직관적인 화면 플로우, 기능 명세, 예외(Fail-safe) 정책으로 구체화하는 역량'
+      id: 'domain_analysis',
+      tag: '#도메인분석',
+      title: '도메인 분석',
+      englishLabel: 'DOMAIN ANALYSIS',
+      description: '특정 산업·분야(여행·식문화, 스포츠, 언어·사회적 편견, 음향 등)의 본질적 페인포인트를 짚어내고, "어디에 AI·데이터가 들어가야 진짜 가치가 생기는가"를 정의하는 역량'
     },
     {
-      id: 'ai_fusion',
-      tag: '#데이터·AI융합',
-      title: '데이터·AI 융합',
-      englishLabel: 'DATA & AI INSIGHT',
-      description: 'AI 모델(LLM, Vision, XAI)과 데이터를 깊이 이해하고, 사용자 문제 해결에 최적화된 실용적 솔루션 파이프라인으로 엮어내는 역량'
+      id: 'ai_pipeline',
+      tag: '#AI파이프라인',
+      title: 'AI 파이프라인',
+      englishLabel: 'AI PIPELINE',
+      description: '문제 해결에 최적화된 AI 모델(LLM, Vision, XAI, CNN)을 선정하고 전처리·프롬프트·평가 체계까지 실현 가능한 데이터 흐름으로 엮어내는 역량'
     },
     {
-      id: 'rapid_proto',
-      tag: '#빠른실행력',
-      title: '빠른 실행력',
-      englishLabel: 'RAPID PROTOTYPING',
-      description: '기획서에 머무르지 않고 Flutter, React, Firebase로 구동 가능한 MVP를 직접 제작하여 가설을 신속하게 검증하고 개선하는 역량'
+      id: 'ai_ux',
+      tag: '#AI-UX',
+      title: 'AI-UX',
+      englishLabel: 'INTERACTION DESIGN',
+      description: 'AI의 기술적 한계(추론 지연 Latency, 인식 오류, 환각)를 극복하는 Fail-safe 인터랙션, 인지 부하를 줄이는 화면 플로우, 게이미피케이션 몰입 경험을 완성하는 역량'
     }
   ];
 
@@ -34,7 +34,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'SHEN: Sentiment Hidden Eye aNalysis',
       badge: 'XAI Research',
       description: '한국어 PLM의 젠더 편향성 평가 및 Attention/LIME 설명가능 AI 분석 연구. Attention 가중치와 LIME 기법을 결합한 정밀 분석 파이프라인을 설계하여 특성 오귀인 규명.',
-      competencyTags: ['#데이터·AI융합', '#XAI리서치', '#편향분석'],
+      competencyTags: ['#도메인분석', '#AI파이프라인', '#XAI리서치'],
       github: 'https://github.com/meisteryi/SHEN'
     },
     {
@@ -42,15 +42,31 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'TabiLenS: AI Travel Menu & Culture Guide',
       badge: 'Vision-LLM App',
       description: '실시간 비전 OCR 및 LLM 기반 다국어 메뉴판 번역 & 식문화 가이드 서비스. 낯선 메뉴판의 식문화 맥락을 3단계 주문 플로우로 설계하고 Flutter 프로토타입으로 구현.',
-      competencyTags: ['#서비스설계', '#데이터·AI융합', '#빠른실행력'],
+      competencyTags: ['#도메인분석', '#AI파이프라인', '#AI-UX'],
       github: 'https://github.com/meisteryi/TabiLenS'
+    },
+    {
+      id: 'kkumteul',
+      title: '꿈틀: 꿈을 담는 틀 (Kkumteul)',
+      badge: 'Generative AI & UX',
+      description: '생성형 AI(KoGPT-2 파인튜닝 + SDXL LoRA) 기반 꿈 시각화 및 인터랙티브 동화책 플랫폼. 꿈 키워드를 몽환적 내러티브와 감성적 일러스트로 자동 엮어내는 전 파이프라인과 책장 넘기기 인터랙션 구현.',
+      competencyTags: ['#도메인분석', '#AI파이프라인', '#AI-UX'],
+      github: 'https://github.com/meisteryi'
+    },
+    {
+      id: 'astra',
+      title: 'ASTRA: 모바일 LMS 사용성 리서치 & A/B 테스트',
+      badge: 'UX Research & A/B Test',
+      description: '서강대 공식 사이버캠퍼스 모바일 앱의 3대 핵심 내비게이션 결함 개선. GOMS 정량 모델링, Figma 고충실도 프로토타입 제작, 36인 실사용자 A/B 테스트 및 Wilcoxon 통계 검정(p < 0.05) 완결.',
+      competencyTags: ['#AI-UX', '#도메인분석', '#AB테스트'],
+      github: 'https://github.com/meisteryi'
     },
     {
       id: 'liargame',
       title: 'Liar Game: AI Context-Aware Party App',
       badge: 'Gen-AI Game',
       description: 'Gemini API 기반 지능형 제시어 생성 및 파티 모바일 게임. 프롬프트 엔지니어링으로 뉘앙스 맞춤 단어를 생성하고 실시간 모바일 룸 동기화를 직접 개발/배포.',
-      competencyTags: ['#서비스설계', '#데이터·AI융합', '#빠른실행력'],
+      competencyTags: ['#AI파이프라인', '#AI-UX', '#게이미피케이션'],
       github: 'https://github.com/meisteryi/LiarGame'
     },
     {
@@ -58,7 +74,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'AI Football Scouter',
       badge: 'NLP & Data',
       description: '정량 스탯 필터링과 팬 오피니언 다차원 감성 분석 기반 축구 선수 추천 시스템. 정량·정성 데이터를 융합한 360도 스카우팅 지표 및 비교 대시보드 플로우 설계.',
-      competencyTags: ['#서비스설계', '#데이터·AI융합', '#감성분석NLP'],
+      competencyTags: ['#도메인분석', '#AI파이프라인', '#데이터시각화'],
       github: 'https://github.com/meisteryi/AI_Football_Scouter'
     },
     {
@@ -66,7 +82,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'µ\'s (Music Spectrogram Classifier)',
       badge: 'Audio AI',
       description: '음향 파형 신호를 2D 멜-스펙트로그램 이미지로 변환하여 ResNet50 전이 학습으로 분류. 음향 도메인과 컴퓨터 비전 분류 모델을 결합한 데이터 융합 연구.',
-      competencyTags: ['#데이터·AI융합', '#도메인융합', '#오디오AI'],
+      competencyTags: ['#도메인분석', '#AI파이프라인', '#도메인융합'],
       github: 'https://github.com/meisteryi/mus'
     },
     {
@@ -74,7 +90,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'Eisenhower To-Do & Assistant',
       badge: 'Productivity App',
       description: '아이젠하워 4분면 우선순위 매트릭스, 7일 방치 태스크 Q4 자동 소각 시스템, 루틴 및 헬스 세트 트래커. 사용자의 인지 피로를 줄이는 구조화된 규칙을 기획하고 Flutter 크로스플랫폼(iOS/Android/macOS)으로 완결.',
-      competencyTags: ['#서비스설계', '#빠른실행력', '#우선순위매트릭스'],
+      competencyTags: ['#AI-UX', '#도메인분석', '#우선순위매트릭스'],
       github: 'https://github.com/meisteryi/Todo_Eisenhower'
     },
     {
@@ -82,7 +98,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'Gacha To-Do: Pixel Aquarium',
       badge: 'Gamification App',
       description: '할 일 완료 보상 코인으로 픽셀 해양 생물을 수집하는 방치형 아쿠아리움 생산성 앱. 지속적인 사용을 유도하는 보상 플로우를 기획하고 Flutter 앱으로 구현.',
-      competencyTags: ['#서비스설계', '#빠른실행력', '#동기부여기획'],
+      competencyTags: ['#AI-UX', '#게이미피케이션', '#동기부여기획'],
       github: 'https://github.com/meisteryi/Gacha_Todo'
     },
     {
@@ -90,7 +106,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'Photo Exhibition',
       badge: 'Web Service',
       description: 'EXIF 메타데이터 자동 추출 및 반응형 메이슨리 온라인 사진 전시회. 촬영 정보와 사진을 감각적으로 배치하는 모노그래프 감상 플로우 설계 및 웹 구현.',
-      competencyTags: ['#서비스설계', '#빠른실행력', '#EXIF메타데이터'],
+      competencyTags: ['#AI-UX', '#도메인분석', '#EXIF메타데이터'],
       github: 'https://github.com/meisteryi/Photo_Exhibition'
     },
     {
@@ -98,7 +114,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'Unseen Map Explorer',
       badge: 'Geo-mapping Web',
       description: '사진 속 GPS 좌표를 추출하여 여행 여정을 시간 순 지도 위에 시각적 스토리로 재구성. 흩어진 사진 기록을 하나의 공간 여정 플로우로 설계 및 개발.',
-      competencyTags: ['#서비스설계', '#빠른실행력', '#공간정보스토리텔링'],
+      competencyTags: ['#도메인분석', '#AI-UX', '#공간정보스토리텔링'],
       github: 'https://github.com/meisteryi/Unseen_Map'
     },
     {
@@ -106,7 +122,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'Online HalliGalli',
       badge: 'Multiplayer Web',
       description: 'WebRTC 및 WebSocket 기반 실시간 P2P 멀티플레이어 할리갈리 보드게임. 네트워크 지연을 최소화하는 턴제 동기화 플로우를 기획하고 직접 웹으로 개발.',
-      competencyTags: ['#서비스설계', '#빠른실행력', '#WebRTC실시간통신'],
+      competencyTags: ['#AI-UX', '#WebRTC실시간통신', '#초저지연인터랙션'],
       github: 'https://github.com/meisteryi/halligalli'
     },
     {
@@ -114,7 +130,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       title: 'YENA Fanpage',
       badge: 'Responsive Web',
       description: '아티스트 최예나의 앨범 디스코그래피와 미디어 아카이브를 제공하는 웹사이트. 팬덤의 시각적 니즈와 감성적 인터랙션을 중심으로 경험을 설계.',
-      competencyTags: ['#서비스설계', '#반응형UIUX', '#팬덤경험기획'],
+      competencyTags: ['#AI-UX', '#반응형UIUX', '#팬덤경험기획'],
       github: 'https://github.com/meisteryi/YENA_Fanpage'
     }
   ];

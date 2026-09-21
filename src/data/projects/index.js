@@ -10,6 +10,8 @@ import { scout } from './FootballScouter';
 import { yenafanpage } from './YenaFanpage';
 import { archive } from './MilestoneArchive';
 import { eisenhower } from './EisenhowerTodo';
+import { kkumteul } from './Kkumteul';
+import { astra } from './AstraUsability';
 
 export const projectsData = {
   liargame,
@@ -23,7 +25,9 @@ export const projectsData = {
   scout,
   yenafanpage,
   archive,
-  eisenhower
+  eisenhower,
+  kkumteul,
+  astra
 };
 
 export const projectImages = {
@@ -37,5 +41,8 @@ export const projectImages = {
   mus: mus.featuredImage,
   scout: scout.featuredImage,
   yenafanpage: yenafanpage.featuredImage,
-  eisenhower: eisenhower.featuredImage
+  eisenhower: eisenhower.featuredImage,
+  kkumteul: kkumteul.featuredImage,
+  astra: astra.featuredImage
 };
+
