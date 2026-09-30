@@ -62,6 +62,14 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       github: 'https://github.com/meisteryi'
     },
     {
+      id: 'warmth',
+      title: '온기 (Warmth): 1:1 아날로그 비밀 교환일기',
+      badge: 'Interaction & Web App',
+      description: '3초 롱프레스 실링 왁스 개봉, 3대 인터랙티브 관문(사진 퍼즐·우표 맞추기·퀴즈), Firebase 실시간 턴제 동기화 기반 1:1 아날로그 감성 교환일기 웹 프로덕트.',
+      competencyTags: ['#AI-UX', '#도메인분석', '#인터랙션디자인'],
+      github: 'https://github.com/meisteryi/Warmth'
+    },
+    {
       id: 'liargame',
       title: 'Liar Game: AI Context-Aware Party App',
       badge: 'Gen-AI Game',

@@ -12,6 +12,7 @@ import { archive } from './MilestoneArchive';
 import { eisenhower } from './EisenhowerTodo';
 import { kkumteul } from './Kkumteul';
 import { astra } from './AstraUsability';
+import { warmth } from './Warmth';
 
 export const projectsData = {
   liargame,
@@ -27,7 +28,8 @@ export const projectsData = {
   archive,
   eisenhower,
   kkumteul,
-  astra
+  astra,
+  warmth
 };
 
 export const projectImages = {
@@ -43,6 +45,7 @@ export const projectImages = {
   yenafanpage: yenafanpage.featuredImage,
   eisenhower: eisenhower.featuredImage,
   kkumteul: kkumteul.featuredImage,
-  astra: astra.featuredImage
+  astra: astra.featuredImage,
+  warmth: warmth.featuredImage
 };
 

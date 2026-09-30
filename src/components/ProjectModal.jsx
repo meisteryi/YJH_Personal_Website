@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, Globe, Github, CheckCircle2, Award, FileCode, Sparkles, Image as ImageIcon, Calendar } from 'lucide-react';
+import { ArrowLeft, Globe, Github, CheckCircle2, Award, FileCode, Sparkles, Image as ImageIcon, Calendar, Play, Video } from 'lucide-react';
 import { projectsData } from '../data/projects';
 import { projectsSparData } from '../data/projectsSparData';
 
@@ -256,6 +256,57 @@ export const ProjectModal = ({ projectId, onClose }) => {
         </div>
 
       </div>
+
+      {/* Full-width Dedicated Demo Video Section (if project.demoVideo exists) */}
+      {project.demoVideo && (
+        <section className="mb-16 glass-panel rounded-3xl p-6 sm:p-8 md:p-10 border border-indigo-500/30 bg-slate-900/90 shadow-xl overflow-hidden text-white">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-6 border-b border-slate-800">
+            <div className="flex items-center gap-3.5">
+              <div className="w-12 h-12 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0">
+                <Play size={22} className="fill-white translate-x-0.5" />
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl md:text-3xl font-black text-white">
+                  {project.demoVideo.title || '실행 데모 비디오 · Live Screen Recording Demo'}
+                </h2>
+                {project.demoVideo.desc && (
+                  <p className="mt-1 text-sm sm:text-base text-slate-300 font-medium leading-relaxed">
+                    {project.demoVideo.desc}
+                  </p>
+                )}
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2 self-start sm:self-auto shrink-0">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-rose-500/20 text-rose-300 border border-rose-500/40 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-rose-500 animate-pulse"></span>
+                <span>Live Screen Recording Demo</span>
+              </span>
+            </div>
+          </div>
+
+          {/* Media Player Container */}
+          <div className="relative rounded-2xl overflow-hidden bg-black/90 flex items-center justify-center border border-slate-800 shadow-2xl p-2 sm:p-4">
+            {typeof project.demoVideo.url === 'string' && (project.demoVideo.url.endsWith('.mp4') || project.demoVideo.url.endsWith('.webm')) ? (
+              <video
+                src={project.demoVideo.url}
+                controls
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full max-h-[720px] rounded-xl object-contain mx-auto"
+              />
+            ) : (
+              <img
+                src={project.demoVideo.url}
+                alt={project.demoVideo.title}
+                className="w-full max-h-[720px] rounded-xl object-contain mx-auto shadow-2xl"
+              />
+            )}
+          </div>
+        </section>
+      )}
 
       {/* Bottom Back Button */}
       <div className="flex justify-center pt-8 border-t border-slate-200 dark:border-slate-800">
