@@ -64,9 +64,9 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
     {
       id: 'warmth',
       title: '온기 (Warmth): 1:1 아날로그 비밀 교환일기',
-      badge: 'Interaction & Web App',
-      description: '3초 롱프레스 실링 왁스 개봉, 3대 인터랙티브 관문(사진 퍼즐·우표 맞추기·퀴즈), Firebase 실시간 턴제 동기화 기반 1:1 아날로그 감성 교환일기 웹 프로덕트.',
-      competencyTags: ['#AI-UX', '#도메인분석', '#인터랙션디자인'],
+      badge: 'Gen-AI & Interaction',
+      description: '3초 롱프레스 실링 왁스 개봉, Gemini 감성 AI 복습 퀴즈 & 기온 메타포(-20°C~40°C), 소책자·리포트 아카이브 서재, VAPID 웹 푸시 알림 및 오프라인 회복탄력성을 완비한 1:1 교환일기 웹 프로덕트.',
+      competencyTags: ['#AI-UX', '#AI파이프라인', '#도메인분석'],
       github: 'https://github.com/meisteryi/Warmth'
     },
     {
