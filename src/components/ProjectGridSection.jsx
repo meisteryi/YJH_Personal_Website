@@ -63,10 +63,10 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
     },
     {
       id: 'warmth',
-      title: '온기 (Warmth): 1:1 아날로그 비밀 교환일기',
-      badge: 'Gen-AI & Interaction',
-      description: '3초 롱프레스 실링 왁스 개봉, Gemini 감성 AI 복습 퀴즈 & 기온 메타포(-20°C~40°C), 소책자·리포트 아카이브 서재, VAPID 웹 푸시 알림 및 오프라인 회복탄력성을 완비한 1:1 교환일기 웹 프로덕트.',
-      competencyTags: ['#AI-UX', '#AI파이프라인', '#도메인분석'],
+      title: '온기 (Warmth): LLM 기반 감성 교환일기',
+      badge: 'LLM API & Sentiment AI',
+      description: 'Google Gemini LLM 기반 \'오늘 뭐 쓰지?\' 질문 자동 생성, 다차원 텍스트 감정 분석(Sentiment Analysis) 및 -20°C~40°C 온기 기온 측정, 3초 롱프레스 실링 왁스 인터랙션을 결합한 1:1 아날로그 교환일기 웹 프로덕트.',
+      competencyTags: ['#AI파이프라인', '#AI-UX', '#도메인분석'],
       github: 'https://github.com/meisteryi/Warmth'
     },
     {
