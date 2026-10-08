@@ -13,7 +13,7 @@ function getBase64Image(filename) {
     return '';
   }
   const ext = path.extname(filename).toLowerCase().replace('.', '');
-  const mime = ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : 'image/png';
+  const mime = ext === 'jpg' || ext === 'jpeg' ? 'image/jpeg' : ext === 'webp' ? 'image/webp' : 'image/png';
   const data = fs.readFileSync(filePath);
   return `data:${mime};base64,${data.toString('base64')}`;
 }
@@ -32,6 +32,9 @@ const imgMus = getBase64Image('mus_fig_1.png');
 const imgEisenhower = getBase64Image('eisenhower_1.png');
 const imgLiarGame = getBase64Image('liargame_1.png');
 const imgGachaTodo = getBase64Image('gachatodo_preview.png');
+const imgWarmthScore = getBase64Image('warmth_score.png');
+const imgWarmthStamp = getBase64Image('opened_letter_with_stamp.png');
+const imgWarmthLetter = getBase64Image('warmth_letter.png');
 
 const htmlContent = `<!DOCTYPE html>
 <html lang="ko">
@@ -98,13 +101,13 @@ const htmlContent = `<!DOCTYPE html>
     .slide::before {
       content: '';
       position: absolute;
-      top: -80px;
-      right: -80px;
-      width: 360px;
-      height: 360px;
-      background: radial-gradient(circle, rgba(129, 98, 113, 0.1) 0%, rgba(129, 98, 113, 0) 70%);
+      top: -60px;
+      right: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(129, 98, 113, 0.12) 0%, transparent 70%);
       border-radius: 50%;
-      pointer-events-none;
+      pointer-events: none;
       z-index: 0;
     }
 
@@ -117,100 +120,132 @@ const htmlContent = `<!DOCTYPE html>
       justify-content: space-between;
     }
 
-    /* Header Bar (1.5x scaled) */
+    /* Header styling (compact, 22-26px title) */
     .slide-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      padding-bottom: 5px;
-      border-bottom: 2.5px solid var(--card-border);
+      align-items: flex-start;
       margin-bottom: 7px;
+      padding-bottom: 5px;
+      border-bottom: 1.5px solid rgba(195, 163, 138, 0.5);
     }
     .header-tag-group {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 7px;
+      margin-bottom: 2px;
     }
     .section-pill {
-      font-size: 14.5px;
-      font-weight: 800;
-      color: #ffffff;
       background: var(--color-plum);
-      padding: 3px 10px;
-      border-radius: 5px;
-      letter-spacing: 0.4px;
-      font-family: 'JetBrains Mono', monospace;
+      color: #ffffff;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 2.5px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
     }
     .slide-title {
-      font-size: 26px;
-      font-weight: 800;
+      font-size: 22px;
+      font-weight: 900;
       color: var(--color-deep-slate);
       letter-spacing: -0.4px;
     }
     .slide-subtitle {
       font-size: 14.5px;
+      color: var(--color-rose);
       font-weight: 600;
-      color: var(--color-plum);
       margin-top: 1px;
     }
     .header-meta {
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--color-dark-purple);
       font-family: 'JetBrains Mono', monospace;
-      display: flex;
-      gap: 14px;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--color-plum);
+      background: rgba(255, 255, 255, 0.85);
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
     }
 
-    /* Footer Bar (1.5x scaled) */
+    /* Footer styling */
     .slide-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 5px;
-      border-top: 2.5px solid var(--card-border);
-      font-size: 13.5px;
-      color: var(--color-plum);
+      padding-top: 4px;
+      border-top: 1px solid rgba(195, 163, 138, 0.4);
+      font-size: 12.5px;
+      color: var(--color-rose);
       font-weight: 600;
+      margin-top: auto;
     }
     .footer-left {
       display: flex;
-      gap: 16px;
       align-items: center;
+      gap: 12px;
     }
     .page-number {
       font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      color: var(--color-plum);
+      font-size: 13.5px;
+    }
+
+    /* Chips & Badges */
+    .chip {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 1.5px 6.5px;
+      border-radius: 4px;
+      background: rgba(195, 163, 138, 0.22);
+      color: var(--color-dark-purple);
+      border: 1px solid rgba(195, 163, 138, 0.45);
+    }
+    .chip-primary {
+      background: rgba(129, 98, 113, 0.15);
+      color: var(--color-plum);
+      border: 1px solid rgba(129, 98, 113, 0.35);
       font-weight: 800;
-      color: var(--color-deep-slate);
-      font-size: 14.5px;
+    }
+    .chip-green {
+      background: rgba(27, 94, 32, 0.12);
+      color: var(--color-green);
+      border: 1px solid rgba(27, 94, 32, 0.3);
+      font-weight: 700;
     }
 
-    /* Standard Glass Card */
-    .glass-card {
-      background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 10px;
-      box-shadow: var(--shadow-sm);
-      padding: 12px 15px;
-    }
-
-    /* Content Card: Image fills from text end to the very bottom border */
+    /* 70/30 Content Card System: Card takes 100% available height */
     .content-card-tight {
       background: var(--card-bg);
       border: 1.5px solid var(--card-border);
       border-radius: 10px;
+      padding: 11px 14px 0 14px;
       box-shadow: var(--shadow-sm);
-      padding: 11px 14px 0 14px; /* Zero bottom padding so image touches bottom */
       display: flex;
       flex-direction: column;
       height: 100%;
       min-height: 0;
-      overflow: hidden;
+      position: relative;
     }
 
+    /* Text area occupies top ~65-70% */
     .card-text-area {
-      flex-shrink: 0;
+      flex: 0 0 auto;
       margin-bottom: 7px;
+    }
+
+    .problem-banner {
+      background: rgba(153, 117, 119, 0.1);
+      border-left: 3.5px solid var(--color-rose);
+      padding: 5px 8px;
+      border-radius: 4px;
+      font-size: 13.5px;
+      color: var(--color-deep-slate);
+      font-weight: 600;
+      margin-bottom: 6px;
+      line-height: 1.35;
     }
 
     /* Image section: fills 100% of remaining vertical height down to card bottom */
@@ -240,7 +275,7 @@ const htmlContent = `<!DOCTYPE html>
       position: absolute;
       bottom: 6px;
       right: 8px;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(4px);
       -webkit-backdrop-filter: blur(4px);
       border: 1px solid rgba(195, 163, 138, 0.5);
@@ -258,83 +293,34 @@ const htmlContent = `<!DOCTYPE html>
     .grid-2col {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 13px;
+      gap: 12px;
       flex: 1;
       min-height: 0;
-    }
-    .grid-3col {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 13px;
-      flex: 1;
-      min-height: 0;
+      margin-bottom: 4px;
     }
     .grid-asym-left {
       display: grid;
-      grid-template-columns: 1.12fr 0.88fr;
-      gap: 13px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 12px;
+      flex: 1;
+      min-height: 0;
+      margin-bottom: 4px;
+    }
+    .grid-3col {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 10px;
       flex: 1;
       min-height: 0;
     }
 
-    /* Badges & Chips (1.5x scaled) */
-    .chip {
-      display: inline-block;
-      font-size: 13.5px;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 5px;
-      background: rgba(195, 163, 138, 0.28);
-      color: var(--color-dark-purple);
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .chip-primary {
-      background: var(--color-plum);
-      color: #ffffff;
-      font-weight: 700;
-      padding: 3px 9px;
-      border-radius: 5px;
-      font-size: 13.5px;
-      white-space: nowrap;
-      flex-shrink: 0;
-    }
-    .chip-green {
-      background: rgba(46, 125, 50, 0.14);
-      color: var(--color-green);
-      font-weight: 800;
-      font-family: 'JetBrains Mono', monospace;
-      padding: 3px 9px;
-      border-radius: 5px;
-      font-size: 13.5px;
-      white-space: nowrap;
-    }
-
-    /* Problem / Pipeline Banner (1.5x scaled) */
-    .problem-banner {
-      display: block;
-      width: 100%;
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--color-plum);
-      background: rgba(129, 98, 113, 0.08);
-      border-left: 4px solid var(--color-plum);
-      padding: 4px 9px;
-      border-radius: 4px;
-      margin-bottom: 6px;
-    }
-
-    /* Typography Utilities (1.5x scaled) */
-    .text-headline {
-      font-size: 46px;
-      font-weight: 900;
-      color: var(--color-deep-slate);
-      line-height: 1.25;
-      letter-spacing: -0.8px;
-    }
-    .highlight-text {
-      color: var(--color-plum);
-      font-weight: 900;
+    /* Glass Cards */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--card-border);
+      border-radius: 9px;
+      padding: 10px 13px;
+      box-shadow: var(--shadow-sm);
     }
     .card-title {
       font-size: 18.5px;
@@ -374,11 +360,11 @@ const htmlContent = `<!DOCTYPE html>
       font-weight: 700;
     }
 
-    /* Table Styling for Matrix (P2) - 1.5x scaled */
+    /* Table Styling for Matrix (P2) - 7 rows compact */
     .matrix-table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 14.5px;
+      font-size: 14px;
       background: var(--card-bg);
       border-radius: 8px;
       overflow: hidden;
@@ -388,20 +374,27 @@ const htmlContent = `<!DOCTYPE html>
       background: rgba(129, 98, 113, 0.13);
       color: var(--color-deep-slate);
       font-weight: 800;
-      padding: 7px 11px;
+      padding: 5.5px 10px;
       text-align: left;
       border-bottom: 1.5px solid var(--card-border);
-      font-size: 15px;
+      font-size: 14.5px;
     }
     .matrix-table td {
-      padding: 6px 11px;
+      padding: 4px 10px;
       border-bottom: 1px solid rgba(195, 163, 138, 0.35);
       vertical-align: middle;
-      font-size: 14.5px;
-      line-height: 1.38;
+      font-size: 14px;
     }
     .matrix-table tr:last-child td {
       border-bottom: none;
+    }
+    .matrix-table tr:hover td {
+      background: rgba(195, 163, 138, 0.1);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -419,26 +412,36 @@ const htmlContent = `<!DOCTYPE html>
         <div style="font-size: 18px; font-weight: 800; color: var(--color-plum); margin-bottom: 10px; letter-spacing: 0.5px;">
           SOGANG UNIV. ART & TECHNOLOGY & ARTIFICIAL INTELLIGENCE
         </div>
-        <h1 class="text-headline" style="font-size: 46px; margin-bottom: 18px; line-height: 1.25;">
-          도메인 문제 분석에서 <span class="highlight-text">모델 파이프라인 엔지니어링</span>,<br>
-          인간 중심 <span class="highlight-text">AI-UX 인터랙션</span>까지 완결하는 기획자
+        <h1 class="text-headline" style="font-size: 46px; margin-bottom: 16px; line-height: 1.25; color: var(--color-deep-slate); font-weight: 900;">
+          도메인 문제 분석에서 <span style="color: var(--color-plum);">모델 파이프라인 엔지니어링</span>,<br>
+          인간 중심 <span style="color: var(--color-plum);">AI-UX 인터랙션</span>까지 완결하는 기획자
         </h1>
-        <p style="font-size: 18.5px; color: var(--color-steel-blue); line-height: 1.6; max-width: 900px;">
+        <p style="font-size: 18px; color: var(--color-steel-blue); line-height: 1.58; max-width: 900px;">
           서강대학교에서 <strong>Art & Technology(기획·UX)</strong>와 <strong>인공지능(AI)</strong>을 복수전공하는 <strong>이주형</strong>입니다.<br>
           단순 API 래퍼를 넘어 도메인 페인포인트를 규명하고, <strong>LLM·Vision·XAI·Diffusion</strong> 최적 파이프라인과 인지 부하를 제어하는 <strong>실전 프로덕트 인터랙션</strong>을 직접 설계합니다.
         </p>
 
+        <!-- Interactive Website Link Banner -->
+        <div style="margin-top: 16px;">
+          <a href="https://meisteryi.github.io/YJH_Personal_Website/" target="_blank" style="text-decoration: none; display: inline-flex; align-items: center; gap: 9px; background: rgba(255,255,255,0.98); border: 1.5px solid var(--color-plum); padding: 7px 16px; border-radius: 22px; font-size: 14.5px; font-weight: 800; color: var(--color-plum); box-shadow: 0 3px 10px rgba(129,98,113,0.12);">
+            <span style="font-size: 16px;">🌐</span>
+            <span>인터랙티브 웹 포트폴리오 바로가기:</span>
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 14px; text-decoration: underline; color: var(--color-deep-slate);">https://meisteryi.github.io/YJH_Personal_Website/</span>
+            <span style="font-size: 11.5px; font-weight: 800; background: var(--color-plum); color: #ffffff; padding: 2px 8px; border-radius: 9px; margin-left: 3px;">CLICK ↗</span>
+          </a>
+        </div>
+
         <!-- 3 Giant Competency Tags (1.5x scaled) -->
-        <div style="display: flex; gap: 14px; margin-top: 26px;">
-          <div style="background: rgba(255,255,255,0.96); border: 1.5px solid var(--card-border); padding: 15px 20px; border-radius: 8px; border-left: 5px solid var(--color-plum); flex: 1;">
+        <div style="display: flex; gap: 14px; margin-top: 18px;">
+          <div style="background: rgba(255,255,255,0.96); border: 1.5px solid var(--card-border); padding: 14px 18px; border-radius: 8px; border-left: 5px solid var(--color-plum); flex: 1;">
             <div style="font-size: 18px; font-weight: 800; color: var(--color-deep-slate);">#도메인분석 (Domain Analysis)</div>
             <div style="font-size: 14px; color: var(--color-rose); margin-top: 4px; line-height: 1.4;">산업·사용자 페인포인트 규명 & 비정형 데이터 맥락화</div>
           </div>
-          <div style="background: rgba(255,255,255,0.96); border: 1.5px solid var(--card-border); padding: 15px 20px; border-radius: 8px; border-left: 5px solid var(--color-rose); flex: 1;">
+          <div style="background: rgba(255,255,255,0.96); border: 1.5px solid var(--card-border); padding: 14px 18px; border-radius: 8px; border-left: 5px solid var(--color-rose); flex: 1;">
             <div style="font-size: 18px; font-weight: 800; color: var(--color-deep-slate);">#AI파이프라인 (AI Pipeline)</div>
             <div style="font-size: 14px; color: var(--color-rose); margin-top: 4px; line-height: 1.4;">멀티모달 모델 파이프라인 설계 & XAI 신뢰성 평가</div>
           </div>
-          <div style="background: rgba(255,255,255,0.96); border: 1.5px solid var(--card-border); padding: 15px 20px; border-radius: 8px; border-left: 5px solid var(--color-tan); flex: 1;">
+          <div style="background: rgba(255,255,255,0.96); border: 1.5px solid var(--card-border); padding: 14px 18px; border-radius: 8px; border-left: 5px solid var(--color-tan); flex: 1;">
             <div style="font-size: 18px; font-weight: 800; color: var(--color-deep-slate);">#AI-UX (Interaction Design)</div>
             <div style="font-size: 14px; color: var(--color-rose); margin-top: 4px; line-height: 1.4;">Latency 완화 인터랙션 & 정량 통계 A/B 테스트 검증</div>
           </div>
@@ -448,11 +451,11 @@ const htmlContent = `<!DOCTYPE html>
       <div class="slide-footer">
         <div class="footer-left">
           <span>📧 yjh020701@gmail.com</span>
-          <span>🔗 github.com/meisteryi</span>
-          <span>🌐 meisteryi.github.io/YJH_Personal_Website</span>
+          <span>🔗 <a href="https://github.com/meisteryi" target="_blank" style="color: inherit; text-decoration: none;">github.com/meisteryi</a></span>
+          <span>🌐 <a href="https://meisteryi.github.io/YJH_Personal_Website/" target="_blank" style="color: var(--color-plum); font-weight: 800; text-decoration: underline;">meisteryi.github.io/YJH_Personal_Website</a></span>
           <span class="chip-green">OPIc IH · JLPT N1 · TESAT S등급</span>
         </div>
-        <div class="page-number">P.01 / 08</div>
+        <div class="page-number">P.01 / 09</div>
       </div>
     </div>
   </div>
@@ -473,10 +476,10 @@ const htmlContent = `<!DOCTYPE html>
         </div>
       </div>
 
-      <!-- 3 Pillar Framework Architecture Cards (70% text, large fonts) -->
-      <div class="grid-3col" style="margin-bottom: 9px;">
+      <!-- 3 Pillar Framework Architecture Cards -->
+      <div class="grid-3col" style="margin-bottom: 7px;">
         <!-- Pillar 1 -->
-        <div class="glass-card" style="border-top: 4.5px solid var(--color-plum); display: flex; flex-direction: column; gap: 6px; padding: 11px 14px;">
+        <div class="glass-card" style="border-top: 4.5px solid var(--color-plum); display: flex; flex-direction: column; gap: 4px; padding: 9px 12px;">
           <div class="card-title">
             <span>1. 도메인 분석 (Domain)</span>
             <span class="chip">Problem Definition</span>
@@ -485,13 +488,13 @@ const htmlContent = `<!DOCTYPE html>
             <li><strong>비정형 데이터 맥락 발굴</strong>: 언어 편향, 스포츠 스카우팅, 식문화 고유 문제 정의</li>
             <li><strong>AI 도입 당위성 검증</strong>: 단순 기능 탑재가 아닌 실질적 사용자 가치 병목 타겟팅</li>
           </ul>
-          <div style="background: rgba(129,98,113,0.08); padding: 5px 8px; border-radius: 5px; font-size: 13px; color: var(--color-plum); font-weight: 700;">
+          <div style="background: rgba(129,98,113,0.08); padding: 4px 7px; border-radius: 5px; font-size: 12.5px; color: var(--color-plum); font-weight: 700;">
             📦 산출물: 비정형 데이터셋 구축, 문제 정의서, 거버넌스 가이드
           </div>
         </div>
 
         <!-- Pillar 2 -->
-        <div class="glass-card" style="border-top: 4.5px solid var(--color-rose); display: flex; flex-direction: column; gap: 6px; padding: 11px 14px;">
+        <div class="glass-card" style="border-top: 4.5px solid var(--color-rose); display: flex; flex-direction: column; gap: 4px; padding: 9px 12px;">
           <div class="card-title">
             <span>2. AI 파이프라인 (Pipeline)</span>
             <span class="chip">Model & Engineering</span>
@@ -500,13 +503,13 @@ const htmlContent = `<!DOCTYPE html>
             <li><strong>최적 모델 융합</strong>: LLM, Vision OCR, Diffusion, Speech(TTS) 유기적 연동</li>
             <li><strong>신뢰성 평가 & 튜닝</strong>: LIME/SHAP, Attention Map 기반 편향 방어 및 LoRA 제어</li>
           </ul>
-          <div style="background: rgba(153,117,119,0.09); padding: 5px 8px; border-radius: 5px; font-size: 13px; color: var(--color-rose); font-weight: 700;">
+          <div style="background: rgba(153,117,119,0.09); padding: 4px 7px; border-radius: 5px; font-size: 12.5px; color: var(--color-rose); font-weight: 700;">
             ⚙️ 핵심 스택: PyTorch, KoGPT-2, SDXL, Gemini API, LIME/SHAP
           </div>
         </div>
 
         <!-- Pillar 3 -->
-        <div class="glass-card" style="border-top: 4.5px solid var(--color-tan); display: flex; flex-direction: column; gap: 6px; padding: 11px 14px;">
+        <div class="glass-card" style="border-top: 4.5px solid var(--color-tan); display: flex; flex-direction: column; gap: 4px; padding: 9px 12px;">
           <div class="card-title">
             <span>3. AI-UX (Interaction)</span>
             <span class="chip">Usability & Validation</span>
@@ -515,23 +518,23 @@ const htmlContent = `<!DOCTYPE html>
             <li><strong>지연시간·인지 부하 해소</strong>: 3초 대기 감쇄 피드백, 자동 소각, 친숙도 유지 UI</li>
             <li><strong>정량 가설 검증</strong>: GOMS 인지 모델링, 36인 A/B 테스트 및 Wilcoxon 통계 검정</li>
           </ul>
-          <div style="background: rgba(195,163,138,0.14); padding: 5px 8px; border-radius: 5px; font-size: 13px; color: var(--color-dark-purple); font-weight: 700;">
+          <div style="background: rgba(195,163,138,0.14); padding: 4px 7px; border-radius: 5px; font-size: 12.5px; color: var(--color-dark-purple); font-weight: 700;">
             📊 검증 툴킷: Figma 프로토타입, GOMS 모델링, R/Python 통계 검정
           </div>
         </div>
       </div>
 
-      <!-- Mapping Table: 6 Key Projects -->
+      <!-- Mapping Table: 7 Key Projects (including Warmth) -->
       <table class="matrix-table">
         <thead>
           <tr>
-            <th style="width: 21%;">프로젝트명</th>
+            <th style="width: 20%;">프로젝트명</th>
             <th style="width: 19%;">도메인 / 서비스 유형</th>
-            <th style="width: 26%;">적용 AI 모델 & 기술 스택</th>
-            <th style="width: 8%; text-align: center;">도메인</th>
+            <th style="width: 27%;">적용 AI 모델 & 기술 스택</th>
+            <th style="width: 7%; text-align: center;">도메인</th>
             <th style="width: 8%; text-align: center;">파이프라인</th>
             <th style="width: 6%; text-align: center;">AI-UX</th>
-            <th style="width: 12%;">핵심 정량 성과 및 검증</th>
+            <th style="width: 13%;">핵심 정량 성과 및 검증</th>
           </tr>
         </thead>
         <tbody>
@@ -543,6 +546,15 @@ const htmlContent = `<!DOCTYPE html>
             <td style="text-align: center;">●</td>
             <td style="text-align: center;">●</td>
             <td><span class="chip-green">평균 3초 내 생성 / 크로스플랫폼</span></td>
+          </tr>
+          <tr>
+            <td><strong>온기 (Warmth)</strong></td>
+            <td>1:1 감성 교환일기 / 커플 소통</td>
+            <td>Gemini 2.5 LLM, Sentiment AI, Web Audio, Push</td>
+            <td style="text-align: center;">●</td>
+            <td style="text-align: center;">●</td>
+            <td style="text-align: center;">●</td>
+            <td><span class="chip-green">감정 기온(-20°C~40°C), 3초 실링 왁스</span></td>
           </tr>
           <tr>
             <td><strong>SHEN (PLM 편향 연구)</strong></td>
@@ -597,7 +609,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>AI Product Planner Portfolio</span>
           <span>Core Competency Matrix & Project Mapping</span>
         </div>
-        <div class="page-number">P.02 / 08</div>
+        <div class="page-number">P.02 / 09</div>
       </div>
     </div>
   </div>
@@ -619,7 +631,7 @@ const htmlContent = `<!DOCTYPE html>
       </div>
 
       <div class="grid-2col">
-        <!-- Left: SHEN (70% concise text, large fonts, image section fills to bottom) -->
+        <!-- Left: SHEN -->
         <div class="content-card-tight">
           <div class="card-text-area">
             <div class="card-title">
@@ -636,12 +648,12 @@ const htmlContent = `<!DOCTYPE html>
             </ul>
           </div>
           <div class="card-image-section">
-            <img src="${imgShen1}" alt="SHEN Attention Map" />
+            <img src="${imgShen1}" alt="SHEN Attention Bias Chart" />
             <span class="image-badge">▲ 그림 1: 직업군별 젠더 접두사 어텐션 가중치 및 감성 왜곡 실증 시각화</span>
           </div>
         </div>
 
-        <!-- Right: Kkumteul (70% concise text, large fonts, image section fills to bottom) -->
+        <!-- Right: Kkumteul -->
         <div class="content-card-tight">
           <div class="card-text-area">
             <div class="card-title">
@@ -669,7 +681,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>#도메인분석: 비정형 데이터의 구조적 취약점과 심리적 본질 파악</span>
           <span class="chip-green">서강대 AI 심화 리서치 & SCG 학부연구 완결</span>
         </div>
-        <div class="page-number">P.03 / 08</div>
+        <div class="page-number">P.03 / 09</div>
       </div>
     </div>
   </div>
@@ -708,12 +720,12 @@ const htmlContent = `<!DOCTYPE html>
             </ul>
           </div>
           <div class="card-image-section">
-            <img src="${imgScout}" alt="Reddit Sentiment Dataset" />
+            <img src="${imgScout}" alt="Reddit Sentiment Data" style="object-position: center top;" />
             <span class="image-badge">▲ 그림 3: Reddit 비정형 축구 팬덤 코멘트 크롤링 및 감성 분석 원천 데이터셋</span>
           </div>
         </div>
 
-        <!-- Right: ASTRA -->
+        <!-- Right: ASTRA Navigation Audit -->
         <div class="content-card-tight">
           <div class="card-text-area">
             <div class="card-title">
@@ -730,7 +742,7 @@ const htmlContent = `<!DOCTYPE html>
             </ul>
           </div>
           <div class="card-image-section">
-            <img src="${imgAstra1}" alt="LMS Usability Problems" />
+            <img src="${imgAstra1}" alt="ASTRA Push Notification Issue" style="object-position: center 30%;" />
             <span class="image-badge">▲ 그림 4: 실사용자 과업 수행 중 반복이 발생하는 3대 핵심 내비게이션 플로우 분석</span>
           </div>
         </div>
@@ -741,7 +753,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>#도메인분석: 수치 이면의 맥락을 분석하여 실패 확률을 낮추는 서비스 정책 수립</span>
           <span class="chip-green">정량 스탯 + 소셜 텍스트 결합 & 현장 UX 감사 완료</span>
         </div>
-        <div class="page-number">P.04 / 08</div>
+        <div class="page-number">P.04 / 09</div>
       </div>
     </div>
   </div>
@@ -813,7 +825,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>#AI파이프라인: 멀티모달(Vision+LLM+Audio) 및 생성형 AI 결합 아키텍처 완결</span>
           <span class="chip-green">평균 3초 이내 응답 / Seed 고정 스타일 일관성 확보</span>
         </div>
-        <div class="page-number">P.05 / 08</div>
+        <div class="page-number">P.05 / 09</div>
       </div>
     </div>
   </div>
@@ -885,12 +897,84 @@ const htmlContent = `<!DOCTYPE html>
           <span>#AI파이프라인: 설명가능 AI(XAI) 신뢰성 검증 및 이종 도메인 치환 엔지니어링</span>
           <span class="chip-green">LIME/SHAP 융합 분석 완료 / 분류 정확도 72.56%</span>
         </div>
-        <div class="page-number">P.06 / 08</div>
+        <div class="page-number">P.06 / 09</div>
       </div>
     </div>
   </div>
 
-  <!-- ================= SLIDE 7: AI-UX & USABILITY ================= -->
+  <!-- ================= SLIDE 7: WARMTH (AI PIPELINE & INTERACTION) ================= -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div>
+          <div class="header-tag-group">
+            <span class="section-pill">SECTION 2 & 3. AI PIPELINE & INTERACTION</span>
+            <h2 class="slide-title">온기 (Warmth): LLM 감성 대화 파이프라인 & 아날로그 피지컬 인터랙션</h2>
+          </div>
+          <div class="slide-subtitle">Gemini 2.5 LLM으로 소재 고갈을 해소하고 감정을 시각화하며, 3초 롱프레스와 아날로그 서재로 사용자 경험을 완결합니다.</div>
+        </div>
+        <div class="header-meta">
+          <span>WARMTH FULL-STACK AI PRODUCT</span>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Left: Warmth AI Pipeline -->
+        <div class="content-card-tight">
+          <div class="card-text-area">
+            <div class="card-title">
+              <span>온기: Gemini LLM 글감 생성 & 감정 분석 파이프라인</span>
+              <span class="chip-primary">LLM & Sentiment AI</span>
+            </div>
+            <div class="problem-banner">
+              [파이프라인] 8대 감성 테마 프롬프트 → Gemini 2.5 Flash → 사계절 기온(-20°C~40°C) 감정 분석 → 시적 코멘트
+            </div>
+            <ul class="bullet-list">
+              <li><strong>Gemini 기반 '오늘 뭐 쓰지?' 실시간 질문 생성</strong>: 8대 감성 테마와 상대방 호칭을 동적 주입하여 1.5초 내 맞춤형 대화 화두 생성</li>
+              <li><strong>사계절 기온 메타포(-20°C~40°C) 감정 분석</strong>: 편지 본문의 정서 깊이를 기온으로 정밀 계측, 무미건조한 일정 필터링 및 25자 시적 코멘트 산출</li>
+              <li><strong>상대방 지난 편지 기반 복습 퀴즈 & AI 유사 정답 채점</strong>: 과거 시제 1:1 대화형 퀴즈 출제 및 동의어·오타 참작 유연한 AI 채점관 엔진 탑재</li>
+            </ul>
+          </div>
+          <div class="card-image-section">
+            <img src="${imgWarmthScore}" alt="Warmth Score AI" style="object-position: center 25%;" />
+            <span class="image-badge">▲ 그림 9: Gemini LLM 기반 텍스트 감정 분석, 사계절 온기 기온 측정 및 시적 코멘트 피드백</span>
+          </div>
+        </div>
+
+        <!-- Right: Warmth Tactile UX -->
+        <div class="content-card-tight">
+          <div class="card-text-area">
+            <div class="card-title">
+              <span>온기: 3초 롱프레스 실링 왁스 & 아날로그 관문 인터랙션</span>
+              <span class="chip-primary">Tactile Interaction & UX</span>
+            </div>
+            <div class="problem-banner">
+              [UX 철학] 3초 롱프레스 '의도된 마찰(Deliberate Friction)'과 아날로그 소책자 서재 아카이빙
+            </div>
+            <ul class="bullet-list">
+              <li><strong>3초 롱프레스 실링 왁스 & Web Audio 합성</strong>: 지속 터치 게이지 차오름 및 왁스 파열음(Melt Hum & Wax Crack), 햅틱 진동 실시간 피드백</li>
+              <li><strong>3대 잠금 해제 관문(Unlock Gates)</strong>: 대한제국 앤틱 우표 2×2 회전 직소 퍼즐 + 소인 도장(쿵!) 타격음 및 3×3 사진 슬라이딩 퍼즐</li>
+              <li><strong>3대 아카이브 서재 & VAPID 백그라운드 푸시</strong>: 단행본 소책자(Booklet) 독서 뷰어, 기온 변화 그래프 리포트, 오프라인 IndexedDB 캐시 완결</li>
+            </ul>
+          </div>
+          <div class="card-image-section">
+            <img src="${imgWarmthStamp}" alt="Warmth Stamp Puzzle" style="object-position: center 30%;" />
+            <span class="image-badge">▲ 그림 10: 절차적 찢김 우표 직소 퍼즐 조각 맞추기 및 소인 도장 타격 관문</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>#AI파이프라인 & #AI-UX: Gemini 2.5 LLM 감성 기온 분석(-20°C~40°C) & 3초 롱프레스 햅틱 인터랙션 완결</span>
+          <span class="chip-green">LLM 응답 1.5초 이내 / 유실율 0% 오프라인 캐시</span>
+        </div>
+        <div class="page-number">P.07 / 09</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SLIDE 8: AI-UX & USABILITY ================= -->
   <div class="slide">
     <div class="slide-content">
       <div class="slide-header">
@@ -907,7 +991,7 @@ const htmlContent = `<!DOCTYPE html>
       </div>
 
       <div class="grid-asym-left">
-        <!-- Left: ASTRA Usability Research (70% text, compact, image fills to bottom) -->
+        <!-- Left: ASTRA Usability Research -->
         <div class="content-card-tight">
           <div class="card-text-area">
             <div class="card-title">
@@ -926,11 +1010,11 @@ const htmlContent = `<!DOCTYPE html>
 
           <div class="card-image-section">
             <img src="${imgAstra2}" alt="ASTRA Improved UI" style="object-position: center top;" />
-            <span class="image-badge">▲ 그림 9: 최신순 정렬 및 뒤로가기 내비게이션 개선 Figma 프로토타입</span>
+            <span class="image-badge">▲ 그림 11: 최신순 정렬 및 뒤로가기 내비게이션 개선 Figma 프로토타입</span>
           </div>
         </div>
 
-        <!-- Right: AI Latency UX & Gamification (2 stacked cards, each fills to bottom) -->
+        <!-- Right: AI Latency UX & Gamification -->
         <div style="display: flex; flex-direction: column; gap: 10px; height: 100%; min-height: 0;">
           <div class="content-card-tight" style="flex: 1;">
             <div class="card-text-area">
@@ -973,12 +1057,12 @@ const htmlContent = `<!DOCTYPE html>
           <span>#AI-UX: 감이 아닌 정량적 A/B 테스트와 인지 부하 감소 규칙으로 사용자 가치를 증명합니다.</span>
           <span class="chip-green">Wilcoxon Test 유의수준 p &lt; 0.05 전 항목 통과</span>
         </div>
-        <div class="page-number">P.07 / 08</div>
+        <div class="page-number">P.08 / 09</div>
       </div>
     </div>
   </div>
 
-  <!-- ================= SLIDE 8: CREDENTIALS & CONTACT ================= -->
+  <!-- ================= SLIDE 9: CREDENTIALS & CONTACT ================= -->
   <div class="slide">
     <div class="slide-content">
       <div class="slide-header">
@@ -994,7 +1078,7 @@ const htmlContent = `<!DOCTYPE html>
         </div>
       </div>
 
-      <div class="grid-3col">
+      <div class="grid-3col" style="grid-template-columns: 1fr 1.1fr 0.9fr;">
         <!-- Left: Education & Global -->
         <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 7px; padding: 10px 13px;">
           <div class="card-title">
@@ -1035,9 +1119,9 @@ const htmlContent = `<!DOCTYPE html>
 
         <!-- Middle: Leadership & Skills -->
         <div class="glass-card" style="display: flex; flex-direction: column; justify-content: space-between; gap: 7px; padding: 10px 13px;">
-          <div class="card-title">
+          <div class="card-title" style="font-size: 17px;">
             <span>리더십, 스킬 및 자격</span>
-            <span class="chip-primary">Leadership & Skills</span>
+            <span class="chip-primary" style="white-space: nowrap;">Leadership & Skills</span>
           </div>
 
           <ul class="bullet-list" style="margin-bottom: 2px;">
@@ -1073,10 +1157,10 @@ const htmlContent = `<!DOCTYPE html>
               <span class="chip">More Projects</span>
             </div>
             <div style="font-size: 13px; color: var(--color-steel-blue); line-height: 1.5; margin-bottom: 4px;">
+              • <strong>온기 (Warmth)</strong>: Gemini LLM 감성 교환일기 & 3초 롱프레스<br>
               • <strong>Liar Game</strong>: Gemini API 동적 단어 생성 파티 게임<br>
               • <strong>Gacha To-Do</strong>: 픽셀 아쿠아리움 육성 게이미피케이션<br>
-              • <strong>Unseen Map</strong>: EXIF GPS 기반 여행 여정 공간 매핑 웹<br>
-              • <strong>Online HalliGalli</strong>: WebRTC 50ms 실시간 대전 게임
+              • <strong>Unseen Map</strong>: EXIF GPS 기반 여행 여정 공간 매핑 웹
             </div>
           </div>
 
@@ -1094,8 +1178,8 @@ const htmlContent = `<!DOCTYPE html>
             </div>
             <div style="font-size: 12px; color: var(--color-dark-purple); font-family: 'JetBrains Mono', monospace; line-height: 1.5;">
               <div>Email: <strong>yjh020701@gmail.com</strong></div>
-              <div>GitHub: <strong>github.com/meisteryi</strong></div>
-              <div>Web: <strong>meisteryi.github.io/YJH_Personal_Website</strong></div>
+              <div>GitHub: <strong><a href="https://github.com/meisteryi" target="_blank" style="text-decoration: underline;">github.com/meisteryi</a></strong></div>
+              <div>Web: <strong><a href="https://meisteryi.github.io/YJH_Personal_Website/" target="_blank" style="text-decoration: underline; color: var(--color-plum);">meisteryi.github.io/YJH_Personal_Website</a></strong></div>
             </div>
           </div>
         </div>
@@ -1106,7 +1190,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>이주형(Joohyoung Yi) | AI Product Planner & Digital Strategist</span>
           <span>Sogang Univ. Art & Tech & AI</span>
         </div>
-        <div class="page-number">P.08 / 08 (END)</div>
+        <div class="page-number">P.09 / 09 (END)</div>
       </div>
     </div>
   </div>
