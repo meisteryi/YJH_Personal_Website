@@ -80,6 +80,8 @@ const htmlContent = `<!DOCTYPE html>
       print-color-adjust: exact;
       font-size: 16.5px;
       line-height: 1.42;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     .slide {
@@ -95,6 +97,8 @@ const htmlContent = `<!DOCTYPE html>
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      word-break: keep-all;
+      overflow-wrap: break-word;
     }
 
     /* Ambient Background Glow */

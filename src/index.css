@@ -69,12 +69,29 @@
   background-color: var(--color-bg-light);
   color: var(--color-slate-800);
   transition: background-color 0.3s ease, color 0.3s ease;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
-@media (max-width: 768px) {
-  :root {
-    font-size: 17.33px; /* Increases global mobile text size by 1pt (1.33px) */
-  }
+html {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.break-keep {
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 :root.dark {

@@ -26,25 +26,27 @@ export const ContactSection = () => {
             <span>Ready for the Next Challenge</span>
           </div>
 
-          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight break-keep">
             새로운 AI 프로덕트를 <br className="hidden sm:inline" />
             함께 만들어갈 기회를 찾고 있습니다.
           </h2>
 
-          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-xl mx-auto leading-relaxed break-keep">
             AI 프로덕트 기획, 인턴십, 협업 프로젝트, 커피챗 제안 등 언제든 편하게 연락해 주세요.
           </p>
 
           {/* Email Copy Box & Mailto */}
-          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <div className="flex items-center gap-2 px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 w-full sm:w-auto">
-              <Mail className="w-4 h-4 text-indigo-500 shrink-0" />
-              <span className="text-xs sm:text-sm font-mono text-slate-800 dark:text-slate-200">
-                {email}
-              </span>
+          <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 w-full max-w-md mx-auto">
+            <div className="flex items-center justify-between gap-2 px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 w-full sm:w-auto">
+              <div className="flex items-center gap-2 min-w-0">
+                <Mail className="w-4 h-4 text-indigo-500 shrink-0" />
+                <span className="text-xs sm:text-sm font-mono text-slate-800 dark:text-slate-200 truncate">
+                  {email}
+                </span>
+              </div>
               <button
                 onClick={handleCopyEmail}
-                className="ml-2 p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors"
+                className="ml-2 p-1.5 rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-500 hover:text-slate-800 dark:hover:text-white transition-colors shrink-0"
                 title="이메일 복사"
               >
                 {copied ? <Check className="w-4 h-4 text-emerald-500" /> : <Copy className="w-4 h-4" />}
@@ -53,7 +55,7 @@ export const ContactSection = () => {
 
             <a
               href={`mailto:${email}`}
-              className="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 w-full sm:w-auto"
+              className="px-6 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-semibold text-xs sm:text-sm shadow-md hover:shadow-lg transition-all duration-200 flex items-center justify-center gap-2 w-full sm:w-auto shrink-0"
             >
               <Send className="w-4 h-4" />
               <span>메일 보내기</span>

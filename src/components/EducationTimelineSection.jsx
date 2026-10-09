@@ -46,16 +46,16 @@ export const EducationTimelineSection = () => {
 
               {/* Sogang University */}
               <div className="pb-6 border-b border-slate-200/60 dark:border-slate-800/60">
-                <div className="flex items-start justify-between gap-4 mb-2">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-1.5 sm:gap-4 mb-2">
                   <div>
-                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
+                    <h3 className="text-base sm:text-xl font-bold text-slate-900 dark:text-white break-keep">
                       서강대학교 (Sogang University)
                     </h3>
-                    <p className="text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-0.5">
+                    <p className="text-xs sm:text-sm font-semibold text-indigo-600 dark:text-indigo-400 mt-0.5 break-keep">
                       Art & Technology(주전공) & 인공지능 Artificial Intelligence(복수전공)
                     </p>
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-mono font-bold shrink-0">
+                  <span className="self-start sm:self-auto px-2.5 py-1 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-mono font-bold shrink-0 mt-1 sm:mt-0">
                     2021.03 ~ 재학 중
                   </span>
                 </div>
@@ -63,13 +63,13 @@ export const EducationTimelineSection = () => {
                 <div className="space-y-2 text-xs sm:text-sm text-slate-600 dark:text-slate-300 pt-3">
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    <div>
+                    <div className="break-keep">
                       <strong>Art & Technology</strong>: 미디어아트 기획, 인터랙션 디자인, 사용자 중심 서비스 기획 및 프로토타이핑
                     </div>
                   </div>
                   <div className="flex items-start gap-2">
                     <CheckCircle2 className="w-4 h-4 text-indigo-500 shrink-0 mt-0.5" />
-                    <div>
+                    <div className="break-keep">
                       <strong>Artificial Intelligence</strong>: 기계학습, 딥러닝, 설명 가능 인공지능(XAI), 거대 언어 모델(LLM), 데이터 사이언스
                     </div>
                   </div>
@@ -78,29 +78,29 @@ export const EducationTimelineSection = () => {
 
               {/* Sophia University Exchange */}
               <div className="pt-6">
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4">
                   <div className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center shrink-0 mt-0.5">
                       <Globe2 className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-keep">
                           일본 조치대학교 (Sophia University)
                         </h4>
                         <span className="px-2 py-0.5 rounded-md bg-blue-500/10 text-blue-600 dark:text-blue-400 text-[10px] font-bold">
                           교환학생
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5 break-keep">
                         FLA (Faculty of Liberal Arts) 파견 수료
                       </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed break-keep">
                         도쿄 현지에서 전 세계 유학생들과 인문·교양 과정을 이수하며 다문화 협업 및 실전 글로벌 외국어 소통 역량을 체득했습니다.
                       </p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
+                  <span className="self-start sm:self-auto ml-12 sm:ml-0 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
                     2026.04 ~ 2026.07
                   </span>
                 </div>
@@ -116,85 +116,85 @@ export const EducationTimelineSection = () => {
 
               <div className="space-y-6">
                 {/* Student Council President */}
-                <div className="flex items-start justify-between gap-4 pb-6 border-b border-slate-200/60 dark:border-slate-800/60">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4 pb-6 border-b border-slate-200/60 dark:border-slate-800/60">
                   <div className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
                       <Users className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-keep">
                           서강대학교 아트&테크놀로지 학과 학생회장
                         </h4>
                         <span className="px-2 py-0.5 rounded-md bg-purple-500/10 text-purple-600 dark:text-purple-400 text-[10px] font-bold">
                           리더십
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5 break-keep">
                         학과 학생회 총괄 및 프로젝트 행사 기획·운영
                       </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed break-keep">
                         학과 대표로서 교수진, 학생, 외부 협력사 간의 소통을 주도하고, 학술 세미나 및 인터랙티브 전시 행사의 예산 집행과 기획 전반을 총괄했습니다.
                       </p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
+                  <span className="self-start sm:self-auto ml-12 sm:ml-0 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
                     2022.03 ~ 2022.12
                   </span>
                 </div>
 
                 {/* 11th ATC PR Team */}
-                <div className="flex items-start justify-between gap-4 pb-6 border-b border-slate-200/60 dark:border-slate-800/60">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4 pb-6 border-b border-slate-200/60 dark:border-slate-800/60">
                   <div className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
                       <Megaphone className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-keep">
                           제11회 아트&테크놀로지 컨퍼런스 (11th ATC) 홍보팀
                         </h4>
                         <span className="px-2 py-0.5 rounded-md bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[10px] font-bold">
                           PR 기획
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5 break-keep">
                         홍보(PR) 스태프 · 관람객 참여형 소셜 프로모션 기획 및 파트너십 홍보
                       </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed break-keep">
                         누적 관람객 약 4,800여 명 규모의 컨퍼런스·전시에서 인스타그램 스토리 커스텀 스티커 바이럴 이벤트를 직접 기획·운영하고, 스마일게이트 및 현대차 정몽구 재단 온드림 소사이어티 협업 홍보를 지원했습니다.
                       </p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
+                  <span className="self-start sm:self-auto ml-12 sm:ml-0 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
                     2022.07 ~ 2022.11
                   </span>
                 </div>
 
                 {/* Military Service */}
-                <div className="flex items-start justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 sm:gap-4">
                   <div className="flex items-start gap-3">
                     <div className="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
                       <ShieldCheck className="w-5 h-5" />
                     </div>
                     <div>
-                      <div className="flex items-center gap-2">
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 dark:text-white break-keep">
                           대한민국 공군 만기전역
                         </h4>
                         <span className="px-2 py-0.5 rounded-md bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-[10px] font-bold">
                           군필
                         </span>
                       </div>
-                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5">
+                      <p className="text-xs sm:text-sm font-semibold text-slate-500 dark:text-slate-400 mt-0.5 break-keep">
                         공군 병 845기 병장 만기전역
                       </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed">
+                      <p className="text-xs text-slate-600 dark:text-slate-300 mt-2 leading-relaxed break-keep">
                         성실한 군 복무를 통해 엄격한 규율 준수, 팀 단위 협업 능력, 위기 상황 대처 역량을 체득하고 복무를 마쳤습니다.
                       </p>
                     </div>
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
+                  <span className="self-start sm:self-auto ml-12 sm:ml-0 px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-mono font-bold shrink-0">
                     2023.02 ~ 2024.11
                   </span>
                 </div>

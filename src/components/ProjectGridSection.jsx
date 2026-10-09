@@ -160,7 +160,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
         
         {/* 3 Giant Interactive Keywords (Headline Sized, Minimal & High-Impact) */}
         <div className="flex flex-col gap-6 sm:gap-8 md:gap-10">
-          <div className="flex flex-wrap items-baseline gap-x-8 sm:gap-x-12 lg:gap-x-16 gap-y-6 sm:gap-y-8">
+          <div className="flex flex-wrap items-baseline gap-x-5 sm:gap-x-12 lg:gap-x-16 gap-y-4 sm:gap-y-8">
             {keywords.map((kw) => {
               const isSelected = selectedKeyword === kw.tag;
 
@@ -170,11 +170,11 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
                   onClick={() => handleToggleKeyword(kw.tag)}
                   className={`text-left transition-all duration-300 group cursor-pointer focus:outline-none select-none ${
                     isSelected
-                      ? 'text-slate-950 dark:text-white underline decoration-[5px] sm:decoration-[7px] decoration-indigo-600 dark:decoration-indigo-400 underline-offset-[14px] sm:underline-offset-[20px]'
+                      ? 'text-slate-950 dark:text-white underline decoration-[4px] sm:decoration-[7px] decoration-indigo-600 dark:decoration-indigo-400 underline-offset-[10px] sm:underline-offset-[20px]'
                       : 'text-slate-300 dark:text-slate-600 hover:text-slate-500 dark:hover:text-slate-400'
                   }`}
                 >
-                  <span className="block text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none">
+                  <span className="block text-2xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none whitespace-nowrap">
                     {kw.title}
                   </span>
                 </button>
@@ -184,8 +184,8 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
 
           {/* Hint text when nothing is selected */}
           {!selectedKeyword && (
-            <p className="text-xs sm:text-sm text-slate-400 dark:text-slate-500 flex items-center gap-2 mt-4 animate-pulse">
-              <ChevronDown className="w-4 h-4 text-indigo-500 animate-bounce" />
+            <p className="text-xs sm:text-sm text-slate-400 dark:text-slate-500 flex items-center gap-2 mt-4 animate-pulse break-keep">
+              <ChevronDown className="w-4 h-4 text-indigo-500 animate-bounce shrink-0" />
               <span>키워드를 클릭하면 해당 역량을 증명하는 프로젝트가 열립니다.</span>
             </p>
           )}
@@ -212,7 +212,7 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
                       key={`${selectedKeyword}-${project.id}`}
                       style={{ animationDelay: `${index * 80}ms` }}
                       onClick={() => onOpenProject(project.id)}
-                      className="animate-card-float-up h-72 sm:h-80 md:h-96 w-full rounded-3xl relative overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl border border-white/10 dark:border-white/5 flex flex-col justify-between p-6 sm:p-8 group bg-slate-900 transition-all duration-300 transform-gpu hover:-translate-y-1.5 select-none"
+                      className="animate-card-float-up h-72 sm:h-80 md:h-96 w-full rounded-2xl sm:rounded-3xl relative overflow-hidden cursor-pointer shadow-lg hover:shadow-2xl border border-white/10 dark:border-white/5 flex flex-col justify-between p-6 sm:p-8 group bg-slate-900 transition-all duration-300 transform-gpu hover:-translate-y-1.5 select-none"
                     >
                       {/* Background Demo Image (Fills the entire area) */}
                       {imgSrc ? (
@@ -230,14 +230,14 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
 
                       {/* Top Right: Minimal Interactive Arrow Icon */}
                       <div className="relative z-10 self-end">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 group-hover:bg-white group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-md">
-                          <ArrowUpRight className="w-5 h-5 sm:w-6 sm:h-6" />
+                        <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-white border border-white/30 group-hover:bg-white group-hover:text-black group-hover:scale-110 transition-all duration-300 shadow-md">
+                          <ArrowUpRight className="w-4 h-4 sm:w-6 sm:h-6" />
                         </div>
                       </div>
 
                       {/* Bottom Content: Large High-Contrast Title ONLY */}
                       <div className="relative z-10">
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug drop-shadow-lg group-hover:translate-x-1 transition-transform duration-300">
+                        <h3 className="text-xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight leading-snug drop-shadow-lg group-hover:translate-x-1 transition-transform duration-300 break-keep">
                           {project.title}
                         </h3>
                       </div>
