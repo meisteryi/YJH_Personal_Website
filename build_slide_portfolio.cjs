@@ -957,8 +957,8 @@ const htmlContent = `<!DOCTYPE html>
             </div>
             <ul class="bullet-list">
               <li><strong>3초 롱프레스 실링 왁스 & Web Audio 합성</strong>: 지속 터치 게이지 차오름 및 왁스 파열음(Melt Hum & Wax Crack), 햅틱 진동 실시간 피드백</li>
-              <li><strong>3대 잠금 해제 관문(Unlock Gates)</strong>: 대한제국 앤틱 우표 2×2 회전 직소 퍼즐 + 소인 도장(쿵!) 타격음 및 3×3 사진 슬라이딩 퍼즐</li>
-              <li><strong>3대 아카이브 서재 & VAPID 백그라운드 푸시</strong>: 단행본 소책자(Booklet) 독서 뷰어, 기온 변화 그래프 리포트, 오프라인 IndexedDB 캐시 완결</li>
+              <li><strong>3대 잠금 해제 관문(Unlock Gates)</strong>: 커스텀 사진 앤틱 우표 2×2 회전 직소 퍼즐, 3×3 슬라이딩 퍼즐 및 과거 편지 복습 퀴즈</li>
+              <li><strong>Three.js 3D 추억 유리병 & E2EE 포스트잇</strong>: 모바일 흔들기(가속도계) 왁스 물리 시뮬레이션, E2EE 암호화 포스트잇, 소책자 PDF 인쇄</li>
             </ul>
           </div>
           <div class="card-image-section">
@@ -970,8 +970,8 @@ const htmlContent = `<!DOCTYPE html>
 
       <div class="slide-footer">
         <div class="footer-left">
-          <span>#AI파이프라인 & #AI-UX: Gemini 2.5 LLM 감성 기온 분석(-20°C~40°C) & 3초 롱프레스 햅틱 인터랙션 완결</span>
-          <span class="chip-green">LLM 응답 1.5초 이내 / 유실율 0% 오프라인 캐시</span>
+          <span>#AI파이프라인 & #AI-UX: Gemini LLM 감정 분석(-20°C~40°C), Three.js 3D 물리 시뮬레이션 & E2EE 암호화 완결</span>
+          <span class="chip-green">실서비스 라이브 운영 / LLM 1.5초 / 3D 60fps</span>
         </div>
         <div class="page-number">P.07 / 09</div>
       </div>
