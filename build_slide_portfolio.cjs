@@ -35,6 +35,8 @@ const imgGachaTodo = getBase64Image('gachatodo_preview.png');
 const imgWarmthScore = getBase64Image('warmth_score.png');
 const imgWarmthStamp = getBase64Image('opened_letter_with_stamp.png');
 const imgWarmthLetter = getBase64Image('warmth_letter.png');
+const imgRendiIcon = getBase64Image('rendi_icon.png');
+const imgRendiLogo = getBase64Image('rendi_logo.png');
 
 const htmlContent = `<!DOCTYPE html>
 <html lang="ko">
@@ -459,7 +461,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>🌐 <a href="https://meisteryi.github.io/YJH_Personal_Website/" target="_blank" style="color: var(--color-plum); font-weight: 800; text-decoration: underline;">meisteryi.github.io/YJH_Personal_Website</a></span>
           <span class="chip-green">OPIc IH · JLPT N1 · TESAT S등급</span>
         </div>
-        <div class="page-number">P.01 / 09</div>
+        <div class="page-number">P.01 / 10</div>
       </div>
     </div>
   </div>
@@ -553,12 +555,21 @@ const htmlContent = `<!DOCTYPE html>
           </tr>
           <tr>
             <td><strong>온기 (Warmth)</strong></td>
-            <td>1:1 감성 교환일기 / 커플 소통</td>
-            <td>Gemini 2.5 LLM, Sentiment AI, Web Audio, Push</td>
+            <td>1:1 감성 교환일기 / iOS 앱</td>
+            <td>Gemini Flash-Lite, Three.js(왁스·유리구슬), E2EE</td>
             <td style="text-align: center;">●</td>
             <td style="text-align: center;">●</td>
             <td style="text-align: center;">●</td>
-            <td><span class="chip-green">감정 기온(-20°C~40°C), 3초 실링 왁스</span></td>
+            <td><span class="chip-green">4대 관문(텔레파시) · 35mm 필름 롤</span></td>
+          </tr>
+          <tr>
+            <td><strong>렌디 (RENDI)</strong></td>
+            <td>스마트 렌터카 AI 코칭 (AAOS)</td>
+            <td>Vosk, Pleos STT, Gemini Proxy, DB v4.2.1</td>
+            <td style="text-align: center;">●</td>
+            <td style="text-align: center;">●</td>
+            <td style="text-align: center;">●</td>
+            <td><span class="chip-green">STT 지연 58%↓ / 133-QA 통과</span></td>
           </tr>
           <tr>
             <td><strong>SHEN (PLM 편향 연구)</strong></td>
@@ -613,7 +624,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>AI Product Planner Portfolio</span>
           <span>Core Competency Matrix & Project Mapping</span>
         </div>
-        <div class="page-number">P.02 / 09</div>
+        <div class="page-number">P.02 / 10</div>
       </div>
     </div>
   </div>
@@ -685,7 +696,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>#도메인분석: 비정형 데이터의 구조적 취약점과 심리적 본질 파악</span>
           <span class="chip-green">서강대 AI 심화 리서치 & SCG 학부연구 완결</span>
         </div>
-        <div class="page-number">P.03 / 09</div>
+        <div class="page-number">P.03 / 10</div>
       </div>
     </div>
   </div>
@@ -757,7 +768,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>#도메인분석: 수치 이면의 맥락을 분석하여 실패 확률을 낮추는 서비스 정책 수립</span>
           <span class="chip-green">정량 스탯 + 소셜 텍스트 결합 & 현장 UX 감사 완료</span>
         </div>
-        <div class="page-number">P.04 / 09</div>
+        <div class="page-number">P.04 / 10</div>
       </div>
     </div>
   </div>
@@ -829,7 +840,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>#AI파이프라인: 멀티모달(Vision+LLM+Audio) 및 생성형 AI 결합 아키텍처 완결</span>
           <span class="chip-green">평균 3초 이내 응답 / Seed 고정 스타일 일관성 확보</span>
         </div>
-        <div class="page-number">P.05 / 09</div>
+        <div class="page-number">P.05 / 10</div>
       </div>
     </div>
   </div>
@@ -901,7 +912,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>#AI파이프라인: 설명가능 AI(XAI) 신뢰성 검증 및 이종 도메인 치환 엔지니어링</span>
           <span class="chip-green">LIME/SHAP 융합 분석 완료 / 분류 정확도 72.56%</span>
         </div>
-        <div class="page-number">P.06 / 09</div>
+        <div class="page-number">P.06 / 10</div>
       </div>
     </div>
   </div>
@@ -973,12 +984,84 @@ const htmlContent = `<!DOCTYPE html>
           <span>#AI파이프라인 & #AI-UX: Gemini LLM 감정 분석(-20°C~40°C), Three.js 3D 물리 시뮬레이션 & E2EE 암호화 완결</span>
           <span class="chip-green">실서비스 라이브 운영 / LLM 1.5초 / 3D 60fps</span>
         </div>
-        <div class="page-number">P.07 / 09</div>
+        <div class="page-number">P.07 / 10</div>
       </div>
     </div>
   </div>
 
-  <!-- ================= SLIDE 8: AI-UX & USABILITY ================= -->
+  <!-- ================= SLIDE 8: RENDI (AAOS AI COACH & OFFICIAL WEB SHOWCASE) ================= -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="slide-header">
+        <div>
+          <div class="header-tag-group">
+            <span class="section-pill">SECTION 2. AI PIPELINE &amp; IN-VEHICLE UX</span>
+            <h2 class="slide-title" style="font-size: 21.5px; white-space: nowrap; letter-spacing: -0.5px;">렌디 (RENDI): 스마트 렌터카 AI 적응 코칭 비서 &amp; 웹 쇼케이스</h2>
+          </div>
+          <div class="slide-subtitle">AAOS 주행 규제 준수 하이브리드 음성 코칭 에이전트(RentACarAgent) + 공식 프로덕트 사이트(RenDiWebSite) 통합 구축</div>
+        </div>
+        <div class="header-meta">
+          <span>AAOS HYBRID AI AGENT</span>
+        </div>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Left: RentACarAgent (AAOS & Hybrid AI Pipeline) -->
+        <div class="content-card-tight">
+          <div class="card-text-area">
+            <div class="card-title">
+              <span>AAOS 하이브리드 음성 AI &amp; Zero-Hallucination DB</span>
+              <span class="chip-primary">Safety &amp; Low-Latency</span>
+            </div>
+            <div class="problem-banner">
+              [파이프라인] Vosk('렌디') → Pleos STT → Gemini Intent Proxy(51 인텐트) → DB v4.2.1 검증 안내
+            </div>
+            <ul class="bullet-list">
+              <li><strong>CarUxRestrictions DO 준수</strong>: 정차 시 차량·체급 선택(현대차 5종 MVP), 주행 중 1~2문장 Eyes-Free TTS 코칭</li>
+              <li><strong>하이브리드 음성 NLU</strong>: 온디바이스 Vosk 웨이크워드 + <code>gemini-3.8-flash</code>(60초 문맥 유지) + 오프라인 폴백</li>
+              <li><strong>병렬화 최적화 &amp; 무결성 DB</strong>: STT 캡처 지연 <strong>58% 단축</strong>(2,358→980ms), 237버튼 DB 등급화로 할루시네이션 0%</li>
+            </ul>
+          </div>
+          <div class="card-image-section">
+            <img src="${imgRendiIcon}" alt="RENDI App Icon" style="object-fit: contain; padding: 10px; background: #002c5f;" />
+            <span class="image-badge">▲ 그림 11: RENDI(RENT + BUDDY) 공식 앱 아이콘 &amp; AAOS 코칭 비서 (133-시나리오 QA 통과)</span>
+          </div>
+        </div>
+
+        <!-- Right: RenDiWebSite (Official Product Showcase & Brand UX) -->
+        <div class="content-card-tight">
+          <div class="card-text-area">
+            <div class="card-title">
+              <span>공식 프로덕트 웹 쇼케이스 (RenDiWebSite) 통합 구축</span>
+              <span class="chip-primary">Brand &amp; Live Demo UX</span>
+            </div>
+            <div class="problem-banner">
+              [브랜드 &amp; 사업성] '하·허·호' ㅎ+R 심볼 &amp; Hyundai Navy(#002c5f) · 렌터카→자차 구매 전환 퍼널
+            </div>
+            <ul class="bullet-list">
+              <li><strong>Service Overview &amp; Core UX</strong>: "어디에 있는 어떻게 생긴 버튼" 시각화, 16:9 데모 및 라이브 챗 시뮬레이터</li>
+              <li><strong>Business Viability</strong>: 초보·청년 운전자의 낯선 렌터카 경험 개선 → 재대여 및 브랜드 자차 구매 전환 모델</li>
+              <li><strong>Differentiation</strong>: 차량 내장 매뉴얼 대비 시선 분산 없는 즉각적 음성 코칭의 안전성·효용성 비교 제시</li>
+            </ul>
+          </div>
+          <div class="card-image-section">
+            <img src="${imgRendiLogo}" alt="RENDI Brand Logo" style="object-fit: contain; padding: 14px; background: #ffffff;" />
+            <span class="image-badge">▲ 그림 12: 렌터카 번호판(하·허·호) ㅎ+R 심볼을 결합한 RENDI 공식 브랜드 로고</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>#AI파이프라인 &amp; #AI-UX: AAOS 주행 안전(CarUxRestrictions) + STT 지연 58% 단축 + 공식 웹 쇼케이스</span>
+          <span class="chip-green">STT 980ms(-58%) / 133-QA / 할루시네이션 0%</span>
+        </div>
+        <div class="page-number">P.08 / 10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SLIDE 9: AI-UX & USABILITY ================= -->
   <div class="slide">
     <div class="slide-content">
       <div class="slide-header">
@@ -1014,7 +1097,7 @@ const htmlContent = `<!DOCTYPE html>
 
           <div class="card-image-section">
             <img src="${imgAstra2}" alt="ASTRA Improved UI" style="object-position: center top;" />
-            <span class="image-badge">▲ 그림 11: 최신순 정렬 및 뒤로가기 내비게이션 개선 Figma 프로토타입</span>
+            <span class="image-badge">▲ 그림 13: 최신순 정렬 및 뒤로가기 내비게이션 개선 Figma 프로토타입</span>
           </div>
         </div>
 
@@ -1061,12 +1144,12 @@ const htmlContent = `<!DOCTYPE html>
           <span>#AI-UX: 감이 아닌 정량적 A/B 테스트와 인지 부하 감소 규칙으로 사용자 가치를 증명합니다.</span>
           <span class="chip-green">Wilcoxon Test 유의수준 p &lt; 0.05 전 항목 통과</span>
         </div>
-        <div class="page-number">P.08 / 09</div>
+        <div class="page-number">P.09 / 10</div>
       </div>
     </div>
   </div>
 
-  <!-- ================= SLIDE 9: CREDENTIALS & CONTACT ================= -->
+  <!-- ================= SLIDE 10: CREDENTIALS & CONTACT ================= -->
   <div class="slide">
     <div class="slide-content">
       <div class="slide-header">
@@ -1161,7 +1244,8 @@ const htmlContent = `<!DOCTYPE html>
               <span class="chip">More Projects</span>
             </div>
             <div style="font-size: 13px; color: var(--color-steel-blue); line-height: 1.5; margin-bottom: 4px;">
-              • <strong>온기 (Warmth)</strong>: Gemini LLM 감성 교환일기 & 3초 롱프레스<br>
+              • <strong>온기 (Warmth)</strong>: 유리구슬 3D·텔레파시·35mm 필름 롤·iOS .ipa<br>
+              • <strong>렌디 (RENDI)</strong>: AAOS 렌터카 AI 코칭 &amp; 공식 웹 쇼케이스<br>
               • <strong>Liar Game</strong>: Gemini API 동적 단어 생성 파티 게임<br>
               • <strong>Gacha To-Do</strong>: 픽셀 아쿠아리움 육성 게이미피케이션<br>
               • <strong>Unseen Map</strong>: EXIF GPS 기반 여행 여정 공간 매핑 웹
@@ -1194,7 +1278,7 @@ const htmlContent = `<!DOCTYPE html>
           <span>이주형(Joohyoung Yi) | AI Product Planner & Digital Strategist</span>
           <span>Sogang Univ. Art & Tech & AI</span>
         </div>
-        <div class="page-number">P.09 / 09 (END)</div>
+        <div class="page-number">P.10 / 10 (END)</div>
       </div>
     </div>
   </div>
