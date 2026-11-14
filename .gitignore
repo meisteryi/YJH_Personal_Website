@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Portfolio & CV PDFs
+*.pdf
+output/pdf/
