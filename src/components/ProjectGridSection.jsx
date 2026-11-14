@@ -72,8 +72,8 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
     {
       id: 'rendi',
       title: '렌디 (RENDI): 스마트 렌터카 AI 적응 코칭 비서',
-      badge: 'AAOS & Hybrid AI Agent',
-      description: 'Android Automotive OS(AAOS) & Pleos Connect SDK 기반 차량용 온디맨드 음성 코칭 비서. 온디바이스 Vosk 웨이크워드와 Gemini Intent Proxy(`gemini-3.8-flash`), Zero-Hallucination DB v4.2.1을 결합해 STT 지연을 58% 단축했으며, 공식 프로덕트 웹 쇼케이스(RenDiWebSite)까지 통합 구축.',
+      badge: '현대자동차 공모전 출품작 · AAOS',
+      description: '현대자동차 차량용 앱 개발 공모전 출품작. AAOS & Pleos Connect SDK 기반 차량용 온디맨드 음성 코칭 비서로, Vosk 웨이크워드·Gemini Intent Proxy·Zero-Hallucination DB v4.2.1을 결합해 STT 지연을 58% 단축하고 공식 웹 쇼케이스(RenDiWebSite)까지 통합 구축.',
       competencyTags: ['#AI파이프라인', '#AI-UX', '#도메인분석'],
       github: 'https://github.com/meisteryi/RentACarAgent'
     },

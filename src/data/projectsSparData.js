@@ -201,7 +201,7 @@ export const projectsSparData = {
     insight: '생성형 AI(LLM)의 인텔리전스와 피지컬 인터랙션(3D 물리, Web Audio, Taptic), 그리고 타협 없는 프라이버시(E2EE)가 결합될 때 사용자가 서비스를 신뢰하고 매일 자발적으로 유입되는 진정한 감성 프로덕트가 완성됨을 입증했습니다.'
   },
   rendi: {
-    situation: '렌터카 이용자가 낯선 차량에 탑승할 때마다 겪는 버튼 조작 불안과 차체 크기 감각 차이를 해소하기 위해, Android Automotive OS(AAOS) 기반 스마트 렌터카 AI 적응 코칭 비서 \'렌디(RENDI)\'와 공식 프로덕트 소개 웹사이트(RenDiWebSite)를 엔드투엔드로 기획·구현했습니다.',
+    situation: '현대자동차 차량용 앱 개발 공모전 출품작으로, 렌터카 이용자가 낯선 차량에 탑승할 때마다 겪는 버튼 조작 불안과 차체 크기 감각 차이를 해소하기 위해 Android Automotive OS(AAOS) 기반 스마트 렌터카 AI 적응 코칭 비서 \'렌디(RENDI)\'와 공식 웹사이트(RenDiWebSite)를 엔드투엔드로 기획·구현했습니다.',
     problem: '주행 중 차량 매뉴얼이나 화면을 조작하는 것은 안전 규제로 금지되어 있으며, LLM이 버튼 위치나 조작법을 환각(Hallucination)으로 잘못 안내할 경우 실제 주행 사고로 이어질 수 있는 치명적 한계가 있었습니다.',
     action: [
       'AAOS(minSdk 28) `CarUxRestrictions` DO 규제를 준수해 정차 시에만 차량·체급 선택 UI(`StartupCarSelectActivity`)를 허용하고, 주행 중에는 1~2문장 이내의 간결한 TTS 음성 안내만 제공하도록 설계했습니다.',

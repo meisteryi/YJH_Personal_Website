@@ -4,13 +4,13 @@ import rendiLogo from '../../assets/rendi_logo.png';
 export const rendi = {
   id: 'rendi',
   title: '렌디 (RENDI): 스마트 렌터카 AI 적응 코칭 비서',
-  subtitle: 'AAOS 차량용 인포테인먼트 & Pleos Connect SDK 기반 온디맨드 음성 코칭 에이전트 + 공식 프로덕트 웹 쇼케이스',
-  tags: ['AAOS', 'Pleos Connect SDK', 'Vosk', 'Gemini Intent Proxy', 'CarUxRestrictions', 'AI-UX'],
+  subtitle: '현대자동차 차량용 앱 개발 공모전 출품작 · AAOS 인포테인먼트 & Pleos Connect SDK 기반 음성 코칭 에이전트 + 공식 웹 쇼케이스',
+  tags: ['현대자동차 공모전', 'AAOS', 'Pleos Connect SDK', 'Vosk', 'Gemini Intent Proxy', 'AI-UX'],
   period: '2026.10 - 2026.11',
   page: 'https://meisteryi.github.io/RenDiWebSite/',
   link: 'https://github.com/meisteryi/RentACarAgent',
   featuredImage: rendiIcon,
-  abstract: `렌터카 이용자가 낯선 차량에 탑승했을 때 겪는 조작 불안을 해소하기 위해 개발한 **Android Automotive OS(AAOS) 기반 차량용 AI 적응 코칭 비서 '렌디(RENDI, RENT + BUDDY)'**입니다. 시동 직후 자차/이전 대여 차량 대비 차체 크기 변화(전장·전폭·전고 차이)를 1~2문장 TTS로 브리핑하고, 주행 중에는 **온디바이스 Vosk 한국어 웨이크워드('렌디')**와 **Pleos Connect SDK STT**, **Gemini Intent Proxy(\`gemini-3.8-flash\` Structured Output)**를 결합해 시선을 뺏기지 않는 핸즈프리 음성 Q&A를 제공합니다. 할루시네이션을 원천 차단하는 **Zero-Hallucination DB v4.2.1 검증 정책**을 적용했으며, STT 캡처 지연 시간을 **2,358ms에서 980ms로 약 58% 단축**했습니다. 또한 브랜드 정체성(현대자동차 네이비 \`#002c5f\` & '하·허·호' \`ㅎ+R\` 심볼)과 인터랙티브 라이브 챗 시뮬레이터를 담은 **공식 프로덕트 소개 웹사이트(RenDiWebSite)**까지 엔드투엔드로 구축했습니다.`,
+  abstract: `**현대자동차 차량용 앱 개발 공모전 출품작**으로, 렌터카 이용자가 낯선 차량에 탑승했을 때 겪는 조작 불안을 해소하기 위해 개발한 **Android Automotive OS(AAOS) 기반 차량용 AI 적응 코칭 비서 '렌디(RENDI, RENT + BUDDY)'**입니다. 시동 직후 자차/이전 대여 차량 대비 차체 크기 변화(전장·전폭·전고 차이)를 1~2문장 TTS로 브리핑하고, 주행 중에는 **온디바이스 Vosk 한국어 웨이크워드('렌디')**와 **Pleos Connect SDK STT**, **Gemini Intent Proxy(\`gemini-3.8-flash\` Structured Output)**를 결합해 시선을 뺏기지 않는 핸즈프리 음성 Q&A를 제공합니다. 할루시네이션을 원천 차단하는 **Zero-Hallucination DB v4.2.1 검증 정책**을 적용했으며, STT 캡처 지연 시간을 **2,358ms에서 980ms로 약 58% 단축**했습니다. 또한 브랜드 정체성(현대자동차 네이비 \`#002c5f\` & '하·허·호' \`ㅎ+R\` 심볼)과 인터랙티브 라이브 챗 시뮬레이터를 담은 **공식 프로덕트 소개 웹사이트(RenDiWebSite)**까지 엔드투엔드로 구축했습니다.`,
   sections: {
     introduction:
       '렌터카 운전자는 매번 달라지는 차량의 버튼 위치와 차체 크기(세단 ↔ SUV ↔ 경차)로 인해 주행 중 시선 분산과 조작 불안을 겪습니다. 특히 주행 중 매뉴얼을 찾아보는 행위는 안전사고로 직결되므로, 시선 이동 없는(Eyes-Free) 즉각적 음성 코칭이 필수적입니다. 본 프로젝트는 Android Automotive OS(AAOS) 차량 환경에서 동작하는 스마트 렌터카 AI 적응 코칭 에이전트 \'렌디(RENDI)\'를 설계·구현하고, 이에 더해 브랜드 아이덴티티(RENT + BUDDY, 현대자동차 네이비 #002c5f, 렌터카 번호판 \'하·허·호\'의 ㅎ과 R을 결합한 심볼)와 인터랙티브 라이브 챗 시뮬레이터를 담은 공식 프로덕트 소개 웹사이트(RenDiWebSite)까지 통합 구축한 프로젝트입니다.',
