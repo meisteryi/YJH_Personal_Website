@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
 import { ProjectGridSection } from './components/ProjectGridSection';
@@ -6,9 +6,47 @@ import { EducationTimelineSection } from './components/EducationTimelineSection'
 import { ContactSection } from './components/ContactSection';
 import { ProjectModal } from './components/ProjectModal';
 import { CustomCursor } from './components/CustomCursor';
+import {
+  applyThemeClass,
+  fetchServerTimeOffsetMs,
+  isDarkByServerTime,
+} from './utils/serverTheme';
 
 function App() {
   const [selectedProject, setSelectedProject] = useState(null);
+  const serverOffsetMsRef = useRef(0);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const syncTheme = () => {
+      applyThemeClass(isDarkByServerTime(Date.now() + serverOffsetMsRef.current));
+    };
+
+    const syncServerOffset = async () => {
+      const offsetMs = await fetchServerTimeOffsetMs();
+      if (!isMounted) return;
+      serverOffsetMsRef.current = offsetMs;
+      syncTheme();
+    };
+
+    syncTheme();
+    syncServerOffset();
+
+    const intervalId = window.setInterval(syncTheme, 30_000);
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === 'visible') {
+        syncServerOffset();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+
+    return () => {
+      isMounted = false;
+      window.clearInterval(intervalId);
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, []);
   const [selectedKeyword, setSelectedKeyword] = useState(() => {
     try {
       return sessionStorage.getItem('portfolio_selected_keyword') || null;

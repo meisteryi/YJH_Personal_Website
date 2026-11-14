@@ -13,6 +13,22 @@
   <meta property="twitter:card" content="summary_large_image" />
   <meta property="twitter:title" content="Meisteryi | Portfolio" />
   <meta property="twitter:description" content="Personal portfolio of Joohyoung Yi (Meisteryi)" />
+  <script>
+    (function () {
+      try {
+        var h = parseInt(
+          new Intl.DateTimeFormat('en-US', {
+            timeZone: 'Asia/Seoul',
+            hour: 'numeric',
+            hour12: false
+          }).format(new Date()),
+          10
+        );
+        if (h === 24) h = 0;
+        document.documentElement.classList.toggle('dark', h < 6 || h >= 18);
+      } catch (e) {}
+    })();
+  </script>
 </head>
 
 <body>
