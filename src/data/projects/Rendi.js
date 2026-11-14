@@ -7,6 +7,8 @@ export const rendi = {
   subtitle: 'AAOS 차량용 인포테인먼트 & Pleos Connect SDK 기반 온디맨드 음성 코칭 에이전트 + 공식 프로덕트 웹 쇼케이스',
   tags: ['AAOS', 'Pleos Connect SDK', 'Vosk', 'Gemini Intent Proxy', 'CarUxRestrictions', 'AI-UX'],
   period: '2026.10 - 2026.11',
+  page: 'https://meisteryi.github.io/RenDiWebSite/',
+  link: 'https://github.com/meisteryi/RentACarAgent',
   featuredImage: rendiIcon,
   abstract: `렌터카 이용자가 낯선 차량에 탑승했을 때 겪는 조작 불안을 해소하기 위해 개발한 **Android Automotive OS(AAOS) 기반 차량용 AI 적응 코칭 비서 '렌디(RENDI, RENT + BUDDY)'**입니다. 시동 직후 자차/이전 대여 차량 대비 차체 크기 변화(전장·전폭·전고 차이)를 1~2문장 TTS로 브리핑하고, 주행 중에는 **온디바이스 Vosk 한국어 웨이크워드('렌디')**와 **Pleos Connect SDK STT**, **Gemini Intent Proxy(\`gemini-3.8-flash\` Structured Output)**를 결합해 시선을 뺏기지 않는 핸즈프리 음성 Q&A를 제공합니다. 할루시네이션을 원천 차단하는 **Zero-Hallucination DB v4.2.1 검증 정책**을 적용했으며, STT 캡처 지연 시간을 **2,358ms에서 980ms로 약 58% 단축**했습니다. 또한 브랜드 정체성(현대자동차 네이비 \`#002c5f\` & '하·허·호' \`ㅎ+R\` 심볼)과 인터랙티브 라이브 챗 시뮬레이터를 담은 **공식 프로덕트 소개 웹사이트(RenDiWebSite)**까지 엔드투엔드로 구축했습니다.`,
   sections: {
