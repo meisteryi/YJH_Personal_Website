@@ -64,10 +64,18 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
     {
       id: 'warmth',
       title: '온기 (Warmth): 생성형 감성 AI & 피지컬 비밀 교환일기',
-      badge: 'Live Production & 3D WebGL',
-      description: 'Google Gemini LLM 글감 생성 & 감정 분석(-20°C~40°C), Three.js 3D 추억 유리병 물리 시뮬레이션, E2EE 종단간 암호화, 3초 실링 왁스를 결합한 실서비스 운영 중인 1:1 비밀 교환일기 프로덕트.',
+      badge: 'Live Production & iOS App',
+      description: 'Google Gemini LLM 글감·일러스트·감정 분석(-20°C~40°C) & 35mm 필름 롤 월말 결산, Three.js 3D 추억 유리병(왁스·유리구슬) 물리 시뮬레이션, E2EE 종단간 암호화, 텔레파시 포함 4대 관문 및 iOS `.ipa` 실기기 빌드를 결합한 1:1 비밀 교환일기 프로덕트.',
       competencyTags: ['#AI파이프라인', '#AI-UX', '#도메인분석'],
       github: 'https://github.com/meisteryi/Warmth'
+    },
+    {
+      id: 'rendi',
+      title: '렌디 (RENDI): 스마트 렌터카 AI 적응 코칭 비서',
+      badge: 'AAOS & Hybrid AI Agent',
+      description: 'Android Automotive OS(AAOS) & Pleos Connect SDK 기반 차량용 온디맨드 음성 코칭 비서. 온디바이스 Vosk 웨이크워드와 Gemini Intent Proxy(`gemini-3.8-flash`), Zero-Hallucination DB v4.2.1을 결합해 STT 지연을 58% 단축했으며, 공식 프로덕트 웹 쇼케이스(RenDiWebSite)까지 통합 구축.',
+      competencyTags: ['#AI파이프라인', '#AI-UX', '#도메인분석'],
+      github: 'https://github.com/meisteryi/RentACarAgent'
     },
     {
       id: 'liargame',

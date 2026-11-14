@@ -188,17 +188,32 @@ export const projectsSparData = {
     situation: '인스턴트 메신저의 피상적인 대화를 극복하고, Google Gemini LLM API, Three.js 3D 물리 시뮬레이션, E2EE 종단간 암호화 보안을 융합하여 실제 연인들이 매일 사용하는 1:1 프라이빗 라이브 프로덕션 교환일기 프로덕트를 기획 및 운영했습니다.',
     problem: '교환일기 사용자들이 겪는 "오늘 뭐 쓰지?"라는 소재 고갈(Writer\'s Block) 장벽, 텍스트 속 미묘한 감정 피드백의 부재, 지극히 내밀한 사생활에 대한 강력한 프라이버시(E2EE) 요구, 야간 작성 패턴에 맞춘 턴 리셋 및 텍스트 유실 방지 등 실제 운영 환경의 다차원적 페인포인트를 해결해야 했습니다.',
     action: [
-      'Google Gemini LLM API를 연동하여 연인 간의 8대 감성 테마와 상대방 이름을 결합한 \'오늘 뭐 쓰지? 글감 질문 자동 생성 파이프라인\' 및 서정적 맞춤형 AI 편지 삽화 생성 엔진을 구축했습니다.',
-      '일기 본문의 문맥과 정서를 심층 파악하는 LLM 다차원 감정 분석(Sentiment Analysis) 엔진을 설계하여 사계절 날씨 기온(-20°C~40°C) 메타포의 온기 기온 산출, 무미건조한 일정 필터링, 25자 시적 코멘트 및 매월 말일 종합 회고인 \'월간 온기 리포트(Recap)\'를 자동 발행했습니다.',
-      'Three.js WebGL 기반으로 개봉된 실링 왁스 조각들이 유리병에 차곡차곡 쌓이고, 모바일 기기를 흔들면 가속도계(`DeviceMotionEvent`)에 반응해 왁스가 공중으로 튀어오르는 인터랙티브 \'3D 추억 유리병(Memory Jar)\' 물리 시뮬레이션을 구현했습니다.',
-      '편지 본문과 포스트잇 리액션(Post-it Notes) 댓글까지 외부 유출을 원천 차단하는 Web Crypto API 기반 E2EE 종단간 암호화 파이프라인 및 브라우저 강제 종료 시에도 글을 복구하는 Auto-Save/Draft Restoration 시스템을 완비했습니다.',
-      '3초 롱프레스 실링 왁스(Web Audio 절차적 사운드 + iOS Capacitor Taptic Engine 햅틱), 3대 잠금 해제 관문(커스텀 사진 앤틱 우표/퍼즐/과거시제 퀴즈), 단행본 소책자(Booklet) 모바일 PDF 인쇄 브릿지 및 새벽 04:00 자동 리셋 시스템을 배포했습니다.'
+      'Google Gemini LLM API(Flash-Lite)를 연동하여 연인 간의 8대 감성 테마와 상대방 이름을 결합한 \'오늘 뭐 쓰지? 글감 질문 자동 생성 파이프라인\' 및 서정적 맞춤형 AI 편지 삽화 생성 엔진을 구축했습니다.',
+      '일기 본문의 문맥과 정서를 심층 파악하는 LLM 다차원 감정 분석 엔진을 설계하여 사계절 기온(-20°C~40°C) 메타포 산출, 25자 시적 코멘트와 함께 매월 말일 SVG 차트 및 35mm 빈티지 필름 롤을 생성하는 \'월간 온기 결산(Monthly Recap)\'을 구현했습니다.',
+      'Three.js WebGL 기반으로 개봉된 실링 왁스 조각과 영롱한 리본이 감긴 \'유리구슬(Glass Marble)\'이 유리병에 차곡차곡 쌓이고, 모바일 기기를 흔들면 가속도계(`DeviceMotionEvent`)에 반응해 공중으로 튀어오르는 인터랙티브 \'3D 추억 유리병(Memory Jar)\' 물리 시뮬레이션을 구현했습니다.',
+      '편지 본문과 1:1 격리 포스트잇 리액션(Post-it Notes)까지 외부 유출을 차단하는 Web Crypto API 기반 E2EE 암호화, Firestore 용량 제한 방지 이미지 재압축 및 브라우저 종료 시 글을 복구하는 Auto-Save 시스템을 완비했습니다.',
+      '3초 롱프레스 실링 왁스(Web Audio 절차적 사운드 + iOS Capacitor Taptic Engine 햅틱), 4대 잠금 해제 관문(커스텀 사진 앤틱 우표/퍼즐/과거시제 퀴즈/30초 쿨다운 텔레파시 A·B 미니게임), CHERRY·SAGE 편지지 스킨, 소책자(Booklet) PDF 인쇄 브릿지 및 iOS `.ipa` 실기기 빌드를 배포했습니다.'
     ],
     result: {
-      artifacts: 'Google Gemini LLM 파이프라인, Three.js 3D 물리 시뮬레이터, E2EE 암호화 엔진, Web Audio & Taptic 햅틱 시스템, 소책자 PDF 브릿지, Next.js 16 및 iOS 앱스토어 대응 프로덕트를 배포 및 실서비스 운영 중입니다.',
+      artifacts: 'Google Gemini LLM 파이프라인(35mm 필름 롤 월말 결산 포함), Three.js 3D 물리 시뮬레이터(왁스 & 유리구슬), E2EE 암호화 엔진, 4대 봉인 해제 관문, 소책자 PDF 브릿지, Next.js 16 및 iOS `.ipa` 네이티브 앱 프로덕트를 실서비스 운영 중입니다.',
       metrics: '실제 연인 대상 라이브 운영, LLM 질문 및 감정 분석 응답 시간 1.5초 이내, E2EE 암호화 적용률 100%, 3D 렌더링 60fps 안정적 유지, 글 작성 도중 텍스트 유실률 0%를 달성했습니다.'
     },
     insight: '생성형 AI(LLM)의 인텔리전스와 피지컬 인터랙션(3D 물리, Web Audio, Taptic), 그리고 타협 없는 프라이버시(E2EE)가 결합될 때 사용자가 서비스를 신뢰하고 매일 자발적으로 유입되는 진정한 감성 프로덕트가 완성됨을 입증했습니다.'
+  },
+  rendi: {
+    situation: '렌터카 이용자가 낯선 차량에 탑승할 때마다 겪는 버튼 조작 불안과 차체 크기 감각 차이를 해소하기 위해, Android Automotive OS(AAOS) 기반 스마트 렌터카 AI 적응 코칭 비서 \'렌디(RENDI)\'와 공식 프로덕트 소개 웹사이트(RenDiWebSite)를 엔드투엔드로 기획·구현했습니다.',
+    problem: '주행 중 차량 매뉴얼이나 화면을 조작하는 것은 안전 규제로 금지되어 있으며, LLM이 버튼 위치나 조작법을 환각(Hallucination)으로 잘못 안내할 경우 실제 주행 사고로 이어질 수 있는 치명적 한계가 있었습니다.',
+    action: [
+      'AAOS(minSdk 28) `CarUxRestrictions` DO 규제를 준수해 정차 시에만 차량·체급 선택 UI(`StartupCarSelectActivity`)를 허용하고, 주행 중에는 1~2문장 이내의 간결한 TTS 음성 안내만 제공하도록 설계했습니다.',
+      '온디바이스 Vosk 한국어 웨이크워드(\'렌디\') + Pleos Connect SDK STT + HTTPS Gemini Intent Proxy(`gemini-3.8-flash` JSON Schema Structured Output, 51개 인텐트, 60초 `previous_intent` 컨텍스트) + 오프라인 키워드 폴백 하이브리드 파이프라인을 구축했습니다.',
+      '237개 차량 버튼 DB를 검증 등급(`FULL`, `LOCATION_ONLY` 등)으로 엄격히 분리해 LLM 할루시네이션을 0%로 차단하고, TTS-STT 파이프라인 병렬화로 STT 캡처 지연을 약 58%(2,358ms → 980ms) 단축했습니다.',
+      '렌터카 번호판(하·허·호)의 `ㅎ+R` 심볼 로고, 16:9 데모·라이브 챗 시뮬레이터, 자차 구매 전환 비즈니스 모델(Business Viability)을 담은 공식 웹사이트(RenDiWebSite)를 통합 구축했습니다.'
+    ],
+    result: {
+      artifacts: 'AAOS 차량용 인포테인먼트 코칭 앱(현대차 5종 MVP 지원), Vosk + Gemini Intent Proxy 하이브리드 음성 엔진, Zero-Hallucination DB v4.2.1, 공식 프로덕트 웹 쇼케이스(RenDiWebSite)를 완성했습니다.',
+      metrics: 'STT 캡처 지연 시간 중앙값 2,358ms → 980ms(약 58% 단축), 133개 시나리오 QA 스위트 검증 통과, LLM 조작법 할루시네이션 0% 달성을 기록했습니다.'
+    },
+    insight: '차량 내 AI UX에서는 모델의 생성 자유도보다 주행 안전 규제(`CarUxRestrictions`) 준수, 저지연 음성 파이프라인 최적화, 그리고 검증 DB 기반의 무결성(Zero-Hallucination) 설계가 사용자 신뢰와 프로덕트 완성도를 결정짓는 핵심임을 입증했습니다.'
   }
 };
 

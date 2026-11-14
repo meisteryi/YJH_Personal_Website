@@ -13,6 +13,7 @@ import { eisenhower } from './EisenhowerTodo';
 import { kkumteul } from './Kkumteul';
 import { astra } from './AstraUsability';
 import { warmth } from './Warmth';
+import { rendi } from './Rendi';
 
 export const projectsData = {
   liargame,
@@ -29,7 +30,8 @@ export const projectsData = {
   eisenhower,
   kkumteul,
   astra,
-  warmth
+  warmth,
+  rendi
 };
 
 export const projectImages = {
@@ -46,6 +48,7 @@ export const projectImages = {
   eisenhower: eisenhower.featuredImage,
   kkumteul: kkumteul.featuredImage,
   astra: astra.featuredImage,
-  warmth: warmth.featuredImage
+  warmth: warmth.featuredImage,
+  rendi: rendi.featuredImage
 };
 

@@ -931,11 +931,11 @@ const htmlContent = `<!DOCTYPE html>
               <span class="chip-primary">LLM & Sentiment AI</span>
             </div>
             <div class="problem-banner">
-              [파이프라인] 8대 감성 테마 프롬프트 → Gemini 2.5 Flash → 사계절 기온(-20°C~40°C) 감정 분석 → 시적 코멘트
+              [파이프라인] 8대 감성 테마 프롬프트 → Gemini Flash-Lite → 사계절 기온(-20°C~40°C) 감정 분석 & 35mm 필름 롤 월말 결산
             </div>
             <ul class="bullet-list">
               <li><strong>Gemini 기반 '오늘 뭐 쓰지?' 실시간 질문 생성</strong>: 8대 감성 테마와 상대방 호칭을 동적 주입하여 1.5초 내 맞춤형 대화 화두 생성</li>
-              <li><strong>사계절 기온 메타포(-20°C~40°C) 감정 분석</strong>: 편지 본문의 정서 깊이를 기온으로 정밀 계측, 무미건조한 일정 필터링 및 25자 시적 코멘트 산출</li>
+              <li><strong>사계절 기온(-20°C~40°C) 감정 분석 & 35mm 필름 롤</strong>: 정서 깊이를 기온으로 계측하고 월말 온기 결산에서 35mm 빈티지 필름 롤 생성</li>
               <li><strong>상대방 지난 편지 기반 복습 퀴즈 & AI 유사 정답 채점</strong>: 과거 시제 1:1 대화형 퀴즈 출제 및 동의어·오타 참작 유연한 AI 채점관 엔진 탑재</li>
             </ul>
           </div>
@@ -957,8 +957,8 @@ const htmlContent = `<!DOCTYPE html>
             </div>
             <ul class="bullet-list">
               <li><strong>3초 롱프레스 실링 왁스 & Web Audio 합성</strong>: 지속 터치 게이지 차오름 및 왁스 파열음(Melt Hum & Wax Crack), 햅틱 진동 실시간 피드백</li>
-              <li><strong>3대 잠금 해제 관문(Unlock Gates)</strong>: 커스텀 사진 앤틱 우표 2×2 회전 직소 퍼즐, 3×3 슬라이딩 퍼즐 및 과거 편지 복습 퀴즈</li>
-              <li><strong>Three.js 3D 추억 유리병 & E2EE 포스트잇</strong>: 모바일 흔들기(가속도계) 왁스 물리 시뮬레이션, E2EE 암호화 포스트잇, 소책자 PDF 인쇄</li>
+              <li><strong>4대 잠금 해제 관문(Unlock Gates)</strong>: 커스텀 사진 앤틱 우표 2×2 직소 퍼즐, 3×3 슬라이딩 퍼즐, 과거 편지 퀴즈, 30초 쿨다운 텔레파시 A/B 게임</li>
+              <li><strong>Three.js 3D 추억 유리병(왁스·유리구슬) & iOS .ipa 빌드</strong>: 모바일 흔들기(가속도계) 3D 물리 시뮬레이션, 1:1 격리 E2EE 포스트잇, iOS 실기기 빌드</li>
             </ul>
           </div>
           <div class="card-image-section">
