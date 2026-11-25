@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480" width="800" height="480">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F7F0F5"/>
+      <stop offset="100%" stop-color="#DECBB7"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#433633"/>
+      <stop offset="100%" stop-color="#5C5552"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="480" rx="24" fill="url(#bg)"/>
+  <!-- Header bar -->
+  <rect x="36" y="32" width="728" height="58" rx="14" fill="#FCF9FB" stroke="#DECBB7" stroke-width="2"/>
+  <circle cx="68" cy="61" r="8" fill="#433633"/>
+  <circle cx="94" cy="61" r="8" fill="#8F857D"/>
+  <circle cx="120" cy="61" r="8" fill="#DECBB7"/>
+  <text x="148" y="67" font-family="sans-serif" font-size="20" font-weight="800" fill="#433633">SameThumbDetect — 128-bit dHash &amp; Vectorized Duplicate Cleaner</text>
+  <!-- Left Card: Duplicate Group -->
+  <rect x="36" y="114" width="230" height="330" rx="16" fill="#FCF9FB" stroke="#DECBB7" stroke-width="2"/>
+  <text x="56" y="148" font-family="sans-serif" font-size="15" font-weight="800" fill="#433633">Duplicate Groups</text>
+  <rect x="52" y="166" width="198" height="68" rx="10" fill="#433633"/>
+  <text x="66" y="195" font-family="sans-serif" font-size="14" font-weight="700" fill="#FCF9FB">Group #01 · 3 files</text>
+  <text x="66" y="218" font-family="monospace" font-size="12" fill="#DECBB7">98.4% sim · Save 42.1 MB</text>
+  <rect x="52" y="248" width="198" height="68" rx="10" fill="#F7F0F5" stroke="#DECBB7" stroke-width="1.5"/>
+  <text x="66" y="277" font-family="sans-serif" font-size="14" font-weight="700" fill="#433633">Group #02 · 2 files</text>
+  <text x="66" y="300" font-family="monospace" font-size="12" fill="#5C5552">94.8% sim · Save 18.6 MB</text>
+  <rect x="52" y="330" width="198" height="68" rx="10" fill="#F7F0F5" stroke="#DECBB7" stroke-width="1.5"/>
+  <text x="66" y="359" font-family="sans-serif" font-size="14" font-weight="700" fill="#433633">Group #03 · 4 files</text>
+  <text x="66" y="382" font-family="monospace" font-size="12" fill="#5C5552">92.5% sim · Save 115.0 MB</text>
+  <!-- Right Area: Comparison Cards -->
+  <rect x="286" y="114" width="478" height="330" rx="16" fill="#FCF9FB" stroke="#DECBB7" stroke-width="2"/>
+  <text x="308" y="148" font-family="sans-serif" font-size="15" font-weight="800" fill="#433633">Visual &amp; Hash Comparison (0.85 dHash + 0.15 RGB)</text>
+  <!-- Keep card -->
+  <rect x="308" y="168" width="206" height="205" rx="12" fill="#F7F0F5" stroke="#1B5E20" stroke-width="2.5"/>
+  <rect x="324" y="184" width="174" height="106" rx="8" fill="#DECBB7"/>
+  <polygon points="348,274 388,220 422,254 448,228 482,274" fill="#433633" opacity="0.85"/>
+  <circle cx="458" cy="208" r="12" fill="#FCF9FB"/>
+  <rect x="324" y="302" width="66" height="22" rx="6" fill="#1B5E20"/>
+  <text x="339" y="317" font-family="sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">KEEP</text>
+  <text x="324" y="346" font-family="monospace" font-size="12" fill="#433633">4K_clip.mp4 (42.1 MB)</text>
+  <text x="324" y="363" font-family="monospace" font-size="11" fill="#5C5552">Representative · 100%</text>
+  <!-- Trash card -->
+  <rect x="536" y="168" width="206" height="205" rx="12" fill="#F7F0F5" stroke="#B71C1C" stroke-width="2.5"/>
+  <rect x="552" y="184" width="174" height="106" rx="8" fill="#DECBB7"/>
+  <polygon points="576,274 616,220 650,254 676,228 710,274" fill="#433633" opacity="0.85"/>
+  <circle cx="686" cy="208" r="12" fill="#FCF9FB"/>
+  <rect x="552" y="302" width="76" height="22" rx="6" fill="#B71C1C"/>
+  <text x="564" y="317" font-family="sans-serif" font-size="11" font-weight="800" fill="#FFFFFF">TRASH</text>
+  <text x="552" y="346" font-family="monospace" font-size="12" fill="#433633">copy_clip.mov (21.0 MB)</text>
+  <text x="552" y="363" font-family="monospace" font-size="11" fill="#5C5552">98.4% match · Send2Trash</text>
+  <!-- Bottom bar -->
+  <rect x="308" y="388" width="434" height="38" rx="9" fill="url(#accent)"/>
+  <text x="330" y="412" font-family="sans-serif" font-size="13" font-weight="700" fill="#FCF9FB">NumPy LUT Hamming Distance · Union-Find Clustering · Windows &amp; macOS</text>
+</svg>
