@@ -14,6 +14,8 @@ import { kkumteul } from './Kkumteul';
 import { astra } from './AstraUsability';
 import { warmth } from './Warmth';
 import { rendi } from './Rendi';
+import { snapback } from './Snapback';
+import { samethumbdetect } from './SameThumbDetect';
 
 export const projectsData = {
   liargame,
@@ -31,7 +33,9 @@ export const projectsData = {
   kkumteul,
   astra,
   warmth,
-  rendi
+  rendi,
+  snapback,
+  samethumbdetect
 };
 
 export const projectImages = {
@@ -49,6 +53,8 @@ export const projectImages = {
   kkumteul: kkumteul.featuredImage,
   astra: astra.featuredImage,
   warmth: warmth.featuredImage,
-  rendi: rendi.featuredImage
+  rendi: rendi.featuredImage,
+  snapback: snapback.featuredImage,
+  samethumbdetect: samethumbdetect.featuredImage
 };
 

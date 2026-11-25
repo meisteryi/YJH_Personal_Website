@@ -78,6 +78,22 @@ export const ProjectGridSection = ({ selectedKeyword, onSelectKeyword, onOpenPro
       github: 'https://github.com/meisteryi/RentACarAgent'
     },
     {
+      id: 'snapback',
+      title: '스냅백 (Snapback): 기억 기반 대화형 AI 스마트 갤러리',
+      badge: 'iOS & Web AI Gallery',
+      description: '흐릿하게 기억나는 장면을 문장으로 말하면 OpenAI gpt-4o-mini 기반 4대 관점 분석·512px/1280px 2단계 파이프라인·대화형 질의응답·2단계 기억 학습으로 사진을 찾아주고 기록과 AI 앨범으로 이어주는 스마트 갤러리.',
+      competencyTags: ['#AI파이프라인', '#AI-UX', '#도메인분석'],
+      github: 'https://github.com/meisteryi/Snapback'
+    },
+    {
+      id: 'samethumbdetect',
+      title: 'SameThumbDetect: 같은 썸네일 중복 미디어 정리기',
+      badge: 'Cross-Platform Desktop',
+      description: 'Windows(Win32 COM) & macOS(QuickLook·PyAV) 네이티브 썸네일 추출, 128-bit dHash + 2×2 RGB 시그니처, NumPy Popcount LUT 벡터 해밍 거리 & Union-Find 군집화로 중복 이미지·동영상을 고속 탐지·정리하는 PyQt5 앱.',
+      competencyTags: ['#AI파이프라인', '#AI-UX', '#도메인분석'],
+      github: 'https://github.com/meisteryi/SameThumbDetect'
+    },
+    {
       id: 'liargame',
       title: 'Liar Game: AI Context-Aware Party App',
       badge: 'Gen-AI Game',

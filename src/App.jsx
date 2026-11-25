@@ -70,7 +70,7 @@ function App() {
 
   const getKeywordForProject = (projId) => {
     if (['scout', 'unseenmap'].includes(projId)) return '#도메인분석';
-    if (['shen', 'mus', 'tabilens', 'kkumteul', 'warmth', 'rendi'].includes(projId)) return '#AI파이프라인';
+    if (['shen', 'mus', 'tabilens', 'kkumteul', 'warmth', 'rendi', 'snapback', 'samethumbdetect'].includes(projId)) return '#AI파이프라인';
     return '#AI-UX';
   };
 
